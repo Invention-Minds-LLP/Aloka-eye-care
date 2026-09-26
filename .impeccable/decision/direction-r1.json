@@ -1,0 +1,126 @@
+{
+  "title": "A new visual world for Dr Aloka's Eye Care (light, no kites)",
+  "question": "Re-roll 1 assigned The Trial-Lens Case. Keep it, take an alternate, or re-roll again.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Trial-Lens Case",
+      "kicker": "THE ROLL",
+      "lineage": "the refraction trial set: rows of rimmed lenses in a lined case, slotted into a trial frame",
+      "thesis": "The page comes into focus the way a child's sight does: each chapter is seen through a lens that slides in, and blur resolves to sharp.",
+      "palette": ["#F3F6F8", "#FFFFFF", "#1B2A3A", "#2A8CB0", "#E8792F"],
+      "materials": ["optical glass with real refraction", "brushed steel rims", "engraved lens powers"],
+      "viewport": "Bright clinical white. A large round lens hovers right, magnifying the doctor's portrait behind it; the headline is soft-focus on load and snaps sharp as the lens settles. Book key under the headline.",
+      "risk": "Can read cold and technical if the warmth of the families' story is set timidly around it.",
+      "raised": [
+        { "from": "challenger-sun", "raise": "Two half-lenses fuse into one full disc at the treatment moment: binocular fusion made visible." },
+        { "from": "challenger-mook", "raise": "Every lens carries its own engraved caption (credential, service, figure), named like a trial-set power, never an anonymous icon." },
+        { "from": "challenger-bench", "raise": "State is a mark, not a hue: seen, current and next are rim marks, so the journey reads without colour." },
+        { "from": "challenger-bbs", "raise": "One live signal only: 'Open now' in Hyderabad time is the page's single live presence." },
+        { "from": "challenger-riley", "raise": "One caption per lens and wide white margins: nothing crowds the glass." },
+        { "from": "challenger-crane", "raise": "Each treatment step is its own linkable, recoverable state on one continuous sheet." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Pochampally Ikat",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Telangana's tie-dyed double ikat (the weave in Dr. Aloka's saree)",
+      "thesis": "Ikat's feathered, misregistered edges lock into a crisp pattern as warp and weft align: alignment is the page's own weave.",
+      "palette": ["#F6F4EF", "#23336B", "#C2334D", "#E8A33A", "#1F8C84"],
+      "materials": ["handloom cotton", "feathered dye edges", "diamond ikat motifs"],
+      "viewport": "White handloom ground; a wide ikat band whose motifs are blurred and offset, sharpening on scroll; portrait inset in the band.",
+      "risk": "Heritage-textile styling is common among Telangana brands; it can drift into boutique rather than clinic."
+    },
+    {
+      "id": "challenger-sun",
+      "label": "Indoor Weather Sun",
+      "verdict": "declined",
+      "lineage": "hazed installation hall with a mirrored half sun",
+      "thesis": "A half disc completes itself in the mirror.",
+      "palette": ["#E8A23A", "#F5C77A", "#1A1208"],
+      "materials": ["amber haze", "mirror ceiling"],
+      "viewport": "An amber hall with a half sun on the far wall.",
+      "risk": "Amber duotone flattens colour and is too dim for low-vision visitors.",
+      "case": "Loses both axes; also fails the light-theme requirement.",
+      "kept": "Two halves completing into one disc."
+    },
+    {
+      "id": "challenger-mook",
+      "label": "Fashion Mook Spread",
+      "verdict": "declined",
+      "lineage": "Japanese coordinate mooks",
+      "thesis": "Every item named by a hand-drawn ribbon.",
+      "palette": ["#111111", "#9E1B2A", "#F3ECDF"],
+      "materials": ["printed lace", "tissue pattern sheet"],
+      "viewport": "Shingled photographs with ribbon captions.",
+      "risk": "Gothic fashion register, unrelated to families.",
+      "case": "Loses both axes.",
+      "kept": "Every element carries its own named caption."
+    },
+    {
+      "id": "challenger-riley",
+      "label": "Moiré Gallery",
+      "verdict": "declined",
+      "lineage": "op-art wave canvases",
+      "thesis": "Flat lines that flex with viewing distance.",
+      "palette": ["#000000", "#FFFFFF"],
+      "materials": ["matte paint", "line frequency"],
+      "viewport": "A white room of strobing black waves.",
+      "risk": "Optical strain is harmful for the clinic's own patients.",
+      "case": "Loses both axes.",
+      "kept": "One caption per canvas, generous white margins."
+    },
+    {
+      "id": "challenger-bbs",
+      "label": "ANSI Nightboard",
+      "verdict": "declined",
+      "lineage": "dial-up bulletin boards",
+      "thesis": "A neighbourhood made of text.",
+      "palette": ["#000000", "#00AAAA", "#AA00AA"],
+      "materials": ["block characters"],
+      "viewport": "An 80x25 title screen.",
+      "risk": "Dark and retro; fails the light requirement.",
+      "case": "Loses both axes.",
+      "kept": "Live presence is scarce: one live signal."
+    },
+    {
+      "id": "challenger-bench",
+      "label": "Cutting-Bench Rail",
+      "verdict": "declined",
+      "lineage": "film editing benches",
+      "thesis": "Sections strung as frames on a rail.",
+      "palette": ["#0A0A0A", "#F26A1B", "#FFFFFF"],
+      "materials": ["film grain", "tape flags"],
+      "viewport": "An orange field crossed by a perforated rail.",
+      "risk": "Black ground; an editor's tool, not a clinic.",
+      "case": "Loses both axes.",
+      "kept": "State is a mark, not a hue."
+    },
+    {
+      "id": "challenger-crane",
+      "label": "Orizuru Fold Sequence",
+      "verdict": "declined",
+      "lineage": "origami crane diagrams",
+      "thesis": "One sheet, thirty-two recoverable folds.",
+      "palette": ["#D8352A", "#F4EFE6", "#1C1A17", "#C9A23A"],
+      "materials": ["washi", "crease lines"],
+      "viewport": "A vermilion square mid-fold.",
+      "risk": "Japanese craft register, low identification for Hyderabad families.",
+      "case": "Loses both axes.",
+      "kept": "Every step a linkable, recoverable state."
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A bright trusted-clinic homepage: doctor portrait hero, services, figures, testimonials, map, executed impeccably.",
+    "palette": ["#FFFFFF", "#0F2A44", "#2A8CB0", "#E8792F"],
+    "materials": ["clean grid", "clinic photography"],
+    "viewport": "Doctor portrait beside headline and Book button, credentials beneath.",
+    "risk": "Indistinguishable from every other eye hospital in Hyderabad by design."
+  },
+  "steer": true,
+  "record": { "seedKey": "4f28dd1b", "reroll": 1, "pinned": ["light theme", "no kites"] }
+}

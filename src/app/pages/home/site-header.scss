@@ -1,0 +1,218 @@
+:host {
+  display: contents;
+}
+
+.bar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  color: var(--ink);
+  transition:
+    background-color 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out);
+
+  &.is-solid {
+    background: var(--white);
+    box-shadow: 0 1px 0 var(--steel-300), 0 12px 30px -24px rgb(27 42 58 / 0.4);
+  }
+}
+
+.bar__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: min(100% - 2 * var(--gutter), 1400px);
+  margin-inline: auto;
+  min-height: 4.5rem;
+}
+
+.brand {
+  display: block;
+  flex: none;
+  line-height: 0;
+}
+.brand__logo {
+  height: clamp(30px, 2.4vw + 18px, 40px);
+  width: auto;
+}
+
+.bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.call {
+  --icon: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  font-weight: 600;
+  font-size: var(--step-small);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.wa {
+  --icon: 1.25rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  color: var(--wa);
+  background: #e7f5ec;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  &:hover {
+    background: var(--wa);
+    color: var(--white);
+  }
+}
+
+.btn-book--compact {
+  min-height: 2.75rem;
+  padding: 0.6rem 1.1rem 0.6rem 1.15rem;
+  font-size: var(--step-small);
+  transition:
+    opacity 0.35s var(--ease-out),
+    translate 0.45s var(--ease-out),
+    visibility 0s linear 0s;
+  &.is-yielded {
+    opacity: 0;
+    translate: 0 -8px;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.25s,
+      translate 0.3s var(--ease-out),
+      visibility 0s linear 0.3s;
+  }
+}
+
+/* Narrow screens: the header thread is the journey rail. Wide screens use the side rail. */
+.thread {
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  span {
+    display: block;
+    height: 100%;
+    background: var(--teal);
+    transform-origin: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .bar__inner {
+    gap: 0.75rem;
+    min-height: 4rem;
+  }
+  .call__num,
+  .book-long {
+    display: none;
+  }
+  .call {
+    width: 2.75rem;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--steel-100);
+  }
+}
+
+/* ---------- Journey rail (wide screens) ---------- */
+.rail {
+  position: fixed;
+  z-index: 40;
+  left: clamp(1rem, 1.6vw, 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-soft);
+  display: none;
+
+  ol {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.9rem;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 1.5rem;
+    text-decoration: none;
+  }
+}
+
+.rail__line {
+  position: absolute;
+  left: 7px;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  width: 2px;
+  background: var(--steel-300);
+}
+.rail__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--ink-soft);
+  transform-origin: top;
+}
+
+/* State is a mark: hollow = ahead, ring with dot = now, filled = seen. */
+.rail__mark {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  background: var(--white);
+  transition:
+    background-color 0.3s,
+    scale 0.5s var(--ease-out);
+}
+.rail li.is-past .rail__mark {
+  background: currentColor;
+}
+.rail li.is-active .rail__mark {
+  color: var(--ink);
+  scale: 1.25;
+  background: radial-gradient(circle, var(--hope) 0 3px, var(--white) 3.5px);
+}
+
+.rail__label {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--ink);
+  color: #fff;
+  opacity: 0;
+  translate: -6px 0;
+  transition:
+    opacity 0.3s,
+    translate 0.4s var(--ease-out);
+}
+.rail a:hover .rail__label,
+.rail a:focus-visible .rail__label {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Only where the side margin can hold it clear of the page. */
+@media (min-width: 1400px) {
+  .rail {
+    display: block;
+  }
+  .thread {
+    display: none;
+  }
+}

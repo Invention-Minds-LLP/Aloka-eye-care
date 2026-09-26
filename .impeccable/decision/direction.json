@@ -1,0 +1,224 @@
+{
+  "title": "Choose the visual world for Dr Aloka's Eye Care",
+  "question": "The roll assigned the Sankranti Kite Sky. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Sankranti Kite Sky",
+      "kicker": "THE ROLL",
+      "lineage": "Makar Sankranti kite-flying over Hyderabad rooftops",
+      "thesis": "Flying a kite needs two aligned eyes and depth judgement: the page is a child learning to follow one kite across a clearing sky.",
+      "palette": [
+        "#262A45",
+        "#F2B134",
+        "#E0357A",
+        "#159C94",
+        "#EAF2F8"
+      ],
+      "materials": [
+        "tissue-paper kite sails",
+        "manja thread lines",
+        "layered rooftop silhouettes"
+      ],
+      "viewport": "Dusk over Kukatpally rooftops; a single kite seen doubled and blurred until scroll pulls the two images into one. Headline and Book key sit on the rooftop line.",
+      "risk": "Festival imagery can read as seasonal decoration if the clinical proof below is set timidly.",
+      "raised": [
+        {
+          "from": "challenger-arcade",
+          "raise": "Colour obeys a law: marigold appears only after the child meets the doctor, and it is reserved for hope and the Book action."
+        },
+        {
+          "from": "challenger-steps",
+          "raise": "One unbroken manja thread runs the whole page as the journey rail, always marking where 'now' is: fear, hope, treatment, joy."
+        },
+        {
+          "from": "challenger-plankton",
+          "raise": "Total environmental commitment: the sky itself carries the emotion, from dusk to clear noon, with no card shells over it."
+        },
+        {
+          "from": "challenger-cape",
+          "raise": "One pull transforms: the scroll is the thread, and tugging it re-aligns the doubled kite into a single sharp one."
+        },
+        {
+          "from": "challenger-bench",
+          "raise": "Exactly one committing control per viewport, the Book key; everything else stays quiet."
+        }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "The Stereo Fly",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Titmus fly stereo test used in the clinic's binocularity work-up",
+      "thesis": "Depth appears only when both eyes work together: the page is flat and grey until it resolves into true 3D.",
+      "palette": [
+        "#101418",
+        "#E53946",
+        "#27B9C9",
+        "#F4F1EA"
+      ],
+      "materials": [
+        "red-cyan anaglyph layers",
+        "polarised card",
+        "clinical test plates"
+      ],
+      "viewport": "A flat, doubled plate that snaps into stereo depth on pointer or scroll, with the fly's wings lifting off the page.",
+      "risk": "The closest to what clinical eye-care sites already gesture at; the anaglyph can tire the eyes of low-vision visitors."
+    },
+    {
+      "id": "challenger-calendar",
+      "label": "Printing-House Calendar",
+      "verdict": "competitive",
+      "lineage": "Indian advertising wall calendars",
+      "thesis": "A painted plate of doctor and child above; a tear-off date pad below that books the visit.",
+      "palette": [
+        "#B8232F",
+        "#F3E6C8",
+        "#C9A24A",
+        "#2A1E17"
+      ],
+      "materials": [
+        "painted plate",
+        "thin tear-off paper",
+        "gold rule"
+      ],
+      "viewport": "The painted plate fills the top; the pad shows this month, with Sundays greyed as closed.",
+      "case": "Every Indian home knows the form; it holds on audience identification, but the fear-to-joy story fits it less clearly.",
+      "risk": "Needs commissioned painting; with photos alone it reads as a nostalgia costume."
+    },
+    {
+      "id": "challenger-arcade",
+      "label": "Arcade Pixel Glow",
+      "verdict": "declined",
+      "lineage": "CRT arcade cabinets",
+      "palette": [
+        "#07070A",
+        "#FFD447",
+        "#3AE0FF"
+      ],
+      "materials": [
+        "scanlines",
+        "phosphor bloom"
+      ],
+      "thesis": "Treatment as levels cleared.",
+      "viewport": "A pixel stage with a score bar.",
+      "risk": "Trivialises surgery for anxious parents.",
+      "case": "Loses both axes: parents do not identify with it and it obscures the clinic.",
+      "kept": "Palette as law: one colour reserved for the moment that matters."
+    },
+    {
+      "id": "challenger-steps",
+      "label": "Drum-Machine Step Row",
+      "verdict": "declined",
+      "lineage": "80s rhythm machines",
+      "palette": [
+        "#2B2B2E",
+        "#E8412C",
+        "#F7A928",
+        "#F4F4F0"
+      ],
+      "materials": [
+        "lit step keys",
+        "silkscreen"
+      ],
+      "thesis": "The journey as a sixteen-step pattern.",
+      "viewport": "A step row under a chase light.",
+      "risk": "Reads as a toy instrument, not a clinic.",
+      "case": "Loses both axes.",
+      "kept": "One unbroken timeline row that always shows where 'now' is."
+    },
+    {
+      "id": "challenger-plankton",
+      "label": "Bioluminescent Wake",
+      "verdict": "declined",
+      "lineage": "night-sea plankton",
+      "palette": [
+        "#02060D",
+        "#2F7BFF",
+        "#7DF3FF"
+      ],
+      "materials": [
+        "living light",
+        "black water"
+      ],
+      "thesis": "Light traces where you move.",
+      "viewport": "A black field with glowing trails.",
+      "risk": "Dark, low-contrast and hard for low-vision visitors.",
+      "case": "Loses both axes.",
+      "kept": "Total environmental commitment: the ground itself carries the emotion."
+    },
+    {
+      "id": "challenger-cape",
+      "label": "Drawcord Cape",
+      "verdict": "declined",
+      "lineage": "transforming fashion garments",
+      "palette": [
+        "#0C0C0C",
+        "#C9A23A",
+        "#5A6270"
+      ],
+      "materials": [
+        "matte silk",
+        "gold cord"
+      ],
+      "thesis": "One pull turns flat into volume.",
+      "viewport": "A black semicircle and a gold cord.",
+      "risk": "Fashion register, unrelated to families.",
+      "case": "Loses both axes.",
+      "kept": "One pull transforms the whole composition."
+    },
+    {
+      "id": "challenger-bench",
+      "label": "Creator Hardware Bench",
+      "verdict": "declined",
+      "lineage": "desk instruments and keycaps",
+      "palette": [
+        "#3A3D42",
+        "#D9D4C7",
+        "#FF6A13",
+        "#FFB547"
+      ],
+      "materials": [
+        "keycaps",
+        "knurled aluminium"
+      ],
+      "thesis": "Services as physical keys.",
+      "viewport": "A keycap grid with one orange key.",
+      "risk": "Cold and gadget-like for a children's clinic.",
+      "case": "Loses both axes.",
+      "kept": "Exactly one committing key per view."
+    }
+  ],
+  "reroll": {
+    "registers": [
+      "safer",
+      "bolder"
+    ]
+  },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A trusted-clinic homepage: doctor portrait hero, service grid, stats, testimonials, map, executed impeccably.",
+    "palette": [
+      "#FFFFFF",
+      "#0F2A44",
+      "#1C8C8C"
+    ],
+    "materials": [
+      "clean grid",
+      "clinic photography"
+    ],
+    "viewport": "Doctor portrait beside headline and Book button, with credentials beneath.",
+    "risk": "Indistinguishable from every other eye hospital in Hyderabad by design."
+  },
+  "steer": true,
+  "record": {
+    "seedKey": "4f28dd1b",
+    "mode": "persuade",
+    "scope": "direction",
+    "answer": {
+      "optionId": "assigned"
+    },
+    "decidedAt": "2026-09-26"
+  }
+}

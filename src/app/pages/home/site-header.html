@@ -1,0 +1,49 @@
+<header class="bar" [class.is-solid]="solid()">
+  <div class="bar__inner">
+    <a class="brand" href="#top" aria-label="Dr Aloka's Eye Care, back to top">
+      <img class="brand__logo" src="images/logo.png" alt="" width="1459" height="334" />
+    </a>
+
+    <div class="bar__actions">
+      <a class="wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
+        <app-icon name="whatsapp" />
+        <span class="visually-hidden">Chat on WhatsApp</span>
+      </a>
+      <a class="call" [href]="clinic.phoneHref">
+        <app-icon name="phone" />
+        <span class="call__num">{{ clinic.phoneDisplay }}</span>
+        <span class="visually-hidden">Call the clinic</span>
+      </a>
+      <a
+        class="btn-book btn-book--compact"
+        [class.is-yielded]="yieldBook()"
+        [attr.aria-hidden]="yieldBook() ? 'true' : null"
+        [attr.tabindex]="yieldBook() ? -1 : null"
+        [href]="clinic.bookingHref"
+        target="_blank"
+        rel="noopener"
+      >
+        <span>Book<span class="book-long"> appointment</span></span>
+        <app-icon name="arrow" />
+      </a>
+    </div>
+  </div>
+  <div class="thread" aria-hidden="true"><span [style.transform]="'scaleX(' + progress() + ')'"></span></div>
+</header>
+
+<!-- The journey rail: where you are in the story. -->
+<nav class="rail" aria-label="Journey">
+  <div class="rail__line" aria-hidden="true">
+    <span class="rail__fill" [style.transform]="'scaleY(' + progress() + ')'"></span>
+  </div>
+  <ol>
+    @for (c of chapters; track c.id; let i = $index) {
+      <li [class.is-active]="active() === i" [class.is-past]="active() > i">
+        <a [href]="'#' + c.id" [attr.aria-current]="active() === i ? 'step' : null">
+          <span class="rail__mark" aria-hidden="true"></span>
+          <span class="rail__label">{{ c.label }}</span>
+        </a>
+      </li>
+    }
+  </ol>
+</nav>

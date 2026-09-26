@@ -1,0 +1,218 @@
+<!-- ========== 1 · Arriving, worried (also the first viewport) ========== -->
+<section class="scene scene--arrive" id="top" appSceneProgress #a="scene" [restAt]="0" aria-labelledby="hero-title">
+  <div class="stage">
+    <div class="sky sky--muted" aria-hidden="true">
+      <span class="cloud cloud--1"></span><span class="cloud cloud--2"></span><span class="cloud cloud--3"></span>
+    </div>
+    <!-- Scenery never rises into the caption band above it. -->
+    <div class="art" aria-hidden="true">
+      <app-skyline class="layer layer--far" mood="muted" [style.translate]="lerp(0, -2, a.p()) + a.px() * -0.4 + '% 0'" />
+      <app-metro class="layer layer--mid" mood="muted" [trainX]="lerp(-700, 1900, a.p())" [style.translate]="lerp(0, -4, a.p()) + a.px() * -0.8 + '% 0'" />
+      <app-street class="layer layer--near" mood="muted" [compact]="narrow()" [style.translate]="lerp(0, -7, a.p()) + a.px() * -1.2 + '% 0'" />
+    </div>
+    <div class="ground" aria-hidden="true"></div>
+    <app-auto class="auto" [style.translate]="lerp(0, -9, a.p()) + '% 0'" />
+
+    <!-- Opening: calm sky holds the words on the left; the street scene opens to the right. -->
+    <div class="scrim" [class.is-off]="a.p() > 0.28" aria-hidden="true"></div>
+
+    <div class="cast cast--arrive" [style.left.%]="narrow() ? lerp(6, 34, span(a.p(), 0.05, 0.9)) : lerp(70, 73, span(a.p(), 0.05, 0.9))">
+      <app-mother class="cast__mother" mood="worried" arm="hold" [walking]="a.p() > 0.04 && a.p() < 0.9" />
+      <app-child class="cast__child" mood="worried" arm="hold" [bag]="true" [squint]="1" [walking]="a.p() > 0.04 && a.p() < 0.9" />
+      <p class="bubble bubble--think bubble--mother" [class.is-on]="a.p() > 0.3" aria-hidden="true">Is it too late to fix?</p>
+      <p class="bubble bubble--think bubble--child" [class.is-on]="a.p() > 0.46" aria-hidden="true">Will it hurt?</p>
+    </div>
+
+    <div class="caption caption--hero" [class.is-off]="a.p() > 0.28">
+      <h1 id="hero-title">For every child who walks in worried, and walks out smiling.</h1>
+      <p class="te"><span lang="te">{{ te.welcome }}</span><span class="te__en">{{ te.welcomeEn }}.</span></p>
+      <p class="caption__lede">
+        Paediatric eye care and squint treatment for children and adults in KPHB, Kukatpally. Led by Dr. Aloka Hedau, with more than
+        twenty years of experience.
+      </p>
+      <div class="actions">
+        <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">
+          <span>Book <span class="opt">an </span>appointment</span>
+          <app-icon name="arrow" />
+        </a>
+        <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" />
+          WhatsApp
+        </a>
+        <a class="link-call" [href]="clinic.phoneHref">
+          <app-icon name="phone" />
+          <span>{{ clinic.phoneDisplay }}</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="caption caption--story" [class.is-on]="a.p() > 0.32" id="worry">
+      <h2>It usually starts with a small worry.</h2>
+      <p>
+        One eye drifting in photographs. A head tilted to watch TV. Relatives saying it will go away on its own, or even that a squint
+        is lucky.
+      </p>
+      <p class="myth"><span lang="te">{{ te.myth }}</span> <span class="myth__en">{{ te.mythEn }}</span></p>
+    </div>
+
+    <a class="cue" href="#consult" [class.is-off]="a.p() > 0.2">Scroll to follow their visit</a>
+  </div>
+</section>
+
+<!-- ========== 2 · The consultation ========== -->
+<section class="scene scene--consult" id="consult" appSceneProgress #c="scene" aria-labelledby="consult-title">
+  <div class="stage">
+    <div class="art art--room" aria-hidden="true">
+      <app-room class="layer layer--room" [style.translate]="c.px() * -0.6 + '% 0'" />
+    </div>
+    <div class="floor" aria-hidden="true"></div>
+
+    <!-- The examination corner: desk with the occluder and name plate, a stool for the child. -->
+    <div class="exam" aria-hidden="true">
+      <div class="desk">
+        <span class="desk__occluder"></span>
+        <span class="desk__plate">Dr. Aloka Hedau</span>
+      </div>
+      <span class="stool"></span>
+    </div>
+
+    <div class="cast cast--consult" [style.left.%]="narrow() ? lerp(-30, -6, span(c.p(), 0, 0.28)) : lerp(-6, 22, span(c.p(), 0, 0.28))">
+      <app-mother class="cast__mother" [mood]="consultMood(c.p(), 0.52, 0.74)" arm="shoulder" [walking]="c.p() > 0.01 && c.p() < 0.27" />
+      <app-child class="cast__child" [mood]="consultMood(c.p(), 0.6, 0.8)" [arm]="c.p() < 0.27 ? 'hold' : 'rest'" [squint]="1" [walking]="c.p() > 0.01 && c.p() < 0.27" />
+    </div>
+
+    <!-- Dr. Aloka comes round the desk and examines the child's eyes with a penlight. -->
+    <div class="examiner" [style.left.%]="narrow() ? lerp(66, 44, span(c.p(), 0.2, 0.38)) : lerp(62, 39, span(c.p(), 0.2, 0.38))">
+      <app-doctor class="cast__doctor" mood="smile" [arm]="c.p() > 0.36 && c.p() < 0.72 ? 'examine' : 'rest'" />
+      <p class="bubble bubble--say" [class.is-on]="c.p() > 0.46" aria-hidden="true">Let's take a good look together. This can be treated.</p>
+    </div>
+
+    <div class="caption caption--story is-on">
+      <h2 id="consult-title">Then someone finally explains.</h2>
+      <p>
+        Dr. Aloka examines both eyes properly: alignment, depth perception, eye-muscle strength and glasses power, then explains what
+        the tests show in words parents understand.
+      </p>
+      <blockquote class="quote">
+        “{{ listens.quote }}”
+        <footer>{{ listens.name }}, parent</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3 · Treatment ========== -->
+<section class="scene scene--treat" id="care" appSceneProgress #t="scene" aria-labelledby="care-title">
+  <div class="stage">
+    <div class="art art--room" aria-hidden="true">
+      <app-room class="layer layer--room" [style.translate]="t.px() * -0.6 + '% 0'" />
+    </div>
+    <div class="floor" aria-hidden="true"></div>
+
+    <!-- The sticker chart fills with each vision-therapy session. -->
+    <div class="chart" aria-hidden="true" [style.translate]="t.px() * -1 + '% 0'">
+      <p class="chart__title">My sessions</p>
+      <div class="chart__grid">
+        @for (s of stickers; track s) {
+          <span class="chart__cell" [class.is-done]="s < span(t.p(), 0.05, 0.8) * 12">
+            <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z" /></svg>
+          </span>
+        }
+      </div>
+    </div>
+
+    <div class="cast cast--treat">
+      <app-mother class="cast__mother" mood="smile" arm="heart" />
+      <app-child
+        class="cast__child"
+        [mood]="t.p() > 0.84 ? 'joy' : 'calm'"
+        arm="tablet"
+        [glasses]="true"
+        [patch]="t.p() < 0.55"
+        [squint]="1 - span(t.p(), 0.55, 0.85)"
+      />
+    </div>
+
+    <!-- A close look at the child's eyes: the turned eye straightens over the sessions. -->
+    <figure class="eyes-card" aria-hidden="true" [style.--turn]="(1 - span(t.p(), 0.55, 0.85)) * -14 + 'px'">
+      <svg viewBox="0 0 220 90">
+        <g>
+          <ellipse cx="60" cy="45" rx="40" ry="26" fill="#fff" stroke="#1b2a3a" stroke-width="3" />
+          <circle cx="60" cy="45" r="15" fill="#6b4a32" /><circle cx="60" cy="45" r="7" fill="#1f1614" />
+          <circle cx="54" cy="39" r="3" fill="#fff" />
+        </g>
+        <g>
+          <ellipse cx="160" cy="45" rx="40" ry="26" fill="#fff" stroke="#1b2a3a" stroke-width="3" />
+          <g class="eyes-card__turn">
+            <circle cx="160" cy="45" r="15" fill="#6b4a32" /><circle cx="160" cy="45" r="7" fill="#1f1614" />
+            <circle cx="154" cy="39" r="3" fill="#fff" />
+          </g>
+        </g>
+      </svg>
+      <figcaption>{{ t.p() > 0.85 ? 'Both eyes straight' : 'Left eye turns in' }}</figcaption>
+    </figure>
+    <app-doctor class="cast__doctor cast__doctor--treat" mood="smile" arm="point" />
+
+    <div class="caption caption--story is-on">
+      <h2 id="care-title">A plan made for your child.</h2>
+      <ol class="plan">
+        <li [class.is-now]="t.p() < 0.4">
+          <strong>Therapy first, where it can work.</strong> Glasses, patching and vision therapy with Bynocs. Sessions take 30–45
+          minutes; 10–15 are usually enough.
+        </li>
+        <li [class.is-now]="t.p() >= 0.4 && t.p() < 0.75">
+          <strong>Surgery only when it's right.</strong> Pain-free, under anaesthesia, with absorbable sutures and no external scar.
+        </li>
+        <li [class.is-now]="t.p() >= 0.75">
+          <strong>Both eyes, working together.</strong> Depth, reading, and confidence in every photograph.
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 4 · Going home, happy ========== -->
+<section class="scene scene--leave" id="joy" appSceneProgress #l="scene" aria-labelledby="joy-title">
+  <div class="stage">
+    <div class="sky sky--sunny" aria-hidden="true">
+      <span class="sun" [style.translate]="'0 ' + lerp(30, 0, l.p()) + '%'"></span>
+      <span class="cloud cloud--1"></span><span class="cloud cloud--2"></span>
+      <span class="birds"><i></i><i></i><i></i></span>
+    </div>
+    <div class="art" aria-hidden="true">
+      <app-skyline class="layer layer--far" mood="sunny" [style.translate]="lerp(-1, -3, l.p()) + l.px() * -0.4 + '% 0'" />
+      <app-metro class="layer layer--mid" mood="sunny" [trainX]="lerp(1900, -700, l.p())" [style.translate]="lerp(-2, -5, l.p()) + l.px() * -0.8 + '% 0'" />
+      <app-street class="layer layer--near" mood="sunny" [compact]="narrow()" [style.translate]="lerp(-3, -8, l.p()) + l.px() * -1.2 + '% 0'" />
+    </div>
+    <div class="ground" aria-hidden="true"></div>
+
+    <div class="clinic-sign" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="3" /><circle cx="14" cy="10.5" r="2.6" fill="currentColor" /></svg>
+      Dr Aloka's Eye Care
+    </div>
+    <app-doctor class="cast__doctor cast__doctor--door" mood="joy" arm="wave" />
+    <div class="cast cast--leave" [style.left]="narrow() ? lerp(29, 33, span(l.p(), 0.1, 0.95)) + '%' : 'calc(100% - var(--fig) * 1.5 - ' + lerp(9, 3, span(l.p(), 0.1, 0.95)) + 'vw)'">
+      <app-mother class="cast__elder" mood="joy" arm="wave" [elder]="true" [walking]="l.p() > 0.1 && l.p() < 0.95" />
+      <app-mother class="cast__mother" mood="joy" arm="hold" [walking]="l.p() > 0.1 && l.p() < 0.95" />
+      <app-child class="cast__child cast__child--hop" mood="joy" arm="balloon" [glasses]="true" [squint]="0" [walking]="l.p() > 0.1 && l.p() < 0.95" />
+    </div>
+
+    <div class="caption caption--story is-on">
+      <h2 id="joy-title">And they walk out smiling.</h2>
+      <blockquote class="quote">
+        “{{ thanks.quote }}”
+        <footer>{{ thanks.name }}</footer>
+      </blockquote>
+      <div class="actions">
+        <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">
+          <span>Book <span class="opt">an </span>appointment</span>
+          <app-icon name="arrow" />
+        </a>
+        <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" />
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

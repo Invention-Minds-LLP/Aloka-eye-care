@@ -1,0 +1,101 @@
+<section class="visit" id="visit" aria-labelledby="visit-title">
+  <div class="wrap visit__grid">
+    <div class="visit__info">
+      <h2 id="visit-title" appReveal>Come and see us in Kukatpally.</h2>
+      <p class="visit__lede">Third floor, near Forum Srujana Mall in KPHB Phase 6. Call or WhatsApp if you need directions.</p>
+
+      <div class="visit__rows">
+        <div class="row">
+          <app-icon name="pin" />
+          <address>
+            @for (line of clinic.address; track line) {
+              <span>{{ line }}</span>
+            }
+          </address>
+          <a class="row__link" [href]="clinic.mapsHref" target="_blank" rel="noopener">
+            Get directions
+            <span class="visually-hidden">(opens Google Maps)</span>
+          </a>
+        </div>
+
+        <div class="row">
+          <app-icon name="clock" />
+          <div>
+            <p class="hours__line">Monday to Saturday, 10 am – 5 pm</p>
+            @if (status(); as s) {
+              <p class="hours__status" [class.is-open]="s.startsWith('Open now')">{{ s }}</p>
+            }
+            <ol class="week" aria-label="Opening days">
+              @for (d of week; track d.day) {
+                <li [class.is-closed]="!d.open" [class.is-today]="today() === d.index">
+                  <span class="week__day">{{ d.day }}</span>
+                  <span class="week__state">{{ d.open ? '10–5' : 'Closed' }}</span>
+                  @if (today() === d.index) {
+                    <span class="visually-hidden">(today)</span>
+                  }
+                </li>
+              }
+            </ol>
+          </div>
+        </div>
+
+        <div class="row">
+          <app-icon name="phone" />
+          <a class="row__big" [href]="clinic.phoneHref">{{ clinic.phoneDisplay }}</a>
+        </div>
+        <div class="row">
+          <app-icon name="mail" />
+          <a [href]="'mailto:' + clinic.email">{{ clinic.email }}</a>
+        </div>
+      </div>
+
+      <div class="visit__actions">
+        <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">
+          Book an appointment
+          <app-icon name="arrow" />
+        </a>
+        <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" />
+          WhatsApp
+        </a>
+        <a class="link-call" [href]="clinic.phoneHref">
+          <app-icon name="phone" />
+          <span>Call</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="map" appReveal style="--delay: 0.15s">
+      <!-- Under the map, in case it's slow or blocked: the frame is never empty. -->
+        <div class="map__fallback">
+          <app-icon name="pin" />
+          <p>KPHB Phase 6, Kukatpally<br />near Forum Srujana Mall</p>
+          <a [href]="clinic.mapsHref" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+        <iframe
+          [src]="mapSrc"
+          title="Map showing Dr Aloka's Eye Care in KPHB Phase 6, Kukatpally"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <img class="foot__logo" src="images/logo.png" alt="Dr Aloka's Eye Care" width="1459" height="334" loading="lazy" />
+    <nav aria-label="More from the clinic">
+      <ul>
+        <li><a [href]="clinic.legacySite + '/about-us/'">About</a></li>
+        <li><a [href]="clinic.legacySite + '/services/'">Services</a></li>
+        <li><a [href]="clinic.legacySite + '/surgeries/'">Surgeries</a></li>
+        <li><a [href]="clinic.legacySite + '/gallery/'">Gallery</a></li>
+        <li><a [href]="clinic.legacySite + '/blogs/'">Blog</a></li>
+        <li><a [href]="clinic.legacySite + '/faq/'">FAQ</a></li>
+        <li><a [href]="clinic.legacySite + '/contact-us/'">Contact</a></li>
+      </ul>
+    </nav>
+    <p class="foot__small">© {{ year }} Dr Aloka's Eye Care, Kukatpally, Hyderabad.</p>
+  </div>
+</footer>
