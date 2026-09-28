@@ -74,7 +74,7 @@ These are design assumptions drawn from the brief and the clinic's own content, 
 
 ## Brand Commitments
 
-- Style (user, 2026-09-26): literal, professional family-journey storytelling with illustrated characters, a light theme, and rich parallax. The user rejected abstract metaphor worlds (kite sky, trial lens) and dark themes.
+- Style (user, 2026-09-26, revised 2026-09-28): literal, professional family-journey storytelling with illustrated characters and rich parallax. On 2026-09-28 the user asked for a dark evening theme (the light theme felt stressful), a story that also plays by itself, and the kite and lens themes brought back in two sections after the story (Trust = kites, Results = lens), without changing the story.
 
 - Official name: **Dr Aloka's Eye Care**. The domain is dralokaseyecare.com.
 - Existing logo and brand name are available (user confirmed). Visual direction is not decided here.

@@ -26,7 +26,7 @@
 }
 .scene--consult .stage,
 .scene--treat .stage {
-  background: #f7f3ee;
+  background: radial-gradient(120% 90% at 50% 20%, #2e2840 0%, #1d1a2c 60%, #15131f 100%);
 }
 
 /* Scenery sits between the caption band and the ground line. */
@@ -48,7 +48,7 @@
   right: 0;
   bottom: 0;
   height: var(--ground);
-  background: linear-gradient(180deg, #e3ded6 0 22px, #bfc5cb 22px 100%);
+  background: linear-gradient(180deg, #4a4e68 0 22px, #22263a 22px 100%);
   &::after {
     content: '';
     position: absolute;
@@ -56,11 +56,11 @@
     right: 0;
     top: calc(22px + (100% - 22px) / 2 - 3px);
     height: 6px;
-    background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.75) 0 60px, transparent 60px 160px);
+    background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.28) 0 60px, transparent 60px 160px);
   }
 }
 .scene--leave .ground {
-  background: linear-gradient(180deg, #ece4d8 0 22px, #c9cdd1 22px 100%);
+  background: linear-gradient(180deg, #6a5670 0 22px, #2a2438 22px 100%);
 }
 .floor {
   position: absolute;
@@ -69,8 +69,8 @@
   right: 0;
   bottom: 0;
   height: var(--floor);
-  background: #e9dfd2;
-  border-top: 10px solid #d8cbbb;
+  background: #2a2334;
+  border-top: 10px solid #3a3148;
 }
 
 .layer {
@@ -104,11 +104,32 @@
   inset: 0;
   z-index: -1;
 }
+/* Dusk as they arrive worried; a warm twilight as they leave. */
 .sky--muted {
-  background: linear-gradient(180deg, #d5dde5 0%, #e3e8ed 55%, #eef1f3 100%);
+  background: linear-gradient(180deg, #0f1428 0%, #1b2140 45%, #2f3558 80%, #3d4166 100%);
+  /* a scatter of first stars */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 40% 0;
+    background-image: radial-gradient(1.5px 1.5px at 12% 18%, #fff 60%, transparent 62%),
+      radial-gradient(1.2px 1.2px at 28% 8%, #fff 60%, transparent 62%),
+      radial-gradient(1.6px 1.6px at 47% 22%, #fff 60%, transparent 62%),
+      radial-gradient(1.2px 1.2px at 63% 10%, #fff 60%, transparent 62%),
+      radial-gradient(1.5px 1.5px at 78% 26%, #fff 60%, transparent 62%),
+      radial-gradient(1.2px 1.2px at 91% 12%, #fff 60%, transparent 62%),
+      radial-gradient(1.3px 1.3px at 36% 30%, #fff 60%, transparent 62%);
+    opacity: 0.7;
+    animation: twinkle 4s ease-in-out infinite alternate;
+  }
 }
 .sky--sunny {
-  background: linear-gradient(180deg, #9fd3ee 0%, #c9e8f6 50%, #fff4e2 100%);
+  background: linear-gradient(180deg, #1c1a3c 0%, #3b2d5c 35%, #7a4a70 62%, #d9785a 86%, #f3a765 100%);
+}
+@keyframes twinkle {
+  to {
+    opacity: 0.35;
+  }
 }
 .cloud {
   position: absolute;
@@ -136,8 +157,11 @@
     top: -18px;
   }
 }
-.sky--muted .cloud {
-  background: rgb(255 255 255 / 0.6);
+.cloud {
+  background: rgb(255 255 255 / 0.08);
+}
+.sky--sunny .cloud {
+  background: rgb(255 214 170 / 0.18);
 }
 .cloud--1 {
   width: 130px;
@@ -171,8 +195,8 @@
   width: clamp(90px, 11vw, 160px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffe7a3 0 55%, #ffd27a 56% 100%);
-  box-shadow: 0 0 0 26px rgb(255 231 163 / 0.35);
+  background: radial-gradient(circle, #ffe2a8 0 50%, #ffb35c 51% 100%);
+  box-shadow: 0 0 60px 30px rgb(255 170 90 / 0.35);
 }
 .birds {
   position: absolute;
@@ -184,7 +208,7 @@
   i {
     width: 22px;
     height: 10px;
-    border-top: 2.5px solid #4a5a6b;
+    border-top: 2.5px solid rgb(255 236 220 / 0.7);
     border-radius: 50% 50% 0 0;
     animation: flap 0.7s ease-in-out infinite alternate;
   }
@@ -224,13 +248,12 @@
   gap: 0.6rem;
   padding: 0.55rem 1.1rem 0.6rem 0.9rem;
   border-radius: 6px;
-  background: var(--white);
-  border-bottom: 5px solid var(--teal);
+  background: linear-gradient(0deg, var(--teal) 0 5px, var(--card) 5px);
   color: var(--hope-action);
   font: 700 clamp(1rem, 0.8rem + 0.6vw, 1.4rem) / 1 var(--font-display);
   letter-spacing: -0.01em;
   white-space: nowrap;
-  box-shadow: 0 6px 14px -10px rgb(27 42 58 / 0.4);
+  box-shadow: 0 0 22px rgb(255 214 140 / 0.45);
   svg {
     width: 1.3em;
     height: 1.3em;
@@ -263,7 +286,7 @@
   z-index: 2;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, #dde3e9 0%, #dde3e9 34%, rgb(221 227 233 / 0.85) 42%, rgb(221 227 233 / 0) 56%);
+  background: linear-gradient(90deg, #121833 0%, #121833 34%, rgb(18 24 51 / 0.85) 42%, rgb(18 24 51 / 0) 56%);
   transition: opacity 0.6s var(--ease-out);
   &.is-off {
     opacity: 0;
@@ -271,6 +294,12 @@
 }
 
 /* ---------- The cast ---------- */
+.cast,
+.examiner,
+.cast__doctor--treat,
+.cast__doctor--door {
+  filter: drop-shadow(0 0 1px rgb(255 236 210 / 0.75)) drop-shadow(0 0 22px rgb(255 190 120 / 0.22));
+}
 .cast {
   position: absolute;
   z-index: 3;
@@ -344,7 +373,8 @@
   width: 16%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #1b2a3a;
+  background: #0b0f1c;
+  box-shadow: 0 0 0 2px #4a4466;
   &::after {
     content: '';
     position: absolute;
@@ -353,7 +383,7 @@
     width: 12%;
     height: 90%;
     border-radius: 3px;
-    background: #1b2a3a;
+    background: #4a4466;
   }
 }
 .stool {
@@ -385,8 +415,8 @@
   height: 44%;
   z-index: 3;
   border-radius: 10px 10px 0 0;
-  background: linear-gradient(180deg, #c89b72 0 12%, #b3865e 12% 100%);
-  box-shadow: 0 -2px 0 #d8b08a inset;
+  background: linear-gradient(180deg, #8a6446 0 12%, #6c4e38 12% 100%);
+  box-shadow: 0 -2px 0 #a9805c inset;
 }
 .desk__plate {
   position: absolute;
@@ -425,10 +455,11 @@
   width: calc(var(--fig) * 0.6);
   padding: 1rem 1.1rem 1.1rem;
   border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 16px 30px -18px rgb(27 42 58 / 0.4);
+  background: var(--card);
+  box-shadow: 0 0 40px rgb(255 214 140 / 0.18);
 }
 .chart__title {
+  color: var(--ink-dark);
   font: 700 1rem/1 var(--font-display);
   margin-bottom: 0.75rem;
 }
@@ -440,8 +471,8 @@
 .chart__cell {
   aspect-ratio: 1;
   border-radius: 8px;
-  background: var(--paper);
-  box-shadow: inset 0 0 0 1.5px var(--steel-300);
+  background: #eee8dc;
+  box-shadow: inset 0 0 0 1.5px #d8cfbd;
   display: grid;
   place-items: center;
   transition: background-color 0.3s;
@@ -470,8 +501,8 @@
   width: calc(var(--fig) * 0.5);
   padding: 0.75rem 0.9rem 0.6rem;
   border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 16px 30px -18px rgb(27 42 58 / 0.45);
+  background: var(--card);
+  box-shadow: 0 0 40px rgb(255 214 140 / 0.18);
   svg {
     display: block;
     width: 100%;
@@ -481,7 +512,7 @@
     text-align: center;
     font-size: 0.8125rem;
     font-weight: 600;
-    color: var(--ink-soft);
+    color: var(--ink-dark-soft);
   }
 }
 .eyes-card__turn {
@@ -496,10 +527,10 @@
   max-width: 15rem;
   padding: 0.7rem 1rem;
   border-radius: 18px;
-  background: #fff;
-  color: var(--ink);
+  background: var(--card);
+  color: var(--ink-dark);
   font: 600 clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem) / 1.35 var(--font-body);
-  box-shadow: 0 12px 26px -14px rgb(27 42 58 / 0.45);
+  box-shadow: 0 0 26px rgb(255 214 140 / 0.3);
   opacity: 0;
   translate: 0 10px;
   scale: 0.92;
@@ -518,7 +549,7 @@
   content: '';
   position: absolute;
   border-radius: 50%;
-  background: #fff;
+  background: var(--card);
 }
 .bubble--think::before {
   width: 14px;
@@ -533,8 +564,9 @@
   left: 22px;
 }
 .bubble--mother {
-  bottom: calc(var(--fig) * 0.84);
-  right: calc(100% - var(--fig) * 0.1);
+  /* just above her head, clear of the clinic sign beside her */
+  bottom: calc(var(--fig) + 1.4rem);
+  left: calc(var(--fig) * 0.05);
   white-space: nowrap;
 }
 .bubble--child {
@@ -553,7 +585,7 @@
     left: 18px;
     bottom: -8px;
     border: 9px solid transparent;
-    border-top-color: #fff;
+    border-top-color: var(--card);
     border-bottom: 0;
   }
 }
@@ -728,25 +760,6 @@ h1 {
   }
 }
 
-.cue {
-  position: absolute;
-  z-index: 6;
-  left: 50%;
-  bottom: 1.25rem;
-  translate: -50% 0;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 0.9);
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: opacity 0.4s;
-  &.is-off {
-    opacity: 0;
-    pointer-events: none;
-  }
-}
-
 /* ---------- Tablet and phone ---------- */
 @media (max-width: 900px) {
   .stage {
@@ -759,16 +772,12 @@ h1 {
     right: var(--gutter);
   }
   .scrim {
-    background: linear-gradient(180deg, #dde3e9 0%, #dde3e9 38%, rgb(221 227 233 / 0) 52%);
-  }
-  .caption__lede {
-    font-size: 1rem;
+    background: linear-gradient(180deg, #121833 0%, #121833 38%, rgb(18 24 51 / 0) 52%);
   }
   .caption--story {
     grid-template-columns: minmax(0, 1fr);
     h2 {
       grid-row: auto;
-      font-size: clamp(1.8rem, 1.2rem + 3vw, 2.4rem);
     }
     > p,
     .quote,
@@ -776,13 +785,8 @@ h1 {
     .actions {
       grid-column: 1;
     }
-    > p,
-    .quote {
-      font-size: 1rem;
-    }
   }
   .plan li {
-    font-size: 0.9375rem;
     padding-block: 0.35rem;
   }
   .cast__doctor--door {
@@ -826,10 +830,11 @@ h1 {
     display: none;
   }
   .eyes-card {
-    left: auto;
-    right: 4%;
-    bottom: calc(var(--ground) + var(--fig) * 1.02);
-    width: 120px;
+    /* on the floor between the girl and the doctor, clear of the words */
+    left: 40%;
+    right: auto;
+    bottom: calc(var(--ground) + 0.25rem);
+    width: 104px;
     padding: 0.5rem 0.6rem 0.4rem;
     figcaption {
       font-size: 0.75rem;
@@ -843,10 +848,14 @@ h1 {
     bottom: calc(var(--fig) * 1.04);
     max-width: 11rem;
   }
+  /* phones: both thoughts stacked beside them, below the rooftop sign */
   .bubble--mother {
     right: auto;
-    left: calc(var(--fig) * 0.3);
-    bottom: calc(var(--fig) * 1.02);
+    left: calc(var(--fig) * 0.4);
+    bottom: calc(var(--fig) * 0.88);
+  }
+  .bubble--child {
+    bottom: calc(var(--fig) * 0.62 + 0.5rem);
   }
 }
 @media (max-width: 600px) {
@@ -868,14 +877,8 @@ h1 {
   .scene--leave .stage {
     --fig: min(30svh, 260px, calc(100svh - var(--band) - var(--ground) - 4.5rem));
   }
-  h1 {
-    font-size: 2.05rem;
-  }
   .caption__lede {
     display: none;
-  }
-  .te {
-    font-size: 1rem;
   }
   .actions {
     margin-top: 1.1rem;
@@ -884,17 +887,12 @@ h1 {
   .actions .link-call {
     display: none;
   }
-  .caption--story > p,
-  .quote {
-    font-size: 0.9375rem;
-  }
-  .plan li {
-    font-size: 0.875rem;
-    line-height: 1.45;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .sky--muted::before {
+    animation: none;
+  }
   .scene,
   .scene--arrive {
     height: auto;

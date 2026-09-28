@@ -4,6 +4,7 @@ import { CLINIC, TELUGU, VOICES } from '../home.content';
 import { Child, Doctor, Mood, Mother } from './people';
 import { SceneProgressDirective, lerp, span } from './scene-progress.directive';
 import { Auto, Metro, Room, Skyline, Street } from './scenery';
+import { StoryPlayer } from './story-player';
 
 /**
  * The family's visit in four scroll scenes: arriving worried, the consultation,
@@ -13,7 +14,7 @@ import { Auto, Metro, Room, Skyline, Street } from './scenery';
 @Component({
   selector: 'app-story',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Icon, Mother, Child, Doctor, Skyline, Metro, Street, Auto, Room, SceneProgressDirective],
+  imports: [Icon, Mother, Child, Doctor, Skyline, Metro, Street, Auto, Room, SceneProgressDirective, StoryPlayer],
   templateUrl: './story.html',
   styleUrl: './story.scss',
 })

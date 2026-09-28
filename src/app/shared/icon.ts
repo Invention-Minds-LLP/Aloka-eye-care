@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-export type IconName = 'arrow' | 'phone' | 'pin' | 'clock' | 'mail' | 'route' | 'menu' | 'close' | 'whatsapp';
+export type IconName = 'arrow' | 'phone' | 'pin' | 'clock' | 'mail' | 'route' | 'menu' | 'close' | 'whatsapp' | 'play' | 'pause' | 'replay';
 
 /** One stroke family (24px grid, 1.8 stroke, round joins) for every icon on the site. */
 @Component({
@@ -20,6 +20,9 @@ export type IconName = 'arrow' | 'phone' | 'pin' | 'clock' | 'mail' | 'route' | 
         @case ('route') { <circle cx="6" cy="18" r="2.2" /><circle cx="18" cy="6" r="2.2" /><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8" /> }
         @case ('menu') { <path d="M4 7h16M4 12h16M4 17h10" /> }
         @case ('close') { <path d="M6 6l12 12M18 6 6 18" /> }
+        @case ('play') { <path d="M8 5.5v13l10-6.5Z" fill="currentColor" /> }
+        @case ('pause') { <path d="M8 5.5v13M16 5.5v13" stroke-width="3" /> }
+        @case ('replay') { <path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v3.8h3.8" /> }
         @case ('whatsapp') {
           <path d="M4.5 19.5 5.6 16A8 8 0 1 1 8.4 18.6Z" />
           <path d="M9.2 8.6c.2-.5.5-.6.9-.6l.6 1.4-.6.8c.4 1 1.3 1.9 2.4 2.4l.8-.6 1.4.6c0 .4-.1.8-.6 1-.9.4-2.6 0-4-1.4s-1.8-3-1.4-3.6Z" fill="currentColor" stroke="none" />

@@ -2,8 +2,9 @@
   display: block;
 }
 
+/* Lens theme: an optician's evening — steel rims and glass catching the light. */
 .fam {
-  background: var(--white);
+  background: radial-gradient(70% 60% at 25% 45%, #1d2a4a 0%, var(--white) 70%);
   padding-block: clamp(6rem, 14vh, 9rem);
 }
 .fam__grid {
@@ -13,21 +14,32 @@
   align-items: center;
 }
 
-/* ---------- Before / after ---------- */
+/* ---------- The trial lens ---------- */
 .compare {
   margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
   figcaption {
-    margin-top: 0.75rem;
+    max-width: 40ch;
+    text-align: center;
     font-size: var(--step-small);
     color: var(--ink-soft);
   }
 }
-.compare__frame {
+.lens {
+  --rim: 16px;
   position: relative;
+  width: min(100%, 440px);
   aspect-ratio: 1;
-  border-radius: var(--radius);
+  border-radius: 50%;
+  filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.55)) drop-shadow(0 0 40px rgb(79 179 217 / 0.18));
+}
+.lens__glass {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
   overflow: hidden;
-  box-shadow: var(--lift);
   img {
     position: absolute;
     inset: 0;
@@ -46,52 +58,122 @@
   left: calc(100% - var(--reveal));
   width: 3px;
   margin-left: -1.5px;
-  background: var(--white);
-  box-shadow: 0 0 0 1px rgb(27 42 58 / 0.2);
+  background: var(--hope);
+  box-shadow: 0 0 12px rgb(240 138 62 / 0.8);
 }
-.compare__tag {
+/* brushed-steel ring cut from the disc */
+.lens__rim {
   position: absolute;
-  top: 0.9rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  background: rgb(255 255 255 / 0.92);
+  inset: 0;
+  border-radius: 50%;
+  padding: var(--rim);
+  background: conic-gradient(from 200deg, #9aa6b2, #eef2f6 12%, #6f7b88 26%, #d5dce3 40%, #7f8b98 55%, #f4f7fa 68%, #8a96a3 82%, #9aa6b2);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
 }
-.compare__tag--before {
-  left: 0.9rem;
+/* the glass: a highlight that follows the pointer, darker at the edge */
+.lens__shine {
+  position: absolute;
+  inset: var(--rim);
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--hx, 30%) var(--hy, 24%), rgb(255 255 255 / 0.4), rgb(255 255 255 / 0) 34%),
+    radial-gradient(circle, rgb(0 0 0 / 0) 64%, rgb(0 0 0 / 0.3) 100%);
+  mix-blend-mode: screen;
+  transition: background-position 0.2s;
 }
-.compare__tag--after {
-  right: 0.9rem;
+/* the trial-lens tab, engraved with what you are seeing */
+.lens__arm {
+  position: absolute;
+  inset: 0;
+  rotate: 40deg;
+  z-index: -1;
+}
+.lens__tab {
+  position: absolute;
+  left: calc(100% - 10px);
+  top: 50%;
+  translate: 0 -50%;
+  padding: 0.4rem 1rem 0.4rem 1.4rem;
+  border-radius: 0 6px 6px 0;
   background: var(--hope-action);
-  color: var(--white);
+  color: var(--on-accent);
+  font: 700 0.75rem / 1 var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
-.compare__control input {
-  width: 100%;
-  height: 2.75rem;
-  accent-color: var(--hope-action);
-  cursor: ew-resize;
-  // moving right brings the corrected photo across from the right
-  direction: rtl;
+.compare__control {
+  width: min(100%, 380px);
+  input {
+    width: 100%;
+    height: 2.75rem;
+    accent-color: var(--hope);
+    cursor: ew-resize;
+    // moving right brings the corrected photo across from the right
+    direction: rtl;
+  }
 }
 
 h2 {
   font-size: var(--step-1);
   max-width: 16ch;
 }
-.fam__figures {
-  margin-top: 1.25rem;
-  max-width: 56ch;
-  font-size: var(--step-3);
-  line-height: 1.6;
-  color: var(--ink-soft);
-  strong {
-    color: var(--ink);
-    font-variant-numeric: tabular-nums;
+
+/* ---------- The figures, each in a small lens ---------- */
+.figures {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  li {
+    display: grid;
+    justify-items: center;
+    gap: 0.6rem;
+    text-align: center;
   }
 }
+.mini-lens {
+  display: grid;
+  place-items: center;
+  width: clamp(80px, 8vw, 104px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 26%, rgb(255 255 255 / 0.22), rgb(255 255 255 / 0) 40%),
+    radial-gradient(circle, #1b2644 60%, #121a30 100%);
+  box-shadow:
+    inset 0 0 0 6px #aab5c2,
+    inset 0 0 0 7px #6f7b88,
+    0 12px 24px -12px rgb(0 0 0 / 0.7);
+  strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 0.9rem + 0.5vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+}
+.figures__label {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+.figures__note {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
 .voice {
-  margin: 2rem 0 0;
+  margin: 1.75rem 0 0;
   padding-left: 1.25rem;
   border-left: 1px solid var(--hope);
   p {
@@ -112,7 +194,13 @@ h2 {
   .fam__grid {
     grid-template-columns: minmax(0, 1fr);
   }
-  .compare {
-    max-width: 28rem;
+  .lens {
+    width: min(78vw, 360px);
+    --rim: 12px;
+  }
+}
+@media (max-width: 560px) {
+  .figures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

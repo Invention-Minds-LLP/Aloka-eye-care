@@ -2,9 +2,30 @@
   display: block;
 }
 
+/* Kite theme: the Sankranti evening sky over Hyderabad. */
 .trust {
-  background: var(--tint);
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: linear-gradient(180deg, #0f1426 0%, #1a1c3e 40%, #2c2350 78%, #3a2a55 100%);
   padding-block: clamp(6rem, 14vh, 9rem);
+}
+.sky {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.sky__kite {
+  position: absolute;
+  rotate: var(--r);
+  animation: drift 9s ease-in-out var(--d) infinite alternate;
+}
+@keyframes drift {
+  to {
+    translate: 14px -18px;
+    rotate: calc(var(--r) + 8deg);
+  }
 }
 .trust__head {
   display: grid;
@@ -27,6 +48,8 @@ h2 {
   }
 }
 .trust__myth-en {
+  font-size: var(--step-3);
+  line-height: 1.55;
   color: var(--ink-soft);
   max-width: 52ch;
 }
@@ -39,8 +62,8 @@ h2 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.5rem clamp(1.5rem, 4vw, 3.5rem);
   li {
-    padding-top: 1.25rem;
-    border-top: 2px solid var(--teal-deep);
+    display: grid;
+    justify-items: start;
   }
   h3 {
     font-size: var(--step-3);
@@ -49,10 +72,45 @@ h2 {
   }
   p {
     margin-top: 0.5rem;
-    font-size: var(--step-small);
+    font-size: var(--step-body);
     line-height: 1.6;
     color: var(--ink-soft);
   }
+}
+
+/* Each reason hangs from its own kite on a manja string. */
+.point__flight {
+  display: grid;
+  justify-items: center;
+  width: 64px;
+  margin-bottom: 0.75rem;
+  transform-origin: 50% 100%;
+  animation: sway 5s ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+.point__kite {
+  width: 52px;
+  filter: drop-shadow(0 0 14px rgb(255 200 140 / 0.35));
+}
+.point__string {
+  width: 1.5px;
+  height: 1.4rem;
+  background: rgb(255 236 220 / 0.45);
+}
+@keyframes sway {
+  from {
+    rotate: calc(var(--sway) * -1);
+  }
+  to {
+    rotate: var(--sway);
+  }
+}
+/* kites lift into place as they come into view */
+:host-context(html.motion-ok) .point.reveal {
+  transform: translateY(60px);
+}
+:host-context(html.motion-ok) .point.reveal.is-in {
+  transform: none;
 }
 
 .faq {
@@ -64,7 +122,7 @@ h2 {
   margin-bottom: 1rem;
 }
 details {
-  border-bottom: 1px solid rgb(27 42 58 / 0.18);
+  border-bottom: 1px solid var(--steel-300);
   &[open] summary::after {
     rotate: 45deg;
   }
@@ -100,6 +158,13 @@ details p {
   margin-top: 1.5rem;
   font-weight: 600;
   color: var(--teal-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky__kite,
+  .point__flight {
+    animation: none;
+  }
 }
 
 @media (max-width: 900px) {

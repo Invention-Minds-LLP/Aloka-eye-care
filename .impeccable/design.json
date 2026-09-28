@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-26T17:46:09.796Z",
+  "generatedAt": "2026-09-28T06:57:29.860Z",
   "title": "Design System: Dr Aloka's Eye Care",
   "extensions": {
     "colorMeta": {
@@ -57,240 +57,325 @@
       },
       "teal": {
         "role": "secondary",
-        "displayName": "Logo Teal",
-        "canonical": "#2a8cb0",
-        "oklch": "oklch(60.1% 0.103 227)",
+        "displayName": "Logo Teal (lifted)",
+        "canonical": "#4fb3d9",
+        "oklch": "oklch(72.3% 0.107 226)",
         "cssVar": "--teal",
         "tonalRamp": [
-          "#000e26",
+          "#000d2d",
           "#002b4b",
-          "#004b6c",
-          "#006c8e",
-          "#2d8eb2",
-          "#56b2d7",
-          "#87d5f7",
-          "#cdf6ff"
+          "#00496b",
+          "#00688c",
+          "#1e8db1",
+          "#4bafd5",
+          "#74d6fd",
+          "#c9f7ff"
         ]
       },
       "teal-deep": {
         "role": "secondary",
-        "displayName": "Deep Teal",
-        "canonical": "#1d6e8c",
-        "oklch": "oklch(50.5% 0.088 228)",
+        "displayName": "Deep Teal (lifted)",
+        "canonical": "#3aa0c8",
+        "oklch": "oklch(66.4% 0.109 228)",
         "cssVar": "--teal-deep",
         "tonalRamp": [
-          "#000e25",
-          "#002b46",
-          "#004a66",
-          "#186a88",
-          "#418dac",
-          "#65b0d0",
-          "#8cd5f5",
-          "#d0f5ff"
+          "#000c2e",
+          "#002a4c",
+          "#00486c",
+          "#00688e",
+          "#1f8cb3",
+          "#4baed7",
+          "#74d5ff",
+          "#c9f7ff"
         ]
       },
       "teal-ink": {
         "role": "secondary",
-        "displayName": "Teal Ink",
-        "canonical": "#16597a",
-        "oklch": "oklch(44.0% 0.084 235)",
+        "displayName": "Teal Ink (lifted)",
+        "canonical": "#7cc9e8",
+        "oklch": "oklch(79.7% 0.088 226)",
         "cssVar": "--teal-ink",
         "tonalRamp": [
-          "#000c27",
-          "#002947",
-          "#004868",
-          "#29688a",
-          "#4c8aae",
-          "#6faed2",
-          "#93d2f8",
-          "#d3f4ff"
+          "#000e26",
+          "#002a44",
+          "#004863",
+          "#0d6783",
+          "#3d8ba8",
+          "#60adcb",
+          "#86d4f3",
+          "#d0f5ff"
         ]
       },
       "wa": {
         "role": "tertiary",
         "displayName": "Chat Green",
-        "canonical": "#128c4a",
-        "oklch": "oklch(56.3% 0.141 152)",
+        "canonical": "#3fcf80",
+        "oklch": "oklch(76.0% 0.166 155)",
         "cssVar": "--wa",
         "tonalRamp": [
-          "#001400",
-          "#003400",
-          "#005515",
-          "#007736",
-          "#299a57",
-          "#5abd7b",
-          "#95dda9",
-          "#d1fbdb"
+          "#001800",
+          "#003600",
+          "#00550f",
+          "#007630",
+          "#009b52",
+          "#32be73",
+          "#62e598",
+          "#c5ffd7"
         ]
       },
       "wa-hover": {
         "role": "tertiary",
         "displayName": "Chat Green Pressed",
-        "canonical": "#0e7a3f",
-        "oklch": "oklch(51.0% 0.129 152)",
+        "canonical": "#1f9e5a",
+        "oklch": "oklch(61.7% 0.147 154)",
         "cssVar": "--wa-hover",
         "tonalRamp": [
-          "#001400",
-          "#003400",
-          "#00541b",
-          "#01753a",
-          "#39985b",
-          "#5fbc7d",
-          "#98dcaa",
-          "#d3fadc"
+          "#001700",
+          "#003500",
+          "#005313",
+          "#007433",
+          "#149955",
+          "#47bc75",
+          "#71e39a",
+          "#c9fed8"
         ]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Ink",
-        "canonical": "#1b2a3a",
-        "oklch": "oklch(27.9% 0.036 251)",
+        "displayName": "Warm-White Ink",
+        "canonical": "#f1f0f5",
+        "oklch": "oklch(95.7% 0.007 295)",
         "cssVar": "--ink",
         "tonalRamp": [
-          "#020c1a",
-          "#172636",
-          "#344455",
-          "#526375",
-          "#738498",
-          "#95a7bb",
-          "#b8cbe0",
-          "#e0f0ff"
+          "#0b0b0e",
+          "#242327",
+          "#403f43",
+          "#5e5d61",
+          "#807f84",
+          "#a2a1a5",
+          "#c7c6cb",
+          "#eeeef0"
         ]
       },
       "ink-soft": {
         "role": "neutral",
         "displayName": "Soft Ink",
-        "canonical": "#4a5a6b",
-        "oklch": "oklch(46.1% 0.034 250)",
+        "canonical": "#b9bfd2",
+        "oklch": "oklch(80.6% 0.028 272)",
         "cssVar": "--ink-soft",
         "tonalRamp": [
+          "#070a17",
+          "#1f2332",
+          "#3a3f4f",
+          "#585d6e",
+          "#7a8091",
+          "#9ba1b3",
+          "#c1c7da",
+          "#ebeef8"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Faint Ink",
+        "canonical": "#8d95ad",
+        "oklch": "oklch(67.2% 0.037 271)",
+        "cssVar": "--ink-faint",
+        "tonalRamp": [
+          "#060a1a",
+          "#1d2336",
+          "#383f54",
+          "#565d73",
+          "#787f97",
+          "#99a1b9",
+          "#bec7e0",
+          "#eaeefb"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Dark Ink (on lit paper)",
+        "canonical": "#1b2a3a",
+        "oklch": "oklch(27.9% 0.036 251)",
+        "cssVar": "--ink-dark",
+        "tonalRamp": [
+          "#020c1a",
+          "#162535",
+          "#314152",
+          "#4f5f72",
+          "#718296",
+          "#91a4b8",
+          "#b7cadf",
+          "#e6f0fb"
+        ]
+      },
+      "ink-dark-soft": {
+        "role": "neutral",
+        "displayName": "Dark Soft Ink (on lit paper)",
+        "canonical": "#4a5a6b",
+        "oklch": "oklch(46.1% 0.034 250)",
+        "cssVar": "--ink-dark-soft",
+        "tonalRamp": [
           "#020c19",
-          "#182635",
-          "#344454",
-          "#536374",
-          "#738497",
-          "#95a7ba",
-          "#b9cbdf",
-          "#e0f1ff"
+          "#172534",
+          "#324151",
+          "#4f5f71",
+          "#718294",
+          "#92a4b7",
+          "#b7cadd",
+          "#e6f0fa"
+        ]
+      },
+      "on-accent": {
+        "role": "neutral",
+        "displayName": "On Accent",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "cssVar": "--on-accent",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a1a1a1",
+          "#c7c7c7",
+          "#eeeeee"
         ]
       },
       "white": {
         "role": "neutral",
-        "displayName": "White",
-        "canonical": "#ffffff",
-        "oklch": "oklch(100.0% 0.000 90)",
+        "displayName": "Evening Base",
+        "canonical": "#0f1426",
+        "oklch": "oklch(19.6% 0.037 271)",
         "cssVar": "--white",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#060a1b",
+          "#1d2336",
+          "#383f54",
+          "#565d73",
+          "#787f97",
+          "#99a1b9",
+          "#bec7e0",
+          "#eaeefb"
         ]
       },
       "paper": {
         "role": "neutral",
         "displayName": "Paper",
-        "canonical": "#f3f6f8",
-        "oklch": "oklch(97.1% 0.004 236)",
+        "canonical": "#141a2f",
+        "oklch": "oklch(22.4% 0.042 271)",
         "cssVar": "--paper",
         "tonalRamp": [
-          "#0a0b0d",
-          "#232527",
-          "#404244",
-          "#5f6263",
-          "#808384",
-          "#a3a5a7",
-          "#c7c9cb",
-          "#eceff1"
+          "#05091d",
+          "#1c2338",
+          "#373f56",
+          "#545d76",
+          "#767f9a",
+          "#97a1bd",
+          "#bdc7e4",
+          "#e9eefd"
         ]
       },
       "mist": {
         "role": "neutral",
         "displayName": "Mist",
-        "canonical": "#e8eef2",
-        "oklch": "oklch(94.6% 0.008 237)",
+        "canonical": "#1a2139",
+        "oklch": "oklch(25.4% 0.047 270)",
         "cssVar": "--mist",
         "tonalRamp": [
-          "#080c0e",
-          "#212629",
-          "#3e4346",
-          "#5d6265",
-          "#7e8387",
-          "#a0a6aa",
-          "#c4cace",
-          "#e9eff3"
+          "#05091e",
+          "#1b223b",
+          "#363f59",
+          "#535d78",
+          "#757f9d",
+          "#96a1bf",
+          "#bcc6e7",
+          "#e8eeff"
         ]
       },
       "tint": {
         "role": "neutral",
         "displayName": "Tint",
-        "canonical": "#e6f1f5",
-        "oklch": "oklch(95.1% 0.013 221)",
+        "canonical": "#172340",
+        "oklch": "oklch(26.2% 0.057 266)",
         "cssVar": "--tint",
         "tonalRamp": [
-          "#060c0f",
-          "#1e272a",
-          "#3b4447",
-          "#5a6366",
-          "#7a8488",
-          "#9da7ab",
-          "#c1cbcf",
-          "#e6f1f5"
+          "#020823",
+          "#172340",
+          "#313f5e",
+          "#4e5d7e",
+          "#7080a3",
+          "#91a1c6",
+          "#b6c7ed",
+          "#e5efff"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Lit Paper",
+        "canonical": "#fbf8f2",
+        "oklch": "oklch(98.0% 0.009 85)",
+        "cssVar": "--card",
+        "tonalRamp": [
+          "#0d0b07",
+          "#26241f",
+          "#423f3b",
+          "#605d58",
+          "#82807b",
+          "#a4a19c",
+          "#cac7c1",
+          "#f0eeeb"
         ]
       },
       "steel-100": {
         "role": "neutral",
         "displayName": "Steel 100",
-        "canonical": "#eef1f4",
-        "oklch": "oklch(95.7% 0.005 248)",
+        "canonical": "#1e2640",
+        "oklch": "oklch(27.5% 0.050 270)",
         "cssVar": "--steel-100",
         "tonalRamp": [
-          "#090b0d",
-          "#232527",
-          "#404245",
-          "#5f6164",
-          "#808385",
-          "#a2a5a8",
-          "#c6c9cc",
-          "#eceff2"
+          "#050920",
+          "#1b223c",
+          "#353e5a",
+          "#525d7a",
+          "#747f9f",
+          "#95a1c1",
+          "#bac7e9",
+          "#e8eeff"
         ]
       },
       "steel-300": {
         "role": "neutral",
         "displayName": "Steel 300",
-        "canonical": "#c9d1d9",
-        "oklch": "oklch(85.7% 0.014 248)",
+        "canonical": "#313b5a",
+        "oklch": "oklch(35.8% 0.056 270)",
         "cssVar": "--steel-300",
         "tonalRamp": [
-          "#070c11",
-          "#20262c",
-          "#3c4349",
-          "#5b6269",
-          "#7c838b",
-          "#9ea6ae",
-          "#c2cad2",
-          "#e7f0f8"
+          "#040822",
+          "#19223f",
+          "#343e5d",
+          "#515c7e",
+          "#737fa2",
+          "#94a0c5",
+          "#b9c6ed",
+          "#e7eeff"
         ]
       },
       "steel-500": {
         "role": "neutral",
         "displayName": "Steel 500",
-        "canonical": "#8e9aa6",
-        "oklch": "oklch(68.1% 0.022 248)",
+        "canonical": "#6c7898",
+        "oklch": "oklch(57.5% 0.052 269)",
         "cssVar": "--steel-500",
         "tonalRamp": [
-          "#040c14",
-          "#1c2630",
-          "#39434e",
-          "#58636e",
-          "#78848f",
-          "#9aa7b3",
-          "#becbd7",
-          "#e3f0fd"
+          "#040920",
+          "#1a223d",
+          "#343f5b",
+          "#515d7b",
+          "#737fa0",
+          "#94a1c3",
+          "#b9c7ea",
+          "#e7eeff"
         ]
       },
       "skin": {
@@ -426,84 +511,148 @@
           "#eceff1"
         ]
       },
-      "room-wall": {
+      "dusk-sky": {
         "role": "illustration",
-        "displayName": "Room Wall",
-        "canonical": "#f7f3ee",
-        "oklch": "oklch(96.6% 0.008 74)",
+        "displayName": "Dusk Sky",
+        "canonical": "#1b2140",
+        "oklch": "oklch(26.0% 0.059 273)",
         "tonalRamp": [
-          "#0d0b08",
-          "#272521",
-          "#45413d",
-          "#64615c",
-          "#85827d",
-          "#a8a4a0",
-          "#ccc8c4",
-          "#f2eee9"
+          "#050723",
+          "#1b2140",
+          "#363d5f",
+          "#535b7f",
+          "#757ea4",
+          "#95a0c7",
+          "#bbc5ee",
+          "#e8eeff"
+        ]
+      },
+      "twilight-sky": {
+        "role": "illustration",
+        "displayName": "Twilight Sky",
+        "canonical": "#7a4a70",
+        "oklch": "oklch(47.8% 0.084 335)",
+        "tonalRamp": [
+          "#1d0019",
+          "#3b1034",
+          "#5a2d51",
+          "#7b4b71",
+          "#a06d94",
+          "#c38eb7",
+          "#eab3dd",
+          "#ffe4fa"
+        ]
+      },
+      "twilight-horizon": {
+        "role": "illustration",
+        "displayName": "Twilight Horizon",
+        "canonical": "#f3a765",
+        "oklch": "oklch(78.9% 0.122 61)",
+        "tonalRamp": [
+          "#290000",
+          "#4a0700",
+          "#6b2a00",
+          "#8d4900",
+          "#b46d27",
+          "#d88e4c",
+          "#ffb472",
+          "#ffe6c6"
+        ]
+      },
+      "room-dusk": {
+        "role": "illustration",
+        "displayName": "Lamplit Room",
+        "canonical": "#1d1a2c",
+        "oklch": "oklch(23.0% 0.035 291)",
+        "tonalRamp": [
+          "#0b0818",
+          "#242134",
+          "#403d51",
+          "#5d5a70",
+          "#807d94",
+          "#a19eb6",
+          "#c7c4dd",
+          "#eeedfa"
         ]
       },
       "room-floor": {
         "role": "illustration",
         "displayName": "Room Floor",
-        "canonical": "#e9dfd2",
-        "oklch": "oklch(90.8% 0.021 75)",
+        "canonical": "#2a2334",
+        "oklch": "oklch(27.2% 0.032 303)",
         "tonalRamp": [
-          "#100a03",
-          "#2b241a",
-          "#494136",
-          "#686055",
-          "#8a8175",
-          "#ada397",
-          "#d1c8bb",
-          "#f7ede0"
+          "#0e0816",
+          "#272031",
+          "#433c4e",
+          "#61596d",
+          "#847c91",
+          "#a59db3",
+          "#cbc3d9",
+          "#f0ecf8"
         ]
       },
-      "sky-muted": {
+      "lamplight": {
         "role": "illustration",
-        "displayName": "Overcast Sky",
-        "canonical": "#d5dde5",
-        "oklch": "oklch(89.4% 0.014 248)",
+        "displayName": "Lamplight",
+        "canonical": "#ffd68c",
+        "oklch": "oklch(89.5% 0.103 82)",
         "tonalRamp": [
-          "#070c11",
-          "#20262c",
-          "#3c4349",
-          "#5b6269",
-          "#7c838b",
-          "#9ea6ae",
-          "#c2cad2",
-          "#e7f0f8"
+          "#1f0100",
+          "#3c1b00",
+          "#5a3800",
+          "#7a5600",
+          "#9f792e",
+          "#c29b52",
+          "#e9c177",
+          "#ffecc8"
         ]
       },
-      "sky-sunny": {
+      "window-glow": {
         "role": "illustration",
-        "displayName": "Noon Sky",
-        "canonical": "#9fd3ee",
-        "oklch": "oklch(84.0% 0.066 231)",
+        "displayName": "Lit Window",
+        "canonical": "#e9b85e",
+        "oklch": "oklch(80.9% 0.122 81)",
         "tonalRamp": [
-          "#000e21",
-          "#002a3f",
-          "#14485f",
-          "#366880",
-          "#588aa3",
-          "#7aadc7",
-          "#9ed2ed",
-          "#d6f4ff"
+          "#220000",
+          "#401700",
+          "#5f3500",
+          "#805400",
+          "#a57709",
+          "#c8993c",
+          "#f0bf65",
+          "#ffebc1"
         ]
       },
-      "sunlight": {
+      "sun": {
         "role": "illustration",
-        "displayName": "Sunlight",
-        "canonical": "#ffe7a3",
-        "oklch": "oklch(93.2% 0.090 91)",
+        "displayName": "Setting Sun",
+        "canonical": "#ffb35c",
+        "oklch": "oklch(82.3% 0.136 68)",
         "tonalRamp": [
-          "#180700",
-          "#352100",
-          "#543f00",
-          "#745f19",
-          "#96803e",
-          "#baa361",
-          "#dec888",
-          "#faeecc"
+          "#2a0000",
+          "#4a0600",
+          "#6c2a00",
+          "#8e4a00",
+          "#b46d00",
+          "#d98f34",
+          "#ffb55e",
+          "#ffe7be"
+        ]
+      },
+      "lens-steel": {
+        "role": "illustration",
+        "displayName": "Lens Steel",
+        "canonical": "#aab5c2",
+        "oklch": "oklch(76.9% 0.022 253)",
+        "tonalRamp": [
+          "#050c14",
+          "#1c252f",
+          "#37414b",
+          "#555f6a",
+          "#77818e",
+          "#98a3af",
+          "#bdc9d6",
+          "#e9eff6"
         ]
       },
       "auto-yellow": {
@@ -542,7 +691,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The hero H1 only; 2.05rem on phones."
+        "purpose": "The hero H1 only, 18ch; 2.05rem on phones."
       },
       "headline": {
         "displayName": "Headline",
@@ -550,7 +699,7 @@
       },
       "title": {
         "displayName": "Title",
-        "purpose": "H3s, the FAQ heading, the visit phone number."
+        "purpose": "H3s, the FAQ heading, the visit phone number, the Telugu myth line in Trust."
       },
       "quote": {
         "displayName": "Quote",
@@ -566,11 +715,15 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Header call, captions, trust bodies, week days."
+        "purpose": "Header call, captions, trust bodies, week days, story player title."
       },
       "button": {
         "displayName": "Button",
         "purpose": "Book and WhatsApp labels."
+      },
+      "lens-tab": {
+        "displayName": "Lens Tab",
+        "purpose": "Only the uppercase engraving on the trial lens's tab; never above a heading."
       },
       "telugu": {
         "displayName": "Telugu",
@@ -580,19 +733,29 @@
     "shadows": [
       {
         "name": "lift",
-        "value": "0 28px 50px -26px rgb(27 42 58 / 0.35)",
+        "value": "0 28px 50px -26px rgb(0 0 0 / 0.7)",
         "cssVar": "--lift",
         "purpose": "Photographs and the map."
       },
       {
-        "name": "prop",
-        "value": "0 16px 30px -18px rgb(27 42 58 / 0.4)",
-        "purpose": "Sticker chart and eyes card in a scene (0.45 on the eyes card)."
+        "name": "lit-paper",
+        "value": "0 0 40px rgb(255 214 140 / 0.18)",
+        "purpose": "Sticker chart and eyes card glowing in a scene."
       },
       {
-        "name": "bubble",
-        "value": "0 12px 26px -14px rgb(27 42 58 / 0.45)",
+        "name": "bubble-glow",
+        "value": "0 0 26px rgb(255 214 140 / 0.3)",
         "purpose": "Speech and thought bubbles."
+      },
+      {
+        "name": "name-board-glow",
+        "value": "0 0 22px rgb(255 214 140 / 0.45)",
+        "purpose": "The clinic's name board in the exit scene (street SVG: drop-shadow(0 0 10px rgb(255 214 140 / 0.55)))."
+      },
+      {
+        "name": "rim-light",
+        "value": "drop-shadow(0 0 1px rgb(255 236 210 / 0.75)) drop-shadow(0 0 22px rgb(255 190 120 / 0.22))",
+        "purpose": "filter on every cast figure."
       },
       {
         "name": "book-glow",
@@ -606,18 +769,38 @@
       },
       {
         "name": "header-solid",
-        "value": "0 1px 0 #c9d1d9, 0 12px 30px -24px rgb(27 42 58 / 0.4)",
-        "purpose": "Header after 24px of scroll."
+        "value": "0 1px 0 #313b5a, 0 12px 30px -20px rgb(0 0 0 / 0.6)",
+        "purpose": "Header after 24px of scroll, on rgb(15 20 38 / 0.94)."
       },
       {
-        "name": "week-tile",
-        "value": "0 4px 12px -8px rgb(27 42 58 / 0.35)",
-        "purpose": "Open days on the week pad."
+        "name": "player",
+        "value": "0 0 0 1px rgb(255 255 255 / 0.12), 0 16px 34px -16px rgb(0 0 0 / 0.8)",
+        "purpose": "Story player, on rgb(15 20 38 / 0.9) with backdrop blur 8px."
+      },
+      {
+        "name": "lens",
+        "value": "drop-shadow(0 30px 40px rgb(0 0 0 / 0.55)) drop-shadow(0 0 40px rgb(79 179 217 / 0.18))",
+        "purpose": "filter on the trial lens (Results section only)."
+      },
+      {
+        "name": "mini-lens",
+        "value": "inset 0 0 0 6px #aab5c2, inset 0 0 0 7px #6f7b88, 0 12px 24px -12px rgb(0 0 0 / 0.7)",
+        "purpose": "Figure lenses (Results section only)."
+      },
+      {
+        "name": "compare-edge",
+        "value": "0 0 12px rgb(240 138 62 / 0.8)",
+        "purpose": "The before/after divider line."
+      },
+      {
+        "name": "kite-glow",
+        "value": "drop-shadow(0 0 14px rgb(255 200 140 / 0.35))",
+        "purpose": "filter on trust-point kites (Trust section only)."
       },
       {
         "name": "sun-halo",
-        "value": "0 0 0 26px rgb(255 231 163 / 0.35)",
-        "purpose": "The sun in the sunny sky."
+        "value": "0 0 60px 30px rgb(255 170 90 / 0.35)",
+        "purpose": "The setting sun in the twilight sky."
       }
     ],
     "motion": [
@@ -668,14 +851,74 @@
         "purpose": "Section content on first view, only under html.motion-ok."
       },
       {
+        "name": "twinkle",
+        "value": "4s ease-in-out infinite alternate, stars 0.7 → 0.35 opacity",
+        "purpose": "First stars in the dusk sky."
+      },
+      {
+        "name": "lamp",
+        "value": "3.2s ease-in-out infinite alternate, opacity 0.75 → 1",
+        "purpose": "The hanging lamp in the room scenes."
+      },
+      {
+        "name": "story-autoplay",
+        "value": "countdown 3.5s, then one screen height per 3.8s via rAF scrollTo",
+        "purpose": "Story player; any wheel, touchstart, scroll key or outside pointerdown pauses; counts down only from scrollY ≤ 40."
+      },
+      {
+        "name": "kite-drift",
+        "value": "9s ease-in-out infinite alternate, translate 14px -18px, +8deg",
+        "purpose": "Background kites in the Trust sky."
+      },
+      {
+        "name": "kite-sway",
+        "value": "5s ease-in-out infinite alternate, ±5deg alternating per point",
+        "purpose": "Trust-point kites; reveal lifts 60px."
+      },
+      {
+        "name": "lens-glint",
+        "value": "radial highlight at pointer (--hx, --hy), background-position 0.2s",
+        "purpose": "Glass highlight following the pointer on the trial lens."
+      },
+      {
         "name": "cloud-drift",
         "value": "38–52s linear infinite, -18vw",
-        "purpose": "Ambient sky."
+        "purpose": "Faint clouds in both skies."
+      },
+      {
+        "name": "twinkle",
+        "value": "4s ease-in-out infinite alternate, stars 0.7 → 0.35 opacity",
+        "purpose": "First stars in the dusk sky."
+      },
+      {
+        "name": "lamp",
+        "value": "3.2s ease-in-out infinite alternate, opacity 0.75 → 1",
+        "purpose": "The hanging lamp in the room scenes."
+      },
+      {
+        "name": "story-autoplay",
+        "value": "countdown 3.5s, then one screen height per 3.8s via rAF scrollTo",
+        "purpose": "Story player; any wheel, touchstart, scroll key or outside pointerdown pauses; counts down only from scrollY ≤ 40."
+      },
+      {
+        "name": "kite-drift",
+        "value": "9s ease-in-out infinite alternate, translate 14px -18px, +8deg",
+        "purpose": "Background kites in the Trust sky."
+      },
+      {
+        "name": "kite-sway",
+        "value": "5s ease-in-out infinite alternate, ±5deg alternating per point",
+        "purpose": "Trust-point kites; reveal lifts 60px."
+      },
+      {
+        "name": "lens-glint",
+        "value": "radial highlight at pointer (--hx, --hy), background-position 0.2s",
+        "purpose": "Glass highlight following the pointer on the trial lens."
       },
       {
         "name": "reduced-motion",
         "value": "prefers-reduced-motion: reduce",
-        "purpose": "Scenes become single still stages at restAt; all loops stop; pointer lean is zero; smooth scroll off."
+        "purpose": "Scenes become single still stages at restAt; stars, clouds, birds, hop, lamp and kites stop; the story player is removed; pointer lean is zero; smooth scroll off."
       }
     ],
     "breakpoints": [
@@ -690,6 +933,14 @@
       {
         "name": "walk-narrow",
         "value": "700px"
+      },
+      {
+        "name": "figures",
+        "value": "560px"
+      },
+      {
+        "name": "figures",
+        "value": "560px"
       },
       {
         "name": "tablet",
@@ -708,7 +959,7 @@
       "band": "caption offsetTop + offsetHeight + 20px, measured live by ResizeObserver (CSS fallback 36%)",
       "ground": "12svh (10svh at ≤900px)",
       "floor": "ground + 7svh (+5svh at ≤900px); room art stops here",
-      "fig": "min(46svh, 470px, 100svh - band - ground - 2.5rem); ≤900px min(36svh, 330px, 100svh - band - ground - 1.5rem); leave scene ≤600px min(30svh, 260px, …)",
+      "fig": "min(46svh, 470px, 100svh - band - ground - 2.5rem); ≤900px min(31svh, 300px, 100svh - band - ground - 1.5rem); leave scene min(44svh, 450px, … - 5rem), ≤600px min(30svh, 260px, … - 4.5rem)",
       "castRatios": {
         "mother": 1,
         "elder": 0.94,
@@ -723,37 +974,56 @@
       "sceneHeights": {
         "arrive": "230vh",
         "other": "260vh"
-      }
+      },
+      "scrim": "linear-gradient(90deg, #121833 0 34%, rgb(18 24 51 / 0.85) 42%, transparent 56%); ≤900px 180deg, solid to 38%, transparent by 52%; off after p > 0.28",
+      "arriveCast": "left 70% → 73% (≤700px: 6% → 34%)"
     },
     "sceneryPalettes": {
       "muted": {
-        "far": "#c9d2dc",
-        "farWin": "#dfe5eb",
-        "mid": "#aebac6",
-        "near": "#e7e2da",
-        "trim": "#9aa6b2",
-        "leaf": "#8fa89a",
-        "road": "#b9c0c7",
-        "sky": "linear-gradient(180deg, #d5dde5 0%, #e3e8ed 55%, #eef1f3 100%)",
-        "ground": "linear-gradient(180deg, #e3ded6 0 22px, #bfc5cb 22px 100%)"
+        "far": "#232a47",
+        "farWin": "#e9b85e",
+        "mid": "#2d3556",
+        "near": "#383e5e",
+        "trim": "#58607f",
+        "leaf": "#2c4a45",
+        "win": "#c9934e",
+        "door": "#f4cf8a",
+        "shop": "#c9934e",
+        "train": "#c9cfdd",
+        "trainWin": "#e8b86a",
+        "arch": "#1b2140",
+        "sky": "linear-gradient(180deg, #0f1428 0%, #1b2140 45%, #2f3558 80%, #3d4166 100%) + star scatter",
+        "ground": "linear-gradient(180deg, #4a4e68 0 22px, #22263a 22px 100%)",
+        "cloud": "rgb(255 255 255 / 0.08)"
       },
       "sunny": {
-        "far": "#cfe3ee",
-        "farWin": "#e8f3f8",
-        "mid": "#9fc7da",
-        "near": "#f6ead8",
+        "far": "#3a3560",
+        "farWin": "#ffd27a",
+        "mid": "#46406e",
+        "near": "#5b4a68",
         "trim": "#e0a25a",
-        "leaf": "#5fae7b",
-        "road": "#c9cdd1",
-        "sky": "linear-gradient(180deg, #9fd3ee 0%, #c9e8f6 50%, #fff4e2 100%)",
-        "ground": "linear-gradient(180deg, #ece4d8 0 22px, #c9cdd1 22px 100%)"
+        "leaf": "#35604d",
+        "win": "#e0ac62",
+        "door": "#ffe0a0",
+        "shop": "#d9a45e",
+        "train": "#ded8e6",
+        "trainWin": "#f2c476",
+        "arch": "#3b2d5c",
+        "sky": "linear-gradient(180deg, #1c1a3c 0%, #3b2d5c 35%, #7a4a70 62%, #d9785a 86%, #f3a765 100%)",
+        "ground": "linear-gradient(180deg, #6a5670 0 22px, #2a2438 22px 100%)",
+        "cloud": "rgb(255 214 170 / 0.18)",
+        "sun": "radial-gradient(circle, #ffe2a8 0 50%, #ffb35c 51% 100%)",
+        "birds": "rgb(255 236 220 / 0.7)"
       },
       "room": {
-        "wall": "#f7f3ee",
-        "floor": "#e9dfd2",
-        "floorEdge": "#d8cbbb",
-        "desk": "linear-gradient(180deg, #c89b72 0 12%, #b3865e 12% 100%)",
-        "window": "#d8e9f2"
+        "stage": "radial-gradient(120% 90% at 50% 20%, #2e2840 0%, #1d1a2c 60%, #15131f 100%)",
+        "floor": "#2a2334",
+        "floorEdge": "#3a3148",
+        "desk": "linear-gradient(180deg, #8a6446 0 12%, #6c4e38 12% 100%)",
+        "deskPlate": "#1b2a3a on #f4f1ea text",
+        "lampPool": "#ffcf8a at 0.07",
+        "nightWindow": "#141c38 framed #4a4466, lit windows #f2c46b",
+        "leaChart": "#fbf8f2"
       },
       "elder": {
         "saree": "#efe4cf",
@@ -761,6 +1031,38 @@
         "blouse": "#8a2e3b",
         "hair": "#b8bcc2",
         "skin": "#a8704f"
+      },
+      "kitePaper": {
+        "note": "Trust section only.",
+        "rose": [
+          "#e0457b",
+          "#b02457"
+        ],
+        "marigold": [
+          "#f2b134",
+          "#d9931a"
+        ],
+        "teal": [
+          "#4fb3d9",
+          "#2a8cb0"
+        ],
+        "violet": [
+          "#9a6fd6",
+          "#6f49ad"
+        ],
+        "orange": [
+          "#f08a3e",
+          "#c9621f"
+        ],
+        "spine": "#2a1d14",
+        "sky": "linear-gradient(180deg, #0f1426 0%, #1a1c3e 40%, #2c2350 78%, #3a2a55 100%)",
+        "string": "rgb(255 236 220 / 0.45)"
+      },
+      "trialLens": {
+        "note": "Results (families) section only.",
+        "rim": "conic-gradient(from 200deg, #9aa6b2, #eef2f6 12%, #6f7b88 26%, #d5dce3 40%, #7f8b98 55%, #f4f7fa 68%, #8a96a3 82%, #9aa6b2)",
+        "miniGlass": "radial-gradient(circle, #1b2644 60%, #121a30 100%)",
+        "sectionGlow": "radial-gradient(70% 60% at 25% 45%, #1d2a4a 0%, #0f1426 70%)"
       }
     }
   },
@@ -769,104 +1071,108 @@
       "name": "Book Key",
       "kind": "button",
       "refersTo": "button-book",
-      "description": "The one committing control per view: orange pill with a north-east arrow.",
-      "html": "<a class=\"ds-btn-book\" href=\"#\">Book appointment <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17 17 7M9 7h8v8\"/></svg></a>",
-      "css": ".ds-btn-book{display:inline-flex;align-items:center;gap:0.65rem;min-height:3.25rem;padding:0.85rem 1.5rem 0.85rem 1.35rem;border-radius:999px;background:#b94e14;color:#fff;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:650;font-size:1.0625rem;line-height:1;text-decoration:none;box-shadow:0 1px 0 rgb(255 255 255 / 0.2) inset,0 12px 26px -12px rgb(185 78 20 / 0.65);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),background-color 0.2s,box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-book svg{transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-book:hover{transform:translateY(-2px);background:#9e410f;box-shadow:0 1px 0 rgb(255 255 255 / 0.2) inset,0 18px 32px -14px rgb(185 78 20 / 0.75);} .ds-btn-book:hover svg{transform:translate(3px,-3px);} .ds-btn-book:active{transform:translateY(1px);} .ds-btn-book:focus-visible{outline:3px solid #2a8cb0;outline-offset:3px;}"
+      "description": "The one committing control per view: orange pill with a north-east arrow, glowing on the evening ground.",
+      "html": "<div class=\"ds-ground\"><a class=\"ds-btn-book\" href=\"#\">Book appointment <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17 17 7M9 7h8v8\"/></svg></a></div>",
+      "css": ".ds-ground{padding:1.5rem;background:#0f1426;color:#f1f0f5;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;} .ds-btn-book{display:inline-flex;align-items:center;gap:0.65rem;min-height:3.25rem;padding:0.85rem 1.5rem 0.85rem 1.35rem;border-radius:999px;background:#b94e14;color:#fff;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:650;font-size:1.0625rem;line-height:1;text-decoration:none;box-shadow:0 1px 0 rgb(255 255 255 / 0.2) inset,0 12px 26px -12px rgb(185 78 20 / 0.65);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),background-color 0.2s,box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-book svg{transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-book:hover{transform:translateY(-2px);background:#9e410f;box-shadow:0 1px 0 rgb(255 255 255 / 0.2) inset,0 18px 32px -14px rgb(185 78 20 / 0.75);} .ds-btn-book:hover svg{transform:translate(3px,-3px);} .ds-btn-book:active{transform:translateY(1px);} .ds-btn-book:focus-visible{outline:3px solid #4fb3d9;outline-offset:3px;}"
     },
     {
-      "name": "WhatsApp Button",
+      "name": "WhatsApp and Call",
       "kind": "button",
       "refersTo": "button-whatsapp",
-      "description": "The chat action: white pill with a green ring, filling green on hover.",
-      "html": "<a class=\"ds-btn-wa\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.5 19.5 5.6 16A8 8 0 1 1 8.4 18.6Z\"/><path d=\"M9.2 8.6c.2-.5.5-.6.9-.6l.6 1.4-.6.8c.4 1 1.3 1.9 2.4 2.4l.8-.6 1.4.6c0 .4-.1.8-.6 1-.9.4-2.6 0-4-1.4s-1.8-3-1.4-3.6Z\" fill=\"currentColor\" stroke=\"none\"/></svg> WhatsApp</a>",
-      "css": ".ds-btn-wa{display:inline-flex;align-items:center;gap:0.55rem;min-height:3.25rem;padding:0.8rem 1.25rem;border-radius:999px;background:#fff;color:#128c4a;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:650;font-size:1.0625rem;line-height:1;text-decoration:none;box-shadow:inset 0 0 0 1.5px #128c4a;transition:background-color 0.2s,color 0.2s;} .ds-btn-wa:hover{background:#128c4a;color:#fff;} .ds-btn-wa:focus-visible{outline:3px solid #2a8cb0;outline-offset:3px;}"
-    },
-    {
-      "name": "Call Link",
-      "kind": "button",
-      "refersTo": "link-call",
-      "description": "Tertiary action: phone icon and number with a soft underline.",
-      "html": "<a class=\"ds-link-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4Z\"/></svg><span>+91 74164 27503</span></a>",
-      "css": ".ds-link-call{display:inline-flex;align-items:center;gap:0.55rem;min-height:3.25rem;padding:0.5rem 0.25rem;color:#1b2a3a;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:600;text-decoration:none;} .ds-link-call span{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:0.3em;text-decoration-color:rgb(27 42 58 / 0.35);transition:text-decoration-color 0.2s;} .ds-link-call:hover span{text-decoration-color:#1b2a3a;} .ds-link-call:focus-visible{outline:3px solid #2a8cb0;outline-offset:3px;}"
+      "description": "The chat action (green ring, filling on hover) beside the underlined call link.",
+      "html": "<div class=\"ds-ground\"><a class=\"ds-btn-wa\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.5 19.5 5.6 16A8 8 0 1 1 8.4 18.6Z\"/><path d=\"M9.2 8.6c.2-.5.5-.6.9-.6l.6 1.4-.6.8c.4 1 1.3 1.9 2.4 2.4l.8-.6 1.4.6c0 .4-.1.8-.6 1-.9.4-2.6 0-4-1.4s-1.8-3-1.4-3.6Z\" fill=\"currentColor\" stroke=\"none\"/></svg> WhatsApp</a><a class=\"ds-link-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4Z\"/></svg><span>+91 74164 27503</span></a></div>",
+      "css": ".ds-ground{display:flex;flex-wrap:wrap;align-items:center;gap:0.75rem 1rem;padding:1.5rem;background:#0f1426;color:#f1f0f5;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;} .ds-btn-wa{display:inline-flex;align-items:center;gap:0.55rem;min-height:3.25rem;padding:0.8rem 1.25rem;border-radius:999px;background:transparent;color:#3fcf80;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:650;font-size:1.0625rem;line-height:1;text-decoration:none;box-shadow:inset 0 0 0 1.5px #3fcf80;transition:background-color 0.2s,color 0.2s;} .ds-btn-wa:hover{background:#1f9e5a;color:#fff;box-shadow:inset 0 0 0 1.5px #1f9e5a;} .ds-link-call{display:inline-flex;align-items:center;gap:0.55rem;min-height:3.25rem;padding:0.5rem 0.25rem;color:#f1f0f5;font-weight:600;text-decoration:none;} .ds-link-call span{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:0.3em;text-decoration-color:rgb(241 240 245 / 0.35);transition:text-decoration-color 0.2s;} .ds-link-call:hover span{text-decoration-color:#f1f0f5;} .ds-btn-wa:focus-visible,.ds-link-call:focus-visible{outline:3px solid #4fb3d9;outline-offset:3px;}"
     },
     {
       "name": "Site Header",
       "kind": "nav",
       "refersTo": "button-book-compact",
-      "description": "Solid-state header: logo, round WhatsApp chip, call link, compact Book key, teal progress thread.",
-      "html": "<header class=\"ds-bar\"><div class=\"ds-bar__inner\"><strong class=\"ds-brand\">Dr Aloka's Eye Care</strong><div class=\"ds-bar__actions\"><a class=\"ds-wa\" href=\"#\" aria-label=\"Chat on WhatsApp\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.5 19.5 5.6 16A8 8 0 1 1 8.4 18.6Z\"/><path d=\"M9.2 8.6c.2-.5.5-.6.9-.6l.6 1.4-.6.8c.4 1 1.3 1.9 2.4 2.4l.8-.6 1.4.6c0 .4-.1.8-.6 1-.9.4-2.6 0-4-1.4s-1.8-3-1.4-3.6Z\" fill=\"currentColor\" stroke=\"none\"/></svg></a><a class=\"ds-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4Z\"/></svg><span>+91 74164 27503</span></a><a class=\"ds-book-sm\" href=\"#\">Book appointment <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17 17 7M9 7h8v8\"/></svg></a></div></div><div class=\"ds-thread\"><span></span></div></header>",
-      "css": ".ds-bar{position:relative;background:#fff;color:#1b2a3a;box-shadow:0 1px 0 #c9d1d9,0 12px 30px -24px rgb(27 42 58 / 0.4);font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;} .ds-bar__inner{display:flex;align-items:center;gap:1.5rem;min-height:4.5rem;padding:0 1.25rem;} .ds-brand{font-family:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:1.2rem;color:#1d6e8c;} .ds-bar__actions{display:flex;align-items:center;gap:1rem;margin-left:auto;} .ds-wa{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:999px;color:#128c4a;background:#e7f5ec;transition:background-color 0.2s,color 0.2s;} .ds-wa:hover{background:#128c4a;color:#fff;} .ds-call{display:inline-flex;align-items:center;gap:0.45rem;min-height:2.75rem;font-weight:600;font-size:0.9375rem;color:inherit;text-decoration:none;font-variant-numeric:tabular-nums;} .ds-book-sm{display:inline-flex;align-items:center;gap:0.65rem;min-height:2.75rem;padding:0.6rem 1.1rem 0.6rem 1.15rem;border-radius:999px;background:#b94e14;color:#fff;font-weight:650;font-size:0.9375rem;line-height:1;text-decoration:none;box-shadow:0 12px 26px -12px rgb(185 78 20 / 0.65);transition:background-color 0.2s,transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);} .ds-book-sm:hover{background:#9e410f;transform:translateY(-2px);} .ds-wa:focus-visible,.ds-call:focus-visible,.ds-book-sm:focus-visible{outline:3px solid #2a8cb0;outline-offset:3px;} .ds-thread{height:2px;} .ds-thread span{display:block;height:100%;width:38%;background:#2a8cb0;}"
+      "description": "Solid-state header: logo on a lit plate, round WhatsApp chip, call link, compact Book key, teal progress thread.",
+      "html": "<header class=\"ds-bar\"><div class=\"ds-bar__inner\"><span class=\"ds-brand\"><strong>Dr Aloka's Eye Care</strong></span><div class=\"ds-bar__actions\"><a class=\"ds-wa\" href=\"#\" aria-label=\"Chat on WhatsApp\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.5 19.5 5.6 16A8 8 0 1 1 8.4 18.6Z\"/><path d=\"M9.2 8.6c.2-.5.5-.6.9-.6l.6 1.4-.6.8c.4 1 1.3 1.9 2.4 2.4l.8-.6 1.4.6c0 .4-.1.8-.6 1-.9.4-2.6 0-4-1.4s-1.8-3-1.4-3.6Z\" fill=\"currentColor\" stroke=\"none\"/></svg></a><a class=\"ds-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4Z\"/></svg><span>+91 74164 27503</span></a><a class=\"ds-book-sm\" href=\"#\">Book appointment <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17 17 7M9 7h8v8\"/></svg></a></div></div><div class=\"ds-thread\"><span></span></div></header>",
+      "css": ".ds-bar{position:relative;background:rgb(15 20 38 / 0.94);color:#f1f0f5;box-shadow:0 1px 0 #313b5a,0 12px 30px -20px rgb(0 0 0 / 0.6);font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;} .ds-bar__inner{display:flex;align-items:center;gap:1.5rem;min-height:4.5rem;padding:0 1.25rem;} .ds-brand{display:block;padding:6px 10px;border-radius:10px;background:#fbf8f2;} .ds-brand strong{font-family:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:1.1rem;color:#1d6e8c;} .ds-bar__actions{display:flex;align-items:center;gap:1rem;margin-left:auto;} .ds-wa{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:999px;color:#3fcf80;background:rgb(63 207 128 / 0.14);transition:background-color 0.2s,color 0.2s;} .ds-wa:hover{background:#1f9e5a;color:#fff;} .ds-call{display:inline-flex;align-items:center;gap:0.45rem;min-height:2.75rem;font-weight:600;font-size:0.9375rem;color:inherit;text-decoration:none;font-variant-numeric:tabular-nums;} .ds-book-sm{display:inline-flex;align-items:center;gap:0.65rem;min-height:2.75rem;padding:0.6rem 1.1rem 0.6rem 1.15rem;border-radius:999px;background:#b94e14;color:#fff;font-weight:650;font-size:0.9375rem;line-height:1;text-decoration:none;box-shadow:0 12px 26px -12px rgb(185 78 20 / 0.65);transition:background-color 0.2s,transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);} .ds-book-sm:hover{background:#9e410f;transform:translateY(-2px);} .ds-wa:focus-visible,.ds-call:focus-visible,.ds-book-sm:focus-visible{outline:3px solid #4fb3d9;outline-offset:3px;} .ds-thread{height:2px;} .ds-thread span{display:block;height:100%;width:38%;background:#4fb3d9;}"
     },
     {
       "name": "Journey Rail",
       "kind": "nav",
-      "description": "Chapter rail for wide screens: hollow ahead, filled seen, orange-dotted now; ink pill labels on hover.",
+      "description": "Chapter rail for wide screens: hollow ahead, filled seen, orange-dotted now; lit-paper pill labels on hover.",
       "html": "<nav class=\"ds-rail\" aria-label=\"Journey\"><div class=\"ds-rail__line\"><span></span></div><ol><li class=\"is-past\"><a href=\"#\"><span class=\"ds-rail__mark\"></span><span class=\"ds-rail__label\">Arriving worried</span></a></li><li class=\"is-active\"><a href=\"#\" aria-current=\"step\"><span class=\"ds-rail__mark\"></span><span class=\"ds-rail__label\">Meeting Dr. Aloka</span></a></li><li><a href=\"#\"><span class=\"ds-rail__mark\"></span><span class=\"ds-rail__label\">Treatment</span></a></li><li><a href=\"#\"><span class=\"ds-rail__mark\"></span><span class=\"ds-rail__label\">Going home happy</span></a></li></ol></nav>",
-      "css": ".ds-rail{position:relative;color:#4a5a6b;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;padding:0.5rem;} .ds-rail ol{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:1.9rem;} .ds-rail a{display:flex;align-items:center;gap:0.8rem;min-height:1.5rem;color:inherit;text-decoration:none;} .ds-rail__line{position:absolute;left:calc(0.5rem + 7px);top:1.25rem;bottom:1.25rem;width:2px;background:#c9d1d9;} .ds-rail__line span{position:absolute;inset:0 0 60% 0;background:#4a5a6b;} .ds-rail__mark{position:relative;width:16px;height:16px;flex:none;border-radius:50%;border:1.5px solid currentColor;background:#fff;transition:background-color 0.3s,scale 0.5s cubic-bezier(0.16, 1, 0.3, 1);} .ds-rail li.is-past .ds-rail__mark{background:currentColor;} .ds-rail li.is-active .ds-rail__mark{color:#1b2a3a;scale:1.25;background:radial-gradient(circle,#e8792f 0 3px,#fff 3.5px);} .ds-rail__label{padding:0.3rem 0.7rem;border-radius:999px;font-size:0.875rem;font-weight:600;white-space:nowrap;background:#1b2a3a;color:#fff;opacity:0;translate:-6px 0;transition:opacity 0.3s,translate 0.4s cubic-bezier(0.16, 1, 0.3, 1);} .ds-rail a:hover .ds-rail__label,.ds-rail a:focus-visible .ds-rail__label{opacity:1;translate:0 0;} .ds-rail a:focus-visible{outline:3px solid #2a8cb0;outline-offset:3px;border-radius:6px;}"
+      "css": ".ds-rail{position:relative;background:#0f1426;color:#b9bfd2;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;padding:1rem;} .ds-rail ol{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:1.9rem;} .ds-rail a{display:flex;align-items:center;gap:0.8rem;min-height:1.5rem;color:inherit;text-decoration:none;} .ds-rail__line{position:absolute;left:calc(1rem + 7px);top:1.75rem;bottom:1.75rem;width:2px;background:#313b5a;} .ds-rail__line span{position:absolute;inset:0 0 60% 0;background:#b9bfd2;} .ds-rail__mark{position:relative;width:16px;height:16px;flex:none;border-radius:50%;border:1.5px solid currentColor;background:#0f1426;transition:background-color 0.3s,scale 0.5s cubic-bezier(0.16, 1, 0.3, 1);} .ds-rail li.is-past .ds-rail__mark{background:currentColor;} .ds-rail li.is-active .ds-rail__mark{color:#f1f0f5;scale:1.25;background:radial-gradient(circle,#e8792f 0 3px,#0f1426 3.5px);} .ds-rail__label{padding:0.3rem 0.7rem;border-radius:999px;font-size:0.875rem;font-weight:600;white-space:nowrap;background:#fbf8f2;color:#1b2a3a;opacity:0;translate:-6px 0;transition:opacity 0.3s,translate 0.4s cubic-bezier(0.16, 1, 0.3, 1);} .ds-rail a:hover .ds-rail__label,.ds-rail a:focus-visible .ds-rail__label{opacity:1;translate:0 0;} .ds-rail a:focus-visible{outline:3px solid #4fb3d9;outline-offset:3px;border-radius:6px;}"
     },
     {
-      "name": "Hero Caption",
-      "kind": "card",
-      "refersTo": "caption-hero",
-      "description": "The first-viewport panel: H1, the Telugu welcome line with its English meaning.",
-      "html": "<div class=\"ds-hero\"><h1>For every child who walks in worried, and walks out smiling.</h1><p class=\"ds-te\"><span lang=\"te\">మీ పిల్లల చూపు, మా బాధ్యత</span><span class=\"ds-te__en\">Your child's sight is our responsibility.</span></p></div>",
-      "css": ".ds-hero{max-width:38rem;padding:1rem 1.25rem 1.25rem;border-radius:20px;background:linear-gradient(rgb(226 232 237 / 0.82),rgb(226 232 237 / 0.82)),linear-gradient(180deg,#d5dde5,#eef1f3);color:#1b2a3a;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;} .ds-hero h1{margin:0;font-family:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:clamp(2.05rem,1.3rem + 3.6vw,3.4rem);line-height:1;letter-spacing:-0.028em;text-wrap:balance;} .ds-te{display:grid;gap:0.15rem;margin:1rem 0 0;font-size:clamp(1.12rem,1.04rem + 0.35vw,1.3rem);font-weight:600;color:#16597a;} .ds-te [lang='te']{font-family:'Anek Telugu Variable','Noto Sans Telugu',sans-serif;letter-spacing:0;font-size:1.15em;} .ds-te__en{color:#4a5a6b;font-weight:500;}"
+      "name": "Story Player",
+      "kind": "custom",
+      "refersTo": "story-player",
+      "description": "Autoplay control: a countdown ring around the play key, then progress; any scroll takes over.",
+      "html": "<div class=\"ds-ground\"><div class=\"ds-player\" role=\"group\" aria-label=\"Story player\"><button type=\"button\" class=\"ds-player__btn\" aria-label=\"Pause the story\"><svg class=\"ds-player__ring\" viewBox=\"0 0 40 40\" aria-hidden=\"true\"><circle cx=\"20\" cy=\"20\" r=\"18\" pathLength=\"100\" stroke-dashoffset=\"38\"/></svg><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"currentColor\"><rect x=\"6\" y=\"5\" width=\"4\" height=\"14\" rx=\"1\"/><rect x=\"14\" y=\"5\" width=\"4\" height=\"14\" rx=\"1\"/></svg></button><p class=\"ds-player__text\"><strong>Playing their story</strong><span>Scroll anytime to take over</span></p></div></div>",
+      "css": ".ds-ground{padding:2rem 1.5rem;background:linear-gradient(180deg,#0f1428,#2f3558);font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;} .ds-player{display:inline-flex;align-items:center;gap:0.85rem;padding:0.45rem 1.1rem 0.45rem 0.45rem;border-radius:999px;background:rgb(15 20 38 / 0.9);color:#f1f0f5;box-shadow:0 0 0 1px rgb(255 255 255 / 0.12),0 16px 34px -16px rgb(0 0 0 / 0.8);backdrop-filter:blur(8px);} .ds-player__btn{position:relative;display:grid;place-items:center;width:2.9rem;height:2.9rem;flex:none;border:0;border-radius:50%;background:#b94e14;color:#fff;cursor:pointer;transition:background-color 0.2s,scale 0.3s cubic-bezier(0.16, 1, 0.3, 1);} .ds-player__btn:hover{background:#9e410f;scale:1.06;} .ds-player__btn:focus-visible{outline:3px solid #4fb3d9;outline-offset:3px;} .ds-player__ring{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);rotate:-90deg;} .ds-player__ring circle{fill:none;stroke:#e8792f;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:100;transition:stroke-dashoffset 0.25s linear;} .ds-player__btn:hover .ds-player__ring circle{stroke-dashoffset:0;} .ds-player__text{display:grid;margin:0;line-height:1.25;} .ds-player__text strong{font-size:0.9375rem;font-weight:650;} .ds-player__text span{font-size:0.8125rem;color:#b9bfd2;}"
     },
     {
-      "name": "Speech and Thought Bubbles",
+      "name": "Lit Paper Bubbles",
       "kind": "custom",
       "refersTo": "bubble",
-      "description": "White bubbles that pop in at scroll points; thought trails circles, speech has a tail.",
+      "description": "Cream bubbles glowing in the dusk; thought trails circles, speech has a tail.",
       "html": "<div class=\"ds-bubbles\"><p class=\"ds-bubble ds-bubble--think\">Is it too late to fix?</p><p class=\"ds-bubble ds-bubble--say\">Let's take a good look together. This can be treated.</p></div>",
-      "css": ".ds-bubbles{display:flex;flex-wrap:wrap;gap:2.5rem 1.5rem;padding:1.5rem 1rem 2.5rem;background:linear-gradient(180deg,#9fd3ee,#fff4e2);} .ds-bubble{position:relative;margin:0;max-width:15rem;padding:0.7rem 1rem;border-radius:18px;background:#fff;color:#1b2a3a;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:600;font-size:clamp(0.9rem,0.85rem + 0.25vw,1.05rem);line-height:1.35;box-shadow:0 12px 26px -14px rgb(27 42 58 / 0.45);transition:translate 0.6s cubic-bezier(0.16, 1, 0.3, 1);} .ds-bubble:hover{translate:0 -3px;} .ds-bubble--think::before,.ds-bubble--think::after{content:'';position:absolute;border-radius:50%;background:#fff;} .ds-bubble--think::before{width:14px;height:14px;bottom:-16px;left:30px;} .ds-bubble--think::after{width:8px;height:8px;bottom:-28px;left:22px;} .ds-bubble--say{max-width:17rem;} .ds-bubble--say::after{content:'';position:absolute;left:18px;bottom:-8px;border:9px solid transparent;border-top-color:#fff;border-bottom:0;}"
+      "css": ".ds-bubbles{display:flex;flex-wrap:wrap;gap:2.5rem 1.5rem;padding:1.5rem 1rem 2.5rem;background:linear-gradient(180deg,#0f1428 0%,#1b2140 45%,#2f3558 80%,#3d4166 100%);} .ds-bubble{position:relative;margin:0;max-width:15rem;padding:0.7rem 1rem;border-radius:18px;background:#fbf8f2;color:#1b2a3a;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:600;font-size:clamp(0.9rem,0.85rem + 0.25vw,1.05rem);line-height:1.35;box-shadow:0 0 26px rgb(255 214 140 / 0.3);transition:translate 0.6s cubic-bezier(0.16, 1, 0.3, 1),box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);} .ds-bubble:hover{translate:0 -3px;box-shadow:0 0 34px rgb(255 214 140 / 0.45);} .ds-bubble--think::before,.ds-bubble--think::after{content:'';position:absolute;border-radius:50%;background:#fbf8f2;} .ds-bubble--think::before{width:14px;height:14px;bottom:-16px;left:30px;} .ds-bubble--think::after{width:8px;height:8px;bottom:-28px;left:22px;} .ds-bubble--say{max-width:17rem;} .ds-bubble--say::after{content:'';position:absolute;left:18px;bottom:-8px;border:9px solid transparent;border-top-color:#fbf8f2;border-bottom:0;}"
     },
     {
       "name": "Sticker Chart",
       "kind": "custom",
       "refersTo": "sticker-chart",
-      "description": "Treatment progress as a child sees it: twelve cells that earn gold stars (hover fills them).",
-      "html": "<div class=\"ds-chart\"><p class=\"ds-chart__title\">My sessions</p><div class=\"ds-chart__grid\"><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span></div></div>",
-      "css": ".ds-chart{width:260px;padding:1rem 1.1rem 1.1rem;border-radius:12px;background:#fff;color:#1b2a3a;box-shadow:0 16px 30px -18px rgb(27 42 58 / 0.4);} .ds-chart__title{margin:0 0 0.75rem;font-family:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:1rem;line-height:1;} .ds-chart__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.45rem;} .ds-cell{aspect-ratio:1;border-radius:8px;background:#f3f6f8;box-shadow:inset 0 0 0 1.5px #c9d1d9;display:grid;place-items:center;transition:background-color 0.3s;} .ds-cell svg{width:64%;fill:#e8a33a;scale:0;transition:scale 0.45s cubic-bezier(0.16, 1, 0.3, 1);} .ds-cell.is-done{background:#fff5e0;box-shadow:inset 0 0 0 1.5px #f2d49a;} .ds-cell.is-done svg,.ds-chart:hover .ds-cell svg{scale:1;}"
+      "description": "Treatment progress on lit paper: twelve cells that earn gold stars (hover fills them).",
+      "html": "<div class=\"ds-room\"><div class=\"ds-chart\"><p class=\"ds-chart__title\">My sessions</p><div class=\"ds-chart__grid\"><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell is-done\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span><span class=\"ds-cell\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8Z\"/></svg></span></div></div></div>",
+      "css": ".ds-room{padding:1.5rem;background:radial-gradient(120% 90% at 50% 20%,#2e2840 0%,#1d1a2c 60%,#15131f 100%);} .ds-chart{width:260px;padding:1rem 1.1rem 1.1rem;border-radius:12px;background:#fbf8f2;color:#1b2a3a;box-shadow:0 0 40px rgb(255 214 140 / 0.18);} .ds-chart__title{margin:0 0 0.75rem;font-family:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:1rem;line-height:1;} .ds-chart__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.45rem;} .ds-cell{aspect-ratio:1;border-radius:8px;background:#eee8dc;box-shadow:inset 0 0 0 1.5px #d8cfbd;display:grid;place-items:center;transition:background-color 0.3s;} .ds-cell svg{width:64%;fill:#e8a33a;scale:0;transition:scale 0.45s cubic-bezier(0.16, 1, 0.3, 1);} .ds-cell.is-done{background:#fff5e0;box-shadow:inset 0 0 0 1.5px #f2d49a;} .ds-cell.is-done svg,.ds-chart:hover .ds-cell svg{scale:1;}"
     },
     {
-      "name": "Eyes Card",
-      "kind": "custom",
-      "refersTo": "eyes-card",
-      "description": "Close-up of the child's eyes; the turned pupil straightens with treatment (hover to straighten).",
-      "html": "<figure class=\"ds-eyes\"><svg viewBox=\"0 0 220 90\"><ellipse cx=\"60\" cy=\"45\" rx=\"40\" ry=\"26\" fill=\"#fff\" stroke=\"#1b2a3a\" stroke-width=\"3\"/><circle cx=\"60\" cy=\"45\" r=\"15\" fill=\"#6b4a32\"/><circle cx=\"60\" cy=\"45\" r=\"7\" fill=\"#1f1614\"/><circle cx=\"54\" cy=\"39\" r=\"3\" fill=\"#fff\"/><ellipse cx=\"160\" cy=\"45\" rx=\"40\" ry=\"26\" fill=\"#fff\" stroke=\"#1b2a3a\" stroke-width=\"3\"/><g class=\"ds-eyes__turn\"><circle cx=\"160\" cy=\"45\" r=\"15\" fill=\"#6b4a32\"/><circle cx=\"160\" cy=\"45\" r=\"7\" fill=\"#1f1614\"/><circle cx=\"154\" cy=\"39\" r=\"3\" fill=\"#fff\"/></g></svg><figcaption>Left eye turns in</figcaption></figure>",
-      "css": ".ds-eyes{margin:0;width:220px;padding:0.75rem 0.9rem 0.6rem;border-radius:14px;background:#fff;box-shadow:0 16px 30px -18px rgb(27 42 58 / 0.45);font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;} .ds-eyes svg{display:block;width:100%;} .ds-eyes__turn{transform:translateX(-14px);transition:transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);} .ds-eyes:hover .ds-eyes__turn{transform:none;} .ds-eyes figcaption{margin-top:0.3rem;text-align:center;font-size:0.8125rem;font-weight:600;color:#4a5a6b;}"
-    },
-    {
-      "name": "Trust Point and FAQ",
+      "name": "Kite Trust Point and FAQ",
       "kind": "card",
-      "description": "Rule-topped trust point and a native details row with a rotating teal plus.",
-      "html": "<div class=\"ds-trust\"><div class=\"ds-point\"><h3>Therapy before surgery</h3><p>Glasses, patching and vision therapy come first wherever they can work.</p></div><details class=\"ds-faq\"><summary>Does squint surgery hurt?</summary><p>It is done under anaesthesia with absorbable sutures and leaves no external scar.</p></details></div>",
-      "css": ".ds-trust{padding:1.5rem;background:#e6f1f5;color:#1b2a3a;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;max-width:34rem;} .ds-point{padding-top:1.25rem;border-top:2px solid #1d6e8c;} .ds-point h3{margin:0;font-family:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:clamp(1.12rem,1.04rem + 0.35vw,1.3rem);font-weight:650;letter-spacing:-0.015em;line-height:1.02;} .ds-point p{margin:0.5rem 0 0;font-size:0.9375rem;line-height:1.6;color:#4a5a6b;} .ds-faq{margin-top:2rem;border-bottom:1px solid rgb(27 42 58 / 0.18);} .ds-faq summary{display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 0;cursor:pointer;list-style:none;font-weight:650;font-size:clamp(1.12rem,1.04rem + 0.35vw,1.3rem);} .ds-faq summary::-webkit-details-marker{display:none;} .ds-faq summary::after{content:'+';flex:none;font-size:1.5rem;line-height:1;color:#1d6e8c;transition:rotate 0.3s cubic-bezier(0.16, 1, 0.3, 1);} .ds-faq[open] summary::after{rotate:45deg;} .ds-faq summary:focus-visible{outline:3px solid #2a8cb0;outline-offset:3px;border-radius:6px;} .ds-faq p{margin:0;padding-bottom:1.2rem;color:#4a5a6b;}"
+      "description": "Trust section only: a reason hanging from its own swaying kite, and a native details row with a rotating teal plus.",
+      "html": "<div class=\"ds-trust\"><div class=\"ds-point\"><span class=\"ds-flight\"><svg viewBox=\"0 0 120 170\"><path d=\"M60 4 L116 60 L60 116 Z\" fill=\"#b02457\"/><path d=\"M60 4 L4 60 L60 116 Z\" fill=\"#e0457b\"/><path d=\"M60 78 L78 96 L60 116 L42 96 Z\" fill=\"#fff\" opacity=\"0.35\"/><path d=\"M60 4 L60 116\" stroke=\"#2a1d14\" stroke-opacity=\"0.5\" stroke-width=\"1.6\"/><path d=\"M8 62 Q60 26 112 62\" fill=\"none\" stroke=\"#2a1d14\" stroke-opacity=\"0.45\" stroke-width=\"1.6\"/><path d=\"M60 116 L50 132 L70 132 Z\" fill=\"#b02457\"/><path d=\"M60 132 C54 146 68 154 60 168\" fill=\"none\" stroke=\"#b02457\" stroke-width=\"1.6\"/></svg><span class=\"ds-string\"></span></span><h3>Therapy before surgery</h3><p>Glasses, patching and vision therapy come first wherever they can work.</p></div><details class=\"ds-faq\"><summary>Does squint surgery hurt?</summary><p>It is done under anaesthesia with absorbable sutures and leaves no external scar.</p></details></div>",
+      "css": ".ds-trust{padding:1.5rem;background:linear-gradient(180deg,#0f1426 0%,#1a1c3e 40%,#2c2350 78%,#3a2a55 100%);color:#f1f0f5;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;max-width:34rem;} .ds-point{display:grid;justify-items:start;} .ds-flight{display:grid;justify-items:center;width:64px;margin-bottom:0.75rem;transform-origin:50% 100%;animation:ds-sway 5s ease-in-out infinite alternate;} .ds-flight svg{width:52px;overflow:visible;filter:drop-shadow(0 0 14px rgb(255 200 140 / 0.35));} .ds-string{width:1.5px;height:1.4rem;background:rgb(255 236 220 / 0.45);} @keyframes ds-sway{from{rotate:-5deg;}to{rotate:5deg;}} @media (prefers-reduced-motion:reduce){.ds-flight{animation:none;}} .ds-point h3{margin:0;font-family:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:clamp(1.12rem,1.04rem + 0.35vw,1.3rem);font-weight:650;letter-spacing:-0.015em;line-height:1.02;} .ds-point p{margin:0.5rem 0 0;font-size:0.9375rem;line-height:1.6;color:#b9bfd2;} .ds-faq{margin-top:2rem;border-bottom:1px solid #313b5a;} .ds-faq summary{display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 0;cursor:pointer;list-style:none;font-weight:650;font-size:clamp(1.12rem,1.04rem + 0.35vw,1.3rem);} .ds-faq summary::-webkit-details-marker{display:none;} .ds-faq summary::after{content:'+';flex:none;font-size:1.5rem;line-height:1;color:#3aa0c8;transition:rotate 0.3s cubic-bezier(0.16, 1, 0.3, 1);} .ds-faq[open] summary::after{rotate:45deg;} .ds-faq summary:focus-visible{outline:3px solid #4fb3d9;outline-offset:3px;border-radius:6px;} .ds-faq p{margin:0;padding-bottom:1.2rem;color:#b9bfd2;}"
+    },
+    {
+      "name": "Trial Lens Compare",
+      "kind": "custom",
+      "refersTo": "lens-tab",
+      "description": "Results section only: before/after inside a steel-rimmed trial lens with a pointer-following glint, orange tab and a figure in a mini lens.",
+      "html": "<div class=\"ds-fam\"><div class=\"ds-lens\" style=\"--reveal:50%\"><div class=\"ds-lens__glass\"><span class=\"ds-before\"></span><span class=\"ds-after\"></span><span class=\"ds-edge\"></span></div><span class=\"ds-lens__rim\"></span><span class=\"ds-lens__shine\"></span><span class=\"ds-lens__arm\"><span class=\"ds-lens__tab\">After</span></span></div><span class=\"ds-mini\"><strong>20+</strong></span></div>",
+      "css": ".ds-fam{display:flex;flex-wrap:wrap;align-items:center;gap:3rem;padding:2rem 3.5rem 2rem 1.5rem;background:radial-gradient(70% 60% at 25% 45%,#1d2a4a 0%,#0f1426 70%);font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;} .ds-lens{--rim:14px;position:relative;width:220px;aspect-ratio:1;border-radius:50%;filter:drop-shadow(0 30px 40px rgb(0 0 0 / 0.55)) drop-shadow(0 0 40px rgb(79 179 217 / 0.18));} .ds-lens__glass{position:absolute;inset:0;border-radius:50%;overflow:hidden;} .ds-before,.ds-after{position:absolute;inset:0;} .ds-before{background:linear-gradient(135deg,#8a6a58,#c9a58c);} .ds-after{background:linear-gradient(135deg,#a07a64,#e2c3a8);clip-path:inset(0 0 0 calc(100% - var(--reveal)));transition:clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);} .ds-lens:hover{--reveal:80%;} .ds-edge{position:absolute;top:0;bottom:0;left:calc(100% - var(--reveal));width:3px;margin-left:-1.5px;background:#e8792f;box-shadow:0 0 12px rgb(240 138 62 / 0.8);transition:left 0.6s cubic-bezier(0.16, 1, 0.3, 1);} .ds-lens__rim{position:absolute;inset:0;border-radius:50%;padding:var(--rim);background:conic-gradient(from 200deg,#9aa6b2,#eef2f6 12%,#6f7b88 26%,#d5dce3 40%,#7f8b98 55%,#f4f7fa 68%,#8a96a3 82%,#9aa6b2);-webkit-mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);} .ds-lens__shine{position:absolute;inset:var(--rim);border-radius:50%;pointer-events:none;background:radial-gradient(circle at 30% 24%,rgb(255 255 255 / 0.4),rgb(255 255 255 / 0) 34%),radial-gradient(circle,rgb(0 0 0 / 0) 64%,rgb(0 0 0 / 0.3) 100%);mix-blend-mode:screen;} .ds-lens__arm{position:absolute;inset:0;rotate:40deg;z-index:-1;} .ds-lens__tab{position:absolute;left:calc(100% - 10px);top:50%;translate:0 -50%;padding:0.4rem 1rem 0.4rem 1.4rem;border-radius:0 6px 6px 0;background:#b94e14;color:#fff;font:700 0.75rem/1 'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;letter-spacing:0.12em;text-transform:uppercase;} .ds-mini{display:grid;place-items:center;width:96px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 32% 26%,rgb(255 255 255 / 0.22),rgb(255 255 255 / 0) 40%),radial-gradient(circle,#1b2644 60%,#121a30 100%);box-shadow:inset 0 0 0 6px #aab5c2,inset 0 0 0 7px #6f7b88,0 12px 24px -12px rgb(0 0 0 / 0.7);} .ds-mini strong{font-family:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;color:#f1f0f5;}"
     },
     {
       "name": "Week Pad",
       "kind": "custom",
       "refersTo": "week-day",
-      "description": "Opening days as tiles, Monday first: Sunday dashed and closed, today ringed in Book orange.",
+      "description": "Opening days as mist tiles, Monday first: Sunday dashed and closed, today ringed in Book orange.",
       "html": "<ol class=\"ds-week\"><li class=\"\"><span class=\"ds-week__day\">Mon</span><span class=\"ds-week__state\">10–5</span></li><li class=\"\"><span class=\"ds-week__day\">Tue</span><span class=\"ds-week__state\">10–5</span></li><li class=\"is-today\"><span class=\"ds-week__day\">Wed</span><span class=\"ds-week__state\">10–5</span></li><li class=\"\"><span class=\"ds-week__day\">Thu</span><span class=\"ds-week__state\">10–5</span></li><li class=\"\"><span class=\"ds-week__day\">Fri</span><span class=\"ds-week__state\">10–5</span></li><li class=\"\"><span class=\"ds-week__day\">Sat</span><span class=\"ds-week__state\">10–5</span></li><li class=\"is-closed\"><span class=\"ds-week__day\">Sun</span><span class=\"ds-week__state\">Closed</span></li></ol>",
-      "css": ".ds-week{list-style:none;margin:0;padding:1rem;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0.4rem;max-width:30rem;background:#f3f6f8;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;color:#1b2a3a;} .ds-week li{display:grid;justify-items:center;gap:0.1rem;padding:0.6rem 0.2rem 0.55rem;border-radius:10px;background:#fff;box-shadow:0 4px 12px -8px rgb(27 42 58 / 0.35);} .ds-week li.is-closed{background:transparent;box-shadow:none;color:#4a5a6b;outline:1px dashed rgb(27 42 58 / 0.25);outline-offset:-1px;} .ds-week li.is-today{outline:2px solid #b94e14;outline-offset:-2px;} .ds-week__day{font-weight:700;font-size:0.9375rem;} .ds-week__state{font-size:0.75rem;font-variant-numeric:tabular-nums;color:#4a5a6b;}"
+      "css": ".ds-week{list-style:none;margin:0;padding:1rem;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0.4rem;max-width:30rem;background:#141a2f;font-family:'Hanken Grotesk Variable','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;color:#f1f0f5;} .ds-week li{display:grid;justify-items:center;gap:0.1rem;padding:0.6rem 0.2rem 0.55rem;border-radius:10px;background:#1a2139;box-shadow:inset 0 0 0 1px #313b5a;} .ds-week li.is-closed{background:transparent;box-shadow:none;color:#b9bfd2;outline:1px dashed #313b5a;outline-offset:-1px;} .ds-week li.is-today{outline:2px solid #b94e14;outline-offset:-2px;} .ds-week__day{font-weight:700;font-size:0.9375rem;} .ds-week__state{font-size:0.75rem;font-variant-numeric:tabular-nums;color:#b9bfd2;}"
     }
   ],
   "narrative": {
-    "northStar": "One Family's Visit",
-    "overview": "The site tells one literal story: a worried mother and her schoolgirl daughter arrive at a clinic on a KPHB street, Dr. Aloka examines the child, therapy fills a sticker chart and the turned eye straightens, and the family (grandmother included) walks out into sunshine. Every visual decision serves that story. The world is flat, warm vector illustration of Hyderabad in daylight: apartment towers and a small Charminar on the horizon, the elevated metro with a train crossing, the clinic's building with its sign, a neem tree, an auto-rickshaw. The characters are Indian: mother in a saree, a girl in a teal school pinafore with orange ribbons, Dr. Aloka in a white coat over a saree.\n\nThe story runs as four pinned full-screen scenes, each a scroll length whose progress plays the action (walking, faces softening, the doctor crossing the room, stickers landing). After the story the page settles into calm, light, editorial sections for the doctor, trust and FAQ, families' words and the visit. The palette is clinical white and pale blue-greys carrying logo teal for structure and logo orange for hope. Nothing is dark, nothing is abstract, and the illustration is honest geometry, never stock photography. Real photographs appear only as evidence: the doctor's portrait and the clinic's published before/after.\n\nDensity is low and reassuring: one idea per viewport inside the story, generous section padding outside it, long measures kept to 44–56ch.",
+    "northStar": "One Family's Visit, at Evening",
+    "overview": "The site tells one literal story: a worried mother and her schoolgirl daughter arrive at a clinic on a KPHB street as dusk falls, Dr. Aloka examines the child under a lamp, therapy fills a sticker chart and the turned eye straightens, and the family (grandmother included) walks out into a warm twilight. Every visual decision serves that story. The world is flat, warm vector illustration of Hyderabad in the evening: apartment towers with lit windows and a small Charminar on the horizon, the elevated metro with a lit train crossing, the clinic's building with its glowing name board and an open door spilling light, a neem tree, an auto-rickshaw with its headlamp on. The characters are Indian: mother in a saree, a girl in a teal school pinafore with orange ribbons, Dr. Aloka in a white coat over a saree, each rim-lit so they read against the dark.\n\nThe story runs as four pinned full-screen scenes, each a scroll length whose progress plays the action (walking, faces softening, the doctor crossing the room, stickers landing). A story player can play it on its own after a short countdown; any scroll, swipe, key or tap hands control straight back. After the story the page stays in the evening: calm editorial sections for the doctor, trust and FAQ, families' results and the visit, all on a deep blue-ink ground with warm-white text. Two sections carry a themed motif of their own, fenced to that section: the Trust section flies a Sankranti evening sky of kites, and the Results section shows its before/after through a steel-rimmed trial lens. Light surfaces exist only as lit paper objects inside the world. Real photographs appear only as evidence: the doctor's portrait and the clinic's published before/after.\n\nDensity is low and reassuring: one idea per viewport inside the story, generous section padding outside it, long measures kept to 44–56ch.",
     "keyCharacteristics": [
+      "An evening palette: deep blue-ink grounds (`white` #0f1426 is the page base), warm-white ink, logo teal lifted for the dark.",
       "Four scroll-driven illustrated scenes with a live-measured caption band; scenery never runs under the words.",
       "One cast scale (`--fig`) for every figure in a scene, so mother, child, grandmother and doctor stay in proportion at every screen shape.",
-      "Scenery warms from a muted grey-blue morning (arrival) to a sunny noon (leaving).",
-      "Pill-shaped actions: orange Book key, green-outline WhatsApp, underlined Call.",
-      "Light surfaces only; depth comes from soft, ink-tinted downward shadows on white objects.",
+      "The sky moves from a starlit dusk (arrival) to a warm twilight with a setting sun (leaving); light comes from within the world: windows, lamps, the open door.",
+      "Lit paper objects (bubbles, sticker chart, eyes card, name boards, logo plate) are the only light surfaces, and they glow warm.",
+      "Kites belong to the Trust section and trial lenses to the Results section, and nowhere else.",
+      "Pill-shaped actions: orange Book key, green-outline WhatsApp, underlined Call; an autoplay story player that always yields to the visitor.",
       "Bricolage Grotesque headlines, Hanken Grotesk text, Anek Telugu for Telugu lines."
     ],
     "rules": [
       {
+        "name": "The Evening Rule",
+        "body": "Every section sits on the evening: the base (#0f1426) or a gradient that starts or ends on it. There are no light bands and no light theme. Sections step up through `paper`, `mist` and `tint`, never toward white.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lit Paper Rule",
+        "body": "The only light surfaces are objects that exist in the world and catch the lamplight: bubbles, the sticker chart, the eyes card, name boards, the logo plate, rail labels. They are `card` cream with `ink-dark` text. Light `ink` never sits on `card`, and `ink-dark` never sits on the evening ground.",
+        "section": "colors"
+      },
+      {
         "name": "The Hope Is Orange Rule",
-        "body": "Orange means hope and the present moment: the Book key, \"now\" on the rail and the plan, today on the week, \"After\" on the photo, the child's joyful things. It never decorates a section, never becomes a background band, and never sets body text. White text sits only on `hope-action`, never on `hope`.",
+        "body": "Orange means hope and the present moment: the Book key, the story player, \"now\" on the rail and the plan, today on the week, what the lens is showing, the child's joyful things. It never decorates a section, never becomes a background band, and never sets body text. White text sits only on `hope-action`, never on `hope`.",
         "section": "colors"
       },
       {
@@ -875,8 +1181,8 @@
         "section": "colors"
       },
       {
-        "name": "The Warming Sky Rule",
-        "body": "Outdoor scenes use exactly two moods, muted for the worried arrival and sunny for the happy exit. Their difference is the story's emotional arc; a new outdoor scene picks one of the two, it does not invent a third.",
+        "name": "The Dusk To Twilight Rule",
+        "body": "Outdoor scenes use exactly two moods, a starlit dusk for the worried arrival and a warm twilight for the happy exit. Their difference is the story's emotional arc; a new outdoor scene picks one of the two, it does not invent a third.",
         "section": "colors"
       },
       {
@@ -905,29 +1211,39 @@
         "section": "layout"
       },
       {
-        "name": "The Soft Lift Rule",
-        "body": "Shadows are always soft, downward and tinted with ink or Book orange. No hard offset shadows, no glows on anything except the Book key.",
+        "name": "The Motif Fence Rule",
+        "body": "Kites fly only in the Trust section and trial lenses appear only in the Results (families) section. The story scenes stay literal: no kites, lenses or other metaphor enter them, and no other section borrows either motif.",
+        "section": "layout"
+      },
+      {
+        "name": "The Lamplight Rule",
+        "body": "Glows are light, and light is warm: lit paper, name boards, the cast's rim, kites and the sun all glow in amber (rgb 255 190–236 / 90–210). The only exceptions are the Book key's orange under-glow, the before/after divider's orange glow, and the trial lens's faint teal halo. No neon, no coloured glow on controls, no hard offset shadows.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do tell the clinic's story literally, with the illustrated family, the doctor and real Hyderabad places (KPHB street, metro, auto-rickshaw, Charminar).",
+      "Do tell the clinic's story literally, with the illustrated family, the doctor and real Hyderabad places (KPHB street, metro, auto-rickshaw, Charminar), in the evening.",
+      "Do light the world from within: lit windows, the open clinic door, the lamp, the headlamp, the setting sun, and a warm rim on every figure.",
+      "Do put every light surface on `card` (#fbf8f2) with `ink-dark` text, and every other surface on the evening grounds with `ink` text.",
       "Do measure `--band` from the rendered caption and keep all scenery between `--band` and `--ground`.",
       "Do size every figure and scene prop from `--fig`.",
       "Do keep one Book key per view in `hope-action` (#b94e14) with white text.",
+      "Do let the story player yield instantly to any scroll, swipe, key or tap, and remove it under reduced motion.",
       "Do wrap every Telugu line in `lang=\"te\"` and pair it with its English meaning.",
-      "Do keep content visible without JavaScript or motion: reveals only hide under `html.motion-ok`, and reduced motion freezes each scene at a chosen still frame.",
+      "Do keep content visible without JavaScript or motion: reveals only hide under `html.motion-ok`, and reduced motion freezes each scene at a chosen still frame and stops every loop (stars, clouds, birds, lamp, kites).",
       "Do use real photographs only as evidence (the doctor's portrait, the clinic's published before/after), and draw everything else."
     ],
     "donts": [
-      "Don't bring back kites, kite strings, a festival sky or any other abstract metaphor world.",
-      "Don't use trial lenses, trial frames, lens rings or optical-instrument motifs as decoration.",
-      "Don't add dark sections or a dark theme. Ink appears only in small pills, the desk plate and line work.",
+      "Don't add light sections, white bands or a light theme. The page is an evening from top to bottom.",
+      "Don't put kites, kite strings or a festival sky anywhere but the Trust section, and never in the story scenes.",
+      "Don't put trial lenses, lens rims or optical-instrument motifs anywhere but the Results (families) section, and never in the story scenes.",
+      "Don't set light `ink` on `card`, or `ink-dark` on the evening ground.",
       "Don't put eyebrows, kickers or small uppercase labels above headings.",
       "Don't use orange for anything but hope, the present moment and the Book key, and never set white text on `hope` (#e8792f).",
       "Don't use WhatsApp green outside the WhatsApp action.",
       "Don't let scenery, figures or props run under a caption.",
-      "Don't use hard offset shadows or glows other than the Book key's.",
+      "Don't use hard offset shadows, neon, or cool glows; glows are warm lamplight, except the Book key's orange and the lens's faint teal halo.",
+      "Don't autoplay the story against the visitor or under reduced motion.",
       "Don't use stock or generated photography of patients or clinics."
     ]
   }

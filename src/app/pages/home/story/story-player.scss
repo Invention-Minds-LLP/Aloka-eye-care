@@ -1,0 +1,94 @@
+:host {
+  display: contents;
+}
+
+/* ---------- The story player: the story runs by itself, scrolling takes over ---------- */
+.player {
+  position: fixed;
+  z-index: 45;
+  left: 50%;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.45rem 1.1rem 0.45rem 0.45rem;
+  border-radius: 999px;
+  background: rgb(15 20 38 / 0.9);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12), 0 16px 34px -16px rgb(0 0 0 / 0.8);
+  backdrop-filter: blur(8px);
+  transition:
+    opacity 0.4s var(--ease-out),
+    translate 0.5s var(--ease-out);
+  &.is-hidden {
+    opacity: 0;
+    translate: -50% 140%;
+    pointer-events: none;
+  }
+}
+.player__btn {
+  --icon: 1.1rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  flex: none;
+  border: 0;
+  border-radius: 50%;
+  background: var(--hope-action);
+  color: var(--on-accent);
+  cursor: pointer;
+  transition: background-color 0.2s, scale 0.3s var(--ease-out);
+  &:hover {
+    background: var(--hope-action-hover);
+    scale: 1.06;
+  }
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+/* the ring counts down to the story starting, then shows progress */
+.player__ring {
+  position: absolute;
+  inset: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  rotate: -90deg;
+  circle {
+    fill: none;
+    stroke: var(--hope);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    transition: stroke-dashoffset 0.25s linear;
+  }
+}
+.player__text {
+  display: grid;
+  line-height: 1.25;
+  strong {
+    font-size: 0.9375rem;
+    font-weight: 650;
+  }
+  span {
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+  }
+}
+
+@media (max-width: 600px) {
+  .player {
+    gap: 0.6rem;
+    padding-right: 0.9rem;
+  }
+  .player__text span {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .player {
+    display: none;
+  }
+}

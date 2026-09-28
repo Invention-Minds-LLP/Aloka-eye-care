@@ -55,7 +55,6 @@
       <p class="myth"><span lang="te">{{ te.myth }}</span> <span class="myth__en">{{ te.mythEn }}</span></p>
     </div>
 
-    <a class="cue" href="#consult" [class.is-off]="a.p() > 0.2">Scroll to follow their visit</a>
   </div>
 </section>
 
@@ -188,7 +187,7 @@
 
     <div class="clinic-sign" aria-hidden="true">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="3" /><circle cx="14" cy="10.5" r="2.6" fill="currentColor" /></svg>
-      Dr Aloka's Eye Care
+      Dr. Aloka's Eye Care
     </div>
     <app-doctor class="cast__doctor cast__doctor--door" mood="joy" arm="wave" />
     <div class="cast cast--leave" [style.left]="narrow() ? lerp(29, 33, span(l.p(), 0.1, 0.95)) + '%' : 'calc(100% - var(--fig) * 1.5 - ' + lerp(9, 3, span(l.p(), 0.1, 0.95)) + 'vw)'">
@@ -216,3 +215,5 @@
     </div>
   </div>
 </section>
+
+<app-story-player />

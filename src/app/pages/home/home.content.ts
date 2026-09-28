@@ -2,13 +2,13 @@
 // Surgeries, FAQ). Keep them in sync with the clinic; never embellish.
 
 export const CLINIC = {
-  name: "Dr Aloka's Eye Care",
+  name: "Dr. Aloka's Eye Care",
   doctor: 'Dr. Aloka Hedau',
   phoneDisplay: '+91 74164 27503',
   phoneHref: 'tel:+917416427503',
   whatsappHref:
     'https://wa.me/917416427503?text=' +
-    encodeURIComponent("Hello Dr Aloka's Eye Care, I'd like to book an appointment for my child."),
+    encodeURIComponent("Hello Dr. Aloka's Eye Care, I'd like to book an appointment for my child."),
   email: 'dralokaseyecare@gmail.com',
   bookingHref: 'https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1',
   address: [
@@ -89,8 +89,8 @@ export const FIGURES = [
 ] as const;
 
 export const VOICES = [
-  { quote: 'My entire family consults Dr Aloka, which includes my kids, mother and mother-in-law.', name: 'Priyanka Malhotra' },
-  { quote: 'Dr Aloka Ma’am is very kind and helpful. She listens to the parents with all the empathy.', name: 'Pratiksha Tripathi' },
+  { quote: 'My entire family consults Dr. Aloka, which includes my kids, mother and mother-in-law.', name: 'Priyanka Malhotra' },
+  { quote: 'Dr. Aloka Ma’am is very kind and helpful. She listens to the parents with all the empathy.', name: 'Pratiksha Tripathi' },
   { quote: 'Dr. Aloka is very approachable and patient with the kids.', name: 'Prashant Saddi' },
 ] as const;
 
@@ -143,7 +143,7 @@ export const TRUST = [
   },
   {
     title: 'Bring the whole family',
-    body: 'Grandparents’ questions are welcome. As one parent wrote: “My entire family consults Dr Aloka, which includes my kids, mother and mother-in-law.”',
+    body: 'Grandparents’ questions are welcome. As one parent wrote: “My entire family consults Dr. Aloka, which includes my kids, mother and mother-in-law.”',
   },
   {
     title: 'Open six days, easy to find',
