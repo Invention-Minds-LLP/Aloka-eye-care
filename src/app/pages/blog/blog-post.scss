@@ -1,0 +1,218 @@
+:host {
+  display: block;
+}
+
+.article {
+  background: radial-gradient(60rem 30rem at 15% 0%, #1d2a4a 0%, var(--white) 70%);
+  padding-block: clamp(2.5rem, 6vh, 4.5rem) clamp(5rem, 12vh, 8rem);
+  min-height: 70vh;
+}
+/* Article and clinic sidebar side by side on wide screens; the sidebar follows as you read. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 330px);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
+}
+.layout__main {
+  min-width: 0;
+  max-width: 48rem;
+}
+/* The sidebar follows the reader. When it is taller than the screen, --side-top (set in blog-post.ts)
+   lets it scroll until its last box is visible, then it stays. */
+.layout__side {
+  position: sticky;
+  top: var(--side-top, 6rem);
+  margin-top: 4.5rem;
+}
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .layout__side {
+    position: static;
+    margin-top: 0;
+    max-width: 48rem;
+  }
+}
+.article__state {
+  padding-block: 4rem;
+  color: var(--ink-soft);
+  h1 {
+    font-size: var(--step-1);
+    color: var(--ink);
+  }
+  p {
+    margin-top: 1rem;
+  }
+  a {
+    color: var(--teal-ink);
+  }
+}
+
+.article__back {
+  display: inline-flex;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  align-items: center;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-decoration: none;
+  &:hover {
+    color: var(--ink);
+  }
+}
+.article__head h1 {
+  margin-top: 1rem;
+  font-size: var(--step-1);
+  max-width: 22ch;
+}
+.article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+  margin-top: 1.1rem;
+  font-size: var(--step-small);
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.article__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  li {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--teal-ink);
+    box-shadow: inset 0 0 0 1px var(--steel-300);
+  }
+}
+
+.article__cover {
+  margin: 2.25rem 0 0;
+  img {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border-radius: var(--radius);
+    background: var(--card);
+  }
+}
+.article__body {
+  margin-top: 2.5rem;
+}
+
+.progress {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(4.5rem - 3px);
+  z-index: 51;
+  height: 3px;
+  pointer-events: none;
+  span {
+    display: block;
+    height: 100%;
+    background: var(--hope);
+    transform-origin: left;
+    transition: transform 0.15s linear;
+  }
+}
+@media (max-width: 760px) {
+  .progress {
+    top: calc(4rem - 3px);
+  }
+}
+
+.article__cta {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: end;
+  margin-top: 4rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.5rem, 4vw, 2.25rem) clamp(1.5rem, 4vw, 2.25rem) clamp(1rem, 3vw, 1.5rem);
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2c2350, #1a1c3e);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+  h2 {
+    font-size: var(--step-2);
+  }
+  p {
+    margin-top: 0.75rem;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+}
+.article__doctor {
+  width: clamp(90px, 12vw, 130px);
+  height: calc(clamp(90px, 12vw, 130px) * 470 / 200);
+  margin-bottom: calc(-1 * clamp(1.5rem, 4vw, 2.25rem));
+  filter: drop-shadow(0 0 1px rgb(255 236 210 / 0.75)) drop-shadow(0 0 18px rgb(255 190 120 / 0.2));
+}
+.article__cta-copy {
+  align-self: center;
+}
+@media (max-width: 560px) {
+  .article__cta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .article__doctor {
+    display: none;
+  }
+}
+.article__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.article__pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.pager {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px var(--steel-300);
+  transition: background-color 0.2s;
+  &:hover {
+    background: var(--steel-100);
+  }
+}
+.pager--newer {
+  grid-column: 2;
+  text-align: right;
+}
+.pager__label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--hope);
+}
+.pager__title {
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+@media (max-width: 600px) {
+  .article__pager {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pager--newer {
+    grid-column: auto;
+    text-align: left;
+  }
+}

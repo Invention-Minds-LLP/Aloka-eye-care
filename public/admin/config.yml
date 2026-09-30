@@ -1,0 +1,135 @@
+# Decap CMS: the clinic's blog editor at /admin
+# Docs: https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: github
+  repo: Invention-Minds-LLP/Aloka-eye-care
+  branch: main
+  # Login goes through the small OAuth helper on the clinic's own hosting (public/oauth/auth.php).
+  base_url: https://dralokaseyecare.com
+  auth_endpoint: oauth/auth.php
+  commit_messages:
+    create: 'Blog: add “{{slug}}”'
+    update: 'Blog: update “{{slug}}”'
+    delete: 'Blog: remove “{{slug}}”'
+    uploadMedia: 'Blog: upload “{{path}}”'
+    deleteMedia: 'Blog: delete “{{path}}”'
+
+# Edit on your own computer without logging in: run `npm run dev`, then open http://localhost:4200/admin/index.html
+local_backend: true
+
+site_url: https://dralokaseyecare.com
+display_url: https://dralokaseyecare.com
+logo_url: /images/logo.png
+locale: en
+
+media_folder: public/images/blog
+public_folder: /images/blog
+
+collections:
+  - name: blog
+    label: Blog posts
+    label_singular: Blog post
+    description: Articles on the site's Blog page. They go live a few minutes after you press Publish.
+    folder: content/blog
+    create: true
+    slug: '{{slug}}'
+    preview_path: blog/{{slug}}
+    sortable_fields: [date, title]
+    view_filters:
+      - { label: Drafts, field: draft, pattern: true }
+    summary: "{{title}} — {{date | date('D MMM YYYY')}}{{draft | ternary(' · Draft', '')}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Short description
+        name: description
+        widget: text
+        hint: One or two sentences. Shown in the blog list and in Google results (about 150 characters).
+      - { label: Publish date, name: date, widget: datetime, format: 'YYYY-MM-DDTHH:mm:ss', default: '{{now}}' }
+      - label: Topics
+        name: categories
+        widget: select
+        multiple: true
+        min: 1
+        default: [Eye care]
+        options: [Eye care, Squint, Myopia, Children's eyes, Surgery, Lifestyle, Medical]
+      - label: Cover image
+        name: image
+        widget: image
+        required: false
+        hint: A wide photo works best. Keep it under 1 MB.
+      - label: Cover image description
+        name: imageAlt
+        widget: string
+        required: false
+        hint: Describe the photo for people who can't see it, e.g. “A girl reading an eye chart”.
+      - { label: Author, name: author, widget: string, default: Dr. Aloka Hedau }
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+        hint: Drafts are saved but not shown on the website.
+      - label: Article
+        name: body
+        widget: markdown
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: [image, split, tip, cta, quote, faq, figure, compare]
+        modes: [rich_text, raw]
+
+  - name: site
+    label: Blog sidebar
+    description: The boxes beside every article — clinic updates and offers, figures, and what parents say.
+    files:
+      - name: banners
+        label: Sidebar items
+        file: content/banners.yml
+        fields:
+          - label: Items
+            name: banners
+            widget: list
+            summary: '{{fields.kind}} — {{fields.title}}{{fields.author}}'
+            hint: Drag to reorder. Offers and announcements take turns in the "At the clinic" box; testimonials take turns in "What parents say".
+            fields:
+              - label: Type
+                name: kind
+                widget: select
+                options:
+                  - { label: 'Offer (e.g. a screening camp)', value: offer }
+                  - { label: 'Announcement (hours, holidays, news)', value: announcement }
+                  - { label: 'Figure (e.g. 350K+ happy patients)', value: figure }
+                  - { label: 'Testimonial', value: testimonial }
+              - { label: 'Title (for a figure: the number)', name: title, widget: string, required: false }
+              - { label: 'Text (for a figure: what it counts; for a testimonial: the quote)', name: text, widget: text, required: false }
+              - { label: 'Who said it (testimonials only)', name: author, widget: string, required: false }
+              - { label: Button link, name: link, widget: string, required: false, hint: 'Optional, e.g. the booking link.' }
+              - { label: Button text, name: linkLabel, widget: string, required: false }
+              - label: Show from
+                name: start
+                widget: datetime
+                required: false
+                format: 'YYYY-MM-DDTHH:mm:ss'
+                hint: Leave empty to show straight away.
+              - label: Show until
+                name: end
+                widget: datetime
+                required: false
+                format: 'YYYY-MM-DDTHH:mm:ss'
+                hint: Leave empty to keep it up. After this date it disappears by itself, no need to delete it.
+              - { label: Show on the site, name: active, widget: boolean, default: true }
+      - name: google-reviews
+        label: Google reviews (only if the live feed isn't set up)
+        file: content/google-reviews.yml
+        description: When the Google key is added to GitHub, reviews load from Google automatically and this list is ignored. Until then, copy real reviews from the clinic's Google listing here — never write your own.
+        fields:
+          - { label: Google rating (e.g. 4.8), name: rating, widget: number, value_type: float, required: false, step: 0.1, min: 1, max: 5 }
+          - { label: Number of reviews on Google, name: count, widget: number, value_type: int, required: false }
+          - label: Reviews
+            name: reviews
+            widget: list
+            required: false
+            summary: '{{fields.author}} — {{fields.rating}}★'
+            fields:
+              - { label: Name (as on Google), name: author, widget: string }
+              - { label: Stars, name: rating, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+              - { label: Date, name: date, widget: datetime, format: 'YYYY-MM-DD', required: false }
+              - { label: Review text (copied exactly), name: text, widget: text }

@@ -1,0 +1,6 @@
+# Google reviews shown on the home page — used only when the live Google feed isn't set up
+# (no GOOGLE_PLACES_API_KEY). Copy real reviews from the clinic's Google listing; never write your own.
+# Edited in the CMS under "Google reviews".
+rating:
+count:
+reviews: []

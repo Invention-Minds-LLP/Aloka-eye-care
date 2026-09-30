@@ -1,0 +1,264 @@
+/*
+ * Article typography and the designed blog blocks.
+ * Used by the site (angular.json styles) and copied into the CMS preview by scripts/build-blog.mjs.
+ */
+.prose {
+  max-width: 68ch;
+  font-size: var(--step-body, 1.0625rem);
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.prose > * + * {
+  margin-top: 0.85em;
+}
+.prose h2,
+.prose h3 {
+  color: var(--ink);
+  font-family: var(--font-display, inherit);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.prose h2 {
+  margin-top: 1.8em;
+  font-size: var(--step-2, 1.6rem);
+}
+.prose h3 {
+  margin-top: 1.8em;
+  font-size: var(--step-3, 1.2rem);
+}
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.6em;
+}
+.prose p {
+  margin-bottom: 0;
+}
+.prose strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+.prose a {
+  color: var(--teal-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+  margin-bottom: 0;
+}
+.prose li + li {
+  margin-top: 0.35em;
+}
+.prose li::marker {
+  color: var(--hope);
+  font-weight: 700;
+}
+/* Images in the text stay a comfortable size: scaled down (never cropped) to at most
+   about half a screen tall, and centred. */
+.prose img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: min(380px, 48vh);
+  margin-inline: auto;
+  border-radius: 12px;
+  background: var(--card, #fbf8f2);
+}
+.prose sup {
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+/* ---------- Designed blocks ---------- */
+.prose .blk {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.prose .blk > :first-child {
+  margin-top: 0;
+}
+.prose .blk-tip {
+  padding: 1.2rem 1.4rem;
+  border-radius: 14px;
+  background: var(--tint, #172340);
+  color: var(--ink);
+}
+.prose .blk-tip__title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display, inherit);
+  font-size: var(--step-3, 1.2rem);
+  font-weight: 650;
+  color: var(--teal-ink);
+}
+.prose .blk-cta {
+  padding: 1.5rem 1.6rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2c2350, #1a1c3e);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+  color: var(--ink);
+}
+.prose .blk-cta__title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display, inherit);
+  font-size: var(--step-2, 1.6rem);
+  font-weight: 650;
+  line-height: 1.2;
+}
+.prose .blk-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+.prose .blk-cta__actions a {
+  text-decoration: none;
+}
+.prose .blk-quote {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 1.3rem;
+  border-left: 1px solid var(--hope);
+  font-family: var(--font-display, inherit);
+  font-size: var(--step-3, 1.2rem);
+  line-height: 1.45;
+  color: var(--ink);
+}
+.prose .blk-quote footer {
+  margin-top: 0.6rem;
+  font-family: var(--font-body, inherit);
+  font-size: var(--step-small, 0.9375rem);
+  color: var(--ink-soft);
+}
+.prose .blk-faq details {
+  border-bottom: 1px solid var(--steel-300, #313b5a);
+}
+.prose .blk-faq summary {
+  padding: 1rem 0;
+  cursor: pointer;
+  font-weight: 650;
+  color: var(--ink);
+}
+.prose .blk-faq details > :not(summary) {
+  margin: 0 0 1rem;
+}
+.prose .blk-figure {
+  margin-inline: 0;
+}
+.prose .blk-figure figcaption,
+.prose .blk-compare figcaption {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-size: var(--step-small, 0.9375rem);
+  color: var(--ink-faint, #8d95ad);
+}
+.prose .blk-compare {
+  --reveal: 50%;
+  margin-inline: 0;
+}
+.prose .blk-compare__frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.prose .blk-compare__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+.prose .blk-compare__after {
+  clip-path: inset(0 0 0 calc(100% - var(--reveal)));
+}
+.prose .blk-compare__edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(100% - var(--reveal));
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--hope);
+}
+.prose .blk-compare__tag {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.9);
+  color: var(--ink-dark, #1b2a3a);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.prose .blk-compare__tag--after {
+  left: auto;
+  right: 0.8rem;
+  background: var(--hope-action);
+  color: #fff;
+}
+.prose .blk-compare__range {
+  display: block;
+  width: 100%;
+  height: 2.75rem;
+  accent-color: var(--hope);
+  direction: rtl;
+  cursor: ew-resize;
+}
+
+/* buttons inside articles keep their own colours, not the link colour */
+.prose a.btn-book {
+  color: #fff;
+  text-decoration: none;
+}
+.prose a.btn-wa {
+  color: var(--wa);
+  text-decoration: none;
+}
+.prose a.btn-wa:hover {
+  color: #fff;
+}
+
+/* Image + text, side by side in one box. Stacks on narrow screens. */
+.prose .blk-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: center;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border-radius: 16px;
+  background: var(--paper, #141a2f);
+  box-shadow: inset 0 0 0 1px var(--steel-300, #313b5a);
+}
+.prose .blk-split--right .blk-split__media {
+  order: 2;
+}
+.prose .blk-split__media img {
+  width: 100%;
+  height: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.prose .blk-split__text > :first-child {
+  margin-top: 0;
+}
+.prose .blk-split__text > * + * {
+  margin-top: 0.9em;
+}
+.prose .blk-split__text h3 {
+  margin-top: 0;
+}
+@media (max-width: 640px) {
+  .prose .blk-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .prose .blk-split--right .blk-split__media {
+    order: 0;
+  }
+}

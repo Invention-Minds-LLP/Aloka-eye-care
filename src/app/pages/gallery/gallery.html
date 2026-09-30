@@ -1,0 +1,111 @@
+<app-page-bar />
+<main id="main">
+  <section class="page-hero" aria-labelledby="gallery-title">
+    <div class="wrap page-hero__grid">
+      <div>
+        <ol class="crumbs" aria-label="Breadcrumb">
+          <li><a routerLink="/">Home</a></li>
+          <li aria-current="page">Gallery</li>
+        </ol>
+        <h1 id="gallery-title">Inside Dr. Aloka's Eye Care</h1>
+        <p class="page-hero__lede">
+          The clinic in KPHB Phase 6, Kukatpally, the children and adults Dr. Aloka Hedau has treated, and her talks at eye conferences in India
+          and abroad.
+        </p>
+        <div class="page-hero__actions">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
+          <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> Ask on WhatsApp</a>
+        </div>
+      </div>
+      <!-- a light table: a handful of prints slide out of the pile and come into focus -->
+      <div class="table" aria-hidden="true">
+        @for (p of fan; track p.src; let i = $index) {
+          <figure class="print" [style.--i]="i">
+            <img [src]="p.thumb" alt="" [width]="p.w" [height]="p.h" decoding="async" />
+          </figure>
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="tabs-wrap">
+    <div class="wrap">
+      <div class="tabs" role="group" aria-label="Show album">
+        @for (t of tabs; track t.id) {
+          <button type="button" [class.is-on]="filter() === t.id" [attr.aria-pressed]="filter() === t.id" (click)="filter.set(t.id)">
+            {{ t.title }} <span class="tabs__count">{{ t.count }}</span>
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  @for (a of albums(); track a.id) {
+    <section class="album section" [id]="a.id" [attr.aria-labelledby]="a.id + '-title'">
+      <div class="wrap">
+        <header class="album__head" appReveal>
+          <h2 class="section__title" [id]="a.id + '-title'">{{ a.title }}</h2>
+          <p class="album__lede">{{ a.lede }}</p>
+        </header>
+        <ul class="grid" [class.grid--strips]="a.id === 'outcomes'">
+          @for (p of a.photos; track p.src; let i = $index) {
+            <li class="shot" [class.shot--wide]="p.w / p.h > 2.2" [style.--delay]="(i % 3) * 0.08 + 's'">
+              <button type="button" class="shot__btn focus-in" appReveal (click)="show(p, $event)">
+                <img [src]="p.thumb" [alt]="p.caption" [width]="p.w" [height]="p.h" loading="lazy" decoding="async" />
+                <span class="shot__zoom" aria-hidden="true"><app-icon name="arrow" /></span>
+              </button>
+              <p class="shot__caption">{{ p.caption }}</p>
+            </li>
+          }
+        </ul>
+      </div>
+    </section>
+  }
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>See the clinic for yourself</h2>
+          <p>Monday to Saturday, 10 am to 5 pm, by appointment, at KPHB Phase 6, near Forum Srujana Mall, Kukatpally.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
+          <a class="link-call" routerLink="/contact-us/"><app-icon name="pin" /><span>Map and directions</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- the viewer: one photo at a time, arrows / swipe to move, Esc to close -->
+<dialog
+  #viewer
+  class="viewer"
+  aria-label="Photo viewer"
+  (close)="onClosed()"
+  (click)="onBackdrop($event)"
+  (touchstart)="touchStart($event)"
+  (touchend)="touchEnd($event)"
+>
+  @if (current(); as p) {
+    <figure class="viewer__figure">
+      @for (k of [p.src]; track k) {
+        <img class="viewer__img" [src]="p.src" [alt]="p.caption" [width]="p.w" [height]="p.h" />
+      }
+      <figcaption>
+        <span class="viewer__album">{{ albumTitle(p.album) }}</span>
+        {{ p.caption }}
+        <span class="viewer__count">{{ open() + 1 }} / {{ total() }}</span>
+      </figcaption>
+    </figure>
+    <button type="button" class="viewer__nav viewer__nav--prev" (click)="step(-1)">
+      <app-icon name="arrow" /><span class="visually-hidden">Previous photo</span>
+    </button>
+    <button type="button" class="viewer__nav viewer__nav--next" (click)="step(1)">
+      <app-icon name="arrow" /><span class="visually-hidden">Next photo</span>
+    </button>
+    <button type="button" class="viewer__close" (click)="close()"><app-icon name="close" /><span class="visually-hidden">Close</span></button>
+  }
+</dialog>
+<app-site-footer />

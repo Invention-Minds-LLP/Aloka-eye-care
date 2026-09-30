@@ -1,0 +1,472 @@
+:host {
+  display: block;
+  background: var(--white);
+}
+
+/* ---------- The clock ---------- */
+.clock {
+  justify-self: center;
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  width: min(100%, 22rem);
+  svg {
+    width: min(100%, 17rem);
+    height: auto;
+    overflow: visible;
+  }
+}
+.clock__face {
+  fill: var(--card);
+  filter: drop-shadow(0 24px 30px rgb(0 0 0 / 0.5));
+}
+/* the opening hours, 10 to 5, lit on the dial */
+.clock__hours {
+  fill: none;
+  stroke: rgb(232 121 47 / 0.28);
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+.clock--open .clock__hours {
+  stroke: rgb(63 207 128 / 0.35);
+}
+:host-context(html.motion-ok) .clock__hours {
+  stroke-dasharray: 200;
+  animation: draw 1.6s var(--ease-out) 0.3s both;
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.clock__tick {
+  stroke: #a7aec0;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+.clock__tick--major {
+  stroke: var(--ink-dark);
+  stroke-width: 2;
+}
+.clock__hand {
+  stroke: var(--ink-dark);
+  stroke-linecap: round;
+  transform-origin: 60px 60px;
+  transform-box: view-box;
+}
+.clock__hand--h {
+  stroke-width: 4;
+}
+.clock__hand--m {
+  stroke-width: 2.4;
+  stroke: var(--hope-action);
+}
+:host-context(html.motion-ok) .clock__hand {
+  transition: rotate 2.2s var(--ease-out) 0.2s;
+}
+.clock__pin {
+  fill: var(--ink-dark);
+}
+.clock__text {
+  text-align: center;
+}
+.clock__status {
+  text-wrap: balance;
+  font-weight: 650;
+  font-size: var(--step-3);
+}
+.clock__dot {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: 0.1em;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--hope);
+}
+.clock--open .clock__dot {
+  background: var(--wa);
+  box-shadow: 0 0 0 0 rgb(63 207 128 / 0.6);
+}
+:host-context(html.motion-ok) .clock--open .clock__dot {
+  animation: pulse 2s ease-out infinite;
+}
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 10px rgb(63 207 128 / 0);
+  }
+}
+.clock__hours-text {
+  margin-top: 0.3rem;
+  font-size: var(--step-small);
+  color: var(--ink-soft);
+}
+
+/* ---------- Ways in ---------- */
+.ways-section {
+  padding-bottom: clamp(3rem, 8vh, 5rem);
+}
+.ways {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.way {
+  --icon: 1.3rem;
+  display: grid;
+  gap: 0.3rem;
+  height: 100%;
+  padding: 1.35rem 1.35rem 1.5rem;
+  border-radius: 18px;
+  background: var(--mist);
+  box-shadow: inset 0 0 0 1px var(--steel-300);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      inset 0 0 0 1px var(--steel-500),
+      0 20px 34px -22px rgb(0 0 0 / 0.8);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--teal-ink);
+    outline-offset: 3px;
+  }
+}
+.way__icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.6rem;
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink-dark);
+}
+.way--wa .way__icon {
+  background: var(--wa);
+  color: #0c2a1a;
+}
+.way--book .way__icon {
+  background: var(--hope-action);
+  color: #fff;
+}
+.way__label {
+  font-weight: 650;
+  font-size: var(--step-3);
+}
+.way__value {
+  color: var(--ink-soft);
+  font-size: var(--step-small);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- The message ---------- */
+.compose {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+.form__lede {
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+  max-width: 50ch;
+}
+.field {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  label,
+  legend {
+    font-weight: 650;
+    padding: 0;
+  }
+  legend {
+    margin-bottom: 0.45rem;
+  }
+  input[type='text'],
+  select,
+  textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.9rem;
+    border: 0;
+    border-radius: 12px;
+    background: var(--white);
+    color: var(--ink);
+    font: 400 1rem/1.4 var(--font-body);
+    box-shadow: inset 0 0 0 1px var(--steel-300);
+    transition: box-shadow 0.2s;
+    &:focus {
+      outline: none;
+      box-shadow: inset 0 0 0 2px var(--teal-ink);
+    }
+    &[aria-invalid='true'] {
+      box-shadow: inset 0 0 0 2px #ef8a5a;
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+}
+.field__opt {
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+.field__err {
+  color: #f4a37a;
+  font-size: var(--step-small);
+}
+.field-row {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 1rem;
+  .field {
+    align-content: start;
+  }
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chip {
+  position: relative;
+  input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+  }
+  span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    background: var(--steel-100);
+    color: var(--ink-soft);
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px var(--steel-300);
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  input:checked + span {
+    background: var(--card);
+    color: var(--ink-dark);
+    box-shadow: none;
+  }
+  input:focus-visible + span {
+    outline: 3px solid var(--teal-ink);
+    outline-offset: 2px;
+  }
+}
+.form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+/* the phone, showing the message as the clinic will get it */
+.preview {
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+}
+.phone {
+  width: min(100%, 20rem);
+  border-radius: 34px;
+  padding: 0.7rem;
+  background: #0a0d1a;
+  box-shadow:
+    inset 0 0 0 2px #2a3150,
+    0 30px 60px -24px rgb(0 0 0 / 0.9);
+  rotate: 2deg;
+}
+.phone__bar {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 0.9rem;
+  border-radius: 26px 26px 0 0;
+  background: #1f2c34;
+  img {
+    width: 9rem;
+    height: auto;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: var(--card);
+  }
+}
+.phone__chat {
+  display: grid;
+  align-content: end;
+  gap: 0.5rem;
+  min-height: 20rem;
+  padding: 1rem 0.8rem 1.2rem;
+  border-radius: 0 0 26px 26px;
+  background:
+    radial-gradient(circle at 20% 20%, rgb(255 255 255 / 0.03) 0 2px, transparent 3px) 0 0 / 22px 22px,
+    #0b141a;
+}
+.bubble {
+  justify-self: end;
+  max-width: 92%;
+  padding: 0.6rem 0.75rem 0.4rem;
+  border-radius: 12px 12px 4px 12px;
+  background: #005c4b;
+  color: #e9edef;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.bubble__time {
+  display: block;
+  margin-top: 0.2rem;
+  text-align: right;
+  font-size: 0.6875rem;
+  color: rgb(233 237 239 / 0.6);
+}
+:host-context(html.motion-ok) .bubble {
+  animation: pop 0.5s var(--ease-out) both 0.4s;
+  transform-origin: bottom right;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.8;
+  }
+}
+.preview__note {
+  font-size: var(--step-small);
+  color: var(--ink-faint);
+}
+
+/* ---------- Finding the clinic ---------- */
+.find {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.find__address {
+  display: grid;
+  gap: 0.15rem;
+  margin: 1.5rem 0 1.25rem;
+  font-style: normal;
+  color: var(--ink-soft);
+  strong {
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+}
+.find__sub {
+  margin-top: 2.25rem;
+  font-size: var(--step-3);
+}
+.hours {
+  width: 100%;
+  max-width: 22rem;
+  margin-top: 0.75rem;
+  border-collapse: collapse;
+  th,
+  td {
+    padding: 0.55rem 0.2rem;
+    border-bottom: 1px solid var(--steel-300);
+    text-align: left;
+    font-weight: 400;
+  }
+  td {
+    text-align: right;
+    color: var(--ink-soft);
+  }
+  tr.is-today th,
+  tr.is-today td {
+    color: var(--ink);
+    font-weight: 650;
+  }
+}
+.hours__today {
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--hope-action);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  vertical-align: 0.1em;
+}
+.find__note {
+  margin-top: 0.75rem;
+  font-size: var(--step-small);
+  color: var(--ink-faint);
+}
+.map {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--mist);
+  box-shadow: inset 0 0 0 1px var(--steel-300);
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: saturate(0.85);
+  }
+}
+
+.also {
+  color: var(--ink-soft);
+  a {
+    color: var(--teal-ink);
+    font-weight: 600;
+  }
+}
+.section:last-of-type {
+  padding-top: 0;
+}
+
+@media (max-width: 1000px) {
+  .ways {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .compose,
+  .find {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .clock svg {
+    width: 12rem;
+  }
+}
+@media (max-width: 480px) {
+  .ways {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clock__hand {
+    transition: none !important;
+  }
+}

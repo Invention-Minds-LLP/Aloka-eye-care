@@ -1,0 +1,38 @@
+# Blog sidebar: edited in the CMS under "Blog sidebar".
+# Each item can have a start and end date; it only shows on the site between them.
+# kind: offer | announcement | figure | testimonial
+banners:
+  - kind: announcement
+    title: Open Monday to Saturday
+    text: 10 am to 5 pm, third floor, near Forum Srujana Mall, KPHB Phase 6. Closed on Sundays.
+    link: https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1
+    linkLabel: Book an appointment
+    active: true
+  - kind: figure
+    title: 350K+
+    text: happy patients
+    active: true
+  - kind: figure
+    title: 20K+
+    text: paediatric & adult squint surgeries
+    active: true
+  - kind: figure
+    title: 10,000+
+    text: paediatric cataract surgeries
+    active: true
+  - kind: figure
+    title: 20K+
+    text: vision therapies
+    active: true
+  - kind: testimonial
+    text: My entire family consults Dr. Aloka, which includes my kids, mother and mother-in-law.
+    author: Priyanka Malhotra
+    active: true
+  - kind: testimonial
+    text: Dr. Aloka Ma’am is very kind and helpful. She listens to the parents with all the empathy.
+    author: Pratiksha Tripathi
+    active: true
+  - kind: testimonial
+    text: Dr. Aloka is very approachable and patient with the kids.
+    author: Prashant Saddi
+    active: true

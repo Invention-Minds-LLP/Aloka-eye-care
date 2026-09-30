@@ -1,0 +1,75 @@
+# Dr. Aloka's Eye Care — Apache / cPanel rules (the Netlify equivalent is netlify.toml)
+
+Options -Indexes
+DirectoryIndex index.html index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Old WordPress blog addresses → new blog (keeps Google rankings)
+  RewriteRule ^(blogs|blog-classic)/?$ /blog/ [R=301,L]
+  RewriteRule ^category/[^/]+/?$ /blog/ [R=301,L]
+  RewriteRule ^about/?$ /about-us/ [R=301,L]
+  RewriteRule ^gallery-2/?$ /gallery/ [R=301,L]
+  RewriteRule ^contact/?$ /contact-us/ [R=301,L]
+  RewriteRule ^(myopia-or-short-sightedness-in-children|many-systemic-and-genetic-diseases-in-the-body-are-first-diagnosed-by-a-pediatric-ophthalmologist-through-a-thorough-eye-checkup|why-does-your-child-require-to-be-under-a-pediatric-ophthalmologist|typical-signs-of-visual-difficulties|what-age-can-i-have-my-childs-eye-test|can-we-reverse-or-stop-myopia-in-our-child)/?$ /blog/$1/ [R=301,L]
+  RewriteRule ^booking-form/?$ https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1 [R=302,L]
+
+  # Real files and folders (images, /admin, /oauth) are served as they are
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Pages are built as folders (about-us/index.html); add the slash so each one loads its own HTML
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
+
+  # Everything else is a page of the Angular app
+  RewriteRule ^ /index.html [L]
+</IfModule>
+
+# Never serve dotfiles or config
+<FilesMatch "^\.|\.(yml|md|lock|json\.bak)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>
+# …except the CMS config, which the editor needs
+<Files "config.yml">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+</Files>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # index.html must always be fresh so new deploys show at once
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # hashed build files never change
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.json$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/gif "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml
+</IfModule>

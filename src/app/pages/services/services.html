@@ -1,0 +1,88 @@
+<app-page-bar />
+<main id="main">
+  <section class="page-hero" aria-labelledby="services-title">
+    <div class="wrap page-hero__grid">
+      <div>
+        <ol class="crumbs" aria-label="Breadcrumb">
+          <li><a routerLink="/">Home</a></li>
+          <li aria-current="page">Services</li>
+        </ol>
+        <h1 id="services-title">Children's eye care and squint treatment in Kukatpally, Hyderabad</h1>
+        <p class="page-hero__lede">
+          From a baby's first eye check to squint, myopia and vision therapy: everything a child's eyes need, under one specialist, at
+          KPHB Phase 6.
+        </p>
+        <div class="page-hero__actions">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an eye check <app-icon name="arrow" /></a>
+          <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> Ask on WhatsApp</a>
+        </div>
+      </div>
+      <!-- the eight services as a lit chart board, symbols first -->
+      <ul class="board" aria-label="Our services">
+        @for (s of services; track s.id; let i = $index) {
+          <li [style.--i]="i">
+            <a [href]="'services/#' + s.id"><app-lea [shape]="shapes[i % 4]" />{{ s.title }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="index" aria-label="On this page">
+      <p class="index__label">On this page</p>
+      <ol>
+        @for (s of services; track s.id; let i = $index) {
+          <li [class.is-on]="active() === s.id">
+            <a [href]="'services/#' + s.id" [attr.aria-current]="active() === s.id ? 'true' : null"
+              ><app-lea [shape]="shapes[i % 4]" />{{ s.title }}</a
+            >
+          </li>
+        }
+      </ol>
+    </nav>
+
+    <div class="list">
+      @for (s of services; track s.id; let i = $index) {
+        <section class="svc" [id]="s.id" [class.svc--flip]="i % 2 === 1" [attr.aria-labelledby]="s.id + '-title'">
+          <figure class="svc__img focus-in" appReveal>
+            <img [src]="s.image" [alt]="s.imageAlt" width="600" height="600" loading="lazy" decoding="async" />
+          </figure>
+          <div class="svc__body">
+            <p class="svc__num" aria-hidden="true"><app-lea [shape]="shapes[i % 4]" /></p>
+            <h2 [id]="s.id + '-title'">{{ s.title }}</h2>
+            <p class="svc__lead">{{ s.lead }}</p>
+            <ul class="svc__points">
+              @for (p of s.points; track p) {
+                <li>{{ p }}</li>
+              }
+            </ul>
+            @if (s.note) {
+              <p class="svc__note">{{ s.note }}</p>
+            }
+            @if (s.id === 'myopia-clinic') {
+              <a class="svc__more" routerLink="/" fragment="myopia">See what a child with myopia sees →</a>
+            }
+          </div>
+        </section>
+      }
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Not sure which service your child needs?</h2>
+          <p>Book a paediatric eye check. Dr. Aloka Hedau will examine both eyes and explain what she finds, in words parents understand.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
+          <a class="link-call" [href]="clinic.phoneHref"><app-icon name="phone" /><span>{{ clinic.phoneDisplay }}</span></a>
+        </div>
+      </div>
+      <p class="also">Looking for an operation? See <a routerLink="/surgeries/">squint, cataract and other surgeries</a>.</p>
+    </div>
+  </section>
+</main>
+<app-site-footer />

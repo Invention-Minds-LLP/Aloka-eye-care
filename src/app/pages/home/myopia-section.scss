@@ -1,0 +1,308 @@
+:host {
+  display: block;
+}
+
+.myo {
+  background: radial-gradient(60rem 34rem at 20% 40%, #1b2a4a 0%, var(--white) 70%);
+  padding-block: clamp(6rem, 14vh, 9rem);
+}
+.myo__head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 1.5rem clamp(2rem, 5vw, 5rem);
+  align-items: end;
+}
+h2 {
+  font-size: var(--step-1);
+}
+.myo__lede {
+  font-size: var(--step-3);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+
+.myo__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  margin-top: clamp(3rem, 7vh, 4.5rem);
+}
+
+/* ---------- See what your child sees ---------- */
+.view {
+  margin: 0;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--steel-300);
+}
+.view__frame {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+.chalk {
+  font: 700 34px var(--font-display);
+  fill: #f4f1ea;
+  letter-spacing: 0.02em;
+}
+.chalk--sm {
+  font-size: 24px;
+}
+/* myopia: far things blur; the right glasses bring them back */
+.view__far {
+  filter: blur(5px);
+  transition: filter 0.9s var(--ease-out);
+}
+.view.is-sharp .view__far {
+  filter: none;
+}
+.view__tag {
+  position: absolute;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: rgb(27 42 58 / 0.82);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.view__tag--far {
+  left: 0.75rem;
+  top: 0.75rem;
+}
+.view__tag--near {
+  right: 0.75rem;
+  bottom: 0.75rem;
+}
+.view__switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: var(--steel-100);
+  box-shadow: inset 0 0 0 1px var(--steel-300);
+  button {
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font: 650 var(--step-small) / 1.2 var(--font-body);
+    cursor: pointer;
+    transition:
+      background-color 0.25s,
+      color 0.25s;
+    &.is-on {
+      background: var(--card);
+      color: var(--ink-dark);
+    }
+  }
+}
+.view figcaption {
+  min-height: 4.8em;
+  margin-top: 1rem;
+  font-size: var(--step-small);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  strong {
+    color: var(--ink);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .view__far {
+    transition: none;
+  }
+}
+
+/* ---------- What the clinic does ---------- */
+.myo__body h3 {
+  font-size: var(--step-2);
+}
+.myo__body h3 + ul {
+  margin-top: 1rem;
+}
+.myo__body ul + h3 {
+  margin-top: 2.25rem;
+}
+.does {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+  li {
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--teal);
+    color: var(--ink-soft);
+  }
+  strong {
+    color: var(--ink);
+  }
+}
+.habits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  li {
+    display: grid;
+    gap: 0.35rem;
+    align-content: start;
+    padding: 1rem;
+    border-radius: 14px;
+    background: var(--paper);
+    box-shadow: inset 0 0 0 1px var(--steel-300);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+}
+.habit__big {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--marigold, #f2b134);
+}
+
+/* ---------- The checklist ---------- */
+.check {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  grid-template-areas:
+    'intro list'
+    'result list';
+  gap: 1.5rem clamp(2rem, 5vw, 4rem);
+  margin-top: clamp(3.5rem, 8vh, 5rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #2c2350, #1a1c3e);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+.check__intro {
+  grid-area: intro;
+  h3 {
+    font-size: var(--step-2);
+  }
+  p {
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+  }
+}
+.check__list {
+  grid-area: list;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  label {
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    min-height: 2.75rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 12px;
+    background: rgb(255 255 255 / 0.04);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    &:hover {
+      background: rgb(255 255 255 / 0.08);
+    }
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  input:focus-visible + .check__box {
+    outline: 3px solid var(--teal);
+    outline-offset: 2px;
+  }
+}
+.check__box {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 2px var(--ink-faint);
+  display: grid;
+  place-items: center;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+  &::after {
+    content: '';
+    width: 10px;
+    height: 6px;
+    border-left: 2.5px solid #fff;
+    border-bottom: 2.5px solid #fff;
+    rotate: -45deg;
+    translate: 0 -1px;
+    scale: 0;
+    transition: scale 0.25s var(--ease-out);
+  }
+}
+input:checked + .check__box {
+  background: var(--hope-action);
+  box-shadow: none;
+  &::after {
+    scale: 1;
+  }
+}
+.check__result {
+  grid-area: result;
+  align-self: end;
+  p {
+    color: var(--ink-soft);
+  }
+  strong {
+    color: var(--ink);
+  }
+}
+.check__note {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--ink-faint) !important;
+}
+.check__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+.check__read {
+  font-weight: 600;
+  color: var(--teal-ink);
+}
+
+@media (max-width: 1000px) {
+  .myo__head,
+  .myo__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .check {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'intro' 'list' 'result';
+  }
+}
+@media (max-width: 560px) {
+  .habits {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

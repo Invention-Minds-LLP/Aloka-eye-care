@@ -4,6 +4,12 @@
       <img class="brand__logo" src="images/logo.png" alt="" width="1459" height="334" />
     </a>
 
+    <nav class="nav" [class.is-open]="menuOpen()" aria-label="Site" id="home-nav">
+      @for (n of nav; track n.path) {
+        <a [routerLink]="n.path" (click)="menuOpen.set(false)">{{ n.label }}</a>
+      }
+    </nav>
+
     <div class="bar__actions">
       <a class="wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
         <app-icon name="whatsapp" />
@@ -26,6 +32,9 @@
         <span>Book<span class="book-long"> appointment</span></span>
         <app-icon name="arrow" />
       </a>
+      <button type="button" class="menu" (click)="menuOpen.set(!menuOpen())" [attr.aria-expanded]="menuOpen()" aria-controls="home-nav">
+        <app-icon [name]="menuOpen() ? 'close' : 'menu'" /><span class="visually-hidden">Menu</span>
+      </button>
     </div>
   </div>
   <div class="thread" aria-hidden="true"><span [style.transform]="'scaleX(' + progress() + ')'"></span></div>

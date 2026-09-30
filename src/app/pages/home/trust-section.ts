@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Kite } from '../../shared/kite';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { ANSWERS, CLINIC, TELUGU, TRUST } from './home.content';
@@ -16,7 +17,7 @@ const PAPER: [string, string][] = [
 @Component({
   selector: 'app-trust-section',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Kite, RevealDirective],
+  imports: [Kite, RevealDirective, RouterLink],
   template: `
     <section class="trust" id="trust" aria-labelledby="trust-title">
       <!-- the evening sky over Hyderabad, full of kites -->
@@ -67,7 +68,7 @@ const PAPER: [string, string][] = [
               <p>{{ a.a }}</p>
             </details>
           }
-          <a class="faq__more" [href]="clinic.legacySite + '/faq/'">More answers on the FAQ page</a>
+          <a class="faq__more" routerLink="/faq/">More answers on the FAQ page</a>
         </div>
       </div>
     </section>

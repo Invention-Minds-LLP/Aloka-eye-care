@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, afterNextRender, inject, signal } from '@angular/core';
 import { MotionService } from '../../core/motion.service';
+import { RouterLink } from '@angular/router';
 import { Icon } from '../../shared/icon';
+import { NAV } from '../blog/page-bar';
 import { CLINIC } from './home.content';
 
 export const CHAPTERS = [
@@ -9,6 +11,8 @@ export const CHAPTERS = [
   { id: 'care', label: 'Treatment' },
   { id: 'joy', label: 'Going home happy' },
   { id: 'doctor', label: 'The doctor' },
+  { id: 'myopia', label: 'Myopia clinic' },
+  { id: 'squint-surgery', label: 'Squint surgery' },
   { id: 'trust', label: 'Why families trust us' },
   { id: 'visit', label: 'Visit' },
 ] as const;
@@ -16,13 +20,16 @@ export const CHAPTERS = [
 @Component({
   selector: 'app-site-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Icon],
+  imports: [Icon, RouterLink],
   templateUrl: './site-header.html',
   styleUrl: './site-header.scss',
 })
 export class SiteHeader {
   protected readonly clinic = CLINIC;
   protected readonly chapters = CHAPTERS;
+  /** Other pages; Home is where we are. */
+  protected readonly nav = NAV.filter((n) => n.path !== '/');
+  protected readonly menuOpen = signal(false);
   protected readonly solid = signal(false);
   protected readonly active = signal(-1);
   protected readonly progress = signal(0);

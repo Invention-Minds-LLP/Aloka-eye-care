@@ -220,3 +220,94 @@
     display: none;
   }
 }
+
+/* small phones: WhatsApp stays in the page itself, so the Book key fits */
+@media (max-width: 440px) {
+  .wa {
+    display: none;
+  }
+}
+
+/* ---------- Site menu ---------- */
+.bar__inner {
+  position: relative;
+}
+.nav {
+  display: flex;
+  gap: 0.15rem;
+  margin-left: 0.5rem;
+  a {
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    &:hover {
+      color: var(--ink);
+    }
+  }
+}
+.menu {
+  --icon: 1.3rem;
+  display: none;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--steel-100);
+  color: var(--ink);
+  cursor: pointer;
+}
+@media (max-width: 1399px) {
+  .call__num {
+    display: none;
+  }
+  /* short label while the full menu shares the row */
+  .book-long {
+    display: none;
+  }
+}
+@media (max-width: 1279px) {
+  .menu {
+    display: grid;
+  }
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: calc(-1 * var(--gutter));
+    right: calc(-1 * var(--gutter));
+    margin: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem var(--gutter) 1rem;
+    background: rgb(15 20 38 / 0.98);
+    box-shadow: 0 1px 0 var(--steel-300), 0 20px 30px -20px rgb(0 0 0 / 0.8);
+    visibility: hidden;
+    opacity: 0;
+    translate: 0 -8px;
+    transition:
+      opacity 0.2s,
+      translate 0.25s var(--ease-out),
+      visibility 0s 0.25s;
+    a {
+      padding: 0.9rem 0.5rem;
+      border-radius: 10px;
+      font-size: 1.0625rem;
+    }
+  }
+  .nav.is-open {
+    visibility: visible;
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity 0.2s,
+      translate 0.25s var(--ease-out);
+  }
+}
+@media (max-width: 440px) {
+  .call {
+    display: none;
+  }
+}

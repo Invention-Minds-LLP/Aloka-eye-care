@@ -1,0 +1,60 @@
+# Builds the site and uploads it to the clinic's cPanel hosting over FTP.
+# Runs on every push to main, which includes every post published from the blog editor (/admin).
+#
+# One-time setup — GitHub repo → Settings → Secrets and variables → Actions → New repository secret:
+#   FTP_SERVER      e.g. ftp.dralokaseyecare.com
+#   FTP_USERNAME    an FTP account created in cPanel (cPanel → FTP Accounts)
+#   FTP_PASSWORD    its password
+#   FTP_SERVER_DIR  optional, defaults to public_html/   (must end with /)
+#   GOOGLE_PLACES_API_KEY  optional: live Google reviews on the home page (Places API (New), restricted to that API)
+
+name: Deploy to cPanel
+
+on:
+  push:
+    branches: [main]
+  # every morning (06:00 IST), so the Google reviews and rating stay current
+  schedule:
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-cpanel
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # prebuild turns content/blog/*.md into the blog data and fetches the Google reviews, then Angular builds the site
+      - run: npm run build
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+
+      - name: Upload to cPanel
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: dist/dralokas-eye-care/browser/
+          server-dir: ${{ secrets.FTP_SERVER_DIR || 'public_html/' }}
+          # keep files the site doesn't own (e.g. other folders the host created)
+          dangerous-clean-slate: false
+
+      - name: FTP not configured
+        if: env.FTP_SERVER == ''
+        run: echo "::warning::Site built, but not uploaded — add the FTP_SERVER, FTP_USERNAME and FTP_PASSWORD secrets to deploy to cPanel."

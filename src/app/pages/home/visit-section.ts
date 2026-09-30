@@ -31,7 +31,6 @@ export class VisitSection {
   protected readonly week = [...HOURS.slice(1), HOURS[0]].map((h) => ({ ...h, index: HOURS.indexOf(h) }));
   protected readonly today = signal(-1);
   protected readonly status = signal<string | null>(null);
-  protected readonly year = new Date().getFullYear();
   /** A fixed, first-party constant: the clinic's own Maps embed. */
   protected readonly mapSrc = inject(DomSanitizer).bypassSecurityTrustResourceUrl(CLINIC.mapsEmbed);
 

@@ -1,0 +1,184 @@
+:host {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.card {
+  display: block;
+  padding: 1.1rem 1.2rem;
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--steel-300);
+}
+.card__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--teal-ink);
+  app-lea {
+    width: 1.1em;
+    height: 1.1em;
+    color: var(--hope);
+  }
+}
+
+/* entering slide fades and rises; the old one is simply replaced */
+.slide {
+  animation: slide-in 0.6s var(--ease-out) both;
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* ---------- At the clinic ---------- */
+.card--update {
+  background: linear-gradient(135deg, #2c2350, #1a1c3e);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+.update__title {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 650;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.update__text {
+  margin-top: 0.4rem;
+  font-size: var(--step-small);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.update__until {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--hope);
+}
+.update__btn {
+  margin-top: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.1rem;
+  font-size: var(--step-small);
+}
+
+/* ---------- Figures ---------- */
+.figures {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  li {
+    display: grid;
+    gap: 0.15rem;
+  }
+  strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  span {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--ink-soft);
+  }
+}
+.figures__note {
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+/* ---------- Families' words ---------- */
+.card--voice blockquote {
+  margin: 0;
+  min-height: 5.5rem;
+  p {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 550;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  footer {
+    margin-top: 0.6rem;
+    font-size: var(--step-small);
+    color: var(--ink-soft);
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.9rem;
+  button {
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    &::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--steel-300);
+      transition:
+        background-color 0.2s,
+        width 0.3s var(--ease-out);
+    }
+    &.is-on::before {
+      width: 18px;
+      border-radius: 999px;
+      background: var(--hope);
+    }
+  }
+}
+
+/* ---------- WhatsApp ---------- */
+.card--wa {
+  display: grid;
+  gap: 0.2rem;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1.5px var(--wa);
+  transition: background-color 0.2s;
+  &:hover {
+    background: rgb(63 207 128 / 0.08);
+  }
+}
+.wa__title {
+  font-weight: 650;
+  color: var(--ink);
+}
+.wa__text {
+  font-size: var(--step-small);
+  color: var(--wa);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    animation: none;
+  }
+}

@@ -1,0 +1,296 @@
+:host {
+  display: block;
+}
+
+.blog {
+  background: var(--white);
+  padding-bottom: clamp(5rem, 12vh, 8rem);
+  min-height: 70vh;
+}
+
+/* ---------- The reading room ---------- */
+.hero {
+  position: relative;
+  overflow: clip;
+  background:
+    radial-gradient(50rem 26rem at 72% 30%, rgb(255 207 138 / 0.1), rgb(255 207 138 / 0) 70%),
+    linear-gradient(180deg, #121833 0%, #1d1a2c 100%);
+  border-bottom: 1px solid var(--steel-300);
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: end;
+  padding-top: clamp(3rem, 8vh, 5rem);
+}
+.hero__copy {
+  align-self: center;
+  padding-bottom: clamp(2rem, 6vh, 4rem);
+}
+h1 {
+  font-size: var(--step-1);
+  max-width: 14ch;
+}
+.hero__lede {
+  margin-top: 1rem;
+  max-width: 44ch;
+  font-size: var(--step-3);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.hero__count {
+  margin-top: 1.5rem;
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--teal-ink);
+}
+
+.scene {
+  --chart: clamp(200px, 22vw, 300px);
+  --fig: clamp(240px, 30vw, 380px);
+  position: relative;
+  height: calc(var(--fig) * 1.02);
+  min-height: 300px;
+}
+/* the lit Lea chart on the wall */
+.chart {
+  position: absolute;
+  right: 4%;
+  top: 0;
+  width: var(--chart);
+  padding: calc(var(--chart) * 0.08) calc(var(--chart) * 0.06);
+  display: grid;
+  gap: calc(var(--chart) * 0.045);
+  justify-items: center;
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--ink-dark);
+  box-shadow: 0 0 60px rgb(255 214 140 / 0.25);
+}
+.chart__row {
+  --lea-stroke: 2.2;
+  display: flex;
+  gap: calc(var(--size) * 0.45);
+  app-lea {
+    width: var(--size);
+    height: var(--size);
+  }
+}
+.chart__line {
+  display: block;
+  width: 70%;
+  height: 2px;
+  margin-top: 0.2rem;
+  background: var(--hope);
+  opacity: 0.8;
+}
+/* the rows come into focus one by one, top to bottom */
+:host-context(html.motion-ok) .chart__row {
+  animation: focus 1.1s var(--ease-out) both;
+  animation-delay: calc(0.3s + var(--r) * 0.28s);
+}
+@keyframes focus {
+  from {
+    filter: blur(6px);
+    opacity: 0.35;
+  }
+  to {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+.scene__doctor,
+.scene__child {
+  position: absolute;
+  bottom: 0;
+  filter: drop-shadow(0 0 1px rgb(255 236 210 / 0.75)) drop-shadow(0 0 22px rgb(255 190 120 / 0.2));
+}
+.scene__doctor {
+  left: 4%;
+  height: var(--fig);
+  width: calc(var(--fig) * 200 / 470);
+}
+.scene__child {
+  left: calc(4% + var(--fig) * 0.4);
+  height: calc(var(--fig) * 0.6);
+  width: calc(var(--fig) * 0.6 * 140 / 300);
+}
+
+.blog__state {
+  margin-top: 3rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Topics, each with its chart symbol ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: clamp(2.5rem, 6vh, 3.5rem);
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.45rem 1.1rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--steel-100);
+    color: var(--ink-soft);
+    font: 600 var(--step-small) / 1 var(--font-body);
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px var(--steel-300);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+    app-lea {
+      width: 1.05em;
+      height: 1.05em;
+      color: var(--teal-ink);
+    }
+    &:hover {
+      color: var(--ink);
+    }
+    &.is-on {
+      background: var(--card);
+      color: var(--ink-dark);
+      box-shadow: none;
+      app-lea {
+        color: var(--hope-action);
+      }
+    }
+  }
+}
+
+/* ---------- Articles ---------- */
+.posts {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+}
+.post {
+  border-top: 1px solid var(--steel-300);
+}
+.post__link {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+  padding-block: 1.75rem;
+  text-decoration: none;
+  &:hover .post__title {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.2em;
+  }
+  &:hover img {
+    scale: 1.04;
+  }
+}
+.post__img {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition:
+      scale 0.6s var(--ease-out),
+      filter 1.2s var(--ease-out);
+  }
+}
+/* each cover comes into focus as it arrives, like the chart */
+:host-context(html.motion-ok) .post.reveal:not(.is-in) img {
+  filter: blur(8px);
+}
+.post__stamp {
+  position: absolute;
+  left: 0.6rem;
+  top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: rgb(251 248 242 / 0.94);
+  color: var(--ink-dark);
+  font-size: 0.8125rem;
+  font-weight: 650;
+  app-lea {
+    width: 1em;
+    height: 1em;
+    color: var(--hope-action);
+  }
+}
+.post__body {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+}
+.post__meta {
+  font-size: var(--step-small);
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.post__title {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.post__desc {
+  max-width: 62ch;
+  color: var(--ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.post__more {
+  margin-top: 0.25rem;
+  font-weight: 650;
+  color: var(--hope);
+}
+.post--lead {
+  border-top: 0;
+  .post__link {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  }
+  .post__title {
+    font-size: var(--step-1);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .hero__copy {
+    padding-bottom: 1.5rem;
+  }
+  .scene {
+    --chart: min(44vw, 190px);
+    --fig: min(62vw, 280px);
+  }
+}
+@media (max-width: 760px) {
+  .post__link,
+  .post--lead .post__link {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .post__img {
+    aspect-ratio: 16 / 9;
+  }
+}

@@ -1,0 +1,205 @@
+<app-page-bar />
+<main id="main">
+  <section class="page-hero" aria-labelledby="contact-title">
+    <div class="wrap page-hero__grid">
+      <div>
+        <ol class="crumbs" aria-label="Breadcrumb">
+          <li><a routerLink="/">Home</a></li>
+          <li aria-current="page">Contact us</li>
+        </ol>
+        <h1 id="contact-title">Contact Dr. Aloka's Eye Care, KPHB, Kukatpally</h1>
+        <p class="page-hero__lede">
+          Call, WhatsApp or book online to see Dr. Aloka Hedau. The clinic is on 9th Phase Road, near Forum Srujana Mall, and sees patients by
+          appointment.
+        </p>
+        <div class="page-hero__actions">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
+          <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> WhatsApp us</a>
+        </div>
+      </div>
+
+      <!-- the clinic's hours as a clock: the lit arc is 10 to 5, the hands find the time in Hyderabad -->
+      <div class="clock" [class.clock--open]="isOpen()">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="clock__face" cx="60" cy="60" r="56" />
+          <path class="clock__hours" [attr.d]="hoursArc" />
+          @for (t of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; track t) {
+            <line class="clock__tick" [class.clock__tick--major]="t % 3 === 0" x1="60" y1="8" x2="60" [attr.y2]="t % 3 === 0 ? 15 : 12" [attr.transform]="'rotate(' + t * 30 + ' 60 60)'" />
+          }
+          <line class="clock__hand clock__hand--h" x1="60" y1="60" x2="60" y2="34" [style.rotate.deg]="hourDeg()" />
+          <line class="clock__hand clock__hand--m" x1="60" y1="60" x2="60" y2="20" [style.rotate.deg]="minuteDeg()" />
+          <circle class="clock__pin" cx="60" cy="60" r="3.2" />
+        </svg>
+        <div class="clock__text">
+          <p class="clock__status" role="status">
+            <span class="clock__dot" aria-hidden="true"></span>{{ status() ?? 'Mon – Sat, 10 am – 5 pm' }}
+          </p>
+          <p class="clock__hours-text">Mon – Sat, 10 am – 5 pm · Sunday closed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- four ways in -->
+  <section class="section ways-section" aria-labelledby="ways-title">
+    <div class="wrap">
+      <h2 id="ways-title" class="visually-hidden">Ways to reach the clinic</h2>
+      <ul class="ways">
+        <li appReveal style="--delay: 0s">
+          <a class="way" [href]="clinic.phoneHref">
+            <span class="way__icon"><app-icon name="phone" /></span>
+            <span class="way__label">Call the clinic</span>
+            <span class="way__value">{{ clinic.phoneDisplay }}</span>
+          </a>
+        </li>
+        <li appReveal style="--delay: 0.08s">
+          <a class="way way--wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
+            <span class="way__icon"><app-icon name="whatsapp" /></span>
+            <span class="way__label">WhatsApp</span>
+            <span class="way__value">Message us any time</span>
+          </a>
+        </li>
+        <li appReveal style="--delay: 0.16s">
+          <a class="way" [href]="'mailto:' + clinic.email">
+            <span class="way__icon"><app-icon name="mail" /></span>
+            <span class="way__label">Email</span>
+            <span class="way__value">{{ clinic.email }}</span>
+          </a>
+        </li>
+        <li appReveal style="--delay: 0.24s">
+          <a class="way way--book" [href]="clinic.bookingHref" target="_blank" rel="noopener">
+            <span class="way__icon"><app-icon name="clock" /></span>
+            <span class="way__label">Book online</span>
+            <span class="way__value">Choose a time slot</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- write a message; it opens in WhatsApp or email, ready to send -->
+  <section class="section section--paper" aria-labelledby="write-title">
+    <div class="wrap compose">
+      <form class="form" (submit)="sendWhatsApp($event)" novalidate>
+        <h2 id="write-title" class="section__title">Send us a message</h2>
+        <p class="form__lede">Fill this in and it opens in WhatsApp or your email, ready to send. Nothing is saved on this website.</p>
+
+        <div class="field">
+          <label for="c-name">Your name</label>
+          <input
+            id="c-name"
+            type="text"
+            autocomplete="name"
+            [value]="name()"
+            (input)="name.set(value($event))"
+            [attr.aria-invalid]="!!nameError()"
+            [attr.aria-describedby]="nameError() ? 'c-name-err' : null"
+          />
+          @if (nameError(); as err) {
+            <p class="field__err" id="c-name-err">{{ err }}</p>
+          }
+        </div>
+
+        <fieldset class="field">
+          <legend>Who is the appointment for?</legend>
+          <div class="chips">
+            @for (w of whoOptions; track w) {
+              <label class="chip">
+                <input type="radio" name="who" [value]="w" [checked]="who() === w" (change)="who.set(w)" />
+                <span>{{ w }}</span>
+              </label>
+            }
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field field--age">
+            <label for="c-age">Age <span class="field__opt">(optional)</span></label>
+            <input id="c-age" type="text" inputmode="numeric" [value]="age()" (input)="age.set(value($event))" />
+          </div>
+          <div class="field">
+            <label for="c-concern">What is it about?</label>
+            <select
+              id="c-concern"
+              [value]="concern()"
+              (change)="concern.set(value($event))"
+              [attr.aria-invalid]="!!concernError()"
+              [attr.aria-describedby]="concernError() ? 'c-concern-err' : null"
+            >
+              <option value="" disabled [selected]="!concern()">Choose one</option>
+              @for (c of concerns; track c) {
+                <option [value]="c">{{ c }}</option>
+              }
+            </select>
+            @if (concernError(); as err) {
+              <p class="field__err" id="c-concern-err">{{ err }}</p>
+            }
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="c-note">Anything else? <span class="field__opt">(optional)</span></label>
+          <textarea id="c-note" rows="3" [value]="note()" (input)="note.set(value($event))"></textarea>
+        </div>
+
+        <div class="form__actions">
+          <button type="submit" class="btn-book"><app-icon name="whatsapp" /> Send on WhatsApp</button>
+          <button type="button" class="btn-ghost" (click)="sendEmail()"><app-icon name="mail" /> Send by email</button>
+        </div>
+      </form>
+
+      <!-- what the clinic will receive, as you type -->
+      <div class="preview" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__bar">
+            <img src="images/logo.png" alt="" width="1459" height="334" />
+          </div>
+          <div class="phone__chat">
+            <p class="bubble">{{ message() }}<span class="bubble__time">now</span></p>
+          </div>
+        </div>
+        <p class="preview__note">A preview of your message</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- where, and when -->
+  <section class="section" aria-labelledby="find-title">
+    <div class="wrap find">
+      <div class="find__text" appReveal>
+        <h2 id="find-title" class="section__title">Finding the clinic</h2>
+        <address class="find__address">
+          <strong>{{ clinic.name }}</strong>
+          @for (line of clinic.address; track line) {
+            <span>{{ line }}</span>
+          }
+        </address>
+        <a class="btn-ghost" [href]="clinic.mapsHref" target="_blank" rel="noopener"><app-icon name="route" /> Get directions</a>
+
+        <h3 class="find__sub">Clinic hours</h3>
+        <table class="hours">
+          <caption class="visually-hidden">Clinic hours</caption>
+          <tbody>
+            @for (d of week; track d.day) {
+              <tr [class.is-today]="d.index === today()">
+                <th scope="row">{{ d.day }}@if (d.index === today()) {<span class="hours__today">Today</span>}</th>
+                <td>{{ d.open ? '10 am – 5 pm' : 'Closed' }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <p class="find__note">By appointment only.</p>
+      </div>
+      <div class="map" appReveal>
+        <iframe [src]="mapSrc" title="Map: Dr. Aloka's Eye Care, KPHB Phase 6, Kukatpally" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="also">Have a question first? Read the <a routerLink="/faq/">answers to questions parents often ask</a>.</p>
+    </div>
+  </section>
+</main>
+<app-site-footer />

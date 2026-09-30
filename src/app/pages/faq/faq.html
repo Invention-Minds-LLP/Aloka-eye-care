@@ -1,0 +1,111 @@
+<app-page-bar />
+<main id="main">
+  <section class="page-hero" aria-labelledby="faq-title">
+    <div class="wrap page-hero__grid">
+      <div>
+        <ol class="crumbs" aria-label="Breadcrumb">
+          <li><a routerLink="/">Home</a></li>
+          <li aria-current="page">FAQ</li>
+        </ol>
+        <h1 id="faq-title">Questions parents ask about squint and children's eyes</h1>
+        <p class="page-hero__lede">
+          Straight answers from Dr. Aloka Hedau, paediatric ophthalmologist and squint surgeon in Kukatpally, Hyderabad, to the worries families
+          bring to the clinic most often.
+        </p>
+        <div class="search">
+          <label for="faq-search" class="visually-hidden">Search the questions</label>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
+          <input id="faq-search" type="search" placeholder="Search, e.g. scar, age, cataract" [value]="query()" (input)="setQuery($event)" />
+        </div>
+        <p class="search__count" role="status">
+          @if (query()) {
+            {{ found() }} of {{ total }} answers match
+          }
+        </p>
+      </div>
+
+      <!-- an eye that looks around, with parents' questions drifting past it -->
+      <div class="eye-scene">
+        <svg class="eye" viewBox="0 0 200 120" aria-hidden="true">
+          <defs>
+            <clipPath id="faq-lid"><path d="M10 60 Q100 -8 190 60 Q100 128 10 60Z" /></clipPath>
+          </defs>
+          <path class="eye__white" d="M10 60 Q100 -8 190 60 Q100 128 10 60Z" />
+          <g clip-path="url(#faq-lid)">
+            <g class="eye__look" [style.translate]="look().x * 26 + 'px ' + look().y * 12 + 'px'">
+              <circle class="eye__iris" cx="100" cy="60" r="30" />
+              <circle class="eye__pupil" cx="100" cy="60" r="13" />
+              <circle class="eye__glint" cx="110" cy="50" r="5" />
+            </g>
+            <rect class="eye__blink" x="0" y="-70" width="200" height="130" />
+          </g>
+          <path class="eye__line" d="M10 60 Q100 -8 190 60 Q100 128 10 60Z" />
+        </svg>
+        @for (f of floating; track f.id; let i = $index) {
+          <a [class]="'bubble bubble--' + i" [href]="'faq/#' + f.id" (click)="jump(f.id, $event)">{{ f.q }}</a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="index" aria-label="Topics">
+      <p class="index__label">Topics</p>
+      <ol>
+        @for (g of groups(); track g.id) {
+          <li>
+            <a [href]="'faq/#' + g.id">{{ g.title }} <span>{{ g.items.length }}</span></a>
+          </li>
+        }
+      </ol>
+    </nav>
+
+    <div class="groups">
+      @for (g of groups(); track g.id) {
+        <section class="group" [id]="g.id" [attr.aria-labelledby]="g.id + '-title'" appReveal>
+          <h2 class="group__title" [id]="g.id + '-title'">{{ g.title }}</h2>
+          @for (item of g.items; track item.id) {
+            <details class="qa" [id]="item.id" [open]="opened() === item.id">
+              <summary>
+                <span class="qa__q">{{ item.q }}</span>
+                <span class="qa__toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="qa__a">
+                <p>{{ item.a }}</p>
+                @if (item.more; as m) {
+                  @if (m.fragment) {
+                    <a class="qa__more" [routerLink]="m.path" [fragment]="m.fragment">{{ m.label }} →</a>
+                  } @else {
+                    <a class="qa__more" [routerLink]="m.path">{{ m.label }} →</a>
+                  }
+                }
+              </div>
+            </details>
+          }
+        </section>
+      } @empty {
+        <div class="none">
+          <p>No answer matches “{{ query() }}” yet.</p>
+          <p>Ask the clinic directly, and Dr. Aloka's team will help.</p>
+          <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> Ask on WhatsApp</a>
+        </div>
+      }
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Didn't find your question?</h2>
+          <p>Call or WhatsApp the clinic, or book a visit and ask Dr. Aloka in person. Monday to Saturday, 10 am to 5 pm.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
+          <a class="link-call" [href]="clinic.phoneHref"><app-icon name="phone" /><span>{{ clinic.phoneDisplay }}</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-site-footer />

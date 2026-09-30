@@ -196,6 +196,15 @@ export class Mother {
             <rect x="50" y="144" width="40" height="26" rx="2" fill="#bfe3f2" />
             <circle class="tablet-dot" cx="62" cy="157" r="4" fill="#e8792f" />
           }
+          @case ('book') {
+            <!-- an open picture book held up to read -->
+            <path class="limb" d="M48 120 Q44 150 56 162" stroke="#c98b63" stroke-width="11" />
+            <path class="limb" d="M92 120 Q96 150 84 162" stroke="#c98b63" stroke-width="11" />
+            <path d="M70 146 L40 140 L40 176 L70 182 Z" fill="#e8792f" />
+            <path d="M70 146 L100 140 L100 176 L70 182 Z" fill="#f2b134" />
+            <path d="M70 150 L45 145 L45 172 L70 177 Z M70 150 L95 145 L95 172 L70 177 Z" fill="#fbf8f2" />
+            <path d="M50 155 L64 158 M50 162 L64 165 M76 158 L90 155 M76 165 L90 162" stroke="#c9bfae" stroke-width="2" stroke-linecap="round" />
+          }
           @case ('balloon') {
             <path class="limb" d="M48 120 Q28 124 12 116" stroke="#c98b63" stroke-width="11" />
             <circle cx="10" cy="116" r="6.5" fill="#c98b63" />
@@ -242,7 +251,7 @@ export class Mother {
 })
 export class Child {
   readonly mood = input<Mood>('worried');
-  readonly arm = input<'hold' | 'rest' | 'tablet' | 'balloon'>('hold');
+  readonly arm = input<'hold' | 'rest' | 'tablet' | 'book' | 'balloon'>('hold');
   /** 1 = the untreated squint (left eye turned in), 0 = aligned. */
   readonly squint = input(1);
   readonly walking = input(false);

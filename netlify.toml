@@ -5,6 +5,58 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Old WordPress blog addresses → new blog (keeps Google rankings).
+# Netlify matches with or without a trailing slash, so one rule covers both.
+[[redirects]]
+  from = "/blogs"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/blog-classic"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/category/*"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/myopia-or-short-sightedness-in-children"
+  to = "/blog/myopia-or-short-sightedness-in-children"
+  status = 301
+
+[[redirects]]
+  from = "/many-systemic-and-genetic-diseases-in-the-body-are-first-diagnosed-by-a-pediatric-ophthalmologist-through-a-thorough-eye-checkup"
+  to = "/blog/many-systemic-and-genetic-diseases-in-the-body-are-first-diagnosed-by-a-pediatric-ophthalmologist-through-a-thorough-eye-checkup"
+  status = 301
+
+[[redirects]]
+  from = "/why-does-your-child-require-to-be-under-a-pediatric-ophthalmologist"
+  to = "/blog/why-does-your-child-require-to-be-under-a-pediatric-ophthalmologist"
+  status = 301
+
+[[redirects]]
+  from = "/typical-signs-of-visual-difficulties"
+  to = "/blog/typical-signs-of-visual-difficulties"
+  status = 301
+
+[[redirects]]
+  from = "/what-age-can-i-have-my-childs-eye-test"
+  to = "/blog/what-age-can-i-have-my-childs-eye-test"
+  status = 301
+
+[[redirects]]
+  from = "/can-we-reverse-or-stop-myopia-in-our-child"
+  to = "/blog/can-we-reverse-or-stop-myopia-in-our-child"
+  status = 301
+
+[[redirects]]
+  from = "/booking-form/*"
+  to = "https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1"
+  status = 302
+
 # Single-page app: every route serves index.html
 [[redirects]]
   from = "/*"

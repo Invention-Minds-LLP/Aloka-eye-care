@@ -1,0 +1,143 @@
+<app-page-bar />
+<main id="main">
+  <section class="page-hero" aria-labelledby="about-title">
+    <div class="wrap page-hero__grid">
+      <div>
+        <ol class="crumbs" aria-label="Breadcrumb">
+          <li><a routerLink="/">Home</a></li>
+          <li aria-current="page">About</li>
+        </ol>
+        <h1 id="about-title">Dr. Aloka Hedau, paediatric ophthalmologist in Hyderabad</h1>
+        <p class="page-hero__lede">
+          A senior paediatric ophthalmologist and adult strabismus (squint) surgeon, practising in Hyderabad since 2012. Known for a
+          friendly, approachable way with children and parents alike, and for the surgical care behind it.
+        </p>
+        <ul class="creds" aria-label="Qualifications">
+          <li>DNB (Ophthalmology)</li>
+          <li>Fellow, Paediatric Ophthalmology</li>
+          <li>FICO (UK)</li>
+          <li>20+ years of experience</li>
+        </ul>
+        <div class="page-hero__actions">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book with Dr. Aloka <app-icon name="arrow" /></a>
+          <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> WhatsApp</a>
+        </div>
+      </div>
+
+      <figure class="portrait">
+        <img
+          class="portrait__img"
+          srcset="images/doctor-900.webp 900w, images/doctor-1600.webp 1600w"
+          sizes="(max-width: 900px) 90vw, 40vw"
+          src="images/doctor-900.webp"
+          alt="Dr. Aloka Hedau in a white coat over a Pochampally-style saree, seated at a desk and smiling"
+          width="1600"
+          height="1200"
+          fetchpriority="high"
+        />
+        <!-- the chart symbols children name, drifting around the frame -->
+        <span class="portrait__lea portrait__lea--1" aria-hidden="true"><app-lea shape="house" /></span>
+        <span class="portrait__lea portrait__lea--2" aria-hidden="true"><app-lea shape="apple" /></span>
+        <span class="portrait__lea portrait__lea--3" aria-hidden="true"><app-lea shape="circle" /></span>
+        <figcaption>Dr. Aloka Hedau</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- The journey: a line that draws as you read, lighting each milestone -->
+  <section class="section" aria-labelledby="journey-title">
+    <div class="wrap journey">
+      <div class="journey__intro">
+        <h2 id="journey-title" class="section__title" appReveal>From Aravind to Hyderabad</h2>
+        <p class="section__lede" appReveal style="--delay: 0.1s">
+          Training at one of India's best-known eye hospitals, years of eye camps in rural Tamil Nadu, and more than a decade leading
+          paediatric eye care in Hyderabad.
+        </p>
+      </div>
+      <ol class="timeline" #line [style.--drawn]="drawn()">
+        <span class="timeline__track" aria-hidden="true"><span class="timeline__fill"></span></span>
+        @for (j of journey; track j.title; let i = $index) {
+          <li class="milestone" [class.is-lit]="lit(i)">
+            <span class="milestone__dot" aria-hidden="true"></span>
+            <span class="milestone__year">{{ j.year }}</span>
+            <h3>{{ j.title }}</h3>
+            <p>{{ j.body }}</p>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--paper" aria-labelledby="work-title">
+    <div class="wrap">
+      <h2 id="work-title" class="section__title" appReveal>Hospitals families already know</h2>
+      <p class="section__lede" appReveal style="--delay: 0.1s">
+        Alongside her own clinic in KPHB, Kukatpally, Dr. Aloka is affiliated with these Hyderabad hospitals.
+      </p>
+      <ul class="hospitals">
+        @for (a of affiliations; track a; let i = $index) {
+          <li appReveal [style.--delay]="i * 0.08 + 's'"><app-lea [shape]="i % 2 ? 'circle' : 'house'" />{{ a }}</li>
+        }
+      </ul>
+
+      <dl class="facts">
+        <div appReveal>
+          <dt>50+</dt>
+          <dd>talks at national and international conferences</dd>
+        </div>
+        <div appReveal style="--delay: 0.08s">
+          <dt>100+</dt>
+          <dd>eye camps in rural Tamil Nadu during her training</dd>
+        </div>
+        <div appReveal style="--delay: 0.16s">
+          <dt>1 book chapter</dt>
+          <dd>on eye examination in paediatrics</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="purpose-title">
+    <div class="wrap purpose">
+      <h2 id="purpose-title" class="visually-hidden">Mission and vision</h2>
+      <figure class="purpose__item" appReveal>
+        <p class="purpose__label">Mission</p>
+        <blockquote>To work tirelessly to eradicate needless blindness among all strata of society.</blockquote>
+      </figure>
+      <figure class="purpose__item" appReveal style="--delay: 0.12s">
+        <p class="purpose__label">Vision</p>
+        <blockquote>To be a one-stop solution for all childhood eye diseases, and squint correction for adults.</blockquote>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--paper" aria-labelledby="voices-title">
+    <div class="wrap">
+      <h2 id="voices-title" class="section__title" appReveal>What parents say about her</h2>
+      <div class="voices">
+        @for (v of voices; track v.name; let i = $index) {
+          <blockquote class="voice" appReveal [style.--delay]="i * 0.1 + 's'">
+            <p>“{{ v.quote }}”</p>
+            <footer>{{ v.name }}</footer>
+          </blockquote>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Bring your child to meet Dr. Aloka</h2>
+          <p>Monday to Saturday, 10 am to 5 pm, at KPHB Phase 6, near Forum Srujana Mall, Kukatpally.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
+          <a class="link-call" [href]="clinic.phoneHref"><app-icon name="phone" /><span>{{ clinic.phoneDisplay }}</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-site-footer />
