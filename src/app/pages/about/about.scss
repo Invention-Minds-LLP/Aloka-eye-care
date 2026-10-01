@@ -83,8 +83,9 @@
   color: var(--hope-action);
   animation-delay: -1.7s;
 }
+/* bottom right, clear of the name, which sits on the left of the caption */
 .portrait__lea--3 {
-  left: 18%;
+  right: 12%;
   bottom: -1.1rem;
   animation-delay: -3.2s;
 }
@@ -307,7 +308,6 @@
     right: 0.6rem;
   }
   .portrait__lea--3 {
-    left: auto;
     right: 1.2rem;
   }
 }
