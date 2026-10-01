@@ -29,7 +29,13 @@ import { CLINIC } from '../pages/home/home.content';
           Dr. Aloka's Eye Care · Third Floor, Plot no 6, 9th Phase Road, near Forum Srujana Mall, KPHB Phase 6, Kukatpally, Hyderabad 500085 ·
           <a [href]="clinic.phoneHref">{{ clinic.phoneDisplay }}</a>
         </address>
-        <p class="foot__small">© {{ year }} Dr. Aloka's Eye Care, Kukatpally, Hyderabad.</p>
+        <div class="foot__base">
+          <p class="foot__small">© {{ year }} Dr. Aloka's Eye Care, Kukatpally, Hyderabad.</p>
+          <p class="foot__small foot__credit">
+            Designed and developed by
+            <a href="https://inventionminds.com/" target="_blank" rel="noopener">Invention Minds LLP</a>
+          </p>
+        </div>
       </div>
     </footer>
   `,
@@ -85,6 +91,28 @@ import { CLINIC } from '../pages/home/home.content';
     .foot__small {
       font-size: var(--step-small);
       color: var(--ink-soft);
+    }
+    /* copyright on the left, the site credit on the right; they stack on narrow screens */
+    .foot__base {
+      justify-self: stretch;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--steel-300);
+    }
+    .foot__credit a {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: var(--steel-500);
+      text-underline-offset: 3px;
+      transition: color 0.2s, text-decoration-color 0.2s;
+      &:hover {
+        color: var(--teal-ink);
+        text-decoration-color: currentColor;
+      }
     }
   `,
 })
