@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { SITE, SeoService, breadcrumbs } from '../../core/seo.service';
 import { Icon } from '../../shared/icon';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { ResultsStrip } from '../../shared/results-strip';
 import { SiteFooter } from '../../shared/site-footer';
 import { PageBar } from '../blog/page-bar';
 import { CLINIC } from '../home/home.content';
@@ -18,7 +19,7 @@ const FAQ = [
 @Component({
   selector: 'app-surgeries',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon],
+  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon, ResultsStrip],
   templateUrl: './surgeries.html',
   styleUrl: './surgeries.scss',
 })

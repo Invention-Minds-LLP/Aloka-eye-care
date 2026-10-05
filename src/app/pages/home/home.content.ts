@@ -22,6 +22,10 @@ export const CLINIC = {
   mapsEmbed:
     'https://www.google.com/maps?q=Dr+Aloka%27s+Eye+Care,+KPHB+Phase+6,+Kukatpally,+Hyderabad+500085&output=embed',
   legacySite: 'https://dralokaseyecare.com',
+  /** Elfsight "Google Reviews" widget for this clinic (source: the clinic's Google Place ID), shown in an iframe
+   *  from public/embed/google-reviews.html. The ID is the one in the widget's dashboard address.
+   *  Empty = not set up; the section then shows links to Google. */
+  elfsightReviewsApp: '2d46555a-8298-43ea-b907-9451ccce37f7',
 } as const;
 
 /** Mon–Sat 10:00–17:00, Sunday closed. Index matches Date#getDay(). */

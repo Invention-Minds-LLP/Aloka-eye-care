@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, ElementRef, afterRenderEffect, inject, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, afterNextRender, afterRenderEffect, inject, signal, viewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { DomSanitizer } from '@angular/platform-browser';
 import { catchError, of } from 'rxjs';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { CLINIC } from './home.content';
 
 interface Review {
   author: string;
@@ -22,7 +24,14 @@ interface Reviews {
   reviews: Review[];
 }
 
-/** Google reviews, from public/site-data/google-reviews.json (written at build time by scripts/fetch-reviews.mjs). */
+/**
+ * Google reviews. Two sources, in order:
+ *  1. public/site-data/google-reviews.json, written at build time by scripts/fetch-reviews.mjs (needs a Places API key);
+ *  2. otherwise the clinic's Elfsight widget (CLINIC.elfsightReviewsApp), in an iframe of public/embed/google-reviews.html.
+ *     The frame loads lazily (only near the screen, so a visit that never reaches it uses no Elfsight view), keeps
+ *     Elfsight's script and styles out of the site, and grows to fit the reviews from the height the embed reports.
+ * With neither, the section still links to the reviews on Google.
+ */
 @Component({
   selector: 'app-google-reviews',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -56,6 +65,18 @@ interface Reviews {
               </div>
             }
           </div>
+
+          @if (!d.reviews.length && elfsightApp) {
+            <div class="elfsight">
+              <iframe
+                #frame
+                [src]="frameSrc"
+                title="Google reviews of Dr. Aloka's Eye Care"
+                loading="lazy"
+                [style.height.px]="frameHeight()"
+              ></iframe>
+            </div>
+          }
 
           @if (d.reviews.length) {
             <div class="rail-wrap">
@@ -124,8 +145,29 @@ export class GoogleReviews {
   protected readonly atStart = signal(true);
   protected readonly atEnd = signal(false);
   private readonly rail = viewChild<ElementRef<HTMLElement>>('rail');
+  protected readonly elfsightApp = CLINIC.elfsightReviewsApp;
+  /** A fixed, first-party address: our own embed page, with the clinic's widget ID. */
+  protected readonly frameSrc = inject(DomSanitizer).bypassSecurityTrustResourceUrl(
+    '/embed/google-reviews.html?app=' + encodeURIComponent(CLINIC.elfsightReviewsApp),
+  );
+  /** Room for the reviews until the embed reports their real height. */
+  protected readonly frameHeight = signal(560);
+  private readonly frame = viewChild<ElementRef<HTMLIFrameElement>>('frame');
 
   constructor() {
+    const destroyRef = inject(DestroyRef);
+    // the embed reports its height; only messages from our own frame, on our own origin, are trusted
+    afterNextRender(() => {
+      const onMessage = (e: MessageEvent) => {
+        const frame = this.frame()?.nativeElement;
+        if (e.origin !== location.origin || !frame || e.source !== frame.contentWindow) return;
+        const h = e.data?.type === 'reviews-height' ? Number(e.data.height) : NaN;
+        if (h > 0 && h < 20000) this.frameHeight.set(h);
+      };
+      window.addEventListener('message', onMessage);
+      destroyRef.onDestroy(() => window.removeEventListener('message', onMessage));
+    });
+
     // once the reviews render, grey out the arrows that have nowhere to go
     afterRenderEffect(() => {
       this.data();
@@ -155,3 +197,4 @@ export class GoogleReviews {
     this.atEnd.set(el.scrollLeft + el.clientWidth > el.scrollWidth - 8);
   }
 }
+

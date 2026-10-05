@@ -119,12 +119,13 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     id: 'myopia-clinic',
-    title: 'Myopia clinic',
+    title: 'Myopia Control by Dr. Aloka',
     lead: 'Myopia (short-sightedness) that keeps getting worse can thin and damage the retina. The myopia clinic tracks it and works to slow it.',
     image: 'images/blog/myopia-or-short-sightedness-in-children-4.webp',
     imageAlt: 'A pair of glasses bringing a blurred garden into focus',
     points: [
-      'Glasses power and eye growth (axial length) measured over time',
+      'Glasses power and eye growth (axial length) measured over time on the Pristine OBM 12',
+      'Corneal topography on the Sirius+, mapping the shape of the front of the eye',
       'Lifestyle and diet assessment',
       'Myopia control eye drops and glasses, where they are right for your child',
     ],

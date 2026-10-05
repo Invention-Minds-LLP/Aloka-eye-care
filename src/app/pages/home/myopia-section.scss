@@ -2,24 +2,61 @@
   display: block;
 }
 
+/* the section sits close to its neighbours; the panel itself holds it together as one unit */
 .myo {
-  background: radial-gradient(60rem 34rem at 20% 40%, #1b2a4a 0%, var(--white) 70%);
-  padding-block: clamp(6rem, 14vh, 9rem);
+  padding-block: clamp(2.5rem, 6vh, 4rem);
+}
+.myo__panel {
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  border-radius: 28px;
+  background:
+    radial-gradient(48rem 28rem at 10% 0%, rgb(42 120 200 / 0.16), transparent 70%),
+    radial-gradient(40rem 26rem at 100% 100%, rgb(46 180 110 / 0.1), transparent 70%),
+    var(--paper);
+  box-shadow: inset 0 0 0 1px var(--steel-300);
 }
 .myo__head {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: 1.5rem clamp(2rem, 5vw, 5rem);
-  align-items: end;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+}
+.myo__logo {
+  width: clamp(88px, 10vw, 120px);
+  height: auto;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 0 4px rgb(255 255 255 / 0.08),
+    0 18px 32px -18px rgb(0 0 0 / 0.8);
+}
+:host-context(html.motion-ok) .myo__head.is-in .myo__logo {
+  animation: badge 0.9s var(--ease-out) 0.15s both;
+}
+@keyframes badge {
+  from {
+    scale: 0.6;
+    rotate: -25deg;
+    opacity: 0;
+  }
+}
+.myo__eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6fd39c;
 }
 h2 {
+  margin-top: 0.3rem;
   font-size: var(--step-1);
 }
 .myo__lede {
+  margin-top: 0.75rem;
   font-size: var(--step-3);
   line-height: 1.55;
   color: var(--ink-soft);
-  max-width: 56ch;
+  max-width: 68ch;
 }
 
 .myo__grid {
@@ -27,7 +64,7 @@ h2 {
   grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: center;
-  margin-top: clamp(3rem, 7vh, 4.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
 }
 
 /* ---------- See what your child sees ---------- */
@@ -177,6 +214,64 @@ h2 {
   color: var(--marigold, #f2b134);
 }
 
+/* ---------- The equipment ---------- */
+.kit {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(2rem, 4vw, 2.75rem);
+  border-top: 1px solid var(--steel-300);
+}
+.kit__title {
+  font-size: var(--step-2);
+}
+.kit__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+.kit__item {
+  display: grid;
+  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--steel-300);
+  h4 {
+    margin: 0;
+    font-size: var(--step-3);
+    font-weight: 650;
+  }
+  p {
+    margin-top: 0.4rem;
+    font-size: var(--step-small);
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+}
+/* the machines were photographed on white, so they sit on a light plate */
+.kit__img {
+  margin: 0;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #f4f5f7;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: scale 0.6s var(--ease-out);
+  }
+}
+.kit__item:hover .kit__img img {
+  scale: 1.05;
+}
+
 /* ---------- The checklist ---------- */
 .check {
   display: grid;
@@ -185,7 +280,7 @@ h2 {
     'intro list'
     'result list';
   gap: 1.5rem clamp(2rem, 5vw, 4rem);
-  margin-top: clamp(3.5rem, 8vh, 5rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
   padding: clamp(1.5rem, 4vw, 2.5rem);
   border-radius: 20px;
   background: linear-gradient(135deg, #2c2350, #1a1c3e);
@@ -292,7 +387,9 @@ input:checked + .check__box {
 }
 
 @media (max-width: 1000px) {
-  .myo__head,
+  .kit__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .myo__grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -304,5 +401,14 @@ input:checked + .check__box {
 @media (max-width: 560px) {
   .habits {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .myo__head {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kit__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kit__img {
+    aspect-ratio: 4 / 3;
   }
 }

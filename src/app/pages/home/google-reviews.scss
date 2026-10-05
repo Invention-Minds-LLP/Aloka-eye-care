@@ -216,3 +216,14 @@ h2 {
     grid-auto-columns: minmax(260px, 82%);
   }
 }
+
+/* the Elfsight widget is in its dark theme on a transparent background, so it sits straight on the page */
+.elfsight {
+  margin-top: 2rem;
+  iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    transition: height 0.3s var(--ease-out);
+  }
+}

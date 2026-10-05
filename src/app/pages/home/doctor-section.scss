@@ -4,7 +4,7 @@
 
 .doc {
   background: var(--white);
-  padding-block: clamp(6rem, 14vh, 9rem);
+  padding-block: clamp(6rem, 14vh, 9rem) clamp(3rem, 7vh, 4.5rem);
 }
 .doc__grid {
   display: grid;

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- shown inside the home page's reviews section; not a page of its own -->
+    <meta name="robots" content="noindex" />
+    <!-- must match the site's dark scheme, or the browser paints the frame solid white -->
+    <meta name="color-scheme" content="dark" />
+    <title>Google reviews · Dr. Aloka's Eye Care</title>
+    <!-- links in the widget (to Google, to reviewers) leave the frame and open in a new tab -->
+    <base target="_blank" />
+    <style>
+      html,
+      body {
+        color-scheme: dark;
+        margin: 0;
+        background: transparent;
+        font-family: system-ui, sans-serif;
+      }
+      body {
+        padding: 4px 2px 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="widget"></div>
+    <script>
+      // The Elfsight widget ID comes from the parent page (?app=…); accept only an ID's shape.
+      (function () {
+        var id = new URLSearchParams(location.search).get('app') || '';
+        if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(id)) return;
+        var box = document.createElement('div');
+        box.className = 'elfsight-app-' + id;
+        document.getElementById('widget').appendChild(box);
+        var s = document.createElement('script');
+        s.src = 'https://elfsightcdn.com/platform.js';
+        s.async = true;
+        document.body.appendChild(s);
+
+        // Tell the home page how tall the reviews are, so the frame fits them with no inner scrollbar.
+        if (window.parent === window) return;
+        var last = 0;
+        function report() {
+          var h = Math.ceil(document.documentElement.getBoundingClientRect().height);
+          if (Math.abs(h - last) < 2) return;
+          last = h;
+          window.parent.postMessage({ type: 'reviews-height', height: h }, location.origin);
+        }
+        new ResizeObserver(report).observe(document.documentElement);
+        report();
+      })();
+    </script>
+  </body>
+</html>

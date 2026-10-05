@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /oauth/
+Disallow: /embed/
 
 Sitemap: https://dralokaseyecare.com/sitemap.xml

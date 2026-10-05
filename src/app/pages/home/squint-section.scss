@@ -169,3 +169,12 @@ h2 {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ---------- Real results ---------- */
+.sq__results {
+  margin-top: clamp(2.5rem, 6vh, 3.5rem);
+  h3 {
+    margin-bottom: 1rem;
+    font-size: var(--step-2);
+  }
+}

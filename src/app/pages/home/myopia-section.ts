@@ -25,14 +25,29 @@ const CHECKS = [
   template: `
     <section class="myo" id="myopia" aria-labelledby="myopia-title">
       <div class="wrap">
-        <div class="myo__head">
-          <h2 id="myopia-title" appReveal>Myopia clinic</h2>
-          <p class="myo__lede" appReveal style="--delay: 0.1s">
+        <div class="myo__panel">
+        <!-- the clinic's own myopia brand, then the problem in one paragraph -->
+        <header class="myo__head" appReveal>
+          <img
+            class="myo__logo"
+            src="images/myopia/myopia-control-logo-240.webp"
+            srcset="images/myopia/myopia-control-logo-240.webp 240w, images/myopia/myopia-control-logo-480.webp 480w"
+            sizes="120px"
+            width="240"
+            height="240"
+            alt="Myopia Control by Dr. Aloka, expert myopia management"
+            loading="lazy"
+          />
+          <div>
+            <p class="myo__eyebrow">Myopia clinic</p>
+            <h2 id="myopia-title">Myopia Control by Dr. Aloka</h2>
+          <p class="myo__lede">
             With more screen time and less outdoor play, myopia (short-sightedness) is common in children today. It can keep getting worse until 18–20 years
             of age, and high myopia raises the risk of retinal problems in adult life. The earlier it's caught, the more can be done to
             slow it.
           </p>
-        </div>
+          </div>
+        </header>
 
         <div class="myo__grid">
           <!-- What a child with myopia sees from the classroom desk: the board blurred, the book clear -->
@@ -96,6 +111,50 @@ const CHECKS = [
           </div>
         </div>
 
+        <!-- the two machines the clinic uses to measure and follow a child's myopia -->
+        <div class="kit">
+          <h3 class="kit__title">How we measure it</h3>
+          <ul class="kit__list">
+            <li class="kit__item" appReveal>
+              <figure class="kit__img focus-in" appReveal>
+                <img
+                  src="images/myopia/pristine-obm-12-520.webp"
+                  srcset="images/myopia/pristine-obm-12-520.webp 520w, images/myopia/pristine-obm-12-900.webp 900w"
+                  sizes="(max-width: 760px) 90vw, 260px"
+                  width="520"
+                  height="506"
+                  alt="The Pristine OBM 12 myopia machine, with an eye scan on its screen"
+                  loading="lazy"
+                />
+              </figure>
+              <div>
+                <h4>Pristine OBM 12</h4>
+                <p>
+                  Measures the length of the eye (axial length). In myopia the eye grows too long, so measuring it at every visit shows whether
+                  the myopia is being slowed. It also records the curve of the front of the eye and the glasses power.
+                </p>
+              </div>
+            </li>
+            <li class="kit__item" appReveal style="--delay: 0.12s">
+              <figure class="kit__img focus-in" appReveal>
+                <img
+                  src="images/myopia/sirius-plus-topographer-640.webp"
+                  srcset="images/myopia/sirius-plus-topographer-640.webp 640w, images/myopia/sirius-plus-topographer-1200.webp 1200w"
+                  sizes="(max-width: 760px) 90vw, 260px"
+                  width="640"
+                  height="436"
+                  alt="The Sirius+ corneal topography machine"
+                  loading="lazy"
+                />
+              </figure>
+              <div>
+                <h4>Sirius+ corneal topography</h4>
+                <p>Maps the shape of the cornea, the clear front window of the eye, point by point, giving Dr. Aloka a detailed picture of the eye's front surface.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
         <!-- a quick checklist for parents -->
         <div class="check" appReveal>
           <div class="check__intro">
@@ -127,6 +186,7 @@ const CHECKS = [
               <a class="check__read" routerLink="/blog/can-we-reverse-or-stop-myopia-in-our-child">Read: can we stop myopia?</a>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
