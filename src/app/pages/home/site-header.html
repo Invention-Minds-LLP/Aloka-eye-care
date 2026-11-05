@@ -41,12 +41,12 @@
 </header>
 
 <!-- The journey rail: where you are in the story. -->
-<nav class="rail" aria-label="Journey">
+<nav class="rail" aria-label="On this page">
   <div class="rail__line" aria-hidden="true">
     <span class="rail__fill" [style.transform]="'scaleY(' + progress() + ')'"></span>
   </div>
   <ol>
-    @for (c of chapters; track c.id; let i = $index) {
+    @for (c of chapters(); track c.id; let i = $index) {
       <li [class.is-active]="active() === i" [class.is-past]="active() > i">
         <a [href]="'#' + c.id" [attr.aria-current]="active() === i ? 'step' : null">
           <span class="rail__mark" aria-hidden="true"></span>

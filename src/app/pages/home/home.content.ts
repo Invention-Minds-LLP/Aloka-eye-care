@@ -127,6 +127,59 @@ export const SPECIALITIES = {
   ],
 } as const;
 
+/**
+ * Machines and tests at the clinic. Items with `image` show as photo cards; the rest as a compact list.
+ * To add a machine: put its photo in public/images/equipment/ and add an entry with `image`.
+ */
+export interface Equipment {
+  name: string;
+  use: string;
+  body: string;
+  image?: { src: string; srcset: string; w: number; h: number; alt: string };
+}
+
+export const EQUIPMENT: Equipment[] = [
+  {
+    name: 'Pristine OBM 12',
+    use: 'Myopia tracking',
+    body: 'Measures the length of the eye (axial length), the curve of the front of the eye and the glasses power, so any increase in myopia is caught early.',
+    image: {
+      src: 'images/myopia/pristine-obm-12-900.webp',
+      srcset: 'images/myopia/pristine-obm-12-520.webp 520w, images/myopia/pristine-obm-12-900.webp 900w',
+      w: 900,
+      h: 875,
+      alt: 'The Pristine OBM 12 myopia machine at the clinic, with an eye scan on its screen',
+    },
+  },
+  {
+    name: 'Sirius+ corneal topography',
+    use: 'Cornea mapping',
+    body: 'Maps the shape of the cornea, the clear front window of the eye, point by point, for a detailed picture of the eye’s front surface.',
+    image: {
+      src: 'images/myopia/sirius-plus-topographer-1200.webp',
+      srcset: 'images/myopia/sirius-plus-topographer-640.webp 640w, images/myopia/sirius-plus-topographer-1200.webp 1200w',
+      w: 1200,
+      h: 817,
+      alt: 'The Sirius+ corneal topography machine at the clinic',
+    },
+  },
+  {
+    name: 'Bynocs vision therapy',
+    use: 'Lazy eye & binocular vision',
+    body: 'Play-based binocular software for lazy eye and eye-teaming problems. Sessions take 30–45 minutes.',
+  },
+  {
+    name: 'Titmus Fly & Worth 4 Dot',
+    use: 'Depth & binocular tests',
+    body: 'Check whether both eyes work together and how well your child sees depth.',
+  },
+  {
+    name: 'Optokinetic drum & Lea charts',
+    use: 'Testing babies and toddlers',
+    body: 'Picture-based vision tests that let children be checked from six months of age.',
+  },
+];
+
 /** Written for how Hyderabad families decide: together, by trust, by word of mouth. */
 export const TRUST = [
   {

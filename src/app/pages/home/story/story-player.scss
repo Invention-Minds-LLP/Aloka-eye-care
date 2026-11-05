@@ -87,6 +87,12 @@
     display: none;
   }
 }
+/* phones: sit above the bottom booking bar */
+@media (max-width: 700px) {
+  .player {
+    bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .player {
     display: none;

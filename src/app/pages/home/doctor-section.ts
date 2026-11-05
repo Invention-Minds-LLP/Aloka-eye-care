@@ -13,13 +13,14 @@ const LEA = ['house', 'apple', 'circle', 'square'] as const;
     <section class="doc" id="doctor" aria-labelledby="doctor-title">
       <div class="wrap doc__grid">
         <figure class="doc__photo" appReveal>
+          <!-- the hero already shows her portrait; here she is at work -->
           <img
-            srcset="images/doctor-900.webp 900w, images/doctor-1600.webp 1600w"
+            srcset="images/gallery/the-hospital/03-sm.webp 420w, images/gallery/the-hospital/03.webp 780w"
             sizes="(max-width: 900px) 92vw, 40vw"
-            src="images/doctor-900.webp"
-            alt="Dr. Aloka Hedau in a white coat over a Pochampally-style saree, seated at a desk and smiling"
-            width="1600"
-            height="1200"
+            src="images/gallery/the-hospital/03.webp"
+            alt="Dr. Aloka Hedau operating at the surgical microscope in the operation theatre"
+            width="780"
+            height="1040"
             loading="lazy"
             decoding="async"
           />

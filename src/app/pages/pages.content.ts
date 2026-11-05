@@ -218,11 +218,12 @@ export const SURGERIES: SurgeryItem[] = [
 
 /* ---------- Gallery ---------- */
 
-export type AlbumId = 'clinic' | 'examination' | 'outcomes' | 'achievements';
+export type AlbumId = 'clinic' | 'equipment' | 'examination' | 'outcomes' | 'achievements';
 
 /** The four albums of the clinic's old gallery page (dralokaseyecare.com/gallery-2/). */
 export const ALBUMS: { id: AlbumId; title: string; lede: string }[] = [
   { id: 'clinic', title: 'The hospital', lede: 'The clinic, the operation theatre, and Dr. Aloka at work.' },
+  { id: 'equipment', title: 'Equipment', lede: 'Diagnostic machines at the clinic.' },
   { id: 'examination', title: 'Eye examination', lede: 'Conditions Dr. Aloka sees and examines, from newborns to school children.' },
   { id: 'outcomes', title: 'Surgical outcomes', lede: 'Eyes before and after treatment, as published on the clinic’s website.' },
   { id: 'achievements', title: 'Talks and conferences', lede: 'Dr. Aloka presenting at national and international meetings.' },
@@ -279,6 +280,9 @@ export const GALLERY: GalleryPhoto[] = [
   { album: 'examination', src: 'images/gallery/eye-examination/06.webp', thumb: 'images/gallery/eye-examination/06-sm.webp', w: 1172, h: 966, caption: "Head posture with nystagmus" },
   { album: 'examination', src: 'images/gallery/eye-examination/07.webp', thumb: 'images/gallery/eye-examination/07-sm.webp', w: 980, h: 650, caption: "Testing near focus with the RAF ruler" },
   { album: 'examination', src: 'images/gallery/eye-examination/08.webp', thumb: 'images/gallery/eye-examination/08-sm.webp', w: 788, h: 1400, caption: "An infant at an eye examination" },
+  // added at the end so the gallery hero's fixed indices (FAN) stay the same
+  { album: 'equipment', src: 'images/myopia/pristine-obm-12-900.webp', thumb: 'images/myopia/pristine-obm-12-520.webp', w: 900, h: 875, caption: "Pristine OBM 12, for measuring eye length and tracking myopia" },
+  { album: 'equipment', src: 'images/myopia/sirius-plus-topographer-1200.webp', thumb: 'images/myopia/sirius-plus-topographer-640.webp', w: 1200, h: 817, caption: "Sirius+ corneal topography" },
 ];
 
 /* ---------- FAQ ---------- */

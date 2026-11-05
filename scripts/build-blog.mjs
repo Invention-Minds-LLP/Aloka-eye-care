@@ -182,6 +182,7 @@ function build() {
     { loc: '/services/' },
     { loc: '/surgeries/' },
     { loc: '/gallery/' },
+    { loc: '/our-story/' },
     { loc: '/faq/' },
     { loc: '/contact-us/' },
     { loc: '/blog/', lastmod: posts[0]?.date },

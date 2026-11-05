@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, afterNextRe
 import { MotionService, clamp } from '../../core/motion.service';
 import { Icon } from '../../shared/icon';
 import { RevealDirective } from '../../shared/reveal.directive';
-import { ResultsStrip } from '../../shared/results-strip';
 import { CLINIC } from './home.content';
 
 /**
@@ -12,7 +11,7 @@ import { CLINIC } from './home.content';
 @Component({
   selector: 'app-squint-section',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Icon, RevealDirective, ResultsStrip],
+  imports: [Icon, RevealDirective],
   template: `
     <section class="sq" id="squint-surgery" aria-labelledby="squint-title">
       <div class="wrap">
@@ -63,11 +62,6 @@ import { CLINIC } from './home.content';
               <li>Botox injection as an alternative for paralytic squint</li>
             </ul>
           </article>
-        </div>
-
-        <div class="sq__results" appReveal>
-          <h3>Real results</h3>
-          <app-results-strip />
         </div>
 
         <div class="tech" appReveal>

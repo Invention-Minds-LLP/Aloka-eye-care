@@ -12,6 +12,7 @@ export const routes: Routes = [
   { path: 'contact-us', loadComponent: () => import('./pages/contact/contact') },
   { path: 'blog', loadComponent: () => import('./pages/blog/blog-list') },
   { path: 'blog/:slug', loadComponent: () => import('./pages/blog/blog-post') },
+  { path: 'our-story', loadComponent: () => import('./pages/our-story/our-story') },
   { path: 'about', redirectTo: 'about-us' },
   { path: 'gallery-2', redirectTo: 'gallery' },
   { path: 'contact', redirectTo: 'contact-us' },

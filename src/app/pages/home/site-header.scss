@@ -311,3 +311,11 @@
     display: none;
   }
 }
+/* phones: Call, WhatsApp and Book live in the bottom bar (app-mobile-book-bar) */
+@media (max-width: 700px) {
+  .wa,
+  .call,
+  .btn-book--compact {
+    display: none;
+  }
+}

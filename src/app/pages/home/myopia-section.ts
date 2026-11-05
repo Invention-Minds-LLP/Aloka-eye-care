@@ -111,49 +111,7 @@ const CHECKS = [
           </div>
         </div>
 
-        <!-- the two machines the clinic uses to measure and follow a child's myopia -->
-        <div class="kit">
-          <h3 class="kit__title">How we measure it</h3>
-          <ul class="kit__list">
-            <li class="kit__item" appReveal>
-              <figure class="kit__img focus-in" appReveal>
-                <img
-                  src="images/myopia/pristine-obm-12-520.webp"
-                  srcset="images/myopia/pristine-obm-12-520.webp 520w, images/myopia/pristine-obm-12-900.webp 900w"
-                  sizes="(max-width: 760px) 90vw, 260px"
-                  width="520"
-                  height="506"
-                  alt="The Pristine OBM 12 myopia machine, with an eye scan on its screen"
-                  loading="lazy"
-                />
-              </figure>
-              <div>
-                <h4>Pristine OBM 12</h4>
-                <p>
-                  Measures the length of the eye (axial length). In myopia the eye grows too long, so measuring it at every visit shows whether
-                  the myopia is being slowed. It also records the curve of the front of the eye and the glasses power.
-                </p>
-              </div>
-            </li>
-            <li class="kit__item" appReveal style="--delay: 0.12s">
-              <figure class="kit__img focus-in" appReveal>
-                <img
-                  src="images/myopia/sirius-plus-topographer-640.webp"
-                  srcset="images/myopia/sirius-plus-topographer-640.webp 640w, images/myopia/sirius-plus-topographer-1200.webp 1200w"
-                  sizes="(max-width: 760px) 90vw, 260px"
-                  width="640"
-                  height="436"
-                  alt="The Sirius+ corneal topography machine"
-                  loading="lazy"
-                />
-              </figure>
-              <div>
-                <h4>Sirius+ corneal topography</h4>
-                <p>Maps the shape of the cornea, the clear front window of the eye, point by point, giving Dr. Aloka a detailed picture of the eye's front surface.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <!-- the measuring machines are shown in the equipment section above -->
 
         <!-- a quick checklist for parents -->
         <div class="check" appReveal>

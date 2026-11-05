@@ -1,21 +1,34 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, afterNextRender, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, afterNextRender, inject, input, signal } from '@angular/core';
 import { MotionService } from '../../core/motion.service';
 import { RouterLink } from '@angular/router';
 import { Icon } from '../../shared/icon';
 import { NAV } from '../blog/page-bar';
 import { CLINIC } from './home.content';
 
-export const CHAPTERS = [
+export interface Chapter {
+  id: string;
+  label: string;
+}
+
+/** The home page's sections, for the side rail. */
+export const CHAPTERS: readonly Chapter[] = [
+  { id: 'top', label: 'Welcome' },
+  { id: 'results', label: 'Patient results' },
+  { id: 'doctor', label: 'The doctor' },
+  { id: 'equipment', label: 'Our equipment' },
+  { id: 'squint-surgery', label: 'Squint surgery' },
+  { id: 'myopia', label: 'Myopia clinic' },
+  { id: 'trust', label: 'Why families trust us' },
+  { id: 'visit', label: 'Visit' },
+];
+
+/** The illustrated family story on /our-story/. */
+export const STORY_CHAPTERS: readonly Chapter[] = [
   { id: 'top', label: 'Arriving worried' },
   { id: 'consult', label: 'Meeting Dr. Aloka' },
   { id: 'care', label: 'Treatment' },
   { id: 'joy', label: 'Going home happy' },
-  { id: 'doctor', label: 'The doctor' },
-  { id: 'myopia', label: 'Myopia clinic' },
-  { id: 'squint-surgery', label: 'Squint surgery' },
-  { id: 'trust', label: 'Why families trust us' },
-  { id: 'visit', label: 'Visit' },
-] as const;
+];
 
 @Component({
   selector: 'app-site-header',
@@ -26,7 +39,7 @@ export const CHAPTERS = [
 })
 export class SiteHeader {
   protected readonly clinic = CLINIC;
-  protected readonly chapters = CHAPTERS;
+  readonly chapters = input<readonly Chapter[]>(CHAPTERS);
   /** Other pages; Home is where we are. */
   protected readonly nav = NAV.filter((n) => n.path !== '/');
   protected readonly menuOpen = signal(false);
@@ -45,7 +58,8 @@ export class SiteHeader {
       let yieldBook = false;
       const collect = () => {
         pageKeys = Array.from(document.querySelectorAll<HTMLElement>('main .btn-book'));
-        chapterEls = CHAPTERS.map((c) => document.getElementById(c.id)).filter((e): e is HTMLElement => !!e);
+        // keep indices aligned with the rail, even if a section is missing
+        chapterEls = this.chapters().map((c) => document.getElementById(c.id) as HTMLElement);
       };
       collect();
       let active = -1;
@@ -54,11 +68,11 @@ export class SiteHeader {
       motion.register(
         {
           read: () => {
-            if (!chapterEls.length) collect();
+            if (!chapterEls.some(Boolean)) collect();
             const vh = motion.viewportH;
             active = -1;
             chapterEls.forEach((el, i) => {
-              if (el.getBoundingClientRect().top < vh * 0.45) active = i;
+              if (el && el.getBoundingClientRect().top < vh * 0.45) active = i;
             });
             const max = document.documentElement.scrollHeight - vh;
             progress = max > 0 ? window.scrollY / max : 0;

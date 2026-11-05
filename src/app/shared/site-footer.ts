@@ -20,6 +20,7 @@ import { CLINIC } from '../pages/home/home.content';
             <li><a routerLink="/surgeries/">Surgeries</a></li>
             <li><a routerLink="/" fragment="myopia">Myopia clinic</a></li>
             <li><a routerLink="/gallery/">Gallery</a></li>
+            <li><a routerLink="/our-story/">Our story</a></li>
             <li><a routerLink="/blog">Blog</a></li>
             <li><a routerLink="/faq/">FAQ</a></li>
             <li><a routerLink="/contact-us/">Contact &amp; directions</a></li>
