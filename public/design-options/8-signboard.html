@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Signboard | Dr. Aloka's Eye Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700;800&family=Anek+Telugu:wght@500;600;700&display=swap" rel="stylesheet" />
+<script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-ok');</script>
+<style>
+  :root {
+    --teal: #2a8cb0;        /* logo teal: marks, large type */
+    --teal-deep: #1d6c8a;   /* sign panels carrying white text */
+    --teal-night: #134d63;  /* directory board */
+    --teal-wash: #e3f1f7;
+    --orange: #e06a24;      /* logo orange: arrows, large type */
+    --orange-plate: #c4551a;/* orange plates carrying white text */
+    --orange-press: #a8460f;
+    --wall: #f1f4f5;
+    --plate: #ffffff;
+    --ink: #10303d;
+    --ink-soft: #46616c;
+    --on-teal: #ffffff;
+    --on-teal-soft: #cde6f0;
+    --u: 8px;               /* the plate unit */
+    --r: 6px;
+    --face: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif;
+    --te: 'Anek Telugu', 'Noto Sans Telugu', sans-serif;
+    --mount: 0 1px 1px rgb(16 48 61 / .12), 0 10px 24px -12px rgb(16 48 61 / .35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; scrollbar-color: var(--teal) var(--wall); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--wall); color: var(--ink); font: 400 1.0625rem/1.6 var(--face); caret-color: var(--orange); -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--orange); color: #fff; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-underline-offset: .25em; text-decoration-thickness: 1.5px; }
+  h1, h2, h3 { margin: 0; line-height: 1.04; letter-spacing: -.025em; font-weight: 800; text-wrap: balance; }
+  p { margin: 0; text-wrap: pretty; }
+  [lang=te] { font-family: var(--te); letter-spacing: 0; }
+  .wrap { width: min(100% - 2 * clamp(1rem, 3vw, 2.5rem), 1240px); margin-inline: auto; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* ---------- the plate: every sign on the page ---------- */
+  .plate { position: relative; border-radius: var(--r); background: var(--plate); box-shadow: var(--mount); }
+  .plate--teal { background: var(--teal-deep); color: var(--on-teal); }
+  .plate--night { background: var(--teal-night); color: var(--on-teal); }
+  .plate--orange { background: var(--orange-plate); color: #fff; }
+  /* rivets: four small fixings in the corners */
+  .riveted::before {
+    content: ''; position: absolute; inset: 10px; pointer-events: none;
+    background:
+      radial-gradient(circle, var(--rivet, rgb(16 48 61 / .22)) 2.2px, transparent 2.8px) 0 0 / 6px 6px no-repeat,
+      radial-gradient(circle, var(--rivet, rgb(16 48 61 / .22)) 2.2px, transparent 2.8px) 100% 0 / 6px 6px no-repeat,
+      radial-gradient(circle, var(--rivet, rgb(16 48 61 / .22)) 2.2px, transparent 2.8px) 0 100% / 6px 6px no-repeat,
+      radial-gradient(circle, var(--rivet, rgb(16 48 61 / .22)) 2.2px, transparent 2.8px) 100% 100% / 6px 6px no-repeat;
+  }
+  .plate--teal.riveted, .plate--night.riveted, .plate--orange.riveted { --rivet: rgb(255 255 255 / .35); }
+
+  .arrow { width: 1.1em; height: 1.1em; flex: none; transition: translate .35s cubic-bezier(.16,1,.3,1); }
+  a:hover > .arrow, a:focus-visible > .arrow, a:hover .arrow { translate: 5px 0; }
+
+  /* ---------- header ---------- */
+  .top { position: sticky; top: 0; z-index: 20; background: rgb(241 244 245 / .94); backdrop-filter: blur(8px); }
+  .top .wrap { display: flex; align-items: center; gap: 1.5rem; padding-block: .75rem; }
+  .logo-plate { display: block; padding: .55rem .9rem; }
+  .logo-plate img { height: 40px; width: auto; }
+  .top nav { display: flex; gap: .25rem; margin-left: auto; font-weight: 700; font-size: .98rem; }
+  .top nav a { display: inline-flex; align-items: center; gap: .35rem; padding: .55rem .8rem; text-decoration: none; color: var(--ink-soft); border-radius: var(--r); }
+  .top nav a:hover { background: var(--plate); color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; justify-content: space-between; gap: .9rem; min-height: 3.25rem; padding: .8rem 1.2rem .8rem 1.3rem; border-radius: var(--r); font-weight: 800; font-size: 1.06rem; text-decoration: none; transition: background-color .2s; }
+  .btn--book { background: var(--orange-plate); color: #fff; box-shadow: var(--mount); }
+  .btn--book:hover { background: var(--orange-press); }
+  .btn--plain { background: var(--plate); color: var(--ink); box-shadow: var(--mount); }
+  .btn--plain:hover { background: var(--teal-wash); }
+  .btn--wa { background: var(--plate); color: #12733f; box-shadow: var(--mount); }
+  .btn--wa:hover { background: #e5f5ec; }
+  .top .btn { min-height: 2.9rem; }
+
+  /* ---------- hero: the main sign ---------- */
+  .hero { padding-top: clamp(.75rem, 2vw, 1.25rem); }
+  .sign { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); gap: clamp(1.5rem, 4vw, 3.5rem); padding: clamp(2rem, 5vw, 4.25rem); padding-bottom: clamp(2rem, 4vw, 3.5rem); overflow: hidden; }
+  .sign h1 { font-size: clamp(2.6rem, 1.3rem + 4.6vw, 5.5rem); letter-spacing: -.035em; }
+  .sign h1 span { color: #ffd7bf; }
+  .sign .te-line { margin-top: 1.25rem; font-size: clamp(1.25rem, 1rem + .9vw, 1.7rem); font-weight: 600; color: var(--on-teal-soft); line-height: 1.35; }
+  .sign .te-line small { display: block; font-family: var(--face); font-size: .95rem; font-weight: 500; opacity: .85; margin-top: .15rem; }
+  .sign .lede { margin-top: 1.5rem; max-width: 46ch; font-size: 1.15rem; color: var(--on-teal-soft); }
+  .sign .lede strong { color: #fff; font-weight: 700; }
+  .sign__photo { align-self: end; margin: 0; position: relative; }
+  .sign__photo img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; object-position: 50% 15%; border-radius: 4px; border: 8px solid #fff; box-shadow: 0 24px 40px -22px rgb(0 0 0 / .55); }
+  .sign__photo figcaption { position: absolute; left: -1rem; bottom: 1.5rem; padding: .7rem 1rem; font-size: .92rem; color: var(--ink-soft); }
+  .sign__photo figcaption b { display: block; color: var(--ink); font-size: 1.05rem; }
+
+  /* the direction board under the main sign */
+  .board { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); gap: calc(var(--u) * 1.5); margin-top: calc(var(--u) * 1.5); }
+  .ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: calc(var(--u) * 1.5); }
+  .way { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: 1.15rem 1.25rem; text-decoration: none; font-weight: 800; font-size: 1.1rem; color: var(--ink); transition: background-color .2s; }
+  .way small { display: block; font-weight: 500; font-size: .86rem; color: var(--ink-soft); margin-top: .1rem; }
+  .way .arrow { color: var(--orange); width: 1.4rem; height: 1.4rem; }
+  .way:hover { background: var(--teal-wash); }
+  .book-sign { display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; padding: 1.4rem 1.5rem; text-decoration: none; }
+  .book-sign b { display: flex; justify-content: space-between; align-items: center; font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem); letter-spacing: -.02em; }
+  .book-sign b .arrow { width: 2.2rem; height: 2.2rem; }
+  .book-sign span { color: #ffe3d3; font-size: .98rem; }
+  .book-sign:hover { background: var(--orange-press); }
+  .alt { display: flex; gap: calc(var(--u) * 1.5); }
+  .alt a { flex: 1; }
+  .hero-side { display: grid; gap: calc(var(--u) * 1.5); grid-template-rows: 1fr auto; }
+
+  html.motion-ok .board .plate { animation: mount .7s cubic-bezier(.16,1,.3,1) both; animation-delay: calc(var(--i, 0) * 60ms + 150ms); }
+  @keyframes mount { from { translate: 0 10px; opacity: .001; } }
+
+  /* ---------- sections ---------- */
+  section { padding-block: clamp(4.5rem, 10vw, 7.5rem); }
+  .sec-title { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem 3rem; align-items: end; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .sec-title h2 { font-size: clamp(2.1rem, 1.3rem + 2.8vw, 3.6rem); }
+  .sec-title p { color: var(--ink-soft); max-width: 50ch; font-size: 1.1rem; }
+
+  /* which sign is yours: symptom first, then the path */
+  .signs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: calc(var(--u) * 1.5); }
+  .cond { display: flex; flex-direction: column; padding: 1.6rem 1.6rem 1.4rem; text-decoration: none; min-height: 15rem; transition: translate .35s cubic-bezier(.16,1,.3,1); }
+  .cond:hover { translate: 0 -3px; }
+  .cond--wide { grid-column: span 3; } .cond--mid { grid-column: span 2; }
+  .cond .notice { font-size: 1.45rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; max-width: 20ch; }
+  .cond--wide .notice { font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem); }
+  .cond .te { display: block; margin-top: .5rem; font-size: 1.15rem; font-weight: 600; color: var(--teal); }
+  .plate--teal .te { color: var(--on-teal-soft); }
+  .cond .path { margin-top: auto; padding-top: 1.5rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; border-top: 2px solid var(--teal-wash); margin-top: auto; }
+  .plate--teal .path { border-color: rgb(255 255 255 / .18); }
+  .cond .path span { font-size: .96rem; color: var(--ink-soft); padding-top: 1rem; }
+  .plate--teal .path span { color: var(--on-teal-soft); }
+  .cond .path b { display: block; color: var(--ink); font-size: 1rem; }
+  .plate--teal .path b { color: #fff; }
+  .cond .arrow { color: var(--orange); width: 1.6rem; height: 1.6rem; }
+  .plate--teal .arrow { color: #ffb48a; }
+  .myth { margin-top: calc(var(--u) * 1.5); display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.5rem; padding: 1.25rem 1.6rem; background: var(--orange-plate); color: #fff; }
+  .myth [lang=te] { font-size: 1.35rem; font-weight: 700; }
+  .myth span:last-child { color: #ffe3d3; }
+
+  /* results: a mounted display case */
+  .results { background: var(--teal-night); color: var(--on-teal); }
+  .results .sec-title p { color: var(--on-teal-soft); }
+  .results .btn--book { box-shadow: none; }
+  .case { padding: clamp(.75rem, 2vw, 1.25rem); background: #fff; border-radius: var(--r); }
+  .case__img { aspect-ratio: 1400 / 400; display: grid; place-items: center; background: #f4f6f7; border-radius: 3px; overflow: hidden; }
+  .case__img img { max-height: 100%; width: auto; }
+  html.motion-ok .case__img img { animation: show .6s cubic-bezier(.16,1,.3,1); }
+  @keyframes show { from { opacity: .001; } }
+  .case__bar { display: flex; align-items: center; gap: 1rem; padding: 1rem .5rem .25rem; color: var(--ink); }
+  .case__count { flex: none; padding: .3rem .6rem; border-radius: 4px; background: var(--teal-deep); color: #fff; font-weight: 800; font-size: .9rem; }
+  .case__cap { font-weight: 700; }
+  .case__nav { margin-left: auto; display: flex; gap: .5rem; }
+  .case__nav button { width: 3rem; height: 3rem; display: grid; place-items: center; border: 0; border-radius: var(--r); background: var(--wall); color: var(--ink); cursor: pointer; }
+  .case__nav button:hover { background: var(--orange-plate); color: #fff; }
+  .case__nav .prev .arrow { rotate: 180deg; }
+  .strip { list-style: none; margin: 1rem 0 0; padding: 0 0 .4rem; display: flex; gap: .5rem; overflow-x: auto; scrollbar-color: var(--teal) transparent; }
+  .strip button { padding: 0; border: 3px solid transparent; border-radius: 5px; background: #fff; cursor: pointer; opacity: .6; transition: opacity .2s; }
+  .strip button:hover { opacity: .9; }
+  .strip button[aria-current=true] { opacity: 1; border-color: var(--orange); }
+  .strip img { height: 56px; width: auto; max-width: 170px; object-fit: cover; border-radius: 2px; }
+  .results__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: 2rem; }
+  .results__foot a.more { color: #fff; font-weight: 700; display: inline-flex; gap: .4rem; align-items: center; }
+
+  /* doctor: nameplate + building directory */
+  .doc { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .doc__photo { margin: 0; padding: 10px; }
+  .doc__photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 3px; }
+  .nameplate { padding: 1.75rem 2rem; }
+  .nameplate h2 { font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.6rem); color: var(--teal-deep); }
+  .nameplate p { margin-top: .6rem; font-weight: 700; color: var(--ink-soft); }
+  .doc__body { margin-top: 1.5rem; font-size: 1.12rem; max-width: 56ch; }
+  .directory { margin-top: 1.5rem; padding: .5rem 1.5rem; }
+  .directory h3 { font-size: .95rem; font-weight: 800; letter-spacing: .02em; color: var(--on-teal-soft); padding: .9rem 0 .4rem; }
+  .directory ol { list-style: none; margin: 0; padding: 0; }
+  .directory li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding: .8rem 0; border-top: 1px solid rgb(255 255 255 / .14); }
+  .directory li b { color: #ffb48a; font-variant-numeric: tabular-nums; }
+  .directory li span { color: #eaf4f8; }
+
+  /* equipment: machines with mounted labels */
+  .equip { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--u) * 1.5); }
+  .machine { display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
+  .machine__img { background: #fff; aspect-ratio: 16 / 10; overflow: hidden; }
+  .machine__img img { width: 100%; height: 100%; object-fit: cover; }
+  .machine__label { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .25rem 1.25rem; padding: 1.3rem 1.5rem 1.5rem; border-top: 1px solid var(--teal-wash); }
+  .machine__label b { font-size: 1.4rem; letter-spacing: -.02em; }
+  .machine__label i { font-style: normal; justify-self: end; align-self: center; padding: .25rem .6rem; border-radius: 4px; background: var(--teal-wash); color: var(--teal-deep); font-weight: 700; font-size: .85rem; white-space: nowrap; }
+  .machine__label p { grid-column: 1 / -1; color: var(--ink-soft); margin-top: .35rem; }
+  .tests { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; padding: 1.1rem 1.5rem; }
+  .tests b { margin-right: .5rem; }
+  .tests span { padding: .4rem .75rem; border-radius: 4px; background: var(--wall); font-weight: 600; font-size: .95rem; }
+
+  /* parents */
+  .voices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .voices figure { margin: 0; padding: .25rem 2rem; border-left: 2px solid var(--teal); }
+  .voices figure:first-child { padding-left: 0; border: 0; }
+  .voices blockquote { margin: 0; font-size: clamp(1.15rem, 1rem + .5vw, 1.4rem); font-weight: 700; letter-spacing: -.01em; line-height: 1.35; }
+  .voices figcaption { margin-top: 1rem; color: var(--ink-soft); }
+  .aff { margin-top: clamp(3rem, 6vw, 4.5rem); display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+  .aff b { margin-right: .75rem; }
+  .aff span { padding: .55rem .9rem; font-weight: 700; }
+
+  /* visit: you-are-here */
+  .visit { padding-bottom: clamp(2rem, 5vw, 3rem); }
+  .here { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); overflow: hidden; }
+  .here__info { padding: clamp(2rem, 4vw, 3.5rem); }
+  .here__info h2 { font-size: clamp(2.1rem, 1.3rem + 2.6vw, 3.4rem); }
+  .route { list-style: none; margin: 2rem 0; padding: 0; display: grid; gap: 1rem; }
+  .route li { display: grid; grid-template-columns: 2rem 1fr; gap: .9rem; align-items: start; }
+  .route svg { width: 1.6rem; height: 1.6rem; color: #ffb48a; margin-top: .1rem; }
+  .route b { display: block; font-size: 1.15rem; }
+  .route span { color: var(--on-teal-soft); }
+  .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; margin-top: .5rem; max-width: 24rem; }
+  .days span { text-align: center; padding: .5rem 0; border-radius: 4px; background: #fff; color: var(--teal-deep); font-weight: 800; font-size: .88rem; }
+  .days span.off { background: transparent; color: var(--on-teal-soft); box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / .3); }
+  .here__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .here__map { min-height: 420px; position: relative; background: #dfe7ea; }
+  .here__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  footer { padding-block: 1.5rem 2.5rem; color: var(--ink-soft); font-size: .92rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+
+  /* phone dock */
+  .dock { display: none; }
+
+  @media (max-width: 1000px) {
+    .top nav { display: none; } .top .btn { margin-left: auto; }
+    .sign, .board, .doc, .here { grid-template-columns: minmax(0, 1fr); }
+    .sign__photo { max-width: 26rem; }
+    .signs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cond--wide, .cond--mid { grid-column: span 1; }
+    .cond--wide:first-child { grid-column: 1 / -1; }
+    .voices { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+    .voices figure, .voices figure:first-child { padding: 0 0 0 1.25rem; border-left: 2px solid var(--teal); }
+    .sec-title { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 640px) {
+    body { padding-bottom: 4.75rem; }
+    .top .btn { display: none; }
+    .ways { grid-template-columns: minmax(0, 1fr); }
+    .signs, .equip { grid-template-columns: minmax(0, 1fr); }
+    .cond { min-height: 0; }
+    .sign__photo figcaption { left: .75rem; }
+    .directory li { grid-template-columns: 5rem 1fr; }
+    .dock { display: grid; grid-template-columns: 1fr 1fr 1.6fr; gap: 6px; position: fixed; inset: auto 0 0; z-index: 30; padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); background: var(--wall); box-shadow: 0 -10px 24px -14px rgb(16 48 61 / .4); }
+    .dock a { display: grid; place-items: center; min-height: 3.1rem; border-radius: var(--r); font-weight: 800; text-decoration: none; background: #fff; color: var(--ink); }
+    .dock a.book { background: var(--orange-plate); color: #fff; }
+  }
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="9.8" r="2.4" fill="currentColor"/></symbol>
+    <symbol id="stairs" viewBox="0 0 24 24"><path d="M3 20h5v-5h5v-5h5V5h3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <header class="top"><div class="wrap">
+    <a class="plate logo-plate" href="#" aria-label="Dr. Aloka's Eye Care, home"><img src="../images/logo.png" alt="Dr. Aloka's Eye Care" width="1475" height="320" /></a>
+    <nav aria-label="Main">
+      <a href="#signs">Conditions</a><a href="#results">Results</a><a href="#doctor">Dr. Aloka</a><a href="#equipment">Equipment</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book appointment <svg class="arrow"><use href="#arr"/></svg></a>
+  </div></header>
+
+  <main>
+    <div class="hero wrap">
+      <div class="plate plate--teal riveted sign">
+        <div>
+          <h1>Eye care for children. <span>Squint care at any age.</span></h1>
+          <p class="te-line"><span lang="te">మీ పిల్లల చూపు, మా బాధ్యత</span><small>Your child's sight is our responsibility</small></p>
+          <p class="lede"><strong>Dr. Aloka Hedau</strong>, senior paediatric ophthalmologist and adult squint surgeon. Trained at Aravind Eye Hospital, Madurai; in Hyderabad since 2012.</p>
+        </div>
+        <figure class="sign__photo">
+          <img src="../images/doctor-900.webp" alt="Dr. Aloka Hedau at her clinic" />
+        </figure>
+      </div>
+
+      <div class="board">
+        <div class="ways">
+          <a class="plate way" style="--i:0" href="#signs"><span>Squint<small>Children &amp; adults</small></span><svg class="arrow"><use href="#arr"/></svg></a>
+          <a class="plate way" style="--i:1" href="#signs"><span>Lazy eye<small>Vision therapy</small></span><svg class="arrow"><use href="#arr"/></svg></a>
+          <a class="plate way" style="--i:2" href="#signs"><span>Myopia<small>Control &amp; tracking</small></span><svg class="arrow"><use href="#arr"/></svg></a>
+          <a class="plate way" style="--i:3" href="#signs"><span>Cataract<small>In children</small></span><svg class="arrow"><use href="#arr"/></svg></a>
+          <a class="plate way" style="--i:4" href="#signs"><span>Premature babies<small>ROP screening</small></span><svg class="arrow"><use href="#arr"/></svg></a>
+          <a class="plate way" style="--i:5" href="#signs"><span>Nystagmus<small>Surgery</small></span><svg class="arrow"><use href="#arr"/></svg></a>
+        </div>
+        <div class="hero-side">
+          <a class="plate plate--orange riveted book-sign" style="--i:6" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">
+            <b>Book appointment <svg class="arrow"><use href="#arr"/></svg></b>
+            <span>Monday – Saturday, 10 am – 5 pm · Sunday closed</span>
+          </a>
+          <div class="alt">
+            <a class="btn btn--wa" style="--i:7" href="https://wa.me/917416427503" target="_blank" rel="noopener">WhatsApp <svg class="arrow"><use href="#arr"/></svg></a>
+            <a class="btn btn--plain num" style="--i:8" href="tel:+917416427503">Call 74164 27503</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="signs"><div class="wrap">
+      <div class="sec-title">
+        <h2>What have you noticed?</h2>
+        <p>Start from what you see in your child. Each sign leads to the care Dr. Aloka offers, with therapy first wherever it can work.</p>
+      </div>
+      <div class="signs">
+        <a class="plate plate--teal riveted cond cond--wide" href="#">
+          <p class="notice">One eye turns in, out, up or down, in photos or when tired.</p>
+          <span class="te" lang="te">మెల్ల కన్ను</span>
+          <div class="path"><span><b>Squint (crossed eyes)</b>Glasses, therapy, or surgery ideally before age 8</span><svg class="arrow"><use href="#arr"/></svg></div>
+        </a>
+        <a class="plate riveted cond cond--wide" href="#">
+          <p class="notice">Seeing double, headaches, strain while reading. As an adult.</p>
+          <div class="path"><span><b>Adult squint</b>Micro-incision and adjustable-suture surgery. Age is no bar</span><svg class="arrow"><use href="#arr"/></svg></div>
+        </a>
+        <a class="plate riveted cond cond--mid" href="#">
+          <p class="notice">Squeezing eyes, watering, sitting close to the TV.</p>
+          <div class="path"><span><b>Myopia control</b>Eye-length tracking and advice</span><svg class="arrow"><use href="#arr"/></svg></div>
+        </a>
+        <a class="plate riveted cond cond--mid" href="#">
+          <p class="notice">One eye sees less, even with glasses.</p>
+          <div class="path"><span><b>Lazy eye</b>Bynocs vision therapy, 10–15 sessions</span><svg class="arrow"><use href="#arr"/></svg></div>
+        </a>
+        <a class="plate riveted cond cond--mid" href="#">
+          <p class="notice">Tilting or turning the head to see.</p>
+          <div class="path"><span><b>Nystagmus</b>Surgery that eases head posture</span><svg class="arrow"><use href="#arr"/></svg></div>
+        </a>
+      </div>
+      <p class="plate riveted myth"><span lang="te">మెల్ల కన్ను అదృష్టం కాదు, చికిత్స చేయాలి</span><span>A squint is not luck. It needs treatment.</span></p>
+    </div></section>
+
+    <section class="results" id="results"><div class="wrap">
+      <div class="sec-title">
+        <h2>Real patients. Before and after.</h2>
+        <p>Photos of Dr. Aloka's own patients, as published by the clinic: squint correction in children and adults, and nystagmus surgery.</p>
+      </div>
+      <div class="case" id="case">
+        <div class="case__img"><img id="caseImg" src="../images/gallery/surgical-outcomes/01.webp" alt="Before and after: Squint correction in an adult" /></div>
+        <div class="case__bar">
+          <span class="case__count num" id="caseCount"></span>
+          <span class="case__cap" id="caseCap" aria-live="polite"></span>
+          <div class="case__nav">
+            <button class="prev" type="button" id="prev" aria-label="Previous photo"><svg class="arrow"><use href="#arr"/></svg></button>
+            <button class="next" type="button" id="next" aria-label="Next photo"><svg class="arrow"><use href="#arr"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <ul class="strip" id="strip" aria-label="Choose a photo"></ul>
+      <div class="results__foot">
+        <a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book a consultation <svg class="arrow"><use href="#arr"/></svg></a>
+        <a class="more" href="#">All photos in the gallery <svg class="arrow"><use href="#arr"/></svg></a>
+      </div>
+    </div></section>
+
+    <section id="doctor"><div class="wrap doc">
+      <figure class="plate doc__photo"><img src="../images/gallery/the-hospital/02.webp" alt="Dr. Aloka examining a baby's eyes while the mother holds the child" loading="lazy" /></figure>
+      <div>
+        <div class="plate riveted nameplate">
+          <h2>Dr. Aloka Hedau</h2>
+          <p>DNB (Ophthalmology) · Fellow, Paediatric Ophthalmology · FICO (UK)</p>
+        </div>
+        <p class="doc__body">Senior Paediatric Ophthalmologist and Adult Strabismus Surgeon, with over twenty years of practice and more than fifty talks at national and international conferences. Parents say she listens, and is patient with the kids.</p>
+        <div class="plate plate--night directory">
+          <h3>Training and career</h3>
+          <ol>
+            <li><b>2007–09</b><span>Post-graduation in Ophthalmology, Aravind Eye Hospital, Madurai</span></li>
+            <li><b>2010</b><span>FICO, International Council of Ophthalmology</span></li>
+            <li><b>2010–11</b><span>Fellowship in Paediatric Ophthalmology &amp; Adult Squint, Aravind</span></li>
+            <li><b>2012</b><span>Chief Paediatric Ophthalmologist in Hyderabad</span></li>
+            <li><b>2015</b><span>Nystagmus surgery training with Dr. Richard Hertle</span></li>
+          </ol>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="equipment" style="padding-top:0"><div class="wrap">
+      <div class="sec-title">
+        <h2>The machines behind the diagnosis</h2>
+        <p>Precise measurement to catch change early, and picture-based tests so even babies and toddlers can be checked.</p>
+      </div>
+      <div class="equip">
+        <article class="plate machine">
+          <div class="machine__img"><img src="../images/myopia/pristine-obm-12-900.webp" alt="The Pristine OBM 12 at the clinic" loading="lazy" /></div>
+          <div class="machine__label"><b>Pristine OBM 12</b><i>Myopia tracking</i><p>Measures the length of the eye, the curve of the cornea and the glasses power, so any increase in myopia is caught early.</p></div>
+        </article>
+        <article class="plate machine">
+          <div class="machine__img"><img src="../images/myopia/sirius-plus-topographer-1200.webp" alt="The Sirius+ corneal topographer at the clinic" loading="lazy" /></div>
+          <div class="machine__label"><b>Sirius+ topography</b><i>Cornea mapping</i><p>Maps the shape of the cornea, the clear front window of the eye, point by point.</p></div>
+        </article>
+        <p class="plate tests"><b>Also at the clinic</b><span>Bynocs vision therapy</span><span>Titmus Fly</span><span>Worth 4 Dot</span><span>Optokinetic drum</span><span>Lea picture charts</span></p>
+      </div>
+    </div></section>
+
+    <section style="padding-top:0"><div class="wrap">
+      <div class="sec-title"><h2>What parents say</h2></div>
+      <div class="voices">
+        <figure><blockquote>“My entire family consults Dr. Aloka, which includes my kids, mother and mother-in-law.”</blockquote><figcaption>Priyanka Malhotra, Google review</figcaption></figure>
+        <figure><blockquote>“Dr. Aloka Ma'am is very kind and helpful. She listens to the parents with all the empathy.”</blockquote><figcaption>Pratiksha Tripathi, Google review</figcaption></figure>
+        <figure><blockquote>“Dr. Aloka is very approachable and patient with the kids.”</blockquote><figcaption>Prashant Saddi, Google review</figcaption></figure>
+      </div>
+      <div class="aff"><b>Affiliated with</b><span class="plate">Rainbow Hospitals</span><span class="plate">Apollo Cradle</span><span class="plate">Little Star Children's Hospital</span><span class="plate">Win Vision Eye Hospitals</span></div>
+    </div></section>
+
+    <section class="visit" id="visit"><div class="wrap">
+      <div class="plate plate--teal riveted here">
+        <div class="here__info">
+          <h2>Find us in Kukatpally</h2>
+          <ol class="route">
+            <li><svg><use href="#pin"/></svg><div><b>Near Forum Srujana Mall</b><span>9th Phase Road, KPHB Phase 6, Kukatpally, Hyderabad 500085</span></div></li>
+            <li><svg><use href="#stairs"/></svg><div><b>Third floor</b><span>Plot no 6, Survey No 1009</span></div></li>
+            <li><svg><use href="#clock"/></svg><div><b>10 am – 5 pm</b><div class="days" aria-label="Open Monday to Saturday, closed Sunday"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span class="off">Sun</span></div></div></li>
+          </ol>
+          <div class="here__actions">
+            <a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book appointment <svg class="arrow"><use href="#arr"/></svg></a>
+            <a class="btn btn--plain" href="https://www.google.com/maps/search/?api=1&query=Dr+Aloka%27s+Eye+Care+KPHB+Phase+6+Kukatpally+Hyderabad" target="_blank" rel="noopener">Directions <svg class="arrow"><use href="#arr"/></svg></a>
+          </div>
+        </div>
+        <div class="here__map"><iframe title="Map: Dr. Aloka's Eye Care, KPHB Phase 6" loading="lazy" src="https://www.google.com/maps?q=Dr+Aloka%27s+Eye+Care,+KPHB+Phase+6,+Kukatpally,+Hyderabad+500085&output=embed"></iframe></div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap"><span>© Dr. Aloka's Eye Care, Kukatpally, Hyderabad · +91 74164 27503 · dralokaseyecare@gmail.com</span><span>Design concept: Signboard</span></div></footer>
+
+  <nav class="dock" aria-label="Quick contact">
+    <a href="tel:+917416427503">Call</a>
+    <a href="https://wa.me/917416427503" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book appointment</a>
+  </nav>
+
+  <script>
+    (function () {
+      var base = '../images/gallery/surgical-outcomes/';
+      var P = [['01','Squint correction in an adult'],['06','Squint correction'],['07','Squint correction'],['08','Squint correction'],['09','Squint correction'],['10','Squint correction'],['11','Squint correction'],['12','Squint correction'],['04','Nystagmus: head posture before and after surgery'],['05','Nystagmus: head posture before and after surgery']];
+      var img = document.getElementById('caseImg'), cap = document.getElementById('caseCap'), count = document.getElementById('caseCount'), strip = document.getElementById('strip');
+      var i = 0, touched = false, hold = false;
+      P.forEach(function (p, k) {
+        var li = document.createElement('li'), b = document.createElement('button');
+        b.type = 'button'; b.innerHTML = '<img src="' + base + p[0] + '-sm.webp" alt="" loading="lazy"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Photo ' + (k + 1) + ': ' + p[1] + '</span>';
+        b.onclick = function () { touched = true; show(k); };
+        li.appendChild(b); strip.appendChild(li);
+      });
+      function show(n) {
+        i = (n + P.length) % P.length;
+        var clone = img.cloneNode(); clone.src = base + P[i][0] + '.webp'; clone.alt = 'Before and after: ' + P[i][1]; img.replaceWith(clone); img = clone;
+        cap.textContent = 'Before and after: ' + P[i][1];
+        count.textContent = String(i + 1).padStart(2, '0') + ' / ' + P.length;
+        [].forEach.call(strip.querySelectorAll('button'), function (b, k) { b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      }
+      document.getElementById('prev').onclick = function () { touched = true; show(i - 1); };
+      document.getElementById('next').onclick = function () { touched = true; show(i + 1); };
+      var c = document.getElementById('case');
+      c.addEventListener('pointerenter', function () { hold = true; }); c.addEventListener('pointerleave', function () { hold = false; });
+      show(0);
+      if (document.documentElement.classList.contains('motion-ok'))
+        setInterval(function () { if (!touched && !hold && !document.hidden) show(i + 1); }, 5000);
+    })();
+  </script>
+</body>
+</html>
