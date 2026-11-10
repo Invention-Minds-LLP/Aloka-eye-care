@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Option 1 · Clinic Clean | Dr. Aloka's Eye Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Anek+Telugu:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0d2b45; --navy-2: #163d5e; --teal: #1b8db5; --teal-soft: #e6f4f9; --orange: #d4581a; --orange-2: #b74a14;
+    --ink: #0d2b45; --ink-soft: #4b5f72; --line: #dde6ee; --bg: #ffffff; --bg-2: #f4f8fb; --wa: #128c4b;
+    --r: 16px; --shadow: 0 20px 45px -25px rgb(13 43 69 / .35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font: 400 1.0625rem/1.65 'Plus Jakarta Sans', system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { line-height: 1.12; letter-spacing: -.02em; margin: 0; font-weight: 800; }
+  p { margin: 0; }
+  .wrap { width: min(100% - 2.5rem, 1200px); margin-inline: auto; }
+  [lang=te] { font-family: 'Anek Telugu', sans-serif; }
+  .eyebrow { display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); }
+  .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 1.5rem; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: .2s; }
+  .btn--book { background: var(--orange); color: #fff; box-shadow: 0 10px 24px -12px rgb(212 88 26 / .8); }
+  .btn--book:hover { background: var(--orange-2); transform: translateY(-1px); }
+  .btn--ghost { box-shadow: inset 0 0 0 1.5px var(--line); color: var(--navy); background: #fff; }
+  .btn--ghost:hover { box-shadow: inset 0 0 0 1.5px var(--teal); }
+  .btn--wa { color: var(--wa); box-shadow: inset 0 0 0 1.5px var(--wa); background: #fff; }
+  .btn--wa:hover { background: var(--wa); color: #fff; }
+
+  /* Top bar + header */
+  .topbar { background: var(--navy); color: #cfe0ee; font-size: .85rem; }
+  .topbar .wrap { display: flex; justify-content: space-between; gap: 1rem; padding-block: .5rem; flex-wrap: wrap; }
+  .topbar a { color: #fff; text-decoration: none; font-weight: 600; }
+  header.site { position: sticky; top: 0; z-index: 10; background: rgb(255 255 255 / .96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header.site .wrap { display: flex; align-items: center; gap: 2rem; padding-block: .8rem; }
+  .logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+  .logo img { height: 46px; width: auto; }
+  .logo b { display: block; font-size: 1.05rem; line-height: 1.1; }
+  .logo small { color: var(--ink-soft); font-size: .78rem; }
+  nav.main { display: flex; gap: 1.6rem; margin-left: auto; font-weight: 600; font-size: .95rem; }
+  nav.main a { text-decoration: none; color: var(--ink-soft); }
+  nav.main a:hover { color: var(--teal); }
+  header.site .btn { padding: .7rem 1.2rem; }
+
+  /* Hero */
+  .hero { background: linear-gradient(180deg, var(--bg-2), #fff); padding-block: 4.5rem 4rem; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: center; }
+  .hero h1 { font-size: clamp(2.2rem, 1.4rem + 3vw, 3.6rem); margin-top: 1rem; }
+  .hero h1 em { font-style: normal; color: var(--teal); }
+  .hero .lede { margin-top: 1.25rem; font-size: 1.15rem; color: var(--ink-soft); max-width: 50ch; }
+  .hero .te { margin-top: .9rem; color: var(--ink-soft); font-size: .95rem; }
+  .hero .te span { color: var(--navy); font-weight: 600; font-size: 1.1rem; margin-right: .4rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .badges { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .badges div { display: flex; align-items: center; gap: .6rem; font-size: .9rem; font-weight: 600; }
+  .badges svg { width: 34px; height: 34px; padding: 7px; border-radius: 50%; background: var(--teal-soft); color: var(--teal); flex: none; }
+  .hero__media { position: relative; }
+  .hero__media > img { width: 100%; aspect-ratio: 4/4.4; object-fit: cover; object-position: 50% 18%; border-radius: 24px; box-shadow: var(--shadow); }
+  .float { position: absolute; background: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: .9rem 1.1rem; font-size: .88rem; }
+  .float--hours { left: -2rem; bottom: 2.5rem; display: flex; gap: .75rem; align-items: center; }
+  .float--hours i { width: 10px; height: 10px; border-radius: 50%; background: #22b35e; box-shadow: 0 0 0 5px rgb(34 179 94 / .18); }
+  .float--name { right: -1.25rem; top: 1.5rem; }
+  .float b { display: block; font-size: 1rem; }
+  .float span { color: var(--ink-soft); }
+
+  /* Stats */
+  .stats { margin-top: -2rem; position: relative; }
+  .stats ul { list-style: none; margin: 0; padding: 1.6rem; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--navy); border-radius: 18px; color: #fff; box-shadow: var(--shadow); }
+  .stats li { padding-inline: 1.5rem; border-left: 1px solid rgb(255 255 255 / .15); }
+  .stats li:first-child { border: 0; }
+  .stats b { display: block; font-size: 2rem; font-weight: 800; color: #ffb17d; }
+  .stats span { font-size: .9rem; color: #c4d6e6; }
+
+  section { padding-block: 5.5rem; }
+  .head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2.75rem; flex-wrap: wrap; }
+  .head h2 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem); margin-top: .5rem; max-width: 20ch; }
+  .head p { max-width: 46ch; color: var(--ink-soft); }
+
+  /* Affiliations */
+  .aff { padding-block: 3rem 0; text-align: center; }
+  .aff p { font-size: .85rem; color: var(--ink-soft); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .aff ul { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; justify-content: center; flex-wrap: wrap; gap: .75rem 2.5rem; font-weight: 700; color: var(--navy-2); font-size: 1.05rem; }
+
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .svc { padding: 1.75rem; border: 1px solid var(--line); border-radius: var(--r); background: #fff; transition: .25s; text-decoration: none; display: block; }
+  .svc:hover { border-color: var(--teal); box-shadow: var(--shadow); transform: translateY(-3px); }
+  .svc svg { width: 48px; height: 48px; padding: 11px; border-radius: 12px; background: var(--teal-soft); color: var(--teal); }
+  .svc h3 { font-size: 1.15rem; margin-top: 1.1rem; }
+  .svc p { margin-top: .5rem; color: var(--ink-soft); font-size: .95rem; }
+  .svc .for { display: inline-block; margin-top: 1rem; font-size: .78rem; font-weight: 700; color: var(--teal); }
+
+  /* Results */
+  .results { background: var(--bg-2); }
+  .ba { background: #fff; border-radius: 20px; padding: 1.25rem; box-shadow: var(--shadow); }
+  .ba__stage { position: relative; aspect-ratio: 1400/420; display: grid; place-items: center; background: #f7f9fb; border-radius: 12px; overflow: hidden; }
+  .ba__stage img { max-height: 100%; width: auto; object-fit: contain; }
+  .ba__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; }
+  .ba__cap { font-weight: 600; }
+  .ba__cap small { color: var(--ink-soft); font-weight: 500; margin-right: .6rem; }
+  .ba__nav { display: flex; gap: .5rem; }
+  .ba__nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; cursor: pointer; font-size: 1.2rem; color: var(--navy); }
+  .ba__nav button:hover { background: var(--navy); color: #fff; }
+  .dots { display: flex; gap: .4rem; justify-content: center; margin-top: 1.25rem; }
+  .dots button { width: 8px; height: 8px; padding: 0; border-radius: 99px; border: 0; background: #c3d0dc; cursor: pointer; transition: .3s; }
+  .dots button.on { width: 26px; background: var(--teal); }
+
+  /* Doctor */
+  .doc .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 4rem; align-items: start; }
+  .doc__img { border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+  .doc__img img { aspect-ratio: 3/4; object-fit: cover; width: 100%; }
+  .doc h2 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.5rem); margin-top: .5rem; }
+  .doc .quals { margin-top: .6rem; color: var(--teal); font-weight: 700; font-size: .95rem; }
+  .doc p.body { margin-top: 1.25rem; color: var(--ink-soft); }
+  .timeline { list-style: none; padding: 0; margin: 2rem 0 0; border-left: 2px solid var(--line); }
+  .timeline li { position: relative; padding: 0 0 1.1rem 1.5rem; }
+  .timeline li::before { content: ''; position: absolute; left: -7px; top: .45rem; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 3px solid var(--teal); }
+  .timeline b { display: block; font-size: .85rem; color: var(--teal); }
+
+  /* Equipment */
+  .equip { background: var(--bg-2); }
+  .eq { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .eq article { background: #fff; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1.1fr; }
+  .eq img { width: 100%; height: 100%; object-fit: cover; min-height: 220px; }
+  .eq div { padding: 1.5rem; }
+  .eq small { color: var(--teal); font-weight: 700; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+  .eq h3 { margin-top: .4rem; font-size: 1.2rem; }
+  .eq p { margin-top: .5rem; color: var(--ink-soft); font-size: .95rem; }
+  .eq-more { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+  .eq-more span { padding: .55rem 1rem; background: #fff; border: 1px solid var(--line); border-radius: 99px; font-size: .9rem; font-weight: 600; }
+
+  /* Reviews */
+  .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .reviews figure { margin: 0; padding: 1.75rem; border-radius: var(--r); border: 1px solid var(--line); }
+  .stars { color: #f5a623; letter-spacing: .15em; }
+  .reviews blockquote { margin: .8rem 0 1.2rem; font-size: 1.02rem; }
+  .reviews figcaption { font-weight: 700; font-size: .92rem; }
+  .reviews figcaption span { display: block; font-weight: 500; color: var(--ink-soft); font-size: .82rem; }
+
+  /* Visit */
+  .visit { background: var(--navy); color: #fff; }
+  .visit .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: stretch; }
+  .visit h2 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.5rem); margin-top: .5rem; }
+  .visit .eyebrow { color: #7fd0ee; }
+  .visit dl { margin: 2rem 0; display: grid; gap: 1.25rem; }
+  .visit dt { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: #8fb3cf; font-weight: 700; }
+  .visit dd { margin: .25rem 0 0; }
+  .visit .btn--ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / .35); }
+  .visit iframe { width: 100%; height: 100%; min-height: 360px; border: 0; border-radius: 18px; }
+  footer { background: #081d2f; color: #8fa6ba; font-size: .88rem; padding-block: 1.75rem; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+  @media (max-width: 960px) {
+    nav.main { display: none; }
+    .hero .wrap, .doc .wrap, .visit .wrap { grid-template-columns: 1fr; }
+    .hero__media { max-width: 520px; }
+    .float--hours { left: .75rem; } .float--name { right: .75rem; }
+    .stats ul { grid-template-columns: repeat(2, 1fr); row-gap: 1.25rem; }
+    .stats li:nth-child(3) { border: 0; }
+    .services, .reviews { grid-template-columns: 1fr 1fr; }
+    .eq, .eq article { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .topbar .hide-sm, header.site .btn--book { display: none; }
+    .services, .reviews { grid-template-columns: 1fr; }
+    .stats li { padding-inline: .75rem; }
+    .stats b { font-size: 1.5rem; }
+    section { padding-block: 4rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar"><div class="wrap">
+    <span>Mon – Sat · 10 am – 5 pm · KPHB Phase 6, Kukatpally</span>
+    <span class="hide-sm">Call <a href="tel:+917416427503">+91 74164 27503</a></span>
+  </div></div>
+
+  <header class="site"><div class="wrap">
+    <a class="logo" href="#"><img src="../images/logo.png" alt="Dr. Aloka's Eye Care" /></a>
+    <nav class="main"><a href="#services">Treatments</a><a href="#results">Results</a><a href="#doctor">Dr. Aloka</a><a href="#equipment">Equipment</a><a href="#visit">Contact</a></nav>
+    <a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book appointment</a>
+  </div></header>
+
+  <section class="hero"><div class="wrap">
+    <div>
+      <span class="eyebrow">Paediatric eye specialist · Hyderabad</span>
+      <h1>Expert eye care for <em>children</em>, and squint treatment at any age.</h1>
+      <p class="lede">Dr. Aloka Hedau is a senior paediatric ophthalmologist and adult squint surgeon, trained at Aravind Eye Hospital, Madurai, caring for Hyderabad's families since 2012.</p>
+      <p class="te"><span lang="te">మీ పిల్లల చూపు, మా బాధ్యత</span>Your child's sight is our responsibility</p>
+      <div class="actions">
+        <a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book an appointment →</a>
+        <a class="btn btn--wa" href="https://wa.me/917416427503" target="_blank" rel="noopener">WhatsApp us</a>
+        <a class="btn btn--ghost" href="tel:+917416427503">Call</a>
+      </div>
+      <div class="badges">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M7 10.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-5.5"/></svg>Trained at Aravind, Madurai</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg>FICO (UK)</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11Z"/></svg>20+ years with children</div>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="../images/doctor-900.webp" alt="Dr. Aloka Hedau at her clinic" />
+      <div class="float float--name"><b>Dr. Aloka Hedau</b><span>DNB · Fellow, Paediatric Ophthalmology</span></div>
+      <div class="float float--hours"><i></i><div><b>Open Mon – Sat</b><span>10 am – 5 pm · Sunday closed</span></div></div>
+    </div>
+  </div></section>
+
+  <div class="stats wrap"><ul>
+    <li><b>350K+</b><span>happy patients</span></li>
+    <li><b>20K+</b><span>squint surgeries</span></li>
+    <li><b>10,000+</b><span>paediatric cataract surgeries</span></li>
+    <li><b>20K+</b><span>vision therapies</span></li>
+  </ul></div>
+
+  <div class="aff wrap">
+    <p>Affiliated with</p>
+    <ul><li>Rainbow Hospitals</li><li>Apollo Cradle</li><li>Little Star Children's Hospital</li><li>Win Vision Eye Hospitals</li></ul>
+  </div>
+
+  <section id="services"><div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Treatments</span><h2>Complete eye care for children and adults</h2></div>
+      <p>From a baby's first eye check at six months to adult squint correction: therapy first, and surgery only when it is right.</p>
+    </div>
+    <div class="services">
+      <a class="svc" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="9" cy="12" r="2.5"/><circle cx="16" cy="11" r="2.5"/></svg><h3>Squint (crossed eyes)</h3><p>Therapy and surgery for children, ideally before age 8, while vision is still developing.</p><span class="for">Children</span></a>
+      <a class="svc" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M8 12h.01M16 12h.01"/></svg><h3>Lazy eye &amp; vision therapy</h3><p>Bynocs binocular software and fusion work. 30–45 minute sessions; 10–15 are usually enough.</p><span class="for">Children</span></a>
+      <a class="svc" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Myopia control</h3><p>Axial-length tracking with the Pristine OBM 12, lifestyle advice and medication where it helps.</p><span class="for">Children</span></a>
+      <a class="svc" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><h3>Paediatric cataract</h3><p>Phacoemulsification with lens implant, done promptly to protect developing vision.</p><span class="for">Children</span></a>
+      <a class="svc" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg><h3>Adult squint &amp; double vision</h3><p>Sutureless, micro-incision and adjustable-suture techniques. Age is no bar.</p><span class="for">Adults</span></a>
+      <a class="svc" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg><h3>Nystagmus surgery</h3><p>Eases the head posture children adopt to see, reducing strain and neck discomfort.</p><span class="for">Children &amp; adults</span></a>
+    </div>
+  </div></section>
+
+  <section class="results" id="results"><div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Patient results</span><h2>Real patients. Real results.</h2></div>
+      <p>Before and after photos of Dr. Aloka's patients, as published by the clinic.</p>
+    </div>
+    <div class="ba" data-slider>
+      <div class="ba__stage"><img data-img alt="" /></div>
+      <div class="ba__bar">
+        <p class="ba__cap"><small data-count></small><span data-cap></span></p>
+        <div class="ba__nav"><button data-prev aria-label="Previous">‹</button><button data-next aria-label="Next">›</button></div>
+      </div>
+    </div>
+    <div class="dots" data-dots></div>
+  </div></section>
+
+  <section class="doc" id="doctor"><div class="wrap">
+    <div class="doc__img"><img src="../images/gallery/the-hospital/02.webp" alt="Dr. Aloka examining a baby's eyes" /></div>
+    <div>
+      <span class="eyebrow">Meet the doctor</span>
+      <h2>Dr. Aloka Hedau</h2>
+      <p class="quals">DNB (Ophthalmology) · Fellow, Paediatric Ophthalmology · FICO (UK)</p>
+      <p class="body">Senior Paediatric Ophthalmologist and Adult Strabismus Surgeon with over twenty years of experience, and a speaker at more than fifty national and international conferences. Parents say she listens with empathy and is patient with the kids.</p>
+      <ol class="timeline">
+        <li><b>2007–09</b>Post-graduation in Ophthalmology, Aravind Eye Hospital, Madurai</li>
+        <li><b>2010</b>FICO, International Council of Ophthalmology</li>
+        <li><b>2010–11</b>Fellowship in Paediatric Ophthalmology and Adult Squint, Aravind</li>
+        <li><b>2012</b>Chief Paediatric Ophthalmologist in Hyderabad</li>
+        <li><b>2015</b>Nystagmus surgery training with Dr. Richard Hertle</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="equip" id="equipment"><div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Equipment</span><h2>Modern diagnostics, child-friendly tests</h2></div>
+      <p>Accurate measurements so changes are caught early, and picture-based tests so even toddlers can be checked.</p>
+    </div>
+    <div class="eq">
+      <article><img src="../images/myopia/pristine-obm-12-520.webp" alt="Pristine OBM 12" /><div><small>Myopia tracking</small><h3>Pristine OBM 12</h3><p>Measures the length of the eye, the curve of the cornea and the glasses power, so any increase in myopia is caught early.</p></div></article>
+      <article><img src="../images/myopia/sirius-plus-topographer-640.webp" alt="Sirius+ topographer" /><div><small>Cornea mapping</small><h3>Sirius+ topography</h3><p>Maps the shape of the cornea point by point, for a detailed picture of the eye's front surface.</p></div></article>
+    </div>
+    <div class="eq-more"><span>Bynocs vision therapy</span><span>Titmus Fly &amp; Worth 4 Dot</span><span>Optokinetic drum &amp; Lea charts</span></div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="head"><div><span class="eyebrow">What parents say</span><h2>Trusted by Hyderabad families</h2></div></div>
+    <div class="reviews">
+      <figure><div class="stars">★★★★★</div><blockquote>My entire family consults Dr. Aloka, which includes my kids, mother and mother-in-law.</blockquote><figcaption>Priyanka Malhotra<span>Google review</span></figcaption></figure>
+      <figure><div class="stars">★★★★★</div><blockquote>Dr. Aloka Ma'am is very kind and helpful. She listens to the parents with all the empathy.</blockquote><figcaption>Pratiksha Tripathi<span>Google review</span></figcaption></figure>
+      <figure><div class="stars">★★★★★</div><blockquote>Dr. Aloka is very approachable and patient with the kids.</blockquote><figcaption>Prashant Saddi<span>Google review</span></figcaption></figure>
+    </div>
+  </div></section>
+
+  <section class="visit" id="visit"><div class="wrap">
+    <div>
+      <span class="eyebrow">Visit us</span>
+      <h2>Book a consultation in Kukatpally</h2>
+      <dl>
+        <div><dt>Address</dt><dd>Third Floor, Plot no 6, Survey No 1009, 9th Phase Road, near Forum Srujana Mall, KPHB Phase 6, Kukatpally, Hyderabad 500085</dd></div>
+        <div><dt>Hours</dt><dd>Monday – Saturday, 10 am – 5 pm · Sunday closed</dd></div>
+        <div><dt>Phone &amp; WhatsApp</dt><dd>+91 74164 27503 · dralokaseyecare@gmail.com</dd></div>
+      </dl>
+      <div class="actions">
+        <a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book an appointment →</a>
+        <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Dr+Aloka%27s+Eye+Care+KPHB+Phase+6+Kukatpally+Hyderabad" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+    <iframe title="Map" loading="lazy" src="https://www.google.com/maps?q=Dr+Aloka%27s+Eye+Care,+KPHB+Phase+6,+Kukatpally,+Hyderabad+500085&output=embed"></iframe>
+  </div></section>
+  <footer><div class="wrap"><span>© Dr. Aloka's Eye Care, Kukatpally, Hyderabad</span><span>Design option 1 · Clinic Clean</span></div></footer>
+
+  <script src="options.js"></script>
+</body>
+</html>
