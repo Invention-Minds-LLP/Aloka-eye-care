@@ -50,7 +50,7 @@
   .head .btn { min-height: 2.8rem; padding: .6rem 1.3rem; }
 
   /* ---------- 1. the page opens like an eye ---------- */
-  .hero { position: relative; height: 210vh; }
+  .hero { position: relative; height: 230vh; }
   .hero__stick { position: sticky; top: 84px; height: calc(100vh - 84px); display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
   .hero__text { text-align: center; padding: clamp(1.5rem, 4vh, 3rem) 1.25rem 0; transition: opacity .2s linear; }
   .hero h1 { font-size: clamp(2.3rem, 1.3rem + 3.4vw, 4.3rem); max-width: 18ch; margin: 0 auto; }
@@ -58,18 +58,22 @@
   .hero .lede { margin: 1rem auto 0; max-width: 46ch; font-size: 1.15rem; color: var(--ink-soft); }
   .hero .te { margin-top: .4rem; color: var(--teal-ink); }
   .hero .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 1.6rem; }
-  .eyewrap { position: relative; margin: clamp(2.5rem, 7vh, 4rem) auto 0; width: var(--ew, 70vw); height: var(--eh, 35vh); align-self: start; }
-  .lids { position: absolute; left: -3%; width: 106%; top: -9%; height: 118%; overflow: visible; pointer-events: none; transition: opacity .2s linear; }
-  .lids path { fill: none; stroke: var(--teal); stroke-width: 7; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-  html.motion-ok .lids { animation: lidsin 1.4s cubic-bezier(.65,0,.35,1) .2s both; }
-  @keyframes lidsin { 0% { transform: scaleY(.15); } 55% { transform: scaleY(1.04); } 100% { transform: none; } }
-  .eye { position: absolute; inset: 0;
-    -webkit-mask: var(--almond) center / 100% var(--lid, 100%) no-repeat; mask: var(--almond) center / 100% var(--lid, 100%) no-repeat; }
-  .eye img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 30%; }
-  .eye.full { -webkit-mask: none; mask: none; }
-  html.motion-ok .eye { animation: blink 1.4s cubic-bezier(.65,0,.35,1) .2s both; }
-  @keyframes blink { 0% { --lid: 4%; -webkit-mask-size: 100% 4%; mask-size: 100% 4%; } 55% { -webkit-mask-size: 100% 104%; mask-size: 100% 104%; } 100% { -webkit-mask-size: 100% 100%; mask-size: 100% 100%; } }
-  .scrollcue { position: absolute; left: 50%; bottom: 1.2rem; translate: -50% 0; font-size: .85rem; color: #fff; background: rgb(22 35 44 / .55); padding: .35rem .8rem; border-radius: 99px; pointer-events: none; transition: opacity .3s; }
+  .stage { position: relative; width: min(820px, 94vw); margin: clamp(1.25rem, 4vh, 2.5rem) auto 0; align-self: start; text-align: center; }
+  .status { position: relative; display: inline-grid; }
+  .status span { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1.05rem; border-radius: 999px; font-weight: 600; font-size: .98rem; transition: opacity .35s, translate .35s; }
+  .status .s-before { background: #fdeee6; color: #a8460f; }
+  .status .s-after { background: var(--teal-soft); color: var(--teal-ink); opacity: 0; translate: 0 6px; }
+  .stage.fixed .s-before { opacity: 0; translate: 0 -6px; }
+  .stage.fixed .s-after { opacity: 1; translate: 0 0; }
+  .status svg { width: 1.1rem; height: 1.1rem; }
+  .stage > svg { display: block; width: 100%; height: auto; max-height: 30vh; margin-inline: auto; overflow: visible; margin-top: clamp(.5rem, 2vh, 1.25rem); }
+  .brow { fill: none; stroke: var(--teal); stroke-width: 11; stroke-linecap: round; }
+  .eyeg { transform-box: fill-box; transform-origin: center; }
+  .eyeg.blink { animation: blinkEye .38s ease-in-out; }
+  @keyframes blinkEye { 45% { transform: scaleY(.06); } }
+  .meter { width: min(300px, 60vw); height: 4px; margin: clamp(.75rem, 2vh, 1.25rem) auto 0; border-radius: 4px; background: var(--line); overflow: hidden; }
+  .meter i { display: block; height: 100%; width: calc(var(--p, 0) * 100%); background: var(--teal); border-radius: 4px; }
+  .cue { margin-top: .6rem; font-size: .88rem; color: var(--ink-soft); transition: opacity .3s; }
 
   .quick { position: relative; z-index: 3; margin-top: -2.5rem; }
   .quick ul { list-style: none; margin: 0; padding: .6rem; display: grid; grid-template-columns: repeat(4, 1fr); background: #fff; border-radius: 18px; box-shadow: var(--shadow); }
@@ -171,8 +175,7 @@
 
   @media (max-width: 1080px) { .head nav { display: none; } .head .phone { margin-left: auto; } }
   @media (max-width: 900px) {
-    .hero { height: 170vh; }
-    .eyewrap { --ew: 92vw; --eh: 30vh; }
+    .hero { height: 210vh; }
     .quick ul { grid-template-columns: 1fr 1fr; }
     .split, .voices .wrap, .visit .wrap { grid-template-columns: minmax(0, 1fr); }
     .intro__badge { right: 1rem; }
@@ -226,7 +229,23 @@
             <a class="btn btn--line" href="#look">Is it a squint?</a>
           </div>
         </div>
-        <div class="eyewrap" id="eyewrap"><svg class="lids" id="lids" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M8 6 Q50 -6 92 6"/><path d="M8 94 Q50 106 92 94"/></svg><div class="eye" id="eye"><img src="../images/doctor-1600.webp" alt="Dr. Aloka Hedau, paediatric ophthalmologist" fetchpriority="high" /><span class="scrollcue" id="cue">Scroll to open</span></div></div>
+        <div class="stage" id="stage">
+          <p class="status" aria-live="polite"><span class="s-before">Before treatment: one eye turns inward</span><span class="s-after"><svg><use href="#check"/></svg>After treatment: both eyes look together</span></p>
+          <svg viewBox="0 0 1000 400" role="img" aria-label="A pair of eyes in which one eye turns inward. As you scroll, the eye straightens until both eyes look ahead together.">
+            <defs>
+              <clipPath id="hc1"><path d="M140 210C215 98 385 98 460 210C385 322 215 322 140 210Z"/></clipPath>
+              <clipPath id="hc2"><path d="M540 210C615 98 785 98 860 210C785 322 615 322 540 210Z"/></clipPath>
+            </defs>
+            <path class="brow" d="M150 66Q300 26 450 66"/><path class="brow" d="M550 66Q700 26 850 66"/>
+            <path class="brow" d="M150 356Q300 394 450 356"/><path class="brow" d="M550 356Q700 394 850 356"/>
+            <g class="eyeg" id="eg1"><path d="M140 210C215 98 385 98 460 210C385 322 215 322 140 210Z" fill="#fff" stroke="#1f7fa3" stroke-width="9"/>
+              <g clip-path="url(#hc1)"><g id="ir1"><circle cx="300" cy="210" r="66" fill="#1f7fa3"/><circle cx="300" cy="210" r="31" fill="#0d2f3d"/><circle cx="320" cy="188" r="12" fill="#fff"/></g></g></g>
+            <g class="eyeg" id="eg2"><path d="M540 210C615 98 785 98 860 210C785 322 615 322 540 210Z" fill="#fff" stroke="#1f7fa3" stroke-width="9"/>
+              <g clip-path="url(#hc2)"><g id="ir2"><circle cx="700" cy="210" r="66" fill="#1f7fa3"/><circle cx="700" cy="210" r="31" fill="#0d2f3d"/><circle cx="720" cy="188" r="12" fill="#fff"/></g></g></g>
+          </svg>
+          <div class="meter"><i id="meter"></i></div>
+          <p class="cue" id="cue">Scroll to straighten the eye</p>
+        </div>
       </div>
     </div>
 
@@ -352,24 +371,26 @@
   (function () {
     var motion = document.documentElement.classList.contains('motion-ok');
 
-    /* 1. eye aperture: almond opens wide, then becomes the full frame as you scroll */
-    var hero = document.getElementById('hero'), eye = document.getElementById('eye'), wrap = document.getElementById('eyewrap'), lids = document.getElementById('lids'), txt = document.getElementById('heroText'), cue = document.getElementById('cue');
+    /* 1. hero: scrolling straightens the turned eye */
+    var hero = document.getElementById('hero'), stage = document.getElementById('stage'), ir2 = document.getElementById('ir2'), meter = document.getElementById('meter'), cue = document.getElementById('cue');
+    var eg = [document.getElementById('eg1'), document.getElementById('eg2')], blinked = false;
+    function setEye(p) {
+      var e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+      ir2.setAttribute('transform', 'translate(' + (-84 * (1 - e)).toFixed(1) + ' ' + (6 * (1 - e)).toFixed(1) + ')');
+      meter.style.setProperty('--p', p.toFixed(3));
+      var fixed = p > .82;
+      stage.classList.toggle('fixed', fixed);
+      cue.style.opacity = p > .05 ? '0' : '1';
+      if (fixed && !blinked) { blinked = true; eg.forEach(function (g) { g.classList.add('blink'); }); }
+      if (p < .5) blinked = false;
+    }
+    eg.forEach(function (g) { g.addEventListener('animationend', function () { g.classList.remove('blink'); }); });
     function onScroll() {
       var r = hero.getBoundingClientRect(), span = hero.offsetHeight - innerHeight;
-      var p = Math.min(1, Math.max(0, -r.top / (span || 1)));
-      var e = 1 - Math.pow(1 - p, 3);
-      var baseW = innerWidth < 900 ? 92 : 70, baseH = innerWidth < 900 ? 30 : 35;
-      wrap.style.setProperty('--ew', (baseW + (100 - baseW) * e) + 'vw');
-      wrap.style.setProperty('--eh', (baseH + (100 - baseH) * e) + 'vh');
-      lids.style.opacity = String(1 - Math.min(1, p * 3));
-      var m = 100 + e * 260; /* almond grows past the frame until it disappears */
-      eye.style.webkitMaskSize = eye.style.maskSize = m + '% ' + m + '%';
-      txt.style.opacity = String(1 - Math.min(1, p * 2.2));
-      txt.style.marginTop = (-p * 18) + 'vh';
-      cue.style.opacity = p > .05 ? '0' : '1';
+      setEye(Math.min(1, Math.max(0, -r.top / (span * .85 || 1))));
     }
-    if (motion) { addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); lids.addEventListener('animationend', function () { lids.style.animation = 'none'; }); eye.addEventListener('animationend', function () { eye.style.animation = 'none'; onScroll(); }); }
-    else { hero.style.height = 'auto'; cue.remove(); }
+    if (motion) { addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll(); }
+    else { hero.style.height = 'auto'; setEye(0); cue.textContent = 'With treatment, both eyes can learn to look together.'; }
 
     /* 2. eyes that follow; a squint makes one eye drift */
     var balls = [].slice.call(document.querySelectorAll('.ball')), mode = 'none';
