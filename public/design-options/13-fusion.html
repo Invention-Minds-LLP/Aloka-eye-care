@@ -112,14 +112,14 @@
   .is-one .eyes { opacity: 0; }
 
   /* 3. Dr. Aloka through the eyepiece */
-  .doctor { padding-block: clamp(5rem, 12vw, 9rem); }
-  .doctor .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.75rem, 4vw, 3.5rem); align-items: start; max-width: 980px; }
+  .doctor { padding-block: clamp(2.5rem, 5vw, 4rem); }
+  .doctor .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2.25rem); align-items: start; max-width: 940px; }
   .portal { position: relative; width: clamp(150px, 16vw, 210px); aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; clip-path: circle(var(--r, 18%) at 50% 40%); background: var(--night-2); will-change: clip-path; box-shadow: 0 0 0 1px var(--line); }
   .portal img { width: 100%; height: 100%; object-fit: cover; object-position: 47% 0; scale: calc(var(--z, 1.15) * 1.45); transform-origin: 47% 18%; }
   .doctor h2 { font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.6rem); }
   .quals { margin-top: .9rem; color: var(--teal-lit); font-weight: 600; }
   .doctor .body { margin-top: 1.3rem; color: var(--ink-soft); font-size: 1.12rem; max-width: 46ch; }
-  .doctor .ticks { margin-bottom: 2rem; }
+  .doctor .ticks { margin: 1.2rem 0 1.4rem; } .doctor .body { margin-top: .9rem; }
 
   /* 4. results */
   section.block { padding-block: clamp(4.5rem, 10vw, 8rem); }
@@ -129,6 +129,7 @@
   .res-foot { width: min(100%, 720px); margin-inline: auto; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; margin-top: 1.4rem; color: var(--ink-soft); }
 
   /* first visit: an engraved dial instead of patient photos */
+  #first-visit { padding-top: clamp(2rem, 4vw, 3.5rem); }
   .steps { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; min-height: 360px; }
   .steps__art { position: relative; width: min(100%, 380px); aspect-ratio: 1; margin-inline: auto; }
   .steps__art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; scale: .92; transition: opacity .6s var(--ease), scale .9s var(--ease); }
@@ -384,7 +385,7 @@
     <section class="block scene" id="first-visit">
       <div class="plate plate--near" data-par=".3" aria-hidden="true"></div>
       <div class="wrap">
-        <div class="head2"><h2>Your first visit, step by step.</h2><p>What happens when you bring your child, or come yourself. Drag the knob along the scale, or use the arrow keys.</p></div>
+        <div class="head2"><h2>Your first visit, step by step.</h2><p>Four simple steps, the same for children and adults. Watch them play, or tap a step.</p></div>
         <div class="steps">
           <div class="steps__art" aria-hidden="true">
             <img class="on" src="../images/fusion/web/slide-charminar.webp" alt="" width="1000" height="1000" loading="lazy" />
@@ -400,7 +401,7 @@
         </div>
         <div class="dial">
           <label class="sr" for="stepRange">Step of your first visit</label>
-          <input type="range" id="stepRange" min="0" max="3" step="1" value="0" aria-valuetext="Step 1 of 4: Vision check" />
+          <input type="range" id="stepRange" min="0" max="3" step="any" value="0" aria-valuetext="Step 1 of 4: Vision check" />
           <div class="dial__labels" id="stepLabels"><button type="button" data-i="0">Vision check</button><button type="button" data-i="1">Eye alignment</button><button type="button" data-i="2">Eye health</button><button type="button" data-i="3">Your plan</button></div>
         </div>
         <div class="res-foot"><span>Bring any previous glasses and eye reports.</span><a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book a first visit <svg><use href="#arr"/></svg></a></div>
@@ -644,16 +645,32 @@
     ];
     var range = document.getElementById('stepRange'), arts = [].slice.call(document.querySelectorAll('.steps__art img')), labels = [].slice.call(document.querySelectorAll('#stepLabels button'));
     var sNum = document.getElementById('stepNum'), sTitle = document.getElementById('stepTitle'), sBody = document.getElementById('stepBody');
-    function step(i) {
-      i = +i; range.value = i; range.style.setProperty('--v', (i / 3 * 100) + '%');
+    var cur = -1, pos = 0, auto = motion, resumeAt = 0, inView = false, t0 = 0;
+    function show(i) {
+      if (i === cur) return; cur = i;
       range.setAttribute('aria-valuetext', 'Step ' + (i + 1) + ' of 4: ' + S[i][0]);
       sNum.textContent = i + 1; sTitle.textContent = S[i][0]; sBody.textContent = S[i][1];
       arts.forEach(function (a, k) { a.classList.toggle('on', k === i); });
       labels.forEach(function (b, k) { b.setAttribute('aria-pressed', String(k === i)); });
     }
-    range.addEventListener('input', function () { step(range.value); });
-    labels.forEach(function (b) { b.addEventListener('click', function () { step(b.dataset.i); }); });
-    step(0);
+    function setPos(v) { pos = clamp(v, 0, 3); range.value = pos; range.style.setProperty('--v', (pos / 3 * 100) + '%'); show(Math.round(pos)); }
+    function pauseAuto() { resumeAt = performance.now() + 7000; }
+    range.addEventListener('input', function () { pauseAuto(); setPos(+range.value); });
+    range.addEventListener('change', function () { setPos(Math.round(+range.value)); });
+    labels.forEach(function (b) { b.addEventListener('click', function () { pauseAuto(); setPos(+b.dataset.i); }); });
+    /* auto-play: hold on each step, then glide to the next */
+    var HOLD = 2600, GLIDE = 1100, CYCLE = HOLD + GLIDE;
+    function tick(now) {
+      if (inView && auto && now > resumeAt) {
+        if (!t0) t0 = now - Math.round(pos) * CYCLE;
+        var t = (now - t0) % (CYCLE * 4), k = Math.floor(t / CYCLE), u = (t - k * CYCLE - HOLD) / GLIDE;
+        var e = u <= 0 ? 0 : u >= 1 ? 1 : (u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2);
+        setPos(k === 3 ? 3 - 3 * e : k + e);
+      } else t0 = 0;
+      if (inView) requestAnimationFrame(tick);
+    }
+    new IntersectionObserver(function (en) { var was = inView; inView = en[0].isIntersecting; if (inView && !was) requestAnimationFrame(tick); }, { threshold: .35 }).observe(document.querySelector('.steps'));
+    setPos(0);
   })();
   </script>
 </body>
