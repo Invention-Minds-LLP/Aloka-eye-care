@@ -5,46 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Design options | Dr. Aloka's Eye Care</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@600&family=Hanken+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
 <style>
-  body { margin: 0; font: 400 1rem/1.6 'Plus Jakarta Sans', system-ui, sans-serif; background: #f4f6f8; color: #14212e; }
-  .wrap { width: min(100% - 2.5rem, 1100px); margin: 0 auto; padding-block: 3.5rem; }
-  h1 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem); margin: 0; letter-spacing: -.02em; }
-  .lede { color: #4d5b69; margin-top: .6rem; max-width: 60ch; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  a.card { display: block; text-decoration: none; color: inherit; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 16px 40px -26px rgb(0 0 0 / .4); transition: .25s; }
-  a.card:hover { transform: translateY(-4px); }
-  .sw { height: 120px; display: flex; }
-  .sw i { flex: 1; }
-  .card div { padding: 1.4rem; }
-  .card small { font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: .75rem; color: #6b7785; }
-  .card h2 { margin: .3rem 0 .5rem; font-size: 1.35rem; }
-  .card p { margin: 0; color: #4d5b69; font-size: .95rem; }
-  .card b { display: inline-block; margin-top: 1rem; color: #1b8db5; }
-  .note { margin-top: 2.5rem; padding: 1.25rem 1.5rem; background: #fff; border-radius: 14px; color: #4d5b69; font-size: .95rem; }
-  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  body { margin: 0; font: 400 1rem/1.6 'Hanken Grotesk', system-ui, sans-serif; background: #08131a; color: #e8f0f3; }
+  .wrap { width: min(100% - 2.5rem, 1000px); margin: 0 auto; padding-block: 3.5rem; }
+  h1 { font: 600 clamp(1.8rem, 1.2rem + 2vw, 2.6rem)/1.1 'Familjen Grotesk', sans-serif; margin: 0; letter-spacing: -.02em; }
+  .lede { color: #a7bcc6; margin-top: .7rem; max-width: 60ch; }
+  .grid { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
+  a.card { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; align-items: center; text-decoration: none; color: inherit; background: #0d1d26; border-radius: 16px; padding: 1.25rem; box-shadow: inset 0 0 0 1px rgb(232 240 243 / .1); transition: box-shadow .25s; }
+  a.card:hover { box-shadow: inset 0 0 0 1px #5cc3e4; }
+  .card img { width: 200px; height: 140px; object-fit: contain; border-radius: 10px; background: #08131a; }
+  .card h2 { margin: 0 0 .4rem; font: 600 1.35rem/1.2 'Familjen Grotesk', sans-serif; }
+  .card p { margin: 0; color: #a7bcc6; font-size: .95rem; }
+  .card b { display: inline-block; margin-top: .8rem; color: #5cc3e4; }
+  .note { margin-top: 2rem; color: #a7bcc6; font-size: .92rem; }
+  code { color: #e8f0f3; }
+  @media (max-width: 640px) { a.card { grid-template-columns: 1fr; } .card img { width: 100%; } }
 </style>
 </head>
 <body>
   <div class="wrap">
     <h1>Dr. Aloka's Eye Care: design options</h1>
-    <p class="lede">Seven new home page designs: four light and three dark. Each one uses the clinic's real content and photos: patient results, the equipment and appointment booking. They differ in layout, colours and fonts. Please pick one, or mix parts of each.</p>
+    <p class="lede">Two directions for the home page.</p>
     <div class="grid">
-      <a class="card" href="13-fusion.html" style="grid-column:1/-1"><span class="sw"><i style="background:#08131a"></i><i style="background:#eef3f5"></i><i style="background:#1f7fa3"></i><i style="background:#b34a14"></i></span><div><small>Newest · Cinematic 3D</small><h2>Two Pictures Become One</h2><p>A cinematic dark page built around the synoptophore, the instrument used in squint care. Scrolling flies the camera into its eyepiece, then each condition is shown as two glass slides, one per eye, that fuse into one picture: the bird lands in the cage (squint), the fish swims into the bowl (lazy eye), and the Charminar comes into focus under the kite (myopia). Then Dr. Aloka is revealed through the lens, followed by real results, the clinic and booking. Layered background parallax throughout, no live 3D, so it scrolls smoothly.</p><b>Open Two Pictures Become One →</b></div></a>
-      <a class="card" href="12-glass.html" style="grid-column:1/-1"><span class="sw"><i style="background:#eaf2f6"></i><i style="background:#ffffff"></i><i style="background:#1f7fa3"></i><i style="background:#d45a1c"></i></span><div><small>Newest · Full 3D + glass</small><h2>Glass</h2><p>The complete home page as one live 3D scene behind frosted-glass panels. The glossy eyes and glass spheres move from scene to scene as you scroll: a cluster where one squinting eye straightens; a big pair of eyes that follows your mouse, with buttons to show an inward or outward squint; a blurred eye chart with a glass magnifier that brings the letters into focus; and a finale where every eye circles the page and looks at "Book an appointment". Best viewed on a computer first, then on a phone.</p><b>Open Glass →</b></div></a>
-      <a class="card" href="11-living-eyes.html" style="grid-column:1/-1"><span class="sw"><i style="background:#f2f6f8"></i><i style="background:#134f68"></i><i style="background:#ffffff"></i><i style="background:#d45a1c"></i></span><div><small>Live 3D</small><h2>Living Eyes</h2><p>In the style of award-winning 3D studio websites: the page opens on a live 3D window full of glossy eyes in the logo's teal and orange. Every eye follows your mouse, except one that keeps looking away, like a squint. As you scroll, that eye is "treated" and turns to look with the others. The rest of the page is the premium white design. Best viewed on a computer first, then on a phone.</p><b>Open Living Eyes →</b></div></a>
-      <a class="card" href="10-vision.html" style="grid-column:1/-1"><span class="sw"><i style="background:#ffffff"></i><i style="background:#1f7fa3"></i><i style="background:#f6f8f9"></i><i style="background:#d45a1c"></i></span><div><small>Premium + interactive</small><h2>Vision</h2><p>The premium white hospital look, with four interactive moments only an eye clinic could have: a squinting pair of eyes that straightens as you scroll, eyes that follow your mouse with a "show a squint" button, a blurry classroom board with a lens that shows how a child with myopia sees, and drag-to-compare before/after photos. Best viewed on a computer first, then on a phone.</p><b>Open Vision →</b></div></a>
-      <a class="card" href="9-premium-hospital.html" style="grid-column:1/-1"><span class="sw"><i style="background:#ffffff"></i><i style="background:#f6f8f9"></i><i style="background:#1f7fa3"></i><i style="background:#d45a1c"></i></span><div><small>Latest · Premium hospital</small><h2>Premium Hospital</h2><p>In the style of Apollo, Rainbow and Moorfields: mostly white and open, led by large photos. Dr. Aloka's portrait opens the page, followed by a quick-action bar (Book, Call, WhatsApp, Hours), photo tiles for each speciality, a before/after slider, a photo tour of the clinic and reviews. Logo teal and orange are used only as accents.</p><b>Open Premium Hospital →</b></div></a>
-      <a class="card" href="8-signboard.html" style="grid-column:1/-1"><span class="sw"><i style="background:#1d6c8a"></i><i style="background:#2a8cb0"></i><i style="background:#ffffff"></i><i style="background:#c4551a"></i></span><div><small>New · Recommended</small><h2>Signboard</h2><p>Built only on the clinic's logo colours. The site works like a premium bilingual hospital signboard: solid teal sign panels, an orange "Book appointment" sign, direction plates for each condition, and English with Telugu. Parents start from what they notice in their child ("One eye turns in…") and the sign leads them to the right treatment. The font is Atkinson Hyperlegible, designed for people with low vision.</p><b>Open Signboard →</b></div></a>
-      <a class="card" href="1-clinic-clean.html"><span class="sw"><i style="background:#0d2b45"></i><i style="background:#1b8db5"></i><i style="background:#f4f8fb"></i><i style="background:#d4581a"></i></span><div><small>Option 1</small><h2>Clinic Clean</h2><p>White and navy, like a modern hospital. Doctor photo first, a stats band, service cards and a large results slider. The most "professional" look.</p><b>Open option 1 →</b></div></a>
-      <a class="card" href="2-warm-elegant.html"><span class="sw"><i style="background:#123f44"></i><i style="background:#f8f4ec"></i><i style="background:#ede4d3"></i><i style="background:#b1502a"></i></span><div><small>Option 2</small><h2>Warm &amp; Elegant</h2><p>Ivory and deep teal with serif headings. A large photo of Dr. Aloka examining a baby, an editorial list of treatments and big quotes. The most "premium" look.</p><b>Open option 2 →</b></div></a>
-      <a class="card" href="3-bright-friendly.html"><span class="sw"><i style="background:#eaf6fd"></i><i style="background:#ffc94a"></i><i style="background:#183153"></i><i style="background:#e0552f"></i></span><div><small>Option 3</small><h2>Bright &amp; Friendly</h2><p>Soft sky blue and sunshine yellow with rounded shapes. A "signs to watch for" checklist for parents and care by age group. The most child-friendly look.</p><b>Open option 3 →</b></div></a>
-      <a class="card" href="4-midnight-gold.html"><span class="sw"><i style="background:#0b0d12"></i><i style="background:#17191f"></i><i style="background:#d6b26e"></i><i style="background:#f3efe7"></i></span><div><small>Option 4 · Dark</small><h2>Midnight &amp; Gold</h2><p>Black and gold with elegant serif headings. A full-screen portrait of Dr. Aloka fading into the dark, Roman-numbered specialities and a big parent quote. A luxury, premium-hospital feel.</p><b>Open option 4 →</b></div></a>
-      <a class="card" href="5-iris-glow.html"><span class="sw"><i style="background:#061a1f"></i><i style="background:#4fd6c8"></i><i style="background:#6cc4f0"></i><i style="background:#ffb35c"></i></span><div><small>Option 5 · Dark</small><h2>Iris Glow</h2><p>Deep teal with a glowing eye-shaped "iris" around the doctor's photo, frosted-glass cards and a 4-step "Your visit" guide. Modern, techy and calm.</p><b>Open option 5 →</b></div></a>
-      <a class="card" href="6-bento-dark.html"><span class="sw"><i style="background:#0e0f13"></i><i style="background:#c8f169"></i><i style="background:#6fa8ff"></i><i style="background:#ff8fb1"></i></span><div><small>Option 6 · Dark</small><h2>Bento Dark</h2><p>Everything important on one screen in tiles: intro, photo, numbers, results, hours, treatments and the map. Bold and app-like; very quick for parents to scan.</p><b>Open option 6 →</b></div></a>
-      <a class="card" href="7-split-minimal.html"><span class="sw"><i style="background:#ffffff"></i><i style="background:#f6f6f4"></i><i style="background:#0f1115"></i><i style="background:#1f5eff"></i></span><div><small>Option 7 · Light</small><h2>Split Minimal</h2><p>Split screen: Dr. Aloka's photo stays fixed on the left while the content scrolls on the right. Black and white with one blue accent. Very clean and simple.</p><b>Open option 7 →</b></div></a>
+      <a class="card" href="13-fusion.html"><img src="../images/fusion/web/instrument.webp" alt="" /><div><h2>Two Pictures Become One</h2><p>Cinematic 3D motion page built around the synoptophore. The camera flies into the eyepiece, then each condition is two glass slides, one per eye, that fuse into one picture: the bird lands in the cage (squint), the fish swims into the bowl (lazy eye), the Charminar comes into focus under the kite (myopia). Then Dr. Aloka, an auto-playing "first visit" guide, the clinic and booking. No patient photos.</p><b>Open →</b></div></a>
+      <a class="card" href="/our-story"><img src="../images/logo.png" alt="" style="padding:1.5rem;background:#eef3f5" /><div><h2>The illustrated story</h2><p>The family journey told with illustrated characters: the little girl, Amma, Ajji and Dr. Aloka, from noticing the squint to the treatment, with parallax scenes that also play by themselves.</p><b>Open →</b></div></a>
     </div>
-    <p class="note">These are previews of the home page only. Once a direction is chosen, the same design will be applied to every page: about, services, surgeries, gallery, blog and contact. The current dark design is saved separately and can be restored at any time.</p>
+    <p class="note">The illustrated story is part of the main website, so it opens when the site is running (<code>npm run dev</code>, then <code>/our-story</code>).</p>
   </div>
 </body>
 </html>
