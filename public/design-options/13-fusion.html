@@ -79,7 +79,7 @@
 
   /* 1. hero: two eyepieces roll together into one */
   .hero { height: 175vh; }
-  #clinic { padding-top: 0; margin-top: -8vh; }
+  #clinic { padding-top: clamp(1.5rem, 4vw, 3rem); }
   .stick { position: sticky; top: 0; height: 100svh; }
   .hero .stick { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(1.5rem, 4vw, 4rem); width: min(100% - 2 * clamp(1.25rem, 4vw, 3.5rem), 1320px); margin-inline: auto; }
   .hero .plate { left: calc(50% - 50vw); right: auto; width: 100vw; }
@@ -198,7 +198,7 @@
   .voices .sub { margin: 1rem 0 1.4rem; color: var(--ink-soft); max-width: 36ch; }
   .voices .spot { width: clamp(130px, 14vw, 200px); margin-top: 2.5rem; }
   .quotes { display: grid; gap: 1rem; }
-  .review { margin: 0; padding: 1.5rem 1.6rem; border-radius: 20px; background: rgb(13 29 38 / .82); box-shadow: inset 0 0 0 1px var(--line); }
+  .review { margin: 0; padding: 1.5rem 1.6rem; border-radius: 20px; background: var(--night-2); box-shadow: inset 0 0 0 1px var(--line); }
   .review__top { display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; }
   .av { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 600; }
   .review__top b { display: block; font-weight: 600; }
@@ -231,14 +231,22 @@
     .steps { gap: 1.5rem; } .steps__art { width: min(72vw, 300px); }
     .clinic { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 180px 180px; }
     .clinic .big { grid-row: auto; grid-column: 1 / -1; }
-    .voices .spot { display: none; }
+    .voices .spot { width: 96px; margin-top: 1.5rem; }
   }
   @media (max-width: 600px) {
     body { padding-bottom: 4.4rem; }
     .head { padding-top: 10px; } .logo img { height: 28px; } .head .btn--book { display: none; }
-    .hero .stick { padding-top: 5rem; }
-    .hero .lede { font-size: 1rem; margin-top: 1rem; }
-    .hero .actions { margin-top: 1.3rem; } .hero .actions .btn--ghost { display: none; }
+    /* phone hero: always one screen; copy on top, the lenses take the space that is left */
+    .hero .stick { display: flex; flex-direction: column; padding: 4.8rem 0 4.6rem; }
+    .hero h1 { font-size: clamp(2.1rem, 9.4vw, 2.9rem); }
+    .hero .lede { font-size: 1rem; margin-top: .8rem; line-height: 1.55; }
+    .hero .te { font-size: .95rem; }
+    .hero .actions { margin-top: 1.1rem; } .hero .actions .btn--ghost { display: none; }
+    .stage { flex: 1 1 0; min-height: 0; --L: min(33vw, 17svh, 170px); }
+    .stage .spot, .piece, .flash { top: calc(50% - 1.3rem); }
+    .state { top: auto; bottom: .2rem; }
+    .state span { font-size: .88rem; padding: .4rem .85rem; }
+    .tag { display: none; }
     .head3 { grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 1rem; } .head3 .spot { width: 84px; }
     .num { font-size: 3.6rem; margin-bottom: .1rem; }
     .clinic { grid-template-columns: 1fr; grid-template-rows: none; } .clinic figure { height: 220px; }
@@ -249,6 +257,14 @@
     .dock { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 6px; position: fixed; inset: auto 0 0; z-index: 40; padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); background: rgb(8 19 26 / .85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 -1px 0 var(--line); }
     .dock a { display: grid; place-items: center; min-height: 3rem; border-radius: 999px; font-weight: 600; text-decoration: none; box-shadow: inset 0 0 0 1px rgb(232 240 243 / .25); }
     .dock a.book { background: var(--orange); color: #fff; box-shadow: none; }
+  }
+  @media (max-width: 360px) { .dock a { font-size: .9rem; } .dock { grid-template-columns: 1fr 1.15fr 1.3fr; } }
+  /* short phones (SE and older): trim the hero so the lenses still fit */
+  @media (max-width: 600px) and (max-height: 700px) {
+    .hero .stick { padding-top: 4.4rem; }
+    .hero .hrs, .hero .te { display: none; }
+    .hero .lede { font-size: .95rem; }
+    .stage { --L: min(30vw, 16svh, 130px); }
   }
   /* without motion: no runway, no rolling; each spot shows a still lens */
   html:not(.motion) .hero { height: auto; }
@@ -279,7 +295,7 @@
         <div class="plate plate--near" data-par=".42" aria-hidden="true"></div>
         <div class="hero__copy">
           <h1>Let's bring both eyes <span>together.</span></h1>
-          <p class="lede">Paediatric eye care and squint treatment for children and adults, by Dr. Aloka Hedau in Kukatpally, Hyderabad. Open Monday to Saturday, 10 am to 5 pm.</p>
+          <p class="lede">Paediatric eye care and squint treatment for children and adults, by Dr. Aloka Hedau in Kukatpally, Hyderabad.<span class="hrs"> Open Monday to Saturday, 10 am to 5 pm.</span></p>
           <p class="te" lang="te">మీ పిల్లల చూపు, మా బాధ్యత</p>
           <div class="actions">
             <a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book an appointment <svg><use href="#arr"/></svg></a>
