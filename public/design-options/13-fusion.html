@@ -113,13 +113,15 @@
 
   /* 3. Dr. Aloka through the eyepiece */
   .doctor { padding-block: clamp(2.5rem, 5vw, 4rem); }
-  .doctor .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2.25rem); align-items: start; max-width: 940px; }
-  .portal { position: relative; width: clamp(150px, 16vw, 210px); aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; clip-path: circle(var(--r, 18%) at 50% 40%); background: var(--night-2); will-change: clip-path; box-shadow: 0 0 0 1px var(--line); }
+  .doctor .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2.25rem); align-items: center; }
+  .doc__info { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.2rem clamp(2rem, 4vw, 4rem); align-items: start; }
+  .doc__name { grid-column: 1 / -1; }
+  .portal { position: relative; width: clamp(150px, 17vw, 240px); aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; clip-path: circle(var(--r, 18%) at 50% 40%); background: var(--night-2); will-change: clip-path; box-shadow: 0 0 0 1px var(--line); }
   .portal img { width: 100%; height: 100%; object-fit: cover; object-position: 47% 0; scale: calc(var(--z, 1.15) * 1.45); transform-origin: 47% 18%; }
   .doctor h2 { font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.6rem); }
   .quals { margin-top: .9rem; color: var(--teal-lit); font-weight: 600; }
   .doctor .body { margin-top: 1.3rem; color: var(--ink-soft); font-size: 1.12rem; max-width: 46ch; }
-  .doctor .ticks { margin: 1.2rem 0 1.4rem; } .doctor .body { margin-top: .9rem; }
+  .doctor .ticks { margin: 0 0 1.4rem; } .doctor .body { margin-top: 0; }
 
   /* 4. results */
   section.block { padding-block: clamp(4.5rem, 10vw, 8rem); }
@@ -224,7 +226,7 @@
     .fuse .ticks { display: none; }
     .fuse .body { font-size: 1rem; }
     .bench { height: min(52svh, 460px); }
-    .doctor .wrap, .visit .wrap, .voices { grid-template-columns: minmax(0, 1fr); }
+    .doctor .wrap, .visit .wrap, .voices, .doc__info { grid-template-columns: minmax(0, 1fr); }
     .care a { grid-template-columns: minmax(0, 1fr) auto; } .care p { grid-column: 1; }
     .clinic { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 180px 180px; }
     .clinic .big { grid-row: auto; grid-column: 1 / -1; }
@@ -367,16 +369,16 @@
       <div class="plate plate--mid flip" data-par=".15" aria-hidden="true"></div>
       <div class="wrap">
         <div class="portal" id="portal"><img src="../images/doctor-1600.webp" alt="Dr. Aloka Hedau at her desk" width="1600" height="1200" loading="lazy" /></div>
-        <div>
-          <h2>Dr. Aloka Hedau</h2>
-          <p class="quals">DNB (Ophthalmology) · Fellow, Paediatric Ophthalmology · FICO (UK)</p>
+        <div class="doc__info">
+          <div class="doc__name"><h2>Dr. Aloka Hedau</h2>
+          <p class="quals">DNB (Ophthalmology) · Fellow, Paediatric Ophthalmology · FICO (UK)</p></div>
           <p class="body">Senior Paediatric Ophthalmologist and Adult Strabismus Surgeon with over 20 years of focused experience. Parents describe her as kind, patient with children, and someone who listens.</p>
-          <ul class="ticks">
+          <div><ul class="ticks">
             <li><svg><use href="#check"/></svg>Post-graduation and fellowship at Aravind Eye Hospital, Madurai</li>
             <li><svg><use href="#check"/></svg>Nystagmus surgery training with Dr. Richard Hertle</li>
             <li><svg><use href="#check"/></svg>Affiliated with Rainbow Hospitals, Apollo Cradle, Little Star and Win Vision</li>
           </ul>
-          <a class="link" href="#">Read her full profile <svg><use href="#arr"/></svg></a>
+          <a class="link" href="#">Read her full profile <svg><use href="#arr"/></svg></a></div>
         </div>
       </div>
     </section>
