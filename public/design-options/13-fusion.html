@@ -126,22 +126,30 @@
   .head2 { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem 3rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
   .head2 h2 { font-size: clamp(2.1rem, 1.3rem + 2.6vw, 3.6rem); max-width: 16ch; }
   .head2 p { color: var(--ink-soft); max-width: 40ch; }
-  .cmp { position: relative; width: min(100%, 720px); margin-inline: auto; aspect-ratio: var(--ar, 1.9); border-radius: 18px; overflow: hidden; background: #000; touch-action: pan-y; user-select: none; box-shadow: 0 40px 80px -40px rgb(0 0 0 / .8); }
-  .cmp__half { position: absolute; inset: 0; background-repeat: no-repeat; background-size: 200% 100%; }
-  .cmp__before { background-position: 0 0; }
-  .cmp__after { background-position: 100% 0; clip-path: inset(0 0 0 var(--cut, 50%)); }
-  .cmp__line { position: absolute; top: 0; bottom: 0; left: var(--cut, 50%); width: 2px; translate: -50% 0; background: #fff; pointer-events: none; }
-  .cmp__knob { position: absolute; top: 50%; left: var(--cut, 50%); translate: -50% -50%; width: 3.4rem; height: 3.4rem; border-radius: 50%; border: 0; display: grid; place-items: center; background: var(--enamel); color: var(--night); box-shadow: 0 8px 24px -6px rgb(0 0 0 / .6); cursor: ew-resize; }
-  .cmp__knob svg { width: 1.5rem; height: 1.5rem; }
-  .cmp__tag { position: absolute; top: 1rem; padding: .35rem .8rem; border-radius: 999px; font-weight: 600; font-size: .88rem; pointer-events: none; background: rgb(8 19 26 / .7); color: #fff; }
-  .cmp__tag--b { left: 1rem; } .cmp__tag--a { right: 1rem; background: var(--teal); }
-  .cases { display: flex; gap: .6rem; width: min(100%, 720px); margin: 1.1rem auto 0; overflow-x: auto; padding: .25rem .25rem .5rem; scrollbar-width: thin; }
-  .cases button { flex: none; padding: 0; border: 0; border-radius: 10px; overflow: hidden; cursor: pointer; opacity: .5; transition: opacity .2s; background: none; }
-  .cases button:hover { opacity: .8; }
-  .cases button[aria-current=true] { opacity: 1; outline: 2px solid var(--teal-lit); outline-offset: 2px; }
-  .cases img { height: 52px; width: auto; }
   .res-foot { width: min(100%, 720px); margin-inline: auto; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; margin-top: 1.4rem; color: var(--ink-soft); }
 
+  /* first visit: an engraved dial instead of patient photos */
+  .steps { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; min-height: 360px; }
+  .steps__art { position: relative; width: min(100%, 380px); aspect-ratio: 1; margin-inline: auto; }
+  .steps__art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; scale: .92; transition: opacity .6s var(--ease), scale .9s var(--ease); }
+  .steps__art img.on { opacity: 1; scale: 1; }
+  .steps__art img.doc { object-fit: cover; object-position: 47% 12%; border-radius: 50%; box-shadow: 0 0 0 8px var(--steel), 0 30px 60px -24px rgb(0 0 0 / .7); }
+  .steps__text h3 { font-size: clamp(1.8rem, 1.3rem + 1.6vw, 2.6rem); }
+  .steps__text p { margin-top: 1rem; color: var(--ink-soft); font-size: 1.12rem; max-width: 42ch; min-height: 5em; }
+  .steps__text .num { font-size: clamp(4.5rem, 7vw, 6.5rem); }
+  .dial { width: min(100%, 860px); margin: clamp(2rem, 4vw, 3rem) auto 0; }
+  .dial input { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 36px; margin: 0; background: transparent; cursor: pointer; }
+  .dial input::-webkit-slider-runnable-track { height: 14px; background: linear-gradient(var(--teal-lit), var(--teal-lit)) bottom left / var(--v, 0%) 2px no-repeat, repeating-linear-gradient(90deg, rgb(232 240 243 / .3) 0 1px, transparent 1px 2%) bottom / 100% 7px no-repeat, repeating-linear-gradient(90deg, rgb(232 240 243 / .6) 0 1px, transparent 1px calc(100% / 3 - .34px)) bottom / 100% 14px no-repeat; }
+  .dial input::-moz-range-track { height: 14px; background: repeating-linear-gradient(90deg, rgb(232 240 243 / .3) 0 1px, transparent 1px 2%) bottom / 100% 7px no-repeat, repeating-linear-gradient(90deg, rgb(232 240 243 / .6) 0 1px, transparent 1px calc(100% / 3 - .34px)) bottom / 100% 14px no-repeat; }
+  .dial input::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; margin-top: -8px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #b9c4ca 45%, #6f7c84); box-shadow: 0 6px 14px -4px rgb(0 0 0 / .7), 0 0 0 4px rgb(8 19 26 / .6); }
+  .dial input::-moz-range-thumb { width: 30px; height: 30px; border: 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #b9c4ca 45%, #6f7c84); box-shadow: 0 6px 14px -4px rgb(0 0 0 / .7); }
+  .dial__labels { position: relative; height: 2.4rem; margin-top: .6rem; }
+  .dial__labels button { padding: .5rem 0; border: 0; background: none; font: 600 .95rem/1.3 var(--body); color: var(--ink-faint); cursor: pointer; text-align: center; transition: color .25s; }
+  .dial__labels button { position: absolute; top: 0; white-space: nowrap; }
+  .dial__labels button:nth-child(1) { left: 0; } .dial__labels button:nth-child(2) { left: 33.333%; translate: -50% 0; } .dial__labels button:nth-child(3) { left: 66.666%; translate: -50% 0; } .dial__labels button:nth-child(4) { right: 0; }
+  @media (max-width: 600px) { .dial__labels button { font-size: .82rem; } }
+  .dial__labels button:hover, .dial__labels button[aria-pressed=true] { color: #fff; }
+  .steps + .dial + .res-foot, .dial + .res-foot { width: min(100%, 860px); margin-inline: auto; }
   /* 5. care: an index of specialities with a slide that follows the pointer */
   .care { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
   .care li { border-bottom: 1px solid var(--line); }
@@ -162,6 +170,7 @@
   .clinic figure.in img { scale: 1; }
   .clinic figcaption { position: absolute; left: .9rem; bottom: .9rem; padding: .4rem .85rem; border-radius: 999px; background: rgb(8 19 26 / .72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: .88rem; font-weight: 600; }
   .clinic .big { grid-row: span 2; }
+  .clinic .kit { background: var(--enamel); } .clinic .kit img { object-fit: contain; padding: 1.5rem 1.5rem 3.5rem; }
   .motion .clinic figure { clip-path: inset(18% 18% 18% 18% round 18px); transition: clip-path 1.2s var(--ease); }
   .motion .clinic figure.in { clip-path: inset(0 0 0 0 round 18px); }
 
@@ -206,6 +215,7 @@
 
   @media (max-width: 1080px) { .head nav { display: none; } .head .btn--book { margin-left: auto; } }
   @media (max-width: 900px) {
+    .steps { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; } .steps__art { width: min(70vw, 280px); }
     .hero h1 { max-width: 11ch; }
     .hero__copy { top: 15%; translate: 0 0; }
     .instrument { width: min(92vw, 560px); right: 50%; translate: 50% 0; top: auto; bottom: 7rem; }
@@ -254,7 +264,7 @@
 
   <header class="head"><div class="wrap">
     <a class="logo" href="#" aria-label="Dr. Aloka's Eye Care, home"><img src="../images/logo.png" alt="Dr. Aloka's Eye Care" width="1475" height="320" /></a>
-    <nav aria-label="Main"><a href="#squint">Squint</a><a href="#lazy">Lazy eye</a><a href="#myopia">Myopia</a><a href="#doctor">Dr. Aloka</a><a href="#results">Results</a><a href="#visit">Visit</a></nav>
+    <nav aria-label="Main"><a href="#squint">Squint</a><a href="#lazy">Lazy eye</a><a href="#myopia">Myopia</a><a href="#doctor">Dr. Aloka</a><a href="#first-visit">First visit</a><a href="#visit">Visit</a></nav>
     <a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book appointment</a>
   </div></header>
 
@@ -370,20 +380,30 @@
       </div>
     </section>
 
-    <!-- 4. results -->
-    <section class="block scene" id="results">
+    <!-- 4. first visit (no patient photos, per NMC guidance) -->
+    <section class="block scene" id="first-visit">
       <div class="plate plate--near" data-par=".3" aria-hidden="true"></div>
       <div class="wrap">
-        <div class="head2"><h2>Before and after, in real patients.</h2><p>Drag across the photo. These are Dr. Aloka's patients, as published by the clinic.</p></div>
-        <div class="cmp" id="cmp">
-          <div class="cmp__half cmp__before" id="cmpB"></div>
-          <div class="cmp__half cmp__after" id="cmpA"></div>
-          <span class="cmp__line"></span>
-          <span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span>
-          <button type="button" class="cmp__knob" id="knob" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg><use href="#drag"/></svg></button>
+        <div class="head2"><h2>Your first visit, step by step.</h2><p>What happens when you bring your child, or come yourself. Drag the knob along the scale, or use the arrow keys.</p></div>
+        <div class="steps">
+          <div class="steps__art" aria-hidden="true">
+            <img class="on" src="../images/fusion/web/slide-charminar.webp" alt="" width="1000" height="1000" loading="lazy" />
+            <img src="../images/fusion/web/instrument.webp" alt="" width="1300" height="1188" loading="lazy" />
+            <img src="../images/fusion/web/eyepiece.webp" alt="" width="1000" height="1000" loading="lazy" />
+            <img class="doc" src="../images/doctor-900.webp" alt="" loading="lazy" />
+          </div>
+          <div class="steps__text" aria-live="polite">
+            <span class="num" id="stepNum">1</span>
+            <h3 id="stepTitle">Vision check</h3>
+            <p id="stepBody">How clearly each eye sees, near and far, with picture charts for children too young to read letters.</p>
+          </div>
         </div>
-        <div class="cases" id="cases" aria-label="Choose a patient"></div>
-        <div class="res-foot"><span id="cmpCap"></span><a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book a consultation <svg><use href="#arr"/></svg></a></div>
+        <div class="dial">
+          <label class="sr" for="stepRange">Step of your first visit</label>
+          <input type="range" id="stepRange" min="0" max="3" step="1" value="0" aria-valuetext="Step 1 of 4: Vision check" />
+          <div class="dial__labels" id="stepLabels"><button type="button" data-i="0">Vision check</button><button type="button" data-i="1">Eye alignment</button><button type="button" data-i="2">Eye health</button><button type="button" data-i="3">Your plan</button></div>
+        </div>
+        <div class="res-foot"><span>Bring any previous glasses and eye reports.</span><a class="btn btn--book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book a first visit <svg><use href="#arr"/></svg></a></div>
       </div>
     </section>
 
@@ -392,15 +412,15 @@
       <div class="wrap">
         <div class="head2"><h2>Specialist care, from babies to adults.</h2><p>Therapy first wherever it can work. Surgery only when it is the right answer.</p></div>
         <ul class="care">
-          <li><a href="#" data-peek="../images/gallery/the-hospital/04.webp"><h3>Squint surgery</h3><p>For children and adults, including paralytic squint.</p><svg><use href="#arr"/></svg></a></li>
-          <li><a href="#" data-peek="../images/gallery/eye-examination/04.webp"><h3>Vision therapy</h3><p>Training both eyes to work as a team.</p><svg><use href="#arr"/></svg></a></li>
-          <li><a href="#" data-peek="../images/gallery/the-hospital/02.webp"><h3>Paediatric eye evaluation</h3><p>Gentle, thorough checks for babies and children.</p><svg><use href="#arr"/></svg></a></li>
-          <li><a href="#" data-peek="../images/gallery/eye-examination/03.webp"><h3>Retinopathy of Prematurity</h3><p>Screening and care for premature babies.</p><svg><use href="#arr"/></svg></a></li>
+          <li><a href="#" data-peek="../images/gallery/the-hospital/08.webp"><h3>Squint surgery</h3><p>For children and adults, including paralytic squint.</p><svg><use href="#arr"/></svg></a></li>
+          <li><a href="#" data-peek="../images/fusion/web/slide-fish.webp"><h3>Vision therapy</h3><p>Training both eyes to work as a team.</p><svg><use href="#arr"/></svg></a></li>
+          <li><a href="#" data-peek="../images/fusion/web/eyepiece.webp"><h3>Paediatric eye evaluation</h3><p>Gentle, thorough checks for babies and children.</p><svg><use href="#arr"/></svg></a></li>
+          <li><a href="#"><h3>Retinopathy of Prematurity</h3><p>Screening and care for premature babies.</p><svg><use href="#arr"/></svg></a></li>
           <li><a href="#" data-peek="../images/myopia/pristine-obm-12-520.webp"><h3>Myopia control</h3><p>Slowing short-sightedness as children grow.</p><svg><use href="#arr"/></svg></a></li>
-          <li><a href="#" data-peek="../images/gallery/eye-examination/01.webp"><h3>Special children</h3><p>Cortical visual impairment, low vision aids and vision rehabilitation.</p><svg><use href="#arr"/></svg></a></li>
+          <li><a href="#"><h3>Special children</h3><p>Cortical visual impairment, low vision aids and vision rehabilitation.</p><svg><use href="#arr"/></svg></a></li>
         </ul>
       </div>
-      <div class="peek" id="peek" aria-hidden="true"><img src="../images/gallery/the-hospital/04.webp" alt="" loading="lazy" /></div>
+      <div class="peek" id="peek" aria-hidden="true"><img src="../images/gallery/the-hospital/08.webp" alt="" loading="lazy" /></div>
     </section>
 
     <!-- 6. clinic -->
@@ -409,11 +429,11 @@
       <div class="wrap">
         <div class="head2"><h2>Inside the clinic.</h2><p>A calm, child-friendly space with modern diagnostics and its own operation theatre.</p></div>
         <div class="clinic">
-          <figure class="big"><img src="../images/gallery/the-hospital/06.webp" alt="The clinic's reception" loading="lazy" /><figcaption>Reception</figcaption></figure>
+          <figure class="big"><img src="../images/gallery/the-hospital/06.webp" alt="The clinic's optical store" loading="lazy" /><figcaption>Optical store</figcaption></figure>
           <figure><img src="../images/gallery/the-hospital/08.webp" alt="Operation theatre" loading="lazy" /><figcaption>Operation theatre</figcaption></figure>
-          <figure><img src="../images/gallery/eye-examination/01.webp" alt="An eye examination" loading="lazy" /><figcaption>Examination</figcaption></figure>
+          <figure class="kit"><img src="../images/myopia/sirius-plus-topographer-640.webp" alt="Sirius+ corneal topographer" loading="lazy" /><figcaption>Sirius+ topographer</figcaption></figure>
           <figure><img src="../images/gallery/the-hospital/07.webp" alt="Recovery room" loading="lazy" /><figcaption>Recovery room</figcaption></figure>
-          <figure><img src="../images/gallery/the-hospital/09.webp" alt="Inside the clinic" loading="lazy" /><figcaption>Waiting area</figcaption></figure>
+          <figure class="kit"><img src="../images/myopia/pristine-obm-12-520.webp" alt="Pristine OBM 12 biometer" loading="lazy" /><figcaption>Pristine OBM 12</figcaption></figure>
         </div>
       </div>
     </section>
@@ -461,7 +481,7 @@
     </div></section>
   </main>
 
-  <footer><div class="wrap"><span>© Dr. Aloka's Eye Care, Kukatpally, Hyderabad</span><span>The instrument, slides and backgrounds are illustrative images. Photos of the doctor, clinic and patients are real.</span></div></footer>
+  <footer><div class="wrap"><span>© Dr. Aloka's Eye Care, Kukatpally, Hyderabad</span><span>The instrument, slides and backgrounds are illustrative images. Photos of the doctor and the clinic are real.</span></div></footer>
 
   <div class="rail" id="rail" aria-hidden="true"><span id="railName">Squint</span><span class="rail__scale"><i id="railFill"></i></span><span class="rail__count" id="railCount">1 / 4</span></div>
   <nav class="dock" aria-label="Quick contact"><a href="tel:+917416427503">Call</a><a href="https://wa.me/917416427503" target="_blank" rel="noopener">WhatsApp</a><a class="book" href="https://appointmentpluginprod.azurewebsites.net/Appointment/0ZGZEJP2/1" target="_blank" rel="noopener">Book</a></nav>
@@ -615,27 +635,25 @@
     });
     addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; peek.style.transform = 'translate3d(' + (px + 30) + 'px,' + (py - 130) + 'px,0)'; }, { passive: true });
 
-    /* before / after (each photo holds before and after side by side) */
-    var base = '../images/gallery/surgical-outcomes/';
-    var C = [['06', 1400, 301], ['07', 1400, 288], ['08', 1400, 330], ['09', 1400, 325], ['10', 1400, 289], ['12', 1400, 288], ['13', 1400, 321], ['14', 1400, 305]];
-    var cmp = document.getElementById('cmp'), A = document.getElementById('cmpA'), B = document.getElementById('cmpB'), knob = document.getElementById('knob'), cases = document.getElementById('cases'), cap = document.getElementById('cmpCap');
-    function set(p) { p = clamp(p, 0, 100); cmp.style.setProperty('--cut', p + '%'); knob.setAttribute('aria-valuenow', Math.round(p)); }
-    function pick(k) {
-      var c = C[k], url = 'url(' + base + c[0] + '.webp)';
-      A.style.backgroundImage = B.style.backgroundImage = url;
-      cmp.style.setProperty('--ar', (c[1] / 2 / c[2]).toFixed(3));
-      cap.textContent = 'Patient ' + (k + 1) + ' of ' + C.length + ': squint correction';
-      [].forEach.call(cases.children, function (b, j) { b.setAttribute('aria-current', String(j === k)); });
-      set(50);
+    /* first visit: a dial with four stops */
+    var S = [
+      ['Vision check', 'How clearly each eye sees, near and far, with picture charts for children too young to read letters.'],
+      ['Eye alignment', 'An orthoptic and binocularity assessment: how the two eyes move, and whether they work together as a team.'],
+      ['Eye health', 'A careful look at the front and the back of each eye, with drops to widen the pupils when it is needed.'],
+      ['Your plan, explained', 'Dr. Aloka talks you through every option: therapy first wherever it can work, surgery only when it is the right answer.']
+    ];
+    var range = document.getElementById('stepRange'), arts = [].slice.call(document.querySelectorAll('.steps__art img')), labels = [].slice.call(document.querySelectorAll('#stepLabels button'));
+    var sNum = document.getElementById('stepNum'), sTitle = document.getElementById('stepTitle'), sBody = document.getElementById('stepBody');
+    function step(i) {
+      i = +i; range.value = i; range.style.setProperty('--v', (i / 3 * 100) + '%');
+      range.setAttribute('aria-valuetext', 'Step ' + (i + 1) + ' of 4: ' + S[i][0]);
+      sNum.textContent = i + 1; sTitle.textContent = S[i][0]; sBody.textContent = S[i][1];
+      arts.forEach(function (a, k) { a.classList.toggle('on', k === i); });
+      labels.forEach(function (b, k) { b.setAttribute('aria-pressed', String(k === i)); });
     }
-    C.forEach(function (c, k) { var b = document.createElement('button'); b.type = 'button'; b.innerHTML = '<img src="' + base + c[0] + '-sm.webp" alt="Patient ' + (k + 1) + '" loading="lazy">'; b.onclick = function () { pick(k); }; cases.appendChild(b); });
-    var dragging = false;
-    function at(e) { var r = cmp.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); }
-    cmp.addEventListener('pointerdown', function (e) { dragging = true; cmp.setPointerCapture(e.pointerId); at(e); });
-    cmp.addEventListener('pointermove', function (e) { if (dragging) at(e); });
-    cmp.addEventListener('pointerup', function () { dragging = false; });
-    knob.addEventListener('keydown', function (e) { var v = +knob.getAttribute('aria-valuenow'); if (e.key === 'ArrowLeft') { set(v - 5); e.preventDefault(); } if (e.key === 'ArrowRight') { set(v + 5); e.preventDefault(); } });
-    pick(0);
+    range.addEventListener('input', function () { step(range.value); });
+    labels.forEach(function (b) { b.addEventListener('click', function () { step(b.dataset.i); }); });
+    step(0);
   })();
   </script>
 </body>
