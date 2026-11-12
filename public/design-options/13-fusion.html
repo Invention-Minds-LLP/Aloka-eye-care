@@ -69,7 +69,8 @@
   .fuse .plate { left: calc(50% - 50vw); right: auto; width: 100vw; }
 
   /* 1. hero: the instrument, then into the eyepiece */
-  .hero { height: 260vh; }
+  .hero { height: 220vh; }
+  #squint { margin-top: -55vh; z-index: 1; }
   .stick { position: sticky; top: 0; height: 100svh; overflow: hidden; }
   .hero__copy { position: absolute; z-index: 3; left: 0; right: 0; top: 50%; translate: 0 -46%; will-change: transform, opacity; }
   .hero h1 { font-size: clamp(2.8rem, 1.2rem + 5vw, 6rem); max-width: 9.5ch; letter-spacing: -.035em; }
@@ -112,9 +113,9 @@
 
   /* 3. Dr. Aloka through the eyepiece */
   .doctor { padding-block: clamp(5rem, 12vw, 9rem); }
-  .doctor .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
-  .portal { position: relative; aspect-ratio: 4 / 3.3; border-radius: 22px; overflow: hidden; clip-path: circle(var(--r, 18%) at 50% 42%); background: var(--night-2); will-change: clip-path; }
-  .portal img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; scale: var(--z, 1.15); }
+  .doctor .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.75rem, 4vw, 3.5rem); align-items: start; max-width: 980px; }
+  .portal { position: relative; width: clamp(150px, 16vw, 210px); aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; clip-path: circle(var(--r, 18%) at 50% 40%); background: var(--night-2); will-change: clip-path; box-shadow: 0 0 0 1px var(--line); }
+  .portal img { width: 100%; height: 100%; object-fit: cover; object-position: 47% 0; scale: calc(var(--z, 1.15) * 1.45); transform-origin: 47% 18%; }
   .doctor h2 { font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.6rem); }
   .quals { margin-top: .9rem; color: var(--teal-lit); font-weight: 600; }
   .doctor .body { margin-top: 1.3rem; color: var(--ink-soft); font-size: 1.12rem; max-width: 46ch; }
@@ -125,7 +126,7 @@
   .head2 { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem 3rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
   .head2 h2 { font-size: clamp(2.1rem, 1.3rem + 2.6vw, 3.6rem); max-width: 16ch; }
   .head2 p { color: var(--ink-soft); max-width: 40ch; }
-  .cmp { position: relative; aspect-ratio: var(--ar, 1.9); border-radius: 18px; overflow: hidden; background: #000; touch-action: pan-y; user-select: none; box-shadow: 0 40px 80px -40px rgb(0 0 0 / .8); }
+  .cmp { position: relative; width: min(100%, 720px); margin-inline: auto; aspect-ratio: var(--ar, 1.9); border-radius: 18px; overflow: hidden; background: #000; touch-action: pan-y; user-select: none; box-shadow: 0 40px 80px -40px rgb(0 0 0 / .8); }
   .cmp__half { position: absolute; inset: 0; background-repeat: no-repeat; background-size: 200% 100%; }
   .cmp__before { background-position: 0 0; }
   .cmp__after { background-position: 100% 0; clip-path: inset(0 0 0 var(--cut, 50%)); }
@@ -134,12 +135,12 @@
   .cmp__knob svg { width: 1.5rem; height: 1.5rem; }
   .cmp__tag { position: absolute; top: 1rem; padding: .35rem .8rem; border-radius: 999px; font-weight: 600; font-size: .88rem; pointer-events: none; background: rgb(8 19 26 / .7); color: #fff; }
   .cmp__tag--b { left: 1rem; } .cmp__tag--a { right: 1rem; background: var(--teal); }
-  .cases { display: flex; gap: .6rem; margin-top: 1.1rem; overflow-x: auto; padding: .25rem .25rem .5rem; scrollbar-width: thin; }
+  .cases { display: flex; gap: .6rem; width: min(100%, 720px); margin: 1.1rem auto 0; overflow-x: auto; padding: .25rem .25rem .5rem; scrollbar-width: thin; }
   .cases button { flex: none; padding: 0; border: 0; border-radius: 10px; overflow: hidden; cursor: pointer; opacity: .5; transition: opacity .2s; background: none; }
   .cases button:hover { opacity: .8; }
   .cases button[aria-current=true] { opacity: 1; outline: 2px solid var(--teal-lit); outline-offset: 2px; }
   .cases img { height: 52px; width: auto; }
-  .res-foot { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; margin-top: 1.4rem; color: var(--ink-soft); }
+  .res-foot { width: min(100%, 720px); margin-inline: auto; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; margin-top: 1.4rem; color: var(--ink-soft); }
 
   /* 5. care: an index of specialities with a slide that follows the pointer */
   .care { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
@@ -489,16 +490,16 @@
       eyeDY = VH / 2 - (r.top + r.height * .19);
     }
     function hero(p) {
-      var out = easeOut(span(p, .04, .3)), z = ease(span(p, .12, .55)), lin = span(p, .36, .5), thru = ease(span(p, .66, 1));
+      var out = easeOut(span(p, .04, .3)), z = ease(span(p, .12, .55)), lin = span(p, .36, .5), thru = ease(span(p, .58, .95));
       heroCopy.style.opacity = (1 - out).toFixed(3);
       heroCopy.style.transform = 'translate3d(0,' + (-70 * out).toFixed(1) + 'px,0)';
       cue.style.opacity = (1 - span(p, 0, .06)).toFixed(3);
       var still = 1 - span(p, 0, .1);
       inst.style.transform = 'translate3d(' + (eyeDX * z).toFixed(1) + 'px,' + (eyeDY * z).toFixed(1) + 'px,0) scale(' + (1 + 2.1 * z).toFixed(3) + ') perspective(1200px) rotateX(' + (tiltY * still).toFixed(2) + 'deg) rotateY(' + (tiltX * still).toFixed(2) + 'deg)';
       inst.style.opacity = (1 - span(p, .38, .52)).toFixed(3);
-      lens.style.opacity = (lin * (1 - span(p, .86, 1))).toFixed(3);
+      lens.style.opacity = (lin * (1 - span(p, .7, .92))).toFixed(3);
       lens.style.transform = 'scale(' + (.55 + .45 * lin + 4.5 * thru).toFixed(3) + ')';
-      veil.style.opacity = span(p, .82, 1).toFixed(3);
+      veil.style.opacity = '0';
     }
 
     /* fusion chapters */
@@ -544,7 +545,7 @@
     var portal = document.getElementById('portal');
     function doctor() {
       var r = portal.getBoundingClientRect(), p = clamp((VH - r.top) / (VH * .9), 0, 1), e = easeOut(p);
-      portal.style.setProperty('--r', (18 + 62 * e).toFixed(1) + '%');
+      portal.style.setProperty('--r', (22 + 58 * e).toFixed(1) + '%');
       portal.style.setProperty('--z', (1.15 - .15 * e).toFixed(3));
     }
 
