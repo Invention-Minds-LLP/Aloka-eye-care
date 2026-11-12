@@ -52,3 +52,6 @@ Thumbs.db
 /public/sitemap.xml
 /public/admin/preview.css
 /public/site-data
+
+# browser-test screenshots and logs
+.playwright-mcp/
