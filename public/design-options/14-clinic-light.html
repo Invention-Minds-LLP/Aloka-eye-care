@@ -82,6 +82,9 @@
   .motion .window { animation: morph 14s ease-in-out infinite alternate; }
   @keyframes morph { to { border-radius: 56% 44% 58% 42% / 42% 56% 44% 58%; } }
   .window img { position: absolute; inset: -6%; width: 112%; height: 112%; max-width: none; object-fit: cover; object-position: 50% 40%; will-change: transform; }
+  .window canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .has-seq .window { top: 2%; border-radius: 28px; animation: none; }
+  .has-seq .window::after { display: none; }
   .window::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgb(231 244 241 / .15), transparent 40%, rgb(231 244 241 / .55)); }
   .stage .rings { width: 66%; left: 30%; top: -2%; opacity: .6; }
   .motion .stage .rings svg { animation: spin 60s linear infinite; }
@@ -93,28 +96,21 @@
   .glint { position: absolute; width: 8.5%; aspect-ratio: 1; margin: -4.25% 0 0 -4.25%; border-radius: 50%; background: radial-gradient(closest-side, rgb(170 245 236 / .95), rgb(31 154 150 / .45) 55%, transparent); opacity: 0; pointer-events: none; }
   .motion .glint { animation: glow 1.8s ease-in-out infinite alternate; }
   @keyframes glow { from { scale: .8; } to { scale: 1.15; } }
-  .chip { display: flex; align-items: center; gap: .55rem; padding: .55rem .9rem .55rem .6rem; border-radius: 999px; background: var(--white); box-shadow: 0 16px 30px -18px rgb(10 70 73 / .6), 0 0 0 1px var(--line); font-weight: 700; font-size: .85rem; white-space: nowrap; }
-  .chip i { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--mint); color: var(--teal); }
-  .chip svg { width: 1.1rem; height: 1.1rem; }
-  .chip--a { left: -3%; top: 44%; } .chip--b { left: 1%; bottom: 10%; }
-  .motion .chip { animation: bob 6s ease-in-out infinite; } .motion .chip--b { animation-delay: -3s; }
   @keyframes bob { 50% { translate: 0 -10px; } }
-  .say { position: absolute; z-index: 5; left: 0; top: 4%; display: grid; justify-items: start; }
-  .say span { grid-area: 1 / 1; padding: .6rem 1rem; border-radius: 16px 16px 4px 16px; background: var(--teal); color: #fff; font-weight: 700; font-size: .92rem; box-shadow: 0 16px 30px -18px rgb(10 70 73 / .8); transition: opacity .45s, translate .5s var(--ease); white-space: nowrap; }
-  .say .b { opacity: 0; translate: 0 8px; }
-  .is-exam .say .a { opacity: 0; translate: 0 -8px; } .is-exam .say .b { opacity: 1; translate: 0 0; }
   .note { position: absolute; right: 2%; bottom: -1.4rem; font-size: .78rem; font-style: italic; color: var(--ink-3); }
 
   /* feature row */
-  .feats { display: grid; grid-template-columns: repeat(3, auto) 1fr; gap: 0; margin-top: clamp(2rem, 4vw, 3rem); padding-block: 1.4rem 2.2rem; }
-  .feat { display: flex; align-items: center; gap: .8rem; padding-right: clamp(1.2rem, 3vw, 2.4rem); margin-right: clamp(1.2rem, 3vw, 2.4rem); border-right: 1px solid var(--line); font-weight: 700; }
-  .feat:nth-child(3) { border-right: 0; }
-  .feat .ic { display: grid; place-items: center; width: 2.9rem; height: 2.9rem; border-radius: 12px; background: var(--mint); color: var(--teal); }
-  .feat .ic svg { width: 1.7rem; height: 1.7rem; overflow: visible; }
+  .feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: clamp(2rem, 4vw, 3rem) 0 clamp(2rem, 4vw, 3rem); position: relative; z-index: 2; border-radius: 16px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line), 0 24px 40px -30px rgb(10 70 73 / .6); }
+  .feat { display: flex; align-items: center; justify-content: center; gap: .9rem; padding: 1.1rem 1rem; font-weight: 700; font-size: 1.02rem; border-left: 1px solid var(--line); }
+  .feat:first-child { border-left: 0; }
+  .feat .ic { display: grid; place-items: center; width: 2.9rem; height: 2.9rem; border-radius: 50%; background: var(--mint); color: var(--teal); }
+  .feat .ic svg { width: 1.8rem; height: 1.8rem; overflow: visible; }
+  .motion .tilt { transform-box: fill-box; transform-origin: 50% 50%; animation: tilt 4s ease-in-out infinite; }
+  @keyframes tilt { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; } }
   .motion .lid { transform-box: fill-box; transform-origin: 50% 50%; animation: blink 5s infinite; }
   @keyframes blink { 0%, 92%, 100% { scale: 1 1; } 95% { scale: 1 .1; } }
   .motion .eyeL { animation: inL 4s ease-in-out infinite; } .motion .eyeR { animation: inR 4s ease-in-out infinite; }
-  @keyframes inL { 0%, 100% { translate: -2px 0; } 50% { translate: 0 0; } }
+  @keyframes inL { 0%, 100% { translate: -3px 0; } 50% { translate: 3px 0; } }
   @keyframes inR { 0%, 100% { translate: 2px 0; } 50% { translate: 0 0; } }
   .motion .pulse { transform-box: fill-box; transform-origin: 50% 50%; animation: pulse 3s ease-in-out infinite; }
   @keyframes pulse { 50% { scale: 1.12; } }
@@ -124,19 +120,39 @@
   .sec h2 { font-size: clamp(1.9rem, 1.2rem + 2.2vw, 2.7rem); font-weight: 800; }
   .sec .sub { margin-top: .6rem; color: var(--ink-2); font-size: 1.08rem; }
 
-  /* 2. doctor */
-  .doctor { background: var(--mint); overflow: clip; }
-  .doctor .wrap { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: clamp(1.8rem, 5vw, 4rem); align-items: center; }
-  .photo { position: relative; aspect-ratio: 1 / 1.05; border-radius: var(--r); overflow: hidden; background: var(--mint-2); box-shadow: 0 30px 50px -28px rgb(10 70 73 / .55), 0 0 0 6px var(--white); }
+  /* teal band */
+  .care { background: linear-gradient(160deg, var(--teal) 0%, var(--teal-2) 60%, var(--teal-3) 100%); color: #fff; padding: clamp(4.5rem, 9vw, 6.5rem) 0 clamp(3rem, 6vw, 4.5rem); overflow: clip; }
+  .care .rings { color: rgb(255 255 255 / .14); }
+  .care h2 { font-size: clamp(1.9rem, 1.2rem + 2.4vw, 2.8rem); font-weight: 800; }
+  .care p { margin-top: .9rem; max-width: 62ch; font-size: 1.1rem; color: #d7ecea; }
+  .pills { list-style: none; margin: 1.8rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .75rem; }
+  .pills a { display: inline-flex; align-items: center; min-height: 2.9rem; padding: .6rem 1.2rem; border-radius: 10px; color: #fff; font-weight: 700; font-size: .95rem; text-decoration: none; box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / .75); transition: background-color .25s, color .25s, translate .3s var(--ease); }
+  .pills a:hover { background: #fff; color: var(--teal); translate: 0 -2px; }
+
+  /* doctor */
+  .doctor { background: var(--white); overflow: clip; padding-bottom: clamp(1rem, 2vw, 1.5rem); }
+  .doctor + .services { padding-top: clamp(2rem, 4vw, 3rem); }
+  .doctor .more { margin-bottom: 0; }
+  .doctor .wrap { display: grid; grid-template-columns: minmax(220px, 290px) minmax(0, 1fr); gap: clamp(1.8rem, 5vw, 3.6rem); align-items: start; }
+  .photo { position: relative; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: var(--mint-2); box-shadow: 0 30px 50px -30px rgb(10 70 73 / .55), 0 0 0 1px var(--line); }
   .photo img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; object-position: 46% 18%; will-change: transform; }
   .doctor h2 { font-size: clamp(1.9rem, 1.2rem + 2.2vw, 2.7rem); font-weight: 800; }
-  .doctor .role { margin-top: .4rem; font-size: 1.15rem; font-weight: 700; color: var(--teal); }
-  .facts { margin: 1.4rem 0 1.2rem; display: grid; }
-  .facts div { display: grid; grid-template-columns: minmax(150px, .5fr) 1fr; gap: 1rem; padding: .8rem 0; position: relative; }
-  .facts div::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--mint-3); transform-origin: 0 50%; }
+  .doctor .role { margin-top: .35rem; font-size: 1.15rem; font-weight: 700; color: var(--teal); }
+  .quals { margin-top: .5rem; color: var(--ink-2); }
+  .verify { display: inline-block; margin-top: .8rem; padding: .3rem .75rem; border-radius: 6px; background: var(--orange-soft); color: #8a3a0e; font-weight: 600; font-size: .88rem; }
+  .facts { margin: 1rem 0 1.2rem; display: grid; }
+  .facts div { display: flex; flex-wrap: wrap; gap: .2rem .5rem; padding: .7rem 0; position: relative; }
+  .facts div::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
   .motion .facts div::after { scale: 0 1; transition: scale 1.1s var(--ease); transition-delay: calc(var(--i, 0) * .15s + .2s); }
   .motion .facts.in div::after { scale: 1 1; }
   .facts dt { font-weight: 700; } .facts dd { margin: 0; color: var(--ink-2); }
+  .facts .interests dt { color: var(--teal); } .facts .interests::after { display: none; }
+  .path { list-style: none; margin: 0 0 1.3rem; padding: .7rem .9rem; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .2rem; border-radius: 10px; background: var(--mint); counter-reset: s; }
+  .path li { position: relative; display: grid; padding: .3rem .6rem; border-radius: 8px; font-weight: 700; font-size: .86rem; color: var(--teal-3); transition: background-color .4s, color .4s; }
+  .path li small { font-weight: 500; font-size: .76rem; color: var(--ink-3); }
+  .path li + li::before { content: ''; position: absolute; left: -.85rem; top: 50%; width: .9rem; height: 2px; margin-top: -1px; background: var(--teal); -webkit-mask: linear-gradient(90deg, #000 60%, transparent 60%) 0 0 / 4px 2px; mask: linear-gradient(90deg, #000 60%, transparent 60%) 0 0 / 4px 2px; }
+  .path li + li { margin-left: .8rem; }
+  .path li.on { background: var(--teal); color: #fff; } .path li.on small { color: #cfe7e4; }
 
   /* 3. services */
   .services { background: var(--white); overflow: clip; }
@@ -219,13 +235,13 @@
   @media (max-width: 820px) {
     .hero__grid, .doctor .wrap, .visit .wrap { grid-template-columns: minmax(0, 1fr); }
     .stage { height: min(80vw, 420px); margin-top: .5rem; }
-    .feats { grid-template-columns: repeat(3, minmax(0, 1fr)); text-align: center; }
-    .feat { flex-direction: column; gap: .5rem; padding: 0 .4rem; margin: 0; font-size: .92rem; }
-    .doctor .wrap { grid-template-columns: 120px minmax(0, 1fr); align-items: start; }
-    .doctor .photo { aspect-ratio: 1 / 1.1; }
-    .facts, .doctor .more { grid-column: 1 / -1; }
+    .feat { flex-direction: column; gap: .45rem; padding: .9rem .4rem; font-size: .86rem; text-align: center; }
+    .doctor .wrap { grid-template-columns: 128px minmax(0, 1fr); column-gap: 1.1rem; row-gap: 0; }
     .doctor .info { display: contents; }
-    .facts div { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); }
+    .doctor .photo { grid-row: 1 / span 4; align-self: start; }
+    .doctor .info > * { grid-column: 2; }
+    .doctor .facts, .doctor .path, .doctor .more { grid-column: 1 / -1; }
+    .doctor .facts { margin-top: 1.4rem; }
     .steps { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
     .step { border-left: 0; padding: 0; }
     .shots { grid-template-columns: minmax(0, 1fr); }
@@ -245,12 +261,11 @@
     .hero .actions { order: 2; margin-top: 1.8rem; }
     .hero .eyebrow { justify-self: start; }
     .note { right: auto; left: 0; bottom: -1.3rem; }
-    .chip { font-size: .74rem; padding: .4rem .7rem .4rem .45rem; } .chip i { width: 1.5rem; height: 1.5rem; }
-    .chip--a { left: 0; top: 20%; } .chip--b { left: 0; bottom: 10%; }
-    .say { left: 0; top: -1.4rem; } .say span { font-size: .82rem; padding: .5rem .8rem; }
-    .chip--a { top: 46%; }
-    .cards { grid-template-columns: minmax(0, 1fr); }
-    .facts div { grid-template-columns: minmax(0, 1fr); gap: .15rem; }
+      .cards { grid-template-columns: minmax(0, 1fr); }
+    .doctor .wrap { grid-template-columns: 104px minmax(0, 1fr); }
+    .doctor h2 { font-size: 1.6rem; } .doctor .role { font-size: .98rem; } .quals { font-size: .9rem; }
+    .path { flex-direction: column; align-items: stretch; } .path li + li { margin: .5rem 0 0; } .path li + li::before { left: 1.2rem; top: -.55rem; width: 2px; height: .5rem; margin: 0; -webkit-mask: none; mask: none; }
+    .care p { font-size: 1rem; } .pills a { min-height: 2.6rem; padding: .5rem .9rem; font-size: .88rem; }
     footer nav { gap: 1rem; }
     .bar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; z-index: 48; left: 0; right: 0; bottom: 0; padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); background: var(--cream); box-shadow: 0 -1px 0 var(--line), 0 -14px 30px -20px rgb(10 70 73 / .5); }
     .bar a { display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 3.1rem; border-radius: 10px; background: var(--teal); color: #fff; font-weight: 700; text-decoration: none; }
@@ -296,37 +311,60 @@
           <div class="stage" id="stage" role="img" aria-label="Illustration: a doctor in the eye clinic smiles at you, then, as you scroll, looks through the slit lamp to examine your eyes.">
             <div class="stage__in" id="stageIn">
               <div class="layer rings" data-z="-90"><svg style="width:100%;height:auto;aspect-ratio:1" aria-hidden="true"><use href="#rings"/></svg></div>
-              <div class="layer window" data-z="-60"><img id="roomImg" src="../images/hero-light/room.webp" alt="" width="1600" height="1001" fetchpriority="high" /></div>
+              <div class="layer window" data-z="-60"><canvas id="seq" hidden></canvas><img id="roomImg" src="../images/hero-light/room.webp" alt="" width="1600" height="1001" fetchpriority="high" /></div>
               <div class="layer doc doc--look" id="docLook"><img src="../images/hero-light/doc-look.webp" alt="" width="795" height="1100" /></div>
               <div class="layer doc doc--exam" id="docExam"><img src="../images/hero-light/doc-exam.webp" alt="" width="1004" height="1100" /><i class="glint" style="left:43.7%;top:38.8%"></i><i class="glint" style="left:56.2%;top:38.8%"></i></div>
-              <div class="layer chip chip--a" data-z="150"><i><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-7 18c0-3.9 3.1-7 7-7s7 3.1 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i>Child-friendly checks</div>
-              <div class="layer chip chip--b" data-z="120"><i><svg viewBox="0 0 24 24"><circle cx="7" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 12h3" stroke="currentColor" stroke-width="2"/></svg></i>Both eyes, together</div>
             </div>
-            <p class="say" aria-hidden="true"><span class="a">Hello! Shall we check your eyes?</span><span class="b">Now, a closer look</span></p>
             <p class="note">AI-generated illustration</p>
           </div>
         </div>
         <div class="feats">
-          <div class="feat rv" style="--i:0"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><g class="lid"><path d="M3 16c3.5-5.5 8-8 13-8s9.5 2.5 13 8c-3.5 5.5-8 8-13 8s-9.5-2.5-13-8Z" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="16" cy="16" r="4.5" fill="currentColor"/></g></svg></span>Vision</div>
-          <div class="feat rv" style="--i:1"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16c1.8-3 4-4.5 6.5-4.5S13.2 13 15 16c-1.8 3-4 4.5-6.5 4.5S3.8 19 2 16ZM17 16c1.8-3 4-4.5 6.5-4.5S28.2 13 30 16c-1.8 3-4 4.5-6.5 4.5S18.8 19 17 16Z" fill="none" stroke="currentColor" stroke-width="2"/><g class="eyeL"><circle cx="8.5" cy="16" r="2.3" fill="currentColor"/></g><g class="eyeR"><circle cx="23.5" cy="16" r="2.3" fill="currentColor"/></g></svg></span>Eye alignment</div>
-          <div class="feat rv" style="--i:2"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><path class="pulse" d="M16 3 6 7v8c0 6.5 4.3 11.6 10 14 5.7-2.4 10-7.5 10-14V7L16 3Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="16" cy="15" r="3.4" fill="currentColor"/></svg></span>Eye health</div>
+          <div class="feat rv" style="--i:0"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="17" r="11" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 10c1.5-3.5 4-5 6-5 3 0 5 2 6 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><g class="lid"><circle cx="12.5" cy="16.5" r="1.5" fill="currentColor"/><circle cx="19.5" cy="16.5" r="1.5" fill="currentColor"/></g><path d="M12 21.5c2.2 2 5.8 2 8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Children’s eye care</div>
+          <div class="feat rv" style="--i:1"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 16c3.5-5.5 8-8 13-8s9.5 2.5 13 8c-3.5 5.5-8 8-13 8s-9.5-2.5-13-8Z" fill="none" stroke="currentColor" stroke-width="2"/><g class="eyeL"><circle cx="16" cy="16" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></g></svg></span>Adult squint care</div>
+          <div class="feat rv" style="--i:2"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><g class="tilt" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9.5" cy="17" r="5.5"/><circle cx="22.5" cy="17" r="5.5"/><path d="M15 16.5c.7-.7 1.3-.7 2 0M4 16 2.5 11M28 16l1.5-5"/></g></svg></span>Myopia management</div>
         </div>
       </div>
     </section>
 
-    <!-- 2. doctor -->
+    <!-- 2. teal band: what the clinic treats -->
+    <section class="care" id="care">
+      <svg class="deco rings" data-par="-.16" style="width:520px;height:520px;right:-180px;top:-160px" aria-hidden="true"><use href="#rings"/></svg>
+      <svg class="deco rings" data-par=".12" style="width:300px;height:300px;left:-120px;bottom:-140px" aria-hidden="true"><use href="#rings"/></svg>
+      <div class="wrap">
+        <h2 class="rv">Eye care for children and adults</h2>
+        <p class="rv" style="--i:1">Assessment and management of childhood eye conditions, squint in children and adults, and myopia. Care is planned according to the findings of an individual assessment.</p>
+        <ul class="pills" aria-label="Care areas">
+          <li class="rv" style="--i:2"><a href="#services">Paediatric eye care</a></li>
+          <li class="rv" style="--i:3"><a href="#services">Squint assessment</a></li>
+          <li class="rv" style="--i:4"><a href="#services">Myopia management</a></li>
+          <li class="rv" style="--i:5"><a href="#services">Vision therapy</a></li>
+          <li class="rv" style="--i:6"><a href="#services">Paediatric cataract care</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. doctor -->
     <section class="doctor sec" id="doctor">
       <svg class="deco rings" data-par=".14" style="width:440px;height:440px;right:-160px;top:-60px;opacity:.55" aria-hidden="true"><use href="#rings"/></svg>
       <div class="wrap">
-        <div class="photo rv" id="docPhoto"><img src="../images/doctor-900.webp" alt="Dr. Aloka Hedau" width="900" height="675" loading="lazy" data-ipar /></div>
+        <div class="photo rv"><img src="../images/doctor-900.webp" alt="Dr. Aloka Hedau" width="900" height="675" loading="lazy" data-ipar /></div>
         <div class="info">
-          <div class="rv" style="--i:1"><h2>Meet Dr. Aloka Hedau</h2><p class="role">Paediatric Ophthalmologist &amp; Squint Surgeon</p></div>
-          <dl class="facts rv" style="--i:2">
-            <div style="--i:0"><dt>Qualifications</dt><dd>DNB (Ophthalmology) · Fellow, Paediatric Ophthalmology · FICO (UK)</dd></div>
-            <div style="--i:1"><dt>Experience</dt><dd>20+ years in paediatric eye care and squint surgery</dd></div>
-            <div style="--i:2"><dt>Training</dt><dd>Aravind Eye Hospital, Madurai; nystagmus surgery with Dr. Richard Hertle</dd></div>
+          <h2 class="rv" style="--i:1">Dr. Aloka Hedau</h2>
+          <p class="role rv" style="--i:1">Paediatric Ophthalmologist &amp; Squint Surgeon</p>
+          <p class="quals rv" style="--i:2">DNB (Ophthalmology) · Fellowship in Paediatric Ophthalmology · FICO (UK)</p>
+          <p class="verify rv" style="--i:2">Credentials subject to verification</p>
+          <dl class="facts rv" style="--i:3">
+            <div style="--i:0"><dt>Medical council registration:</dt><dd>To be verified</dd></div>
+            <div style="--i:1"><dt>Clinical experience:</dt><dd>20+ years in paediatric eye care and squint surgery</dd></div>
+            <div style="--i:2" class="interests"><dt>Clinical interests:</dt><dd>Squint · Nystagmus · Paediatric cataract · Low vision</dd></div>
           </dl>
-          <a class="more rv" style="--i:3" href="#">View professional profile <svg class="i"><use href="#arr"/></svg></a>
+          <ol class="path rv" style="--i:4" aria-label="Training path">
+            <li>Medical education <small>MBBS, Pune</small></li>
+            <li>Ophthalmology training <small>Aravind Eye Hospital</small></li>
+            <li>Fellowship <small>Paediatric &amp; squint, Aravind</small></li>
+            <li>Further clinical training <small>Nystagmus surgery</small></li>
+          </ol>
+          <a class="more rv" style="--i:5" href="#">Full profile and academic record <svg class="i"><use href="#arr"/></svg></a>
         </div>
       </div>
     </section>
@@ -439,6 +477,31 @@
 
     if (!motion) return;
 
+    /* the training path lights up step by step */
+    var pathLis = $$('.path li'), pathI = -1, pathT = 0;
+    new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting && !pathT) pathT = setInterval(function () { pathI = (pathI + 1) % (pathLis.length + 2); pathLis.forEach(function (li, k) { li.classList.toggle('on', k <= pathI && pathI < pathLis.length + 1); }); }, 900);
+      if (!en[0].isIntersecting && pathT) { clearInterval(pathT); pathT = 0; }
+    }, { threshold: .4 }).observe($('.path'));
+
+    /* hero video, scrubbed by the scroll: frames in images/hero-light/seq/ (0001.webp ...) with a manifest.json.
+       Until those exist, the two still poses cross-fade instead. */
+    var seq = $('#seq'), seqCtx = null, seqFrames = null, seqLast = -1;
+    fetch('../images/hero-light/seq/manifest.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (m) {
+      if (!m || !m.count) return;
+      seqFrames = [];
+      for (var i = 1; i <= m.count; i++) { var im = new Image(); im.decoding = 'async'; im.src = '../images/hero-light/seq/' + String(i).padStart(4, '0') + '.' + (m.ext || 'webp'); seqFrames.push(im); }
+      seq.width = m.w; seq.height = m.h; seqCtx = seq.getContext('2d');
+      seqFrames[0].onload = function () { seq.hidden = false; $('#roomImg').hidden = true; $('#docLook').hidden = true; $('#docExam').hidden = true; stage.classList.add('has-seq'); seqLast = -1; kick(); };
+    }).catch(function () {});
+    function drawSeq(p) {
+      if (!seqCtx) return;
+      var n = seqFrames.length, i = Math.round(clamp(p, 0, 1) * (n - 1));
+      for (var d = 0; d < n; d++) { var j = i - d; if (j >= 0 && seqFrames[j].complete && seqFrames[j].naturalWidth) { i = j; break; } }
+      if (i === seqLast) return; seqLast = i;
+      seqCtx.drawImage(seqFrames[i], 0, 0, seq.width, seq.height);
+    }
+
     /* ---------- the hero stage: layers at different depths; tilts with the pointer and the scroll ---------- */
     var stage = $('#stage'), stageIn = $('#stageIn'), layers = $$('#stageIn .layer[data-z]');
     /* the doctor: smiles at you, then (as you scroll) turns to the slit lamp and looks through it at you */
@@ -484,6 +547,7 @@
         roomImg.style.transform = 'scale(' + (1 + .07 * dp).toFixed(4) + ')';
         var g = span(dp, .82, 1).toFixed(3); glints.forEach(function (el) { el.style.opacity = g; });
         stage.classList.toggle('is-exam', dp > .55);
+        drawSeq(dp);
       }
       decos.forEach(function (d) {
         var host = d.parentElement.getBoundingClientRect(); if (host.bottom < -200 || host.top > VH + 200) return;
