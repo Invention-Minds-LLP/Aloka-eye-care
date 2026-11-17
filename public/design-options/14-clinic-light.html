@@ -74,44 +74,36 @@
   .hero .lede { margin-top: 1.2rem; font-size: 1.15rem; color: var(--ink-2); max-width: 36ch; }
   .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
 
-  /* the 3D stage: an illustrated exam corner built from layers */
-  .stage { position: relative; height: clamp(360px, 40vw, 520px); perspective: 1300px; perspective-origin: 50% 40%; }
+  /* the 3D stage: the clinic room, and the doctor who turns from you to the slit lamp as you scroll */
+  .stage { position: relative; height: clamp(400px, 43vw, 580px); perspective: 1300px; perspective-origin: 50% 40%; }
   .stage__in { position: absolute; inset: 0; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; will-change: transform; }
   .layer { position: absolute; will-change: transform; }
-  .blob { inset: 4% 0 6% 6%; border-radius: 58% 42% 46% 54% / 52% 44% 56% 48%; background: radial-gradient(120% 90% at 30% 20%, var(--mint) 0, var(--mint-2) 60%, var(--mint-3) 100%); }
-  .motion .blob { animation: morph 14s ease-in-out infinite alternate; }
-  @keyframes morph { to { border-radius: 44% 56% 58% 42% / 46% 58% 42% 54%; } }
-  .stage .rings { width: 74%; left: 20%; top: 6%; opacity: .7; }
+  .window { left: 0; right: 0; top: 12%; bottom: 3%; border-radius: 46% 54% 40% 60% / 48% 42% 58% 52%; overflow: hidden; background: var(--mint); box-shadow: 0 40px 60px -40px rgb(10 70 73 / .55); }
+  .motion .window { animation: morph 14s ease-in-out infinite alternate; }
+  @keyframes morph { to { border-radius: 56% 44% 58% 42% / 42% 56% 44% 58%; } }
+  .window img { position: absolute; inset: -6%; width: 112%; height: 112%; max-width: none; object-fit: cover; object-position: 50% 40%; will-change: transform; }
+  .window::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgb(231 244 241 / .15), transparent 40%, rgb(231 244 241 / .55)); }
+  .stage .rings { width: 66%; left: 30%; top: -2%; opacity: .6; }
   .motion .stage .rings svg { animation: spin 60s linear infinite; }
   @keyframes spin { to { rotate: 360deg; } }
-  .floor { left: 6%; right: 2%; bottom: 6%; height: 22%; border-radius: 50%; background: radial-gradient(closest-side, rgb(15 107 110 / .16), transparent); }
-  .device { left: 4%; bottom: 9%; width: 60%; }
-  .device img { width: 100%; height: auto; filter: drop-shadow(0 28px 30px rgb(10 70 73 / .25)); }
-
-  .chart { right: 5%; top: 8%; width: 30%; aspect-ratio: 3 / 4; padding: 7% 6%; border-radius: 10px; background: var(--white); box-shadow: 0 0 0 6px #f1f4f3, 0 30px 50px -20px rgb(10 70 73 / .45); display: grid; align-content: space-between; justify-items: center; font-weight: 800; color: var(--ink); text-align: center; }
-  .chart__row { position: relative; display: flex; gap: .5em; line-height: 1; }
-  .chart__row:nth-child(1) { font-size: clamp(2.2rem, 4.2vw, 3.6rem); }
-  .chart__row:nth-child(2) { font-size: clamp(1.2rem, 2.1vw, 1.8rem); }
-  .chart__row:nth-child(3) { font-size: clamp(.95rem, 1.6vw, 1.35rem); }
-  .chart__row:nth-child(4) { font-size: clamp(.72rem, 1.15vw, .98rem); }
-  .chart__row:nth-child(5) { font-size: clamp(.55rem, .85vw, .74rem); }
-  .tumble { display: inline-block; transform-origin: 50% 52%; }
-  .motion .tumble { animation: tumble 8s var(--ease) infinite; }
-  @keyframes tumble { 0%, 20% { rotate: 0deg; } 25%, 45% { rotate: 90deg; } 50%, 70% { rotate: 180deg; } 75%, 95% { rotate: 270deg; } 100% { rotate: 360deg; } }
-  .reader { position: absolute; left: 12%; right: 12%; height: 3px; border-radius: 3px; background: var(--orange); top: 30%; opacity: 0; }
-  .motion .reader { animation: read 6s ease-in-out infinite; }
-  @keyframes read { 0% { top: 31%; opacity: 0; } 8% { opacity: 1; } 25% { top: 31%; } 32% { top: 49%; } 50% { top: 49%; } 57% { top: 64%; } 72% { top: 64%; } 79% { top: 77%; } 92% { top: 77%; opacity: 1; } 100% { top: 77%; opacity: 0; } }
-
-  .lens { right: 20%; bottom: 4%; width: 17%; }
-  .lens img { width: 100%; height: auto; filter: drop-shadow(0 18px 20px rgb(10 70 73 / .35)); }
-  .motion .lens img { animation: spin 30s linear infinite; }
+  .doc { bottom: 3%; height: 97%; will-change: transform, opacity; }
+  .doc img { height: 100%; width: auto; max-width: none; filter: drop-shadow(0 24px 28px rgb(10 70 73 / .28)); }
+  .doc--look { right: 3%; }
+  .doc--exam { left: 50%; translate: -50% 0; opacity: 0; }
+  .glint { position: absolute; width: 8.5%; aspect-ratio: 1; margin: -4.25% 0 0 -4.25%; border-radius: 50%; background: radial-gradient(closest-side, rgb(170 245 236 / .95), rgb(31 154 150 / .45) 55%, transparent); opacity: 0; pointer-events: none; }
+  .motion .glint { animation: glow 1.8s ease-in-out infinite alternate; }
+  @keyframes glow { from { scale: .8; } to { scale: 1.15; } }
   .chip { display: flex; align-items: center; gap: .55rem; padding: .55rem .9rem .55rem .6rem; border-radius: 999px; background: var(--white); box-shadow: 0 16px 30px -18px rgb(10 70 73 / .6), 0 0 0 1px var(--line); font-weight: 700; font-size: .85rem; white-space: nowrap; }
   .chip i { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--mint); color: var(--teal); }
   .chip svg { width: 1.1rem; height: 1.1rem; }
-  .chip--a { left: 0; top: 14%; } .chip--b { right: 0; bottom: 30%; }
+  .chip--a { left: -3%; top: 44%; } .chip--b { left: 1%; bottom: 10%; }
   .motion .chip { animation: bob 6s ease-in-out infinite; } .motion .chip--b { animation-delay: -3s; }
   @keyframes bob { 50% { translate: 0 -10px; } }
-  .note { position: absolute; right: 2%; bottom: 0; font-size: .78rem; font-style: italic; color: var(--ink-3); }
+  .say { position: absolute; z-index: 5; left: 0; top: 4%; display: grid; justify-items: start; }
+  .say span { grid-area: 1 / 1; padding: .6rem 1rem; border-radius: 16px 16px 4px 16px; background: var(--teal); color: #fff; font-weight: 700; font-size: .92rem; box-shadow: 0 16px 30px -18px rgb(10 70 73 / .8); transition: opacity .45s, translate .5s var(--ease); white-space: nowrap; }
+  .say .b { opacity: 0; translate: 0 8px; }
+  .is-exam .say .a { opacity: 0; translate: 0 -8px; } .is-exam .say .b { opacity: 1; translate: 0 0; }
+  .note { position: absolute; right: 2%; bottom: -1.4rem; font-size: .78rem; font-style: italic; color: var(--ink-3); }
 
   /* feature row */
   .feats { display: grid; grid-template-columns: repeat(3, auto) 1fr; gap: 0; margin-top: clamp(2rem, 4vw, 3rem); padding-block: 1.4rem 2.2rem; }
@@ -249,12 +241,14 @@
     .hero__copy { display: contents; }
     .hero__grid { gap: 0; }
     .hero h1, .hero .lede { order: 0; }
-    .stage { order: 1; height: min(78vw, 330px); margin-top: 1rem; }
-    .hero .actions { order: 2; margin-top: 1.2rem; }
+    .stage { order: 1; height: min(96vw, 400px); margin-top: 1.2rem; }
+    .hero .actions { order: 2; margin-top: 1.8rem; }
     .hero .eyebrow { justify-self: start; }
-    .note { right: auto; left: 0; bottom: -.4rem; }
-    .chip { font-size: .76rem; } .chip i { width: 1.6rem; height: 1.6rem; }
-    .chip--a { left: 5%; top: 4%; } .chip--b { right: 4%; bottom: 22%; }
+    .note { right: auto; left: 0; bottom: -1.3rem; }
+    .chip { font-size: .74rem; padding: .4rem .7rem .4rem .45rem; } .chip i { width: 1.5rem; height: 1.5rem; }
+    .chip--a { left: 0; top: 20%; } .chip--b { left: 0; bottom: 10%; }
+    .say { left: 0; top: -1.4rem; } .say span { font-size: .82rem; padding: .5rem .8rem; }
+    .chip--a { top: 46%; }
     .cards { grid-template-columns: minmax(0, 1fr); }
     .facts div { grid-template-columns: minmax(0, 1fr); gap: .15rem; }
     footer nav { gap: 1rem; }
@@ -299,25 +293,17 @@
               <a class="btn btn--orange" href="#visit">Plan a visit</a>
             </div>
           </div>
-          <div class="stage" id="stage" role="img" aria-label="Illustration: an eye examination corner with a binocular vision instrument, an eye chart and a lens.">
+          <div class="stage" id="stage" role="img" aria-label="Illustration: a doctor in the eye clinic smiles at you, then, as you scroll, looks through the slit lamp to examine your eyes.">
             <div class="stage__in" id="stageIn">
-              <div class="layer blob" data-z="-80"></div>
-              <div class="layer rings" data-z="-60"><svg style="width:100%;height:auto;aspect-ratio:1" aria-hidden="true"><use href="#rings"/></svg></div>
-              <div class="layer floor" data-z="-20"></div>
-              <div class="layer chart" data-z="40" aria-hidden="true">
-                <div class="chart__row"><span class="tumble">E</span></div>
-                <div class="chart__row">F P</div>
-                <div class="chart__row">T O Z</div>
-                <div class="chart__row">L P E D</div>
-                <div class="chart__row">P E C F D</div>
-                <span class="reader"></span>
-              </div>
-              <div class="layer device" data-z="90"><img src="../images/fusion/web/instrument.webp" alt="" width="1300" height="1188" fetchpriority="high" /></div>
-              <div class="layer lens" data-z="150"><img src="../images/fusion/web/eyepiece.webp" alt="" width="1000" height="1000" /></div>
-              <div class="layer chip chip--a" data-z="170"><i><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-7 18c0-3.9 3.1-7 7-7s7 3.1 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i>Child-friendly checks</div>
-              <div class="layer chip chip--b" data-z="130"><i><svg viewBox="0 0 24 24"><circle cx="7" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 12h3" stroke="currentColor" stroke-width="2"/></svg></i>Both eyes, together</div>
+              <div class="layer rings" data-z="-90"><svg style="width:100%;height:auto;aspect-ratio:1" aria-hidden="true"><use href="#rings"/></svg></div>
+              <div class="layer window" data-z="-60"><img id="roomImg" src="../images/hero-light/room.webp" alt="" width="1600" height="1001" fetchpriority="high" /></div>
+              <div class="layer doc doc--look" id="docLook"><img src="../images/hero-light/doc-look.webp" alt="" width="795" height="1100" /></div>
+              <div class="layer doc doc--exam" id="docExam"><img src="../images/hero-light/doc-exam.webp" alt="" width="1004" height="1100" /><i class="glint" style="left:43.7%;top:38.8%"></i><i class="glint" style="left:56.2%;top:38.8%"></i></div>
+              <div class="layer chip chip--a" data-z="150"><i><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-7 18c0-3.9 3.1-7 7-7s7 3.1 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i>Child-friendly checks</div>
+              <div class="layer chip chip--b" data-z="120"><i><svg viewBox="0 0 24 24"><circle cx="7" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 12h3" stroke="currentColor" stroke-width="2"/></svg></i>Both eyes, together</div>
             </div>
-            <p class="note">Illustrative visual</p>
+            <p class="say" aria-hidden="true"><span class="a">Hello! Shall we check your eyes?</span><span class="b">Now, a closer look</span></p>
+            <p class="note">AI-generated illustration</p>
           </div>
         </div>
         <div class="feats">
@@ -454,7 +440,10 @@
     if (!motion) return;
 
     /* ---------- the hero stage: layers at different depths; tilts with the pointer and the scroll ---------- */
-    var stage = $('#stage'), stageIn = $('#stageIn'), layers = $$('#stageIn .layer');
+    var stage = $('#stage'), stageIn = $('#stageIn'), layers = $$('#stageIn .layer[data-z]');
+    /* the doctor: smiles at you, then (as you scroll) turns to the slit lamp and looks through it at you */
+    var docLook = $('#docLook'), docExam = $('#docExam'), roomImg = $('#roomImg'), glints = $$('.glint'), dp = 0, dT = 0;
+    var span = function (v, a, b) { return clamp((v - a) / (b - a), 0, 1); }, easeOut = function (t) { return 1 - Math.pow(1 - t, 3); };
     var tx = 0, ty = 0, px = 0, py = 0, sp = 0, spT = 0;
     layers.forEach(function (l) { l._z = +l.dataset.z || 0; });
     if (fine) addEventListener('pointermove', function (e) { tx = (e.clientX / VW - .5); ty = (e.clientY / VH - .5); kick(); }, { passive: true });
@@ -484,6 +473,17 @@
           var z = l._z, lift = -sp * z * .5;
           l.style.transform = 'translate3d(' + (px * z * .12).toFixed(1) + 'px,' + (py * z * .1 + lift).toFixed(1) + 'px,' + z + 'px)';
         });
+        dT = clamp(window.pageYOffset / (VW < 820 ? VH * .45 : VH * .2), 0, 1);
+        dp += (dT - dp) * (1 - Math.pow(1 - .12, f)); if (Math.abs(dT - dp) > .0005) moving = true;
+        /* one pose leaves before the other arrives, so the two never sit on top of each other for long */
+        var b = easeOut(span(dp, .42, .9)), mx = px * 18, my = py * 12;
+        docLook.style.opacity = (1 - span(dp, .12, .44)).toFixed(3);
+        docLook.style.transform = 'translate3d(' + (mx + dp * 46).toFixed(1) + 'px,' + (my + dp * 10).toFixed(1) + 'px,' + (40 - dp * 150).toFixed(1) + 'px) rotateY(' + (-dp * 28).toFixed(2) + 'deg)';
+        docExam.style.opacity = span(dp, .4, .7).toFixed(3);
+        docExam.style.transform = 'translate3d(' + (mx - (1 - b) * 46).toFixed(1) + 'px,' + (my + (1 - b) * 26).toFixed(1) + 'px,' + (40 - (1 - b) * 130).toFixed(1) + 'px) scale(' + (.92 + .08 * b).toFixed(3) + ')';
+        roomImg.style.transform = 'scale(' + (1 + .07 * dp).toFixed(4) + ')';
+        var g = span(dp, .82, 1).toFixed(3); glints.forEach(function (el) { el.style.opacity = g; });
+        stage.classList.toggle('is-exam', dp > .55);
       }
       decos.forEach(function (d) {
         var host = d.parentElement.getBoundingClientRect(); if (host.bottom < -200 || host.top > VH + 200) return;
