@@ -1,0 +1,156 @@
+<!-- The home page (Clinic Light). Styles: src/home-clinic.scss. Behaviour: home.ts. -->
+<app-page-bar />
+<main id="top" class="cl-home" [class.motion]="motion">
+    <section class="hero">
+      <app-rings [appParallax]="-.12" style="width:520px;height:520px;left:-200px;top:-140px;--op:.5" />
+      <div class="hero__run"><div class="wrap hero__pin">
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <span class="eyebrow">Paediatric eye care &amp; adult squint care</span>
+            <h1>Eye concerns are not always easy to notice.</h1>
+            <p class="lede">Timely assessment helps identify concerns and guide appropriate care.</p>
+            <div class="actions">
+              <a class="btn-book" routerLink="/" fragment="services">Explore services</a>
+              <a class="btn-orange" routerLink="/" fragment="visit">Plan a visit</a>
+            </div>
+          </div>
+          <div class="stage" id="stage" role="img" aria-label="Illustration: an eye doctor at the slit lamp smiles at you, then, as you scroll, turns and looks through the slit lamp.">
+            <div class="stage__in" id="stageIn">
+              <div class="layer window" data-z="-30"><img id="poster" src="images/hero-light/seq/0001.webp" alt="" width="960" height="652" fetchpriority="high" /><canvas id="seq"></canvas></div>
+            </div>
+            <p class="note">AI-generated illustration</p>
+          </div>
+        </div>
+      </div><div class="hero__space" aria-hidden="true"></div></div>
+      <div class="wrap">
+        <div class="feats">
+          <div class="feat rv" style="--i:0"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="17" r="11" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 10c1.5-3.5 4-5 6-5 3 0 5 2 6 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><g class="lid"><circle cx="12.5" cy="16.5" r="1.5" fill="currentColor"/><circle cx="19.5" cy="16.5" r="1.5" fill="currentColor"/></g><path d="M12 21.5c2.2 2 5.8 2 8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Children’s eye care</div>
+          <div class="feat rv" style="--i:1"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 16c3.5-5.5 8-8 13-8s9.5 2.5 13 8c-3.5 5.5-8 8-13 8s-9.5-2.5-13-8Z" fill="none" stroke="currentColor" stroke-width="2"/><g class="eyeL"><circle cx="16" cy="16" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></g></svg></span>Adult squint care</div>
+          <div class="feat rv" style="--i:2"><span class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><g class="tilt" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9.5" cy="17" r="5.5"/><circle cx="22.5" cy="17" r="5.5"/><path d="M15 16.5c.7-.7 1.3-.7 2 0M4 16 2.5 11M28 16l1.5-5"/></g></svg></span>Myopia management</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. teal band: what the clinic treats -->
+    <section class="care" id="care">
+      <app-rings [appParallax]="-.16" style="width:520px;height:520px;right:-180px;top:-160px" />
+      <app-rings [appParallax]=".12" style="width:300px;height:300px;left:-120px;bottom:-140px" />
+      <div class="wrap">
+        <h2 class="rv">Eye care for children and adults</h2>
+        <p class="rv" style="--i:1">Assessment and management of childhood eye conditions, squint in children and adults, and myopia. Care is planned according to the findings of an individual assessment.</p>
+        <ul class="pills" aria-label="Care areas">
+          <li class="rv" style="--i:2"><a routerLink="/" fragment="services">Paediatric eye care</a></li>
+          <li class="rv" style="--i:3"><a routerLink="/" fragment="services">Squint assessment</a></li>
+          <li class="rv" style="--i:4"><a routerLink="/" fragment="services">Myopia management</a></li>
+          <li class="rv" style="--i:5"><a routerLink="/" fragment="services">Vision therapy</a></li>
+          <li class="rv" style="--i:6"><a routerLink="/" fragment="services">Paediatric cataract care</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. doctor -->
+    <section class="doctor sec" id="doctor">
+      <app-rings [appParallax]=".14" style="width:440px;height:440px;right:-160px;top:-60px;--op:.55" />
+      <div class="wrap">
+        <div class="photo rv"><img src="images/doctor-900.webp" alt="Dr. Aloka Hedau" width="900" height="675" loading="lazy" data-ipar /></div>
+        <div class="info">
+          <h2 class="rv" style="--i:1">Dr. Aloka Hedau</h2>
+          <p class="role rv" style="--i:1">Paediatric Ophthalmologist &amp; Squint Surgeon</p>
+          <p class="quals rv" style="--i:2">DNB (Ophthalmology) · Fellowship in Paediatric Ophthalmology · FICO (UK)</p>
+          <p class="verify rv" style="--i:2">Credentials subject to verification</p>
+          <dl class="facts rv" style="--i:3">
+            <div style="--i:0"><dt>Medical council registration:</dt><dd>To be verified</dd></div>
+            <div style="--i:1"><dt>Clinical experience:</dt><dd>20+ years in paediatric eye care and squint surgery</dd></div>
+            <div style="--i:2" class="interests"><dt>Clinical interests:</dt><dd>Squint · Nystagmus · Paediatric cataract · Low vision</dd></div>
+          </dl>
+          <ol class="path rv" style="--i:4" aria-label="Training path">
+            <li>Medical education <small>MBBS, Pune</small></li>
+            <li>Ophthalmology training <small>Aravind Eye Hospital</small></li>
+            <li>Fellowship <small>Paediatric &amp; squint, Aravind</small></li>
+            <li>Further clinical training <small>Nystagmus surgery</small></li>
+          </ol>
+          <a class="more rv" style="--i:5" routerLink="/about-us/">Full profile and academic record <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. services -->
+    <section class="services sec" id="services">
+      <app-rings [appParallax]="-.1" style="width:380px;height:380px;left:-180px;bottom:-60px;--op:.45" />
+      <div class="wrap">
+        <h2 class="rv">Eye care services</h2>
+        <p class="sub rv" style="--i:1">Explore care for children and adults.</p>
+        <div class="cards">
+          <article class="card rv" style="--i:0"><div class="card__top"><span class="card__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="24" cy="25" r="15"/><path d="M15 16c2-5 6-7 9-7 4 0 7 3 9 6M18 31c3 3 9 3 12 0"/></g><circle cx="19" cy="24" r="2" fill="currentColor"/><circle cx="29" cy="24" r="2" fill="currentColor"/></svg></span><h3>Children’s eye evaluation</h3></div><p>Comprehensive eye check-up for children, including vision and eye alignment.</p><div class="card__foot"><a class="btn-line btn-sm" routerLink="/services/">Explore</a><a class="more" routerLink="/services/">View service details <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+          <article class="card card--on rv" style="--i:1"><div class="card__top"><span class="card__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 24c5-8 12-12 20-12s15 4 20 12c-5 8-12 12-20 12S9 32 4 24Z" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="24" r="7" fill="none" stroke="#c2551a" stroke-width="3"/><circle cx="24" cy="24" r="2.6" fill="currentColor"/></svg></span><h3>Squint assessment</h3></div><p>Assessment of eye alignment and how the eyes work together.</p><div class="card__foot"><a class="btn-line btn-sm" routerLink="/services/">Explore</a><a class="more" routerLink="/services/">View service details <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+          <article class="card rv" style="--i:2"><div class="card__top"><span class="card__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="14" cy="26" r="8"/><circle cx="34" cy="26" r="8"/><path d="M22 25c1.3-1.3 2.7-1.3 4 0M6 25 4 16M42 25l2-9"/></g></svg></span><h3>Myopia management</h3></div><p>Evaluation and personalised management options for progressive myopia.</p><div class="card__foot"><a class="btn-line btn-sm" routerLink="/services/">Explore</a><a class="more" routerLink="/services/">View service details <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+          <article class="card rv" style="--i:3"><div class="card__top"><span class="card__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="7"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6"/></g><circle cx="24" cy="24" r="2.4" fill="currentColor"/></svg></span><h3>Vision therapy</h3></div><p>Structured, non-surgical therapy to support visual skills such as focusing and eye coordination.</p><div class="card__foot"><a class="btn-line btn-sm" routerLink="/services/">Explore</a><a class="more" routerLink="/services/">View service details <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+          <article class="card rv" style="--i:4"><div class="card__top"><span class="card__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="24" cy="27" r="13"/><path d="M24 14c0-4 3-6 6-5M17 33c4 3 10 3 14 0"/></g><circle cx="19" cy="26" r="1.8" fill="currentColor"/><circle cx="29" cy="26" r="1.8" fill="currentColor"/></svg></span><h3>ROP screening</h3></div><p>Screening for retinopathy of prematurity (ROP) in at-risk babies, with timely follow-up care.</p><div class="card__foot"><a class="btn-line btn-sm" routerLink="/services/">Explore</a><a class="more" routerLink="/services/">View service details <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+          <article class="card rv" style="--i:5"><div class="card__top"><span class="card__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 28c4.5-6.5 10.5-10 18-10s13.5 3.5 18 10c-4.5 6.5-10.5 10-18 10S10.5 34.5 6 28Z" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="28" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M24 6v6M12 9l3 5M36 9l-3 5"/></g></svg></span><h3>Low vision care</h3></div><p>Assessment and supportive strategies to help make the most of available vision in daily life.</p><div class="card__foot"><a class="btn-line btn-sm" routerLink="/services/">Explore</a><a class="more" routerLink="/services/">View service details <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. clinic: facilities -->
+    <section class="clinic sec" id="clinic">
+      <app-rings [appParallax]=".12" style="width:420px;height:420px;right:-170px;top:10%;--op:.5" />
+      <div class="wrap">
+        <h2 class="rv">Facilities for assessment, treatment and recovery</h2>
+        <p class="sub rv" style="--i:1">An operation theatre with anaesthesia equipment and a postoperative recovery area, alongside vision therapy and myopia management services.</p>
+        <p class="verify rv" style="--i:2">Confirm current facilities before publication</p>
+        <div class="fac" id="fac">
+          <figure class="fac__tile fac__tile--big" style="--i:0" data-k="ot"><div class="fac__zoom"><img src="images/gallery/the-hospital/08.webp" alt="The clinic's operation theatre, with the anaesthesia machine on the left" width="1050" height="1400" loading="lazy" data-ipar /></div><figcaption>Operation theatre</figcaption></figure>
+          <figure class="fac__tile fac__tile--kit" style="--i:1" data-k="dx"><div class="fac__zoom"><img src="images/myopia/sirius-plus-topographer-640.webp" alt="Sirius+ corneal topographer" loading="lazy" /></div><figcaption>Sirius+ corneal topographer</figcaption></figure>
+          <figure class="fac__tile" style="--i:2" data-k="rec"><div class="fac__zoom"><img src="images/gallery/the-hospital/07.webp" alt="The postoperative recovery area" width="1400" height="1050" loading="lazy" data-ipar /></div><figcaption>Postoperative recovery</figcaption></figure>
+        </div>
+        <ul class="fac__tabs rv" style="--i:3" id="facTabs">
+          <li><button type="button" data-k="ot" data-tile="ot" data-o="52% 62%" data-s="1.08">Operation theatre</button></li>
+          <li><button type="button" data-k="an" data-tile="ot" data-o="14% 46%" data-s="1.75">Anaesthesia equipment</button></li>
+          <li><button type="button" data-k="rec" data-tile="rec" data-o="45% 62%" data-s="1.14">Postoperative recovery</button></li>
+          <li><button type="button" data-k="dx" data-tile="dx" data-o="60% 24%" data-s="1.28">Diagnostic equipment</button></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. preparing for a visit -->
+    <section class="prep sec" id="prepare">
+      <div class="wrap">
+        <h2 class="rv">Preparing for a visit</h2>
+        <div class="steps">
+          <div class="step rv" style="--i:0"><b>1</b><div><h3>Bring previous reports</h3><p>Carry any relevant eye reports, prescriptions or investigation results.</p></div></div>
+          <div class="step rv" style="--i:1"><b>2</b><div><h3>Understand the assessment</h3><p>The evaluation may include vision tests, eye alignment checks and other required assessments.</p></div></div>
+          <div class="step rv" style="--i:2"><b>3</b><div><h3>Discuss the next steps</h3><p>Your treatment or management plan will be explained based on the assessment.</p></div></div>
+        </div>
+        <details class="bring rv" style="--i:3">
+          <summary>What should I bring to the appointment? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+          <ul>
+            <li>Any glasses your child (or you) currently wears</li>
+            <li>Previous eye reports, prescriptions and scan or test results</li>
+            <li>A list of current medicines, and any relevant medical history</li>
+            <li>For little ones, a favourite toy or snack helps keep them comfortable</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- 6. plan your visit -->
+    <section class="visit sec" id="visit">
+      <app-rings [appParallax]="-.12" style="width:460px;height:460px;left:-200px;top:-100px;--op:.55" />
+      <div class="wrap">
+        <div class="rv">
+          <h2>Plan your visit</h2>
+          <p class="place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg>Kukatpally, Hyderabad</p>
+          <p class="addr">Third Floor, Plot no 6, 9th Phase Road, near Forum Srujana Mall, KPHB Phase 6, Kukatpally, Hyderabad 500085</p>
+          <div class="times"><button type="button" id="timesBtn" aria-expanded="false" aria-controls="times">View clinic timings</button><p id="times" hidden>Monday to Saturday, 10 am to 5 pm · Sunday closed</p></div>
+          <div class="actions">
+            <a class="btn-book" [href]="clinic.phoneHref"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z" fill="currentColor"/></svg>Call the clinic</a>
+            <a class="btn-line" [href]="clinic.mapsHref" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg>Get directions</a>
+          </div>
+        </div>
+        <div class="map rv" style="--i:1"><iframe title="Map: Dr. Aloka's Eye Care, Kukatpally" loading="lazy" [src]="mapSrc"></iframe></div>
+      </div>
+    </section>
+</main>
+<p class="cl-fine">The hero video is an AI-generated illustration. Photos of the doctor and the clinic are real.</p>
+<app-site-footer />
+<app-mobile-book-bar />

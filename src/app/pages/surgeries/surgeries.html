@@ -1,12 +1,14 @@
 <app-page-bar />
 <main id="main">
   <section class="page-hero" aria-labelledby="surgeries-title">
+    <app-rings [appParallax]="-0.12" style="width: 520px; height: 520px; left: -200px; top: -150px; --op: 0.5" />
     <div class="wrap page-hero__grid">
       <div>
         <ol class="crumbs" aria-label="Breadcrumb">
           <li><a routerLink="/">Home</a></li>
           <li aria-current="page">Surgeries</li>
         </ol>
+        <span class="eyebrow hero-eyebrow">Surgeries</span>
         <h1 id="surgeries-title">Squint surgery and children's eye surgery in Hyderabad</h1>
         <p class="page-hero__lede">
           Squint correction for children and adults, paediatric cataract, nystagmus, droopy eyelids and blocked tear ducts, by
@@ -21,10 +23,10 @@
       <!-- two eyes: the turned one straightens as the page opens -->
       <figure class="eyes" aria-hidden="true">
         <svg viewBox="0 0 300 110" focusable="false">
-          <path d="M20 55 Q75 5 130 55 Q75 105 20 55 Z" fill="#fbf8f2" />
+          <path class="eyes__white" d="M20 55 Q75 5 130 55 Q75 105 20 55 Z" fill="#fff" />
           <circle cx="75" cy="55" r="23" fill="#6b4a32" /><circle cx="75" cy="55" r="11" fill="#1f1614" />
           <circle cx="67" cy="47" r="5" fill="#fff" />
-          <path d="M170 55 Q225 5 280 55 Q225 105 170 55 Z" fill="#fbf8f2" />
+          <path class="eyes__white" d="M170 55 Q225 5 280 55 Q225 105 170 55 Z" fill="#fff" />
           <g class="eyes__turn">
             <circle cx="225" cy="55" r="23" fill="#6b4a32" /><circle cx="225" cy="55" r="11" fill="#1f1614" />
             <circle cx="217" cy="47" r="5" fill="#fff" />
@@ -36,10 +38,14 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="list-title">
+  <section class="section section--paper" aria-labelledby="list-title">
+    <app-rings [appParallax]="0.12" style="width: 440px; height: 440px; right: -180px; top: -90px; --op: 0.5" />
     <div class="wrap">
       <div class="list__head">
-        <h2 id="list-title" class="section__title" appReveal>Surgeries at the clinic</h2>
+        <div>
+          <span class="eyebrow" appReveal>What we treat</span>
+          <h2 id="list-title" class="section__title" appReveal style="--delay: 0.09s">Surgeries at the clinic</h2>
+        </div>
         <div class="filter" role="group" aria-label="Show surgeries for">
           @for (f of ['All', 'Children', 'Adults']; track f) {
             <button type="button" [class.is-on]="filter() === f" [attr.aria-pressed]="filter() === f" (click)="filter.set($any(f))">
@@ -51,70 +57,52 @@
 
       <ul class="cards">
         @for (s of shown(); track s.id; let i = $index) {
-          <li class="card" [id]="s.id" appReveal [style.--delay]="(i % 3) * 0.08 + 's'">
+          <li class="card" [id]="s.id" appReveal [style.--delay]="(i % 3) * 0.09 + 's'">
             <span class="card__img focus-in" appReveal>
               <img [src]="s.image" [alt]="s.imageAlt" width="600" height="400" loading="lazy" decoding="async" />
             </span>
-            <span class="card__tags">
-              @for (t of s.tags; track t) {
-                <span>{{ t }}</span>
-              }
+            <span class="card__body">
+              <span class="card__tags">
+                @for (t of s.tags; track t) {
+                  <span>{{ t }}</span>
+                }
+              </span>
+              <h3>{{ s.title }}</h3>
+              <p>{{ s.body }}</p>
             </span>
-            <h3>{{ s.title }}</h3>
-            <p>{{ s.body }}</p>
           </li>
         }
       </ul>
     </div>
   </section>
 
-  <section class="section section--paper" aria-labelledby="result-title">
+  <section class="section section--mint" aria-labelledby="result-title">
     <div class="wrap result">
-      <figure class="compare" [style.--reveal]="reveal() + '%'">
-        <div class="compare__frame">
-          <img src="images/squint-before.webp" alt="" width="420" height="420" loading="lazy" />
-          <img class="compare__after" src="images/squint-after.webp" alt="" width="420" height="420" loading="lazy" />
-          <span class="compare__edge" aria-hidden="true"></span>
-          <span class="compare__tag">Before</span>
-          <span class="compare__tag compare__tag--after">After</span>
-        </div>
-        <label class="compare__control">
-          <span class="visually-hidden">Slide to compare before and after squint surgery</span>
-          <input type="range" min="0" max="100" [value]="reveal()" (input)="reveal.set(+$any($event.target).value)" />
-        </label>
-        <figcaption>A child before and after squint correction. Photographs as published on the clinic's website.</figcaption>
-      </figure>
 
       <div>
-        <h2 id="result-title" class="section__title" appReveal>What parents ask before surgery</h2>
+        <span class="eyebrow" appReveal>Before surgery</span>
+        <h2 id="result-title" class="section__title" appReveal style="--delay: 0.09s">What parents ask before surgery</h2>
         <dl class="faq">
           @for (f of faq; track f.q; let i = $index) {
-            <div appReveal [style.--delay]="i * 0.08 + 's'">
+            <div appReveal [style.--delay]="i * 0.09 + 's'">
               <dt>{{ f.q }}</dt>
               <dd>{{ f.a }}</dd>
             </div>
           }
         </dl>
         <ol class="steps" aria-label="How the decision is made">
-          <li><strong>A full examination</strong> of both eyes: alignment, 3D vision, eye muscles and glasses power.</li>
-          <li><strong>Therapy first,</strong> where glasses, patching or vision therapy can do the work.</li>
-          <li><strong>Surgery when it's right,</strong> explained clearly so the family can decide.</li>
+          <li appReveal><strong>A full examination</strong> of both eyes: alignment, 3D vision, eye muscles and glasses power.</li>
+          <li appReveal style="--delay: 0.12s"><strong>Therapy first,</strong> where glasses, patching or vision therapy can do the work.</li>
+          <li appReveal style="--delay: 0.24s"><strong>Surgery when it's right,</strong> explained clearly so the family can decide.</li>
         </ol>
       </div>
     </div>
   </section>
 
-  <section class="section results-more" aria-labelledby="more-results-title">
-    <div class="wrap">
-      <h2 id="more-results-title" class="section__title">More results</h2>
-      <p class="section__lede">Squint and nystagmus surgery for children and adults, photographed before and after.</p>
-      <app-results-strip class="results-more__strip" />
-    </div>
-  </section>
 
-  <section class="section">
+  <section class="section section--paper">
     <div class="wrap">
-      <div class="cta-band">
+      <div class="cta-band" appReveal>
         <div>
           <h2>Talk to Dr. Aloka before deciding</h2>
           <p>A consultation to examine your child's eyes, or your own, and to explain every option, surgical or not.</p>

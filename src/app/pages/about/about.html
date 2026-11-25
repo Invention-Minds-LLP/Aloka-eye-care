@@ -1,12 +1,14 @@
 <app-page-bar />
 <main id="main">
   <section class="page-hero" aria-labelledby="about-title">
+    <app-rings [appParallax]="-0.12" style="width: 520px; height: 520px; left: -200px; top: -150px; --op: 0.5" />
     <div class="wrap page-hero__grid">
       <div>
         <ol class="crumbs" aria-label="Breadcrumb">
           <li><a routerLink="/">Home</a></li>
           <li aria-current="page">About</li>
         </ol>
+        <span class="eyebrow hero-eyebrow">About the doctor</span>
         <h1 id="about-title">Dr. Aloka Hedau, paediatric ophthalmologist in Hyderabad</h1>
         <p class="page-hero__lede">
           A senior paediatric ophthalmologist and adult strabismus (squint) surgeon, practising in Hyderabad since 2012. Known for a
@@ -25,16 +27,18 @@
       </div>
 
       <figure class="portrait">
-        <img
-          class="portrait__img"
-          srcset="images/doctor-900.webp 900w, images/doctor-1600.webp 1600w"
-          sizes="(max-width: 900px) 90vw, 40vw"
-          src="images/doctor-900.webp"
-          alt="Dr. Aloka Hedau in a white coat over a Pochampally-style saree, seated at a desk and smiling"
-          width="1600"
-          height="1200"
-          fetchpriority="high"
-        />
+        <div class="page-hero__media portrait__frame">
+          <img
+            class="portrait__img"
+            srcset="images/doctor-900.webp 900w, images/doctor-1600.webp 1600w"
+            sizes="(max-width: 900px) 90vw, 40vw"
+            src="images/doctor-900.webp"
+            alt="Dr. Aloka Hedau in a white coat over a Pochampally-style saree, seated at a desk and smiling"
+            width="1600"
+            height="1200"
+            fetchpriority="high"
+          />
+        </div>
         <!-- the chart symbols children name, drifting around the frame -->
         <span class="portrait__lea portrait__lea--1" aria-hidden="true"><app-lea shape="house" /></span>
         <span class="portrait__lea portrait__lea--2" aria-hidden="true"><app-lea shape="apple" /></span>
@@ -45,11 +49,13 @@
   </section>
 
   <!-- The journey: a line that draws as you read, lighting each milestone -->
-  <section class="section" aria-labelledby="journey-title">
+  <section class="section section--paper" aria-labelledby="journey-title">
+    <app-rings [appParallax]="0.12" style="width: 440px; height: 440px; right: -180px; top: -80px; --op: 0.5" />
     <div class="wrap journey">
       <div class="journey__intro">
-        <h2 id="journey-title" class="section__title" appReveal>From Aravind to Hyderabad</h2>
-        <p class="section__lede" appReveal style="--delay: 0.1s">
+        <span class="eyebrow" appReveal>Her journey</span>
+        <h2 id="journey-title" class="section__title" appReveal style="--delay: 0.09s">From Aravind to Hyderabad</h2>
+        <p class="section__lede" appReveal style="--delay: 0.18s">
           Training at one of India's best-known eye hospitals, years of eye camps in rural Tamil Nadu, and more than a decade leading
           paediatric eye care in Hyderabad.
         </p>
@@ -68,15 +74,18 @@
     </div>
   </section>
 
-  <section class="section section--paper" aria-labelledby="work-title">
+  <section class="section section--mint" aria-labelledby="work-title">
     <div class="wrap">
-      <h2 id="work-title" class="section__title" appReveal>Hospitals families already know</h2>
-      <p class="section__lede" appReveal style="--delay: 0.1s">
+      <span class="eyebrow" appReveal>Affiliations</span>
+      <h2 id="work-title" class="section__title" appReveal style="--delay: 0.09s">Hospitals families already know</h2>
+      <p class="section__lede" appReveal style="--delay: 0.18s">
         Alongside her own clinic in KPHB, Kukatpally, Dr. Aloka is affiliated with these Hyderabad hospitals.
       </p>
       <ul class="hospitals">
         @for (a of affiliations; track a; let i = $index) {
-          <li appReveal [style.--delay]="i * 0.08 + 's'"><app-lea [shape]="i % 2 ? 'circle' : 'house'" />{{ a }}</li>
+          <li appReveal [style.--delay]="i * 0.09 + 's'">
+            <span class="hospitals__ic"><app-lea [shape]="i % 2 ? 'circle' : 'house'" /></span>{{ a }}
+          </li>
         }
       </ul>
 
@@ -85,11 +94,11 @@
           <dt>50+</dt>
           <dd>talks at national and international conferences</dd>
         </div>
-        <div appReveal style="--delay: 0.08s">
+        <div appReveal style="--delay: 0.09s">
           <dt>100+</dt>
           <dd>eye camps in rural Tamil Nadu during her training</dd>
         </div>
-        <div appReveal style="--delay: 0.16s">
+        <div appReveal style="--delay: 0.18s">
           <dt>1 book chapter</dt>
           <dd>on eye examination in paediatrics</dd>
         </div>
@@ -97,7 +106,8 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="purpose-title">
+  <section class="section section--teal" aria-labelledby="purpose-title">
+    <app-rings [appParallax]="-0.14" style="width: 500px; height: 500px; right: -190px; top: -170px" />
     <div class="wrap purpose">
       <h2 id="purpose-title" class="visually-hidden">Mission and vision</h2>
       <figure class="purpose__item" appReveal>
@@ -113,10 +123,11 @@
 
   <section class="section section--paper" aria-labelledby="voices-title">
     <div class="wrap">
-      <h2 id="voices-title" class="section__title" appReveal>What parents say about her</h2>
+      <span class="eyebrow" appReveal>Parents' words</span>
+      <h2 id="voices-title" class="section__title" appReveal style="--delay: 0.09s">What parents say about her</h2>
       <div class="voices">
         @for (v of voices; track v.name; let i = $index) {
-          <blockquote class="voice" appReveal [style.--delay]="i * 0.1 + 's'">
+          <blockquote class="voice" appReveal [style.--delay]="i * 0.09 + 's'">
             <p>“{{ v.quote }}”</p>
             <footer>{{ v.name }}</footer>
           </blockquote>
@@ -126,8 +137,9 @@
   </section>
 
   <section class="section">
+    <app-rings [appParallax]="0.1" style="width: 380px; height: 380px; left: -170px; bottom: -120px; --op: 0.45" />
     <div class="wrap">
-      <div class="cta-band">
+      <div class="cta-band" appReveal>
         <div>
           <h2>Bring your child to meet Dr. Aloka</h2>
           <p>Monday to Saturday, 10 am to 5 pm, at KPHB Phase 6, near Forum Srujana Mall, Kukatpally.</p>

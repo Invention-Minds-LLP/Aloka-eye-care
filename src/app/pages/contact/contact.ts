@@ -3,7 +3,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { SITE, SeoService, breadcrumbs } from '../../core/seo.service';
 import { Icon } from '../../shared/icon';
+import { ParallaxDirective } from '../../shared/parallax.directive';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { Rings } from '../../shared/rings';
 import { SiteFooter } from '../../shared/site-footer';
 import { PageBar } from '../blog/page-bar';
 import { CLINIC, HOURS } from '../home/home.content';
@@ -34,7 +36,7 @@ function nowInHyderabad() {
 @Component({
   selector: 'app-contact',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon],
+  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon, Rings, ParallaxDirective],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })

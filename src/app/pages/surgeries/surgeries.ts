@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { RouterLink } from '@angular/router';
 import { SITE, SeoService, breadcrumbs } from '../../core/seo.service';
 import { Icon } from '../../shared/icon';
+import { ParallaxDirective } from '../../shared/parallax.directive';
 import { RevealDirective } from '../../shared/reveal.directive';
-import { ResultsStrip } from '../../shared/results-strip';
+import { Rings } from '../../shared/rings';
 import { SiteFooter } from '../../shared/site-footer';
 import { PageBar } from '../blog/page-bar';
 import { CLINIC } from '../home/home.content';
@@ -19,7 +20,7 @@ const FAQ = [
 @Component({
   selector: 'app-surgeries',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon, ResultsStrip],
+  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon, Rings, ParallaxDirective],
   templateUrl: './surgeries.html',
   styleUrl: './surgeries.scss',
 })

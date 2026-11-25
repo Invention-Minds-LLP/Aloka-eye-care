@@ -1,34 +1,41 @@
 :host {
   display: block;
-  background: var(--white);
+  background: var(--cream);
 }
 
-/* ---------- The clock ---------- */
+/* ---------- The clock, in a white card ---------- */
 .clock {
   justify-self: center;
   display: grid;
   justify-items: center;
-  gap: 1.25rem;
+  gap: 1.1rem;
   width: min(100%, 22rem);
+  padding: clamp(1.4rem, 4vw, 2rem);
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    0 40px 70px -44px rgb(10 70 73 / 0.6);
   svg {
-    width: min(100%, 17rem);
+    width: min(100%, 15rem);
     height: auto;
     overflow: visible;
   }
 }
 .clock__face {
-  fill: var(--card);
-  filter: drop-shadow(0 24px 30px rgb(0 0 0 / 0.5));
+  fill: var(--mint);
+  stroke: var(--mint-3);
+  stroke-width: 1.5;
 }
 /* the opening hours, 10 to 5, lit on the dial */
 .clock__hours {
   fill: none;
-  stroke: rgb(232 121 47 / 0.28);
+  stroke: var(--orange-soft);
   stroke-width: 9;
   stroke-linecap: round;
 }
 .clock--open .clock__hours {
-  stroke: rgb(63 207 128 / 0.35);
+  stroke: var(--mint-3);
 }
 :host-context(html.motion-ok) .clock__hours {
   stroke-dasharray: 200;
@@ -43,16 +50,16 @@
   }
 }
 .clock__tick {
-  stroke: #a7aec0;
+  stroke: var(--steel-500);
   stroke-width: 1.2;
   stroke-linecap: round;
 }
 .clock__tick--major {
-  stroke: var(--ink-dark);
+  stroke: var(--teal-3);
   stroke-width: 2;
 }
 .clock__hand {
-  stroke: var(--ink-dark);
+  stroke: var(--teal-3);
   stroke-linecap: round;
   transform-origin: 60px 60px;
   transform-box: view-box;
@@ -62,20 +69,20 @@
 }
 .clock__hand--m {
   stroke-width: 2.4;
-  stroke: var(--hope-action);
+  stroke: var(--orange);
 }
 :host-context(html.motion-ok) .clock__hand {
   transition: rotate 2.2s var(--ease-out) 0.2s;
 }
 .clock__pin {
-  fill: var(--ink-dark);
+  fill: var(--teal-3);
 }
 .clock__text {
   text-align: center;
 }
 .clock__status {
   text-wrap: balance;
-  font-weight: 650;
+  font-weight: 700;
   font-size: var(--step-3);
 }
 .clock__dot {
@@ -85,18 +92,34 @@
   width: 0.65rem;
   height: 0.65rem;
   border-radius: 50%;
-  background: var(--hope);
+  background: var(--orange);
 }
 .clock--open .clock__dot {
   background: var(--wa);
-  box-shadow: 0 0 0 0 rgb(63 207 128 / 0.6);
 }
-:host-context(html.motion-ok) .clock--open .clock__dot {
+/* the "open" dot breathes: a ring that grows and fades (transform and opacity only) */
+.clock--open .clock__dot {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--wa);
+    opacity: 0;
+  }
+}
+:host-context(html.motion-ok) .clock--open .clock__dot::after {
   animation: pulse 2s ease-out infinite;
 }
 @keyframes pulse {
+  from {
+    opacity: 0.5;
+    transform: scale(1);
+  }
   to {
-    box-shadow: 0 0 0 10px rgb(63 207 128 / 0);
+    opacity: 0;
+    transform: scale(2.6);
   }
 }
 .clock__hours-text {
@@ -105,63 +128,72 @@
   color: var(--ink-soft);
 }
 
-/* ---------- Ways in ---------- */
-.ways-section {
-  padding-bottom: clamp(3rem, 8vh, 5rem);
-}
+/* ---------- Ways in: cards with teal line icons ---------- */
 .ways {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(0.75rem, 2vw, 1.25rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(0.8rem, 2vw, 1.1rem);
   list-style: none;
-  margin: 0;
+  margin: 2rem 0 0;
   padding: 0;
+  perspective: 1400px;
 }
 .way {
-  --icon: 1.3rem;
+  --icon: 1.45rem;
   display: grid;
-  gap: 0.3rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 1rem;
+  row-gap: 0.15rem;
+  align-items: center;
   height: 100%;
-  padding: 1.35rem 1.35rem 1.5rem;
-  border-radius: 18px;
-  background: var(--mist);
-  box-shadow: inset 0 0 0 1px var(--steel-300);
+  min-height: 5.5rem;
+  padding: 1.2rem 1.3rem;
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    0 18px 40px -32px rgb(10 70 73 / 0.7);
   color: var(--ink);
   text-decoration: none;
   transition:
     transform 0.35s var(--ease-out),
-    box-shadow 0.35s var(--ease-out);
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      inset 0 0 0 1px var(--steel-500),
-      0 20px 34px -22px rgb(0 0 0 / 0.8);
-  }
-  &:focus-visible {
-    outline: 3px solid var(--teal-ink);
-    outline-offset: 3px;
-  }
+    box-shadow 0.3s;
+}
+a.way:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 0 0 1.5px var(--teal-lit),
+    0 30px 50px -30px rgb(10 70 73 / 0.6);
 }
 .way__icon {
+  grid-row: span 2;
   display: grid;
   place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-bottom: 0.6rem;
-  border-radius: 12px;
-  background: var(--card);
-  color: var(--ink-dark);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--teal);
+  box-shadow: inset 0 0 0 1.5px var(--mint-3);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  a.way:hover & {
+    background: var(--teal);
+    color: #fff;
+  }
 }
-.way--wa .way__icon {
-  background: var(--wa);
-  color: #0c2a1a;
-}
-.way--book .way__icon {
-  background: var(--hope-action);
-  color: #fff;
+.way--book {
+  background: var(--mint);
+  box-shadow: inset 0 0 0 1.5px var(--mint-3);
+  .way__icon {
+    background: var(--teal);
+    color: #fff;
+    box-shadow: none;
+  }
 }
 .way__label {
-  font-weight: 650;
+  font-weight: 800;
   font-size: var(--step-3);
 }
 .way__value {
@@ -173,9 +205,17 @@
 /* ---------- The message ---------- */
 .compose {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
+}
+.form {
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    0 30px 60px -44px rgb(10 70 73 / 0.6);
 }
 .form__lede {
   margin-top: 0.75rem;
@@ -191,7 +231,7 @@
   min-width: 0;
   label,
   legend {
-    font-weight: 650;
+    font-weight: 700;
     padding: 0;
   }
   legend {
@@ -204,18 +244,21 @@
     min-height: 3rem;
     padding: 0.7rem 0.9rem;
     border: 0;
-    border-radius: 12px;
-    background: var(--white);
+    border-radius: 10px;
+    background: var(--cream);
     color: var(--ink);
     font: 400 1rem/1.4 var(--font-body);
-    box-shadow: inset 0 0 0 1px var(--steel-300);
-    transition: box-shadow 0.2s;
+    box-shadow: inset 0 0 0 1.5px var(--line);
+    transition:
+      box-shadow 0.2s,
+      background-color 0.2s;
     &:focus {
       outline: none;
-      box-shadow: inset 0 0 0 2px var(--teal-ink);
+      background: var(--paper);
+      box-shadow: inset 0 0 0 2px var(--teal);
     }
     &[aria-invalid='true'] {
-      box-shadow: inset 0 0 0 2px #ef8a5a;
+      box-shadow: inset 0 0 0 2px #b42318;
     }
   }
   textarea {
@@ -227,13 +270,14 @@
   color: var(--ink-faint);
 }
 .field__err {
-  color: #f4a37a;
+  color: #b42318;
   font-size: var(--step-small);
+  font-weight: 600;
 }
 .field-row {
   display: grid;
-  grid-template-columns: 8rem minmax(0, 1fr);
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 1rem;
   .field {
     align-content: start;
   }
@@ -249,6 +293,7 @@
     position: absolute;
     opacity: 0;
     inset: 0;
+    margin: 0;
     cursor: pointer;
   }
   span {
@@ -257,21 +302,26 @@
     min-height: 2.75rem;
     padding: 0.45rem 1.1rem;
     border-radius: 999px;
-    background: var(--steel-100);
+    background: var(--paper);
     color: var(--ink-soft);
-    font-weight: 600;
-    box-shadow: inset 0 0 0 1px var(--steel-300);
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1.5px var(--line);
     transition:
-      background 0.2s,
-      color 0.2s;
+      background-color 0.2s,
+      color 0.2s,
+      box-shadow 0.2s;
+  }
+  input:hover + span {
+    color: var(--teal);
+    box-shadow: inset 0 0 0 1.5px var(--teal);
   }
   input:checked + span {
-    background: var(--card);
-    color: var(--ink-dark);
+    background: var(--teal);
+    color: #fff;
     box-shadow: none;
   }
   input:focus-visible + span {
-    outline: 3px solid var(--teal-ink);
+    outline: 3px solid var(--orange);
     outline-offset: 2px;
   }
 }
@@ -282,7 +332,7 @@
   margin-top: 1.75rem;
 }
 
-/* the phone, showing the message as the clinic will get it */
+/* the phone, showing the message as the clinic will get it (light chat) */
 .preview {
   display: grid;
   justify-items: center;
@@ -291,11 +341,12 @@
 .phone {
   width: min(100%, 20rem);
   border-radius: 34px;
-  padding: 0.7rem;
-  background: #0a0d1a;
+  padding: 0.6rem;
+  background: var(--paper);
   box-shadow:
-    inset 0 0 0 2px #2a3150,
-    0 30px 60px -24px rgb(0 0 0 / 0.9);
+    inset 0 0 0 1px var(--line),
+    0 40px 70px -40px rgb(10 70 73 / 0.6),
+    0 0 0 6px var(--mint);
   rotate: 2deg;
 }
 .phone__bar {
@@ -303,13 +354,13 @@
   align-items: center;
   padding: 0.7rem 0.9rem;
   border-radius: 26px 26px 0 0;
-  background: #1f2c34;
+  background: var(--teal);
   img {
     width: 9rem;
     height: auto;
     padding: 4px 8px;
     border-radius: 8px;
-    background: var(--card);
+    background: var(--paper);
   }
 }
 .phone__chat {
@@ -320,27 +371,28 @@
   padding: 1rem 0.8rem 1.2rem;
   border-radius: 0 0 26px 26px;
   background:
-    radial-gradient(circle at 20% 20%, rgb(255 255 255 / 0.03) 0 2px, transparent 3px) 0 0 / 22px 22px,
-    #0b141a;
+    radial-gradient(circle at 20% 20%, var(--mint-2) 0 1.5px, transparent 2.5px) 0 0 / 22px 22px,
+    var(--mint);
 }
 .bubble {
   justify-self: end;
   max-width: 92%;
   padding: 0.6rem 0.75rem 0.4rem;
   border-radius: 12px 12px 4px 12px;
-  background: #005c4b;
-  color: #e9edef;
+  background: #d9fdd3;
+  color: var(--ink);
   font-size: 0.875rem;
   line-height: 1.45;
   white-space: pre-line;
   overflow-wrap: anywhere;
+  box-shadow: 0 6px 14px -10px rgb(10 70 73 / 0.5);
 }
 .bubble__time {
   display: block;
   margin-top: 0.2rem;
   text-align: right;
   font-size: 0.6875rem;
-  color: rgb(233 237 239 / 0.6);
+  color: var(--ink-faint);
 }
 :host-context(html.motion-ok) .bubble {
   animation: pop 0.5s var(--ease-out) both 0.4s;
@@ -349,7 +401,7 @@
 @keyframes pop {
   from {
     opacity: 0;
-    scale: 0.8;
+    transform: scale(0.8);
   }
 }
 .preview__note {
@@ -357,21 +409,39 @@
   color: var(--ink-faint);
 }
 
-/* ---------- Finding the clinic ---------- */
+/* ---------- Finding the clinic (mint band, map in a white frame) ---------- */
+.find-rings {
+  width: 460px;
+  height: 460px;
+  left: -200px;
+  top: -100px;
+  opacity: 0.55;
+}
 .find {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
+  align-items: center;
 }
 .find__address {
-  display: grid;
-  gap: 0.15rem;
-  margin: 1.5rem 0 1.25rem;
+  --icon: 1.4rem;
+  display: flex;
+  gap: 0.6rem;
+  margin: 1.4rem 0 1.4rem;
   font-style: normal;
   color: var(--ink-soft);
+  .find__pin {
+    display: flex;
+    color: var(--teal);
+    margin-top: 0.15rem;
+  }
+  .find__lines {
+    display: grid;
+    gap: 0.15rem;
+  }
   strong {
     color: var(--ink);
+    font-size: 1.1rem;
     margin-bottom: 0.2rem;
   }
 }
@@ -387,7 +457,7 @@
   th,
   td {
     padding: 0.55rem 0.2rem;
-    border-bottom: 1px solid var(--steel-300);
+    border-bottom: 1px solid var(--mint-3);
     text-align: left;
     font-weight: 400;
   }
@@ -397,15 +467,15 @@
   }
   tr.is-today th,
   tr.is-today td {
-    color: var(--ink);
-    font-weight: 650;
+    color: var(--teal-3);
+    font-weight: 700;
   }
 }
 .hours__today {
   margin-left: 0.5rem;
   padding: 0.1rem 0.5rem;
   border-radius: 999px;
-  background: var(--hope-action);
+  background: var(--teal);
   color: #fff;
   font-size: 0.6875rem;
   font-weight: 700;
@@ -414,55 +484,56 @@
 .find__note {
   margin-top: 0.75rem;
   font-size: var(--step-small);
-  color: var(--ink-faint);
+  color: var(--ink-soft);
 }
 .map {
   position: relative;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   aspect-ratio: 4 / 3;
-  background: var(--mist);
-  box-shadow: inset 0 0 0 1px var(--steel-300);
+  min-height: 300px;
+  background: var(--paper);
+  box-shadow:
+    0 30px 50px -30px rgb(10 70 73 / 0.6),
+    0 0 0 6px var(--paper);
   iframe {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
     border: 0;
-    filter: saturate(0.85);
+    filter: saturate(0.75);
   }
 }
 
-.also {
-  color: var(--ink-soft);
-  a {
-    color: var(--teal-ink);
-    font-weight: 600;
+/* ---------- Responsive (mobile first; home breakpoints 640 / 820 / 1000) ---------- */
+@media (min-width: 480px) {
+  .field-row {
+    grid-template-columns: 8rem minmax(0, 1fr);
   }
 }
-.section:last-of-type {
-  padding-top: 0;
-}
-
-@media (max-width: 1000px) {
+@media (min-width: 640px) {
   .ways {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .compose,
+}
+@media (min-width: 820px) {
   .find {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .ways {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .compose {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   }
 }
 @media (max-width: 640px) {
   .clock svg {
-    width: 12rem;
-  }
-}
-@media (max-width: 480px) {
-  .ways {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .field-row {
-    grid-template-columns: minmax(0, 1fr);
+    width: 11rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

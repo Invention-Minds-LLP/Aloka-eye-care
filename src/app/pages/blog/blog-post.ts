@@ -5,9 +5,11 @@ import { SITE, SeoService, breadcrumbs } from '../../core/seo.service';
 import { RouterLink } from '@angular/router';
 import { catchError, map, of, startWith, switchMap } from 'rxjs';
 import { Icon } from '../../shared/icon';
+import { ParallaxDirective } from '../../shared/parallax.directive';
+import { RevealDirective } from '../../shared/reveal.directive';
+import { Rings } from '../../shared/rings';
 import { SiteFooter } from '../../shared/site-footer';
 import { CLINIC } from '../home/home.content';
-import { Doctor } from '../home/story/people';
 import { BlogService, Post, formatDate } from './blog.service';
 import { BlogAside } from './blog-aside';
 import { PageBar } from './page-bar';
@@ -17,7 +19,7 @@ type State = { status: 'loading' } | { status: 'missing' } | { status: 'ok'; pos
 @Component({
   selector: 'app-blog-post',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageBar, SiteFooter, RouterLink, Icon, Doctor, BlogAside],
+  imports: [PageBar, SiteFooter, RouterLink, Icon, BlogAside, Rings, ParallaxDirective, RevealDirective],
   template: `
     <app-page-bar />
     <!-- how far through the article: a thin line that fills as you read -->
@@ -35,10 +37,21 @@ type State = { status: 'loading' } | { status: 'missing' } | { status: 'ok'; pos
         }
         @case ('ok') {
           @if (post(); as p) {
-            <div class="wrap layout">
-            <article class="layout__main">
-              <header class="article__head">
-                <a class="article__back" routerLink="/blog"><span aria-hidden="true">←</span> All articles</a>
+            <header class="page-hero article__head">
+              <app-rings [appParallax]="-0.12" />
+              <div class="wrap">
+                <ol class="crumbs" aria-label="Breadcrumb">
+                  <li><a routerLink="/">Home</a></li>
+                  <li><a routerLink="/blog">Blog</a></li>
+                  <li aria-current="page">{{ p.title }}</li>
+                </ol>
+                @if (p.categories.length) {
+                  <ul class="article__tags" aria-label="Topics">
+                    @for (c of p.categories; track c) {
+                      <li>{{ c }}</li>
+                    }
+                  </ul>
+                }
                 <h1>{{ p.title }}</h1>
                 <p class="article__meta">
                   <span>{{ p.author }}</span>
@@ -47,60 +60,58 @@ type State = { status: 'loading' } | { status: 'missing' } | { status: 'ok'; pos
                   <span aria-hidden="true">·</span>
                   <span>{{ p.readingMinutes }} min read</span>
                 </p>
-                @if (p.categories.length) {
-                  <ul class="article__tags" aria-label="Topics">
-                    @for (c of p.categories; track c) {
-                      <li>{{ c }}</li>
-                    }
-                  </ul>
-                }
-              </header>
+              </div>
+            </header>
 
-              @if (p.image) {
-                <figure class="article__cover">
-                  <img [src]="p.image" [alt]="p.imageAlt" decoding="async" />
-                </figure>
-              }
-
-              <!-- Built at deploy time from the clinic's own Markdown; trusted. -->
-              <div class="prose article__body" [innerHTML]="html()" (input)="onBlockInput($event)"></div>
-
-              <aside class="article__cta" aria-labelledby="cta-title">
-                <app-doctor class="article__doctor" mood="joy" arm="wave" />
-                <div class="article__cta-copy">
-                <h2 id="cta-title">Have a question about your child's eyes?</h2>
-                <p>Dr. Aloka Hedau sees children and adults Monday to Saturday, 10 am – 5 pm, in KPHB Phase 6, Kukatpally.</p>
-                <div class="article__actions">
-                  <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">
-                    Book an appointment
-                    <app-icon name="arrow" />
-                  </a>
-                  <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
-                    <app-icon name="whatsapp" />
-                    WhatsApp
-                  </a>
-                </div>
-                </div>
-              </aside>
-
-              @if (p.newer || p.older) {
-                <nav class="article__pager" aria-label="More articles">
-                  @if (p.older) {
-                    <a class="pager pager--older" [routerLink]="['/blog', p.older.slug]">
-                      <span class="pager__label">Older</span>
-                      <span class="pager__title">{{ p.older.title }}</span>
-                    </a>
+            <div class="article__sheet">
+              <div class="wrap layout">
+                <article class="layout__main">
+                  @if (p.image) {
+                    <figure class="article__cover">
+                      <img [src]="p.image" [alt]="p.imageAlt" decoding="async" />
+                    </figure>
                   }
-                  @if (p.newer) {
-                    <a class="pager pager--newer" [routerLink]="['/blog', p.newer.slug]">
-                      <span class="pager__label">Newer</span>
-                      <span class="pager__title">{{ p.newer.title }}</span>
-                    </a>
+
+                  <!-- Built at deploy time from the clinic's own Markdown; trusted. -->
+                  <div class="prose article__body" [innerHTML]="html()" (input)="onBlockInput($event)"></div>
+
+                  <aside class="cta-band article__cta" aria-labelledby="cta-title" appReveal>
+                    <div>
+                      <h2 id="cta-title">Have a question about your child's eyes?</h2>
+                      <p>Dr. Aloka Hedau sees children and adults Monday to Saturday, 10 am – 5 pm, in KPHB Phase 6, Kukatpally.</p>
+                    </div>
+                    <div class="cta-band__actions">
+                      <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">
+                        Book an appointment
+                        <app-icon name="arrow" />
+                      </a>
+                      <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
+                        <app-icon name="whatsapp" />
+                        WhatsApp
+                      </a>
+                    </div>
+                  </aside>
+
+                  @if (p.newer || p.older) {
+                    <nav class="article__pager" aria-label="More articles">
+                      @if (p.older) {
+                        <a class="pager pager--older" [routerLink]="['/blog', p.older.slug]" appReveal>
+                          <span class="pager__label"><span aria-hidden="true">←</span> Older</span>
+                          <span class="pager__title">{{ p.older.title }}</span>
+                        </a>
+                      }
+                      @if (p.newer) {
+                        <a class="pager pager--newer" [routerLink]="['/blog', p.newer.slug]" appReveal style="--delay: .09s">
+                          <span class="pager__label">Newer <span aria-hidden="true">→</span></span>
+                          <span class="pager__title">{{ p.newer.title }}</span>
+                        </a>
+                      }
+                    </nav>
                   }
-                </nav>
-              }
-            </article>
-            <aside class="layout__side" aria-label="From the clinic"><app-blog-aside /></aside>
+                  <a class="more article__back" routerLink="/blog"><span aria-hidden="true">←</span> All articles</a>
+                </article>
+                <aside class="layout__side" aria-label="From the clinic"><app-blog-aside /></aside>
+              </div>
             </div>
           }
         }

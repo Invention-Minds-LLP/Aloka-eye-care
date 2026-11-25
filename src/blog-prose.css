@@ -1,48 +1,64 @@
 /*
- * Article typography and the designed blog blocks.
- * Used by the site (angular.json styles) and copied into the CMS preview by scripts/build-blog.mjs.
+ * Article typography and the designed blog blocks (Clinic Light: read on a white sheet).
+ * Used by the site (angular.json styles) and copied into the CMS preview by scripts/build-blog.mjs,
+ * so every token has a light fallback.
  */
 .prose {
-  max-width: 68ch;
+  max-width: 70ch;
   font-size: var(--step-body, 1.0625rem);
-  line-height: 1.7;
-  color: var(--ink-soft);
+  line-height: 1.75;
+  color: var(--ink-soft, #44565e);
+  overflow-wrap: break-word;
 }
 .prose > * + * {
-  margin-top: 0.85em;
+  margin-top: 0.9em;
 }
 .prose h2,
-.prose h3 {
-  color: var(--ink);
+.prose h3,
+.prose h4 {
+  color: var(--ink, #16252c);
   font-family: var(--font-display, inherit);
-  font-weight: 650;
+  font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.2;
   text-wrap: balance;
 }
 .prose h2 {
-  margin-top: 1.8em;
+  margin-top: 1.9em;
   font-size: var(--step-2, 1.6rem);
 }
 .prose h3 {
-  margin-top: 1.8em;
+  margin-top: 1.7em;
   font-size: var(--step-3, 1.2rem);
 }
+.prose h4 {
+  margin-top: 1.5em;
+  font-size: 1em;
+}
 .prose h2 + *,
-.prose h3 + * {
+.prose h3 + *,
+.prose h4 + * {
   margin-top: 0.6em;
 }
 .prose p {
   margin-bottom: 0;
 }
 .prose strong {
-  color: var(--ink);
-  font-weight: 650;
+  color: var(--ink, #16252c);
+  font-weight: 700;
 }
 .prose a {
-  color: var(--teal-ink);
+  color: var(--teal, #0f6b6e);
+  font-weight: 600;
   text-decoration: underline;
+  text-decoration-thickness: 1.5px;
   text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: text-decoration-color 0.2s;
+}
+.prose a:hover {
+  color: var(--teal-2, #0c5a5d);
+  text-decoration-color: currentColor;
 }
 .prose ul,
 .prose ol {
@@ -50,11 +66,24 @@
   margin-bottom: 0;
 }
 .prose li + li {
-  margin-top: 0.35em;
+  margin-top: 0.4em;
 }
 .prose li::marker {
-  color: var(--hope);
+  color: var(--teal, #0f6b6e);
   font-weight: 700;
+}
+.prose hr {
+  height: 1px;
+  margin-block: 2.2em;
+  border: 0;
+  background: var(--line, #dde7e4);
+}
+.prose code {
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+  background: var(--mint, #e7f4f1);
+  color: var(--ink, #16252c);
+  font-size: 0.92em;
 }
 /* Images in the text stay a comfortable size: scaled down (never cropped) to at most
    about half a screen tall, and centred. */
@@ -66,11 +95,47 @@
   max-height: min(380px, 48vh);
   margin-inline: auto;
   border-radius: 12px;
-  background: var(--card, #fbf8f2);
+  background: var(--mint, #e7f4f1);
 }
 .prose sup {
   font-size: 0.7em;
   line-height: 0;
+}
+
+/* plain Markdown quotes and the quote block: a teal rule on mint */
+.prose blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--teal, #0f6b6e);
+  border-radius: 0 12px 12px 0;
+  background: var(--mint, #e7f4f1);
+  color: var(--ink, #16252c);
+}
+.prose blockquote > :first-child {
+  margin-top: 0;
+}
+
+/* tables scroll sideways on a phone instead of widening the page */
+.prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+.prose th,
+.prose td {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--line, #dde7e4);
+  text-align: left;
+  vertical-align: top;
+}
+.prose th {
+  background: var(--mint, #e7f4f1);
+  color: var(--ink, #16252c);
+  font-weight: 700;
 }
 
 /* ---------- Designed blocks ---------- */
@@ -83,30 +148,38 @@
 }
 .prose .blk-tip {
   padding: 1.2rem 1.4rem;
-  border-radius: 14px;
-  background: var(--tint, #172340);
-  color: var(--ink);
+  border-left: 3px solid var(--teal, #0f6b6e);
+  border-radius: 0 14px 14px 0;
+  background: var(--mint, #e7f4f1);
+  color: var(--ink, #16252c);
 }
 .prose .blk-tip__title {
   margin: 0 0 0.4rem;
   font-family: var(--font-display, inherit);
   font-size: var(--step-3, 1.2rem);
-  font-weight: 650;
-  color: var(--teal-ink);
+  font-weight: 800;
+  color: var(--teal-2, #0c5a5d);
 }
+
+/* the in-article call to action: a teal panel */
 .prose .blk-cta {
-  padding: 1.5rem 1.6rem;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #2c2350, #1a1c3e);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
-  color: var(--ink);
+  padding: clamp(1.4rem, 4vw, 1.8rem);
+  border-radius: 18px;
+  background: linear-gradient(160deg, var(--teal, #0f6b6e) 0%, var(--teal-2, #0c5a5d) 60%, var(--teal-3, #0a4649) 100%);
+  box-shadow: 0 30px 60px -36px rgb(10 70 73 / 0.8);
+  color: #d7ecea;
 }
 .prose .blk-cta__title {
   margin: 0 0 0.4rem;
   font-family: var(--font-display, inherit);
   font-size: var(--step-2, 1.6rem);
-  font-weight: 650;
+  font-weight: 800;
   line-height: 1.2;
+  color: #fff;
+}
+.prose .blk-cta strong,
+.prose .blk-cta a:not([class]) {
+  color: #fff;
 }
 .prose .blk-cta__actions {
   display: flex;
@@ -117,30 +190,54 @@
 .prose .blk-cta__actions a {
   text-decoration: none;
 }
+
 .prose .blk-quote {
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 1.3rem;
-  border-left: 1px solid var(--hope);
   font-family: var(--font-display, inherit);
   font-size: var(--step-3, 1.2rem);
-  line-height: 1.45;
-  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.5;
 }
 .prose .blk-quote footer {
   margin-top: 0.6rem;
   font-family: var(--font-body, inherit);
   font-size: var(--step-small, 0.9375rem);
-  color: var(--ink-soft);
+  font-weight: 600;
+  color: var(--ink-soft, #44565e);
 }
 .prose .blk-faq details {
-  border-bottom: 1px solid var(--steel-300, #313b5a);
+  border-bottom: 1px solid var(--line, #dde7e4);
+}
+.prose .blk-faq details:first-child {
+  border-top: 1px solid var(--line, #dde7e4);
 }
 .prose .blk-faq summary {
-  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.85rem 0;
   cursor: pointer;
-  font-weight: 650;
-  color: var(--ink);
+  font-weight: 700;
+  color: var(--ink, #16252c);
+}
+.prose .blk-faq summary::-webkit-details-marker {
+  display: none;
+}
+.prose .blk-faq summary::before {
+  content: '+';
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 0.75rem;
+  border-radius: 50%;
+  background: var(--mint, #e7f4f1);
+  color: var(--teal, #0f6b6e);
+  font-weight: 800;
+  line-height: 1;
+}
+.prose .blk-faq details[open] summary::before {
+  content: '−';
 }
 .prose .blk-faq details > :not(summary) {
   margin: 0 0 1rem;
@@ -153,7 +250,7 @@
   margin-top: 0.6rem;
   text-align: center;
   font-size: var(--step-small, 0.9375rem);
-  color: var(--ink-faint, #8d95ad);
+  color: var(--ink-faint, #66777e);
 }
 .prose .blk-compare {
   --reveal: 50%;
@@ -164,12 +261,15 @@
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 14px;
+  background: var(--mint, #e7f4f1);
+  box-shadow: 0 0 0 1px var(--line, #dde7e4);
 }
 .prose .blk-compare__frame img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  max-height: none;
   object-fit: cover;
   border-radius: 0;
 }
@@ -183,7 +283,8 @@
   left: calc(100% - var(--reveal));
   width: 3px;
   margin-left: -1.5px;
-  background: var(--hope);
+  background: #fff;
+  box-shadow: 0 0 0 1px rgb(10 70 73 / 0.35);
 }
 .prose .blk-compare__tag {
   position: absolute;
@@ -191,22 +292,23 @@
   left: 0.8rem;
   padding: 0.25rem 0.65rem;
   border-radius: 999px;
-  background: rgb(255 255 255 / 0.9);
-  color: var(--ink-dark, #1b2a3a);
+  background: #fff;
+  color: var(--ink, #16252c);
   font-size: 0.8125rem;
   font-weight: 700;
+  box-shadow: 0 4px 12px -6px rgb(10 70 73 / 0.5);
 }
 .prose .blk-compare__tag--after {
   left: auto;
   right: 0.8rem;
-  background: var(--hope-action);
+  background: var(--teal, #0f6b6e);
   color: #fff;
 }
 .prose .blk-compare__range {
   display: block;
   width: 100%;
   height: 2.75rem;
-  accent-color: var(--hope);
+  accent-color: var(--teal, #0f6b6e);
   direction: rtl;
   cursor: ew-resize;
 }
@@ -214,14 +316,34 @@
 /* buttons inside articles keep their own colours, not the link colour */
 .prose a.btn-book {
   color: #fff;
+  font-weight: 700;
   text-decoration: none;
 }
 .prose a.btn-wa {
-  color: var(--wa);
+  color: var(--wa, #128c4a);
+  font-weight: 700;
   text-decoration: none;
 }
 .prose a.btn-wa:hover {
   color: #fff;
+}
+/* on the teal panel: a white Book key and an outlined WhatsApp key */
+.prose .blk-cta a.btn-book {
+  background: #fff;
+  color: var(--teal, #0f6b6e);
+  box-shadow: none;
+}
+.prose .blk-cta a.btn-book:hover {
+  background: var(--mint, #e7f4f1);
+}
+.prose .blk-cta a.btn-wa {
+  background: transparent;
+  color: #fff;
+  box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / 0.75);
+}
+.prose .blk-cta a.btn-wa:hover {
+  background: #fff;
+  color: var(--teal, #0f6b6e);
 }
 
 /* Image + text, side by side in one box. Stacks on narrow screens. */
@@ -232,8 +354,8 @@
   align-items: center;
   padding: clamp(1rem, 2.5vw, 1.5rem);
   border-radius: 16px;
-  background: var(--paper, #141a2f);
-  box-shadow: inset 0 0 0 1px var(--steel-300, #313b5a);
+  background: var(--cream, #fbf8f3);
+  box-shadow: inset 0 0 0 1px var(--line, #dde7e4);
 }
 .prose .blk-split--right .blk-split__media {
   order: 2;
@@ -260,5 +382,8 @@
   }
   .prose .blk-split--right .blk-split__media {
     order: 0;
+  }
+  .prose .blk-cta__actions a {
+    flex: 1 1 100%;
   }
 }

@@ -2,119 +2,82 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CLINIC } from '../pages/home/home.content';
 
+/** The teal footer (Clinic Light): the clinic, its pages, the address and the ways to reach it. */
 @Component({
   selector: 'app-site-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink],
   template: `
     <footer class="foot">
-      <div class="wrap foot__inner">
-        <a class="foot__brand" routerLink="/" aria-label="Dr. Aloka's Eye Care, home">
-          <img class="foot__logo" src="images/logo.png" alt="" width="1459" height="334" loading="lazy" />
-        </a>
+      <div class="wrap foot__grid">
+        <div class="foot__brand">
+          <a class="flogo" routerLink="/" aria-label="Dr. Aloka's Eye Care, home">
+            <svg viewBox="0 0 40 24" aria-hidden="true">
+              <path d="M2 12C7 4.5 13 1.5 20 1.5S33 4.5 38 12c-5 7.5-11 10.5-18 10.5S7 19.5 2 12Z" fill="none" stroke="currentColor" stroke-width="2.4" />
+              <circle cx="20" cy="12" r="6" fill="none" stroke="#f08a4b" stroke-width="3" />
+              <circle cx="20" cy="12" r="2.2" fill="currentColor" />
+            </svg>
+            Dr. Aloka’s Eye Care
+          </a>
+          <p>Paediatric eye care and squint care for children and adults, by Dr. Aloka Hedau in Kukatpally, Hyderabad.</p>
+        </div>
         <nav aria-label="More from the clinic">
+          <h2>Pages</h2>
           <ul>
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/about-us/">About Dr. Aloka</a></li>
             <li><a routerLink="/services/">Services</a></li>
             <li><a routerLink="/surgeries/">Surgeries</a></li>
-            <li><a routerLink="/" fragment="myopia">Myopia clinic</a></li>
             <li><a routerLink="/gallery/">Gallery</a></li>
-            <li><a routerLink="/our-story/">Our story</a></li>
             <li><a routerLink="/blog">Blog</a></li>
             <li><a routerLink="/faq/">FAQ</a></li>
             <li><a routerLink="/contact-us/">Contact &amp; directions</a></li>
           </ul>
         </nav>
-        <address class="foot__nap">
-          Dr. Aloka's Eye Care · Third Floor, Plot no 6, 9th Phase Road, near Forum Srujana Mall, KPHB Phase 6, Kukatpally, Hyderabad 500085 ·
-          <a [href]="clinic.phoneHref">{{ clinic.phoneDisplay }}</a>
-        </address>
-        <div class="foot__base">
-          <p class="foot__small">© {{ year }} Dr. Aloka's Eye Care, Kukatpally, Hyderabad.</p>
-          <p class="foot__small foot__credit">
-            Designed and developed by
-            <a href="https://inventionminds.com/" target="_blank" rel="noopener">Invention Minds LLP</a>
-          </p>
+        <div>
+          <h2>Visit</h2>
+          <address>
+            Third Floor, Plot no 6, 9th Phase Road, near Forum Srujana Mall, KPHB Phase 6, Kukatpally, Hyderabad 500085
+          </address>
+          <p class="foot__hours">Monday – Saturday, 10 am – 5 pm · Sunday closed</p>
         </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a [href]="clinic.phoneHref">{{ clinic.phoneDisplay }}</a></li>
+            <li><a [href]="clinic.whatsappHref" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a [href]="'mailto:' + clinic.email">{{ clinic.email }}</a></li>
+            <li><a [href]="clinic.bookingHref" target="_blank" rel="noopener">Appointment information</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrap foot__base">
+        <p>© {{ year }} Dr. Aloka's Eye Care, Kukatpally, Hyderabad.</p>
+        <p>Designed and developed by <a href="https://inventionminds.com/" target="_blank" rel="noopener">Invention Minds LLP</a></p>
       </div>
     </footer>
   `,
   styles: `
     :host { display: block; }
-    .foot {
-      background: var(--mist);
-      padding-block: 4rem 2.5rem;
-      border-top: 1px solid var(--steel-300);
-    }
-    .foot__inner {
-      display: grid;
-      gap: 1.75rem;
-      justify-items: start;
-    }
-    /* the logo was drawn for a light ground: it sits on a small lit plate */
-    .foot__brand {
-      display: block;
-      line-height: 0;
-      padding: 10px 14px;
-      border-radius: 12px;
-      background: var(--card);
-    }
-    .foot__logo {
-      width: min(260px, 64vw);
-      height: auto;
-    }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1.5rem;
-    }
-    ul a {
-      display: inline-block;
-      padding-block: 0.5rem;
-      font-weight: 550;
-      text-decoration: none;
-    }
-    ul a:hover {
-      text-decoration: underline;
-    }
-    .foot__nap {
-      font-style: normal;
-      font-size: var(--step-small);
-      line-height: 1.6;
-      color: var(--ink-soft);
-      max-width: 70ch;
-    }
-    .foot__nap a { color: var(--ink); font-weight: 600; }
-    .foot__small {
-      font-size: var(--step-small);
-      color: var(--ink-soft);
-    }
-    /* copyright on the left, the site credit on the right; they stack on narrow screens */
+    .foot { background: var(--teal-3); color: #e4f1ef; padding-top: clamp(2.8rem, 6vw, 4rem); }
+    .foot__grid { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 2rem clamp(1.5rem, 4vw, 3rem); }
+    .flogo { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 800; font-size: 1.15rem; color: #fff; text-decoration: none; }
+    .flogo svg { width: 2.3rem; height: 1.4rem; }
+    .foot__brand p { margin-top: 0.9rem; max-width: 34ch; color: #b9d8d4; }
+    h2 { margin: 0 0 0.8rem; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8fc3bd; }
+    ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
+    a { color: #fff; text-decoration: none; }
+    ul a:hover { text-decoration: underline; text-underline-offset: 0.22em; }
+    address { font-style: normal; color: #d7ecea; max-width: 30ch; }
+    .foot__hours { margin-top: 0.6rem; color: #b9d8d4; }
     .foot__base {
-      justify-self: stretch;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.5rem 2rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--steel-300);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 1.5rem;
+      margin-top: clamp(2rem, 5vw, 3rem); padding-block: 1.1rem; border-top: 1px solid rgb(255 255 255 / 0.14);
+      font-size: 0.88rem; color: #9cc7c2;
     }
-    .foot__credit a {
-      color: var(--ink);
-      font-weight: 600;
-      text-decoration: underline;
-      text-decoration-color: var(--steel-500);
-      text-underline-offset: 3px;
-      transition: color 0.2s, text-decoration-color 0.2s;
-      &:hover {
-        color: var(--teal-ink);
-        text-decoration-color: currentColor;
-      }
-    }
+    .foot__base a { color: #d7ecea; text-decoration: underline; text-underline-offset: 0.2em; }
+    @media (max-width: 900px) { .foot__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .foot__brand { grid-column: 1 / -1; } }
+    @media (max-width: 520px) { .foot__grid { grid-template-columns: minmax(0, 1fr); } }
   `,
 })
 export class SiteFooter {

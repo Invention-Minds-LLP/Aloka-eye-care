@@ -1,6 +1,10 @@
 :host {
   display: block;
-  background: var(--white);
+  background: var(--cream);
+}
+
+.eyebrow {
+  margin-top: 1.4rem;
 }
 
 /* ---------- Search ---------- */
@@ -16,28 +20,32 @@
     width: 1.25rem;
     height: 1.25rem;
     fill: none;
-    stroke: var(--ink-faint);
+    stroke: var(--teal);
     stroke-width: 2;
     stroke-linecap: round;
     pointer-events: none;
   }
   input {
     width: 100%;
-    min-height: 3.4rem;
+    min-height: 3.25rem;
     padding: 0.8rem 1.2rem 0.8rem 3.1rem;
     border: 0;
-    border-radius: 999px;
-    background: var(--steel-100);
+    border-radius: 12px;
+    background: var(--paper);
     color: var(--ink);
     font: 400 1.0625rem/1.2 var(--font-body);
-    box-shadow: inset 0 0 0 1px var(--steel-300);
+    box-shadow:
+      inset 0 0 0 1px var(--line),
+      0 18px 36px -30px rgb(10 70 73 / 0.7);
     transition: box-shadow 0.2s;
     &::placeholder {
       color: var(--ink-faint);
     }
     &:focus {
       outline: none;
-      box-shadow: inset 0 0 0 2px var(--teal-ink);
+      box-shadow:
+        inset 0 0 0 2px var(--teal),
+        0 18px 36px -30px rgb(10 70 73 / 0.7);
     }
   }
 }
@@ -47,6 +55,9 @@
   font-size: var(--step-small);
   color: var(--ink-soft);
 }
+.page-hero__actions {
+  margin-top: 0.9rem;
+}
 
 /* ---------- The eye ---------- */
 .eye-scene {
@@ -54,26 +65,40 @@
   display: grid;
   place-items: center;
   min-height: 22rem;
+  /* a soft mint disc behind the eye */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(80%, 19rem);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: var(--mint);
+    box-shadow: inset 0 0 0 1px var(--mint-2);
+  }
 }
 .eye {
+  position: relative;
   width: min(78%, 20rem);
   height: auto;
   overflow: visible;
-  filter: drop-shadow(0 24px 30px rgb(0 0 0 / 0.45));
+  filter: drop-shadow(0 22px 26px rgb(10 70 73 / 0.28));
 }
 .eye__white {
-  fill: var(--card);
+  fill: var(--paper);
 }
 .eye__line {
   fill: none;
-  stroke: #3a2a22;
+  stroke: var(--ink);
   stroke-width: 3;
 }
 .eye__iris {
   fill: #5a3a24;
 }
 .eye__pupil {
-  fill: #140c08;
+  fill: var(--ink);
 }
 .eye__glint {
   fill: #fff;
@@ -83,7 +108,7 @@
 }
 /* the eyelid, resting above the eye; it closes briefly every few seconds */
 .eye__blink {
-  fill: #6b4d3a;
+  fill: var(--skin);
   translate: 0 -70px;
 }
 :host-context(html.motion-ok) .eye__blink {
@@ -122,30 +147,32 @@
 /* the questions drift around the eye */
 .bubble {
   position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
   max-width: 14rem;
   padding: 0.6rem 0.9rem;
-  border-radius: 16px;
-  background: var(--mist);
+  border-radius: 14px;
+  background: var(--paper);
   color: var(--ink);
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 650;
   line-height: 1.35;
   text-decoration: none;
   box-shadow:
-    inset 0 0 0 1px var(--steel-300),
-    0 14px 24px -16px rgb(0 0 0 / 0.8);
+    inset 0 0 0 1px var(--line),
+    0 16px 30px -20px rgb(10 70 73 / 0.55);
   transition:
-    background 0.2s,
+    background-color 0.2s,
+    color 0.2s,
     box-shadow 0.2s;
   &:hover {
-    background: var(--steel-100);
+    background: var(--mint);
+    color: var(--teal-3);
     box-shadow:
-      inset 0 0 0 1px var(--teal-ink),
-      0 14px 24px -16px rgb(0 0 0 / 0.8);
-  }
-  &:focus-visible {
-    outline: 3px solid var(--teal-ink);
-    outline-offset: 2px;
+      inset 0 0 0 1.5px var(--teal-lit),
+      0 16px 30px -20px rgb(10 70 73 / 0.55);
   }
 }
 .bubble--0 {
@@ -192,62 +219,125 @@
 /* ---------- Topics and answers ---------- */
 .layout {
   display: grid;
-  grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4.5rem);
-  padding-top: clamp(3rem, 8vh, 5rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.75rem, 5vw, 4.5rem);
 }
 .index {
-  position: sticky;
-  top: 6rem;
-  align-self: start;
   ol {
     list-style: none;
     margin: 0.75rem 0 0;
     padding: 0;
-    display: grid;
-    gap: 0.15rem;
-    border-left: 2px solid var(--steel-300);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
   a {
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
+    align-items: center;
     gap: 0.6rem;
-    padding: 0.5rem 0.85rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 10px;
+    background: var(--cream);
+    box-shadow: inset 0 0 0 1px var(--line);
     font-size: var(--step-small);
-    font-weight: 600;
-    color: var(--ink-soft);
+    font-weight: 650;
+    line-height: 1.25;
+    color: var(--ink);
     text-decoration: none;
+    transition:
+      background-color 0.25s,
+      color 0.25s,
+      box-shadow 0.25s;
     &:hover {
-      color: var(--ink);
+      background: var(--mint);
+      color: var(--teal);
+      box-shadow: inset 0 0 0 1.5px var(--mint-3);
     }
     span {
-      color: var(--ink-faint);
-      font-weight: 400;
+      display: grid;
+      place-items: center;
+      min-width: 1.6rem;
+      height: 1.6rem;
+      padding: 0 0.35rem;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--teal-3);
+      font-size: 0.8rem;
+      font-weight: 700;
     }
   }
 }
 .index__label {
   font-size: 0.8125rem;
   font-weight: 700;
-  color: var(--teal-ink);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal);
 }
 .groups {
   display: grid;
-  gap: clamp(3rem, 7vh, 4.5rem);
+  gap: clamp(2.5rem, 6vw, 4rem);
   max-width: 50rem;
+  min-width: 0;
 }
 .group {
   scroll-margin-top: 6rem;
 }
 .group__title {
   font-size: var(--step-2);
-  margin-bottom: 1rem;
+  &::after {
+    content: '';
+    display: block;
+    width: 3.2rem;
+    height: 3px;
+    margin-top: 0.7rem;
+    border-radius: 3px;
+    background: var(--orange);
+  }
+}
+.qa-list {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
 }
 
+/* one answer: a cream row like the home page's "What should I bring?" */
 .qa {
-  border-bottom: 1px solid var(--steel-300);
+  border-radius: 12px;
+  background: var(--cream);
+  box-shadow: inset 0 0 0 1px var(--line);
   scroll-margin-top: 8rem;
-  /* the answer slides open where the browser supports animating to auto height */
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  &[open] {
+    background: var(--paper);
+    box-shadow:
+      inset 0 0 0 1.5px var(--mint-3),
+      0 22px 40px -32px rgb(10 70 73 / 0.7);
+  }
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.5rem;
+    padding: 0.9rem 1rem 0.9rem 1.2rem;
+    cursor: pointer;
+    list-style: none;
+    border-radius: 12px;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 2px;
+    }
+  }
+}
+/* the answer slides open where the browser supports animating to auto height */
+:host-context(html.motion-ok) .qa {
   interpolate-size: allow-keywords;
   &::details-content {
     block-size: 0;
@@ -259,72 +349,44 @@
   &[open]::details-content {
     block-size: auto;
   }
-  summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.25rem;
-    padding: 1.2rem 0;
-    cursor: pointer;
-    list-style: none;
-    &::-webkit-details-marker {
-      display: none;
-    }
-    &:focus-visible {
-      outline: 3px solid var(--teal-ink);
-      outline-offset: 4px;
-      border-radius: 6px;
-    }
-  }
 }
 .qa__q {
-  font-weight: 650;
+  font-weight: 700;
   font-size: var(--step-3);
   line-height: 1.4;
   transition: color 0.2s;
 }
 .qa summary:hover .qa__q {
-  color: var(--teal-ink);
+  color: var(--teal);
 }
-/* a plus that turns into a minus */
+/* a plus that turns into a cross */
 .qa__toggle {
-  position: relative;
+  display: grid;
+  place-items: center;
   flex: none;
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
-  background: var(--steel-100);
-  box-shadow: inset 0 0 0 1px var(--steel-300);
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 0.8rem;
-    height: 2px;
-    margin: -1px 0 0 -0.4rem;
-    border-radius: 2px;
-    background: var(--ink);
+  background: var(--mint);
+  color: var(--teal);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  svg {
+    width: 1.2rem;
+    height: 1.2rem;
     transition: rotate 0.35s var(--ease-out);
-  }
-  &::after {
-    rotate: 90deg;
   }
 }
 .qa[open] .qa__toggle {
-  background: var(--hope-action);
-  box-shadow: none;
-  &::before,
-  &::after {
-    background: #fff;
-  }
-  &::after {
-    rotate: 0deg;
+  background: var(--teal);
+  color: #fff;
+  svg {
+    rotate: 45deg;
   }
 }
 .qa__a {
-  padding: 0 3.5rem 1.4rem 0;
+  padding: 0 3.5rem 1.3rem 1.2rem;
   p {
     color: var(--ink-soft);
     line-height: 1.7;
@@ -332,10 +394,12 @@
   }
 }
 .qa__more {
-  display: inline-block;
-  margin-top: 0.75rem;
-  color: var(--teal-ink);
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 0.3rem;
+  color: var(--teal);
+  font-weight: 700;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
@@ -346,11 +410,12 @@
   justify-items: start;
   gap: 0.6rem;
   padding: 2rem;
-  border-radius: 18px;
-  background: var(--mist);
+  border-radius: 14px;
+  background: var(--mint);
   p:first-child {
-    font-weight: 650;
+    font-weight: 700;
     font-size: var(--step-3);
+    color: var(--ink);
   }
   p {
     color: var(--ink-soft);
@@ -360,35 +425,71 @@
   }
 }
 
-@media (max-width: 900px) {
+/* ---------- Larger screens ---------- */
+@media (min-width: 1000px) {
   .layout {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
   }
   .index {
-    position: static;
+    position: sticky;
+    top: 6rem;
+    align-self: start;
     ol {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      border: 0;
+      display: grid;
+      gap: 0.15rem;
+      border-left: 2px solid var(--line);
     }
     a {
-      padding: 0.5rem 0.9rem;
-      border-radius: 999px;
-      background: var(--steel-100);
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      color: var(--ink-soft);
+      font-weight: 600;
+      &:hover {
+        background: none;
+        box-shadow: inset 2px 0 0 var(--orange);
+      }
     }
   }
-  .eye-scene {
-    min-height: 19rem;
-  }
 }
-@media (max-width: 520px) {
+
+/* ---------- Phones: the questions sit under the eye instead of around it ---------- */
+@media (max-width: 640px) {
+  .page-hero__actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .eye-scene {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 0;
+    padding-top: 0.5rem;
+    &::before {
+      top: 5.5rem;
+      width: 12rem;
+    }
+  }
+  .eye {
+    width: min(70%, 15rem);
+    margin: 1.5rem auto 1.75rem;
+  }
   .bubble {
-    max-width: 10.5rem;
+    position: static;
+    flex: 1 1 calc(50% - 0.6rem);
+    max-width: none;
     font-size: 0.8125rem;
   }
+  .qa summary {
+    padding-left: 1rem;
+  }
   .qa__a {
-    padding-right: 0;
+    padding: 0 1rem 1.2rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

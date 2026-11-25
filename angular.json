@@ -52,12 +52,12 @@
               }
             ],
             "styles": [
-              "@fontsource-variable/bricolage-grotesque/standard.css",
-              "@fontsource-variable/hanken-grotesk/index.css",
+              "@fontsource-variable/albert-sans/index.css",
               "@fontsource-variable/anek-telugu/index.css",
               "src/styles.scss",
               "src/blog-prose.css",
-              "src/pages.scss"
+              "src/pages.scss",
+              "src/home-clinic.scss"
             ],
             "server": "src/main.server.ts",
             "outputMode": "static"

@@ -1,26 +1,26 @@
 <app-page-bar />
 <main id="main">
   <section class="page-hero" aria-labelledby="gallery-title">
+    <app-rings [appParallax]="-0.12" />
     <div class="wrap page-hero__grid">
       <div>
         <ol class="crumbs" aria-label="Breadcrumb">
           <li><a routerLink="/">Home</a></li>
           <li aria-current="page">Gallery</li>
         </ol>
-        <h1 id="gallery-title">Inside Dr. Aloka's Eye Care</h1>
-        <p class="page-hero__lede">
-          The clinic in KPHB Phase 6, Kukatpally, the children and adults Dr. Aloka Hedau has treated, and her talks at eye conferences in India
-          and abroad.
+        <h1 id="gallery-title" appReveal>Inside Dr. Aloka's Eye Care</h1>
+        <p class="page-hero__lede" appReveal style="--delay: 0.09s">
+          The clinic in KPHB Phase 6, Kukatpally, its equipment, and Dr. Aloka Hedau's talks at eye conferences in India and abroad.
         </p>
-        <div class="page-hero__actions">
+        <div class="page-hero__actions" appReveal style="--delay: 0.18s">
           <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
           <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> Ask on WhatsApp</a>
         </div>
       </div>
-      <!-- a light table: a handful of prints slide out of the pile and come into focus -->
-      <div class="table" aria-hidden="true">
-        @for (p of fan; track p.src; let i = $index) {
-          <figure class="print" [style.--i]="i">
+      <!-- three photos open out of the page, one after another -->
+      <div class="collage" aria-hidden="true">
+        @for (p of collage; track p.src; let i = $index) {
+          <figure class="collage__tile" appReveal [style.--delay]="0.15 + i * 0.14 + 's'">
             <img [src]="p.thumb" alt="" [width]="p.w" [height]="p.h" decoding="async" />
           </figure>
         }
@@ -40,21 +40,31 @@
     </div>
   </div>
 
-  @for (a of albums(); track a.id) {
-    <section class="album section" [id]="a.id" [attr.aria-labelledby]="a.id + '-title'">
+  @for (a of albums(); track a.id; let n = $index) {
+    <section class="album section" [class.section--mint]="n % 2 === 1" [id]="a.id" [attr.aria-labelledby]="a.id + '-title'">
+      @if (n === 0) {
+        <app-rings class="album__rings" [appParallax]="0.12" />
+      }
       <div class="wrap">
-        <header class="album__head" appReveal>
-          <h2 class="section__title" [id]="a.id + '-title'">{{ a.title }}</h2>
-          <p class="album__lede">{{ a.lede }}</p>
+        <header class="album__head">
+          <h2 class="section__title" [id]="a.id + '-title'" appReveal>{{ a.title }}</h2>
+          <p class="album__lede" appReveal style="--delay: 0.09s">{{ a.lede }}</p>
         </header>
-        <ul class="grid" [class.grid--strips]="a.id === 'outcomes'">
+        <ul class="grid">
           @for (p of a.photos; track p.src; let i = $index) {
-            <li class="shot" [class.shot--wide]="p.w / p.h > 2.2" [style.--delay]="(i % 3) * 0.08 + 's'">
-              <button type="button" class="shot__btn focus-in" appReveal (click)="show(p, $event)">
+            <li
+              class="tile"
+              [class.tile--lead]="size(i, a.photos.length) === 'lead'"
+              [class.tile--wide]="size(i, a.photos.length) === 'wide'"
+              [class.tile--kit]="a.id === 'equipment'"
+              appReveal
+              [style.--delay]="(i % 3) * 0.09 + 's'"
+            >
+              <button type="button" class="tile__btn" (click)="show(p, $event)">
                 <img [src]="p.thumb" [alt]="p.caption" [width]="p.w" [height]="p.h" loading="lazy" decoding="async" />
-                <span class="shot__zoom" aria-hidden="true"><app-icon name="arrow" /></span>
+                <span class="tile__zoom" aria-hidden="true"><app-icon name="arrow" /></span>
+                <span class="tile__cap" aria-hidden="true">{{ p.caption }}</span>
               </button>
-              <p class="shot__caption">{{ p.caption }}</p>
             </li>
           }
         </ul>
@@ -62,9 +72,9 @@
     </section>
   }
 
-  <section class="section">
+  <section class="section section--paper">
     <div class="wrap">
-      <div class="cta-band">
+      <div class="cta-band" appReveal>
         <div>
           <h2>See the clinic for yourself</h2>
           <p>Monday to Saturday, 10 am to 5 pm, by appointment, at KPHB Phase 6, near Forum Srujana Mall, Kukatpally.</p>

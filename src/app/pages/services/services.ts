@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, afterNextRender, inject, signal } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SITE, SeoService, breadcrumbs } from '../../core/seo.service';
 import { Icon } from '../../shared/icon';
-import { LEA_SHAPES, Lea } from '../../shared/lea';
+import { ParallaxDirective } from '../../shared/parallax.directive';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { Rings } from '../../shared/rings';
 import { SiteFooter } from '../../shared/site-footer';
 import { PageBar } from '../blog/page-bar';
 import { CLINIC } from '../home/home.content';
@@ -12,14 +14,13 @@ import { SERVICES } from '../pages.content';
 @Component({
   selector: 'app-services',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon, Lea],
+  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon, Rings, ParallaxDirective, NgTemplateOutlet],
   templateUrl: './services.html',
   styleUrl: './services.scss',
 })
 export default class Services {
   protected readonly clinic = CLINIC;
   protected readonly services = SERVICES;
-  protected readonly shapes = LEA_SHAPES;
   /** The service being read, for the index. */
   protected readonly active = signal(SERVICES[0].id);
 
@@ -59,7 +60,33 @@ export default class Services {
         { rootMargin: '-40% 0px -55% 0px' },
       );
       document.querySelectorAll('.svc').forEach((el) => io.observe(el));
-      destroyRef.onDestroy(() => io.disconnect());
+
+      /* the service cards tilt a little towards a mouse pointer (CSS vars only; none for touch or reduced motion) */
+      const off: (() => void)[] = [];
+      if (matchMedia('(pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll<HTMLElement>('.cards .card').forEach((c) => {
+          const move = (e: PointerEvent) => {
+            const r = c.getBoundingClientRect();
+            c.style.setProperty('--ry', (((e.clientX - r.left) / r.width - 0.5) * 10).toFixed(2) + 'deg');
+            c.style.setProperty('--rx', (-((e.clientY - r.top) / r.height - 0.5) * 8).toFixed(2) + 'deg');
+          };
+          const leave = () => {
+            c.style.setProperty('--rx', '0deg');
+            c.style.setProperty('--ry', '0deg');
+          };
+          c.addEventListener('pointermove', move, { passive: true });
+          c.addEventListener('pointerleave', leave);
+          off.push(() => {
+            c.removeEventListener('pointermove', move);
+            c.removeEventListener('pointerleave', leave);
+          });
+        });
+      }
+
+      destroyRef.onDestroy(() => {
+        io.disconnect();
+        off.forEach((f) => f());
+      });
     });
   }
 }

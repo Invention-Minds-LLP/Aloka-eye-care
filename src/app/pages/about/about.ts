@@ -4,7 +4,9 @@ import { MotionService, clamp } from '../../core/motion.service';
 import { SeoService, breadcrumbs } from '../../core/seo.service';
 import { Icon } from '../../shared/icon';
 import { Lea } from '../../shared/lea';
+import { ParallaxDirective } from '../../shared/parallax.directive';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { Rings } from '../../shared/rings';
 import { SiteFooter } from '../../shared/site-footer';
 import { PageBar } from '../blog/page-bar';
 import { CLINIC, VOICES } from '../home/home.content';
@@ -13,7 +15,7 @@ import { AFFILIATIONS, JOURNEY } from '../pages.content';
 @Component({
   selector: 'app-about',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon, Lea],
+  imports: [PageBar, SiteFooter, RouterLink, RevealDirective, Icon, Lea, Rings, ParallaxDirective],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })

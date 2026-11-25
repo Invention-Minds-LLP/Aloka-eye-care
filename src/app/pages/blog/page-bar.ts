@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Icon } from '../../shared/icon';
 import { CLINIC } from '../home/home.content';
 
 export const NAV = [
@@ -14,183 +13,101 @@ export const NAV = [
   { path: '/contact-us/', label: 'Contact', exact: false },
 ] as const;
 
-/** The header for pages outside the home story: logo, the site menu, and the ways to reach the clinic. */
+/** The site header (Clinic Light): logo, the site menu and the appointment button; a menu panel on phones. */
 @Component({
   selector: 'app-page-bar',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Icon, RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive],
   template: `
-    <header class="bar">
-      <div class="bar__inner">
-        <a class="brand" routerLink="/" aria-label="Dr. Aloka's Eye Care, home">
-          <img src="images/logo.png" alt="" width="1459" height="334" />
+    <header class="head">
+      <div class="wrap head__inner">
+        <a class="logo" routerLink="/" aria-label="Dr. Aloka's Eye Care, home" (click)="open.set(false)">
+          <img src="images/logo.png" alt="Dr. Aloka's Eye Care" width="1459" height="334" />
         </a>
-        <nav class="nav" [class.is-open]="open()" aria-label="Site" id="site-nav">
+        <nav class="nav" aria-label="Site">
           @for (n of nav; track n.path) {
             <a
               [routerLink]="n.path"
               routerLinkActive="is-on"
               [routerLinkActiveOptions]="{ exact: n.exact }"
               ariaCurrentWhenActive="page"
-              (click)="open.set(false)"
               >{{ n.label }}</a
             >
           }
         </nav>
-        <div class="bar__actions">
-          <a class="wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
-            <app-icon name="whatsapp" /><span class="visually-hidden">Chat on WhatsApp</span>
-          </a>
-          <a class="call" [href]="clinic.phoneHref">
-            <app-icon name="phone" /><span class="call__num">{{ clinic.phoneDisplay }}</span>
-            <span class="visually-hidden">Call the clinic</span>
-          </a>
-          <a class="btn-book btn-book--compact" [href]="clinic.bookingHref" target="_blank" rel="noopener">
-            <span>Book<span class="book-long"> appointment</span></span>
-            <app-icon name="arrow" />
-          </a>
-          <button type="button" class="menu" (click)="open.set(!open())" [attr.aria-expanded]="open()" aria-controls="site-nav">
-            <app-icon [name]="open() ? 'close' : 'menu'" /><span class="visually-hidden">Menu</span>
-          </button>
-        </div>
+        <a class="btn-book head__book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Appointment information</a>
+        <button
+          type="button"
+          class="menu-btn"
+          (click)="open.set(!open())"
+          [attr.aria-expanded]="open()"
+          aria-controls="site-menu"
+          [attr.aria-label]="open() ? 'Close menu' : 'Open menu'"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            @if (open()) {
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            } @else {
+              <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            }
+          </svg>
+        </button>
       </div>
+      <nav class="menu" id="site-menu" [class.open]="open()" aria-label="Site">
+        @for (n of nav; track n.path) {
+          <a
+            [routerLink]="n.path"
+            routerLinkActive="is-on"
+            [routerLinkActiveOptions]="{ exact: n.exact }"
+            ariaCurrentWhenActive="page"
+            (click)="open.set(false)"
+            >{{ n.label }}</a
+          >
+        }
+        <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener" (click)="open.set(false)"
+          >Appointment information</a
+        >
+      </nav>
     </header>
   `,
   styles: `
     :host { display: block; position: sticky; top: 0; z-index: 50; }
-    .bar {
-      background: rgb(15 20 38 / 0.94);
-      box-shadow: 0 1px 0 var(--steel-300);
-      backdrop-filter: blur(8px);
+    .head { background: rgb(251 248 243 / 0.96); box-shadow: 0 1px 0 var(--line); }
+    .head__inner { display: flex; align-items: center; gap: 1.6rem; min-height: 4.6rem; }
+    .logo { display: block; line-height: 0; flex: none; }
+    .logo img { height: 40px; width: auto; }
+    .nav { display: flex; gap: clamp(1rem, 1.6vw, 1.7rem); margin-left: auto; font-weight: 600; font-size: 0.97rem; }
+    .nav a { position: relative; padding: 0.4rem 0; text-decoration: none; color: var(--ink); }
+    .nav a::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--teal);
+      scale: 0 1; transform-origin: 0 50%; transition: scale 0.35s var(--ease-out);
     }
-    .bar__inner {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      width: min(100% - 2 * var(--gutter), 1400px);
-      margin-inline: auto;
-      min-height: 4.5rem;
-    }
-    .brand {
-      display: block;
-      flex: none;
-      line-height: 0;
-      padding: 6px 10px;
-      border-radius: 10px;
-      background: var(--card);
-      img { height: clamp(30px, 2.4vw + 18px, 40px); width: auto; }
-    }
-    .nav {
-      display: flex;
-      gap: 0.15rem;
-      a {
-        padding: 0.5rem 0.8rem;
-        border-radius: 999px;
-        font-weight: 600;
-        text-decoration: none;
-        color: var(--ink-soft);
-        white-space: nowrap;
+    .nav a:hover::after, .nav a.is-on::after { scale: 1 1; }
+    .nav a.is-on { color: var(--teal); }
+    .head__book { min-height: 2.75rem; padding: 0.6rem 1.1rem; font-size: 0.92rem; flex: none; }
+    .menu-btn { display: none; margin-left: auto; width: 2.75rem; height: 2.75rem; padding: 0; border: 0; background: none; color: var(--ink); cursor: pointer; }
+    .menu-btn svg { width: 26px; height: 26px; }
+    .menu { display: none; }
+    @media (max-width: 1120px) {
+      .nav, .head__book { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .menu {
+        position: absolute; left: 0; right: 0; top: 100%; display: grid; gap: 0.2rem;
+        padding: 0.8rem var(--gutter) 1.4rem; background: var(--cream);
+        box-shadow: 0 1px 0 var(--line), 0 20px 30px -20px rgb(10 70 73 / 0.4);
+        opacity: 0; visibility: hidden; translate: 0 -10px;
+        transition: opacity 0.25s, translate 0.35s var(--ease-out), visibility 0s 0.35s;
       }
-      a:hover { color: var(--ink); }
-      a.is-on { color: var(--ink); background: var(--steel-100); }
+      .menu.open { opacity: 1; visibility: visible; translate: 0 0; transition: opacity 0.25s, translate 0.35s var(--ease-out); }
+      .menu a:not(.btn-book) { padding: 0.75rem 0; font-weight: 700; font-size: 1.08rem; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); }
+      .menu a.is-on { color: var(--teal); }
+      .menu .btn-book { margin-top: 0.9rem; }
     }
-    .bar__actions {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      margin-left: auto;
-    }
-    .wa {
-      --icon: 1.25rem;
-      display: grid;
-      place-items: center;
-      width: 2.75rem;
-      height: 2.75rem;
-      border-radius: 999px;
-      color: var(--wa);
-      background: rgb(63 207 128 / 0.14);
-    }
-    .call {
-      --icon: 1.1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      min-height: 2.75rem;
-      font-weight: 600;
-      font-size: var(--step-small);
-      text-decoration: none;
-      font-variant-numeric: tabular-nums;
-    }
-    .btn-book--compact {
-      min-height: 2.75rem;
-      padding: 0.6rem 1.1rem 0.6rem 1.15rem;
-      font-size: var(--step-small);
-    }
-    .menu {
-      --icon: 1.3rem;
-      display: none;
-      place-items: center;
-      width: 2.75rem;
-      height: 2.75rem;
-      border: 0;
-      border-radius: 999px;
-      background: var(--steel-100);
-      color: var(--ink);
-      cursor: pointer;
-    }
-    @media (max-width: 1399px) {
-      .call__num { display: none; }
-      /* short label while the full menu shares the row */
-      .book-long { display: none; }
-      .call {
-        width: 2.75rem;
-        justify-content: center;
-        border-radius: 999px;
-        background: var(--steel-100);
-      }
-    }
-    /* phones and tablets: the menu folds into a panel under the header */
-    @media (max-width: 1279px) {
-      .menu { display: grid; }
-      .nav {
-        position: absolute;
-        top: 100%;
-        left: calc(-1 * var(--gutter));
-        right: calc(-1 * var(--gutter));
-        flex-direction: column;
-        gap: 0;
-        padding: 0.5rem var(--gutter) 1rem;
-        background: #0f1426;
-        z-index: 1;
-        box-shadow: 0 1px 0 var(--steel-300), 0 20px 30px -20px rgb(0 0 0 / 0.8);
-        visibility: hidden;
-        opacity: 0;
-        translate: 0 -8px;
-        transition: opacity 0.2s, translate 0.25s var(--ease-out), visibility 0s 0.25s;
-        a { padding: 0.9rem 0.5rem; border-radius: 10px; font-size: 1.0625rem; }
-      }
-      .nav.is-open {
-        visibility: visible;
-        opacity: 1;
-        translate: 0 0;
-        transition: opacity 0.2s, translate 0.25s var(--ease-out);
-      }
-    }
-    @media (max-width: 560px) {
-      .bar__inner { gap: 0.5rem; min-height: 4rem; }
-      .bar__actions { gap: 0.45rem; }
-      .book-long { display: none; }
-      .wa, .call { display: none; }
-      .brand { padding: 5px 7px; }
-      .brand img { height: 28px; }
-      .btn-book--compact { padding-inline: 0.9rem; }
-      .btn-book--compact app-icon { display: none; }
-    }
+    @media (max-width: 640px) { .logo img { height: 34px; } }
   `,
 })
 export class PageBar {
-  protected readonly clinic = CLINIC;
   protected readonly nav = NAV;
+  protected readonly clinic = CLINIC;
   protected readonly open = signal(false);
 }

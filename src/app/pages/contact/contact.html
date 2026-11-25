@@ -1,25 +1,26 @@
 <app-page-bar />
 <main id="main">
   <section class="page-hero" aria-labelledby="contact-title">
+    <app-rings [appParallax]="-0.12" />
     <div class="wrap page-hero__grid">
       <div>
         <ol class="crumbs" aria-label="Breadcrumb">
           <li><a routerLink="/">Home</a></li>
           <li aria-current="page">Contact us</li>
         </ol>
-        <h1 id="contact-title">Contact Dr. Aloka's Eye Care, KPHB, Kukatpally</h1>
-        <p class="page-hero__lede">
+        <h1 id="contact-title" appReveal>Contact Dr. Aloka's Eye Care, KPHB, Kukatpally</h1>
+        <p class="page-hero__lede" appReveal style="--delay: 0.09s">
           Call, WhatsApp or book online to see Dr. Aloka Hedau. The clinic is on 9th Phase Road, near Forum Srujana Mall, and sees patients by
           appointment.
         </p>
-        <div class="page-hero__actions">
+        <div class="page-hero__actions" appReveal style="--delay: 0.18s">
           <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
           <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> WhatsApp us</a>
         </div>
       </div>
 
       <!-- the clinic's hours as a clock: the lit arc is 10 to 5, the hands find the time in Hyderabad -->
-      <div class="clock" [class.clock--open]="isOpen()">
+      <div class="clock" [class.clock--open]="isOpen()" appReveal style="--delay: 0.2s">
         <svg viewBox="0 0 120 120" aria-hidden="true">
           <circle class="clock__face" cx="60" cy="60" r="56" />
           <path class="clock__hours" [attr.d]="hoursArc" />
@@ -40,10 +41,10 @@
     </div>
   </section>
 
-  <!-- four ways in -->
-  <section class="section ways-section" aria-labelledby="ways-title">
+  <!-- the ways in, as cards -->
+  <section class="section section--paper ways-section" aria-labelledby="ways-title">
     <div class="wrap">
-      <h2 id="ways-title" class="visually-hidden">Ways to reach the clinic</h2>
+      <h2 id="ways-title" class="section__title" appReveal>Ways to reach the clinic</h2>
       <ul class="ways">
         <li appReveal style="--delay: 0s">
           <a class="way" [href]="clinic.phoneHref">
@@ -52,35 +53,49 @@
             <span class="way__value">{{ clinic.phoneDisplay }}</span>
           </a>
         </li>
-        <li appReveal style="--delay: 0.08s">
-          <a class="way way--wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
+        <li appReveal style="--delay: 0.09s">
+          <a class="way" [href]="clinic.whatsappHref" target="_blank" rel="noopener">
             <span class="way__icon"><app-icon name="whatsapp" /></span>
             <span class="way__label">WhatsApp</span>
             <span class="way__value">Message us any time</span>
           </a>
         </li>
-        <li appReveal style="--delay: 0.16s">
+        <li appReveal style="--delay: 0.18s">
           <a class="way" [href]="'mailto:' + clinic.email">
             <span class="way__icon"><app-icon name="mail" /></span>
             <span class="way__label">Email</span>
             <span class="way__value">{{ clinic.email }}</span>
           </a>
         </li>
-        <li appReveal style="--delay: 0.24s">
+        <li appReveal style="--delay: 0.27s">
           <a class="way way--book" [href]="clinic.bookingHref" target="_blank" rel="noopener">
-            <span class="way__icon"><app-icon name="clock" /></span>
+            <span class="way__icon"><app-icon name="arrow" /></span>
             <span class="way__label">Book online</span>
             <span class="way__value">Choose a time slot</span>
           </a>
+        </li>
+        <li appReveal style="--delay: 0.36s">
+          <a class="way" [href]="clinic.mapsHref" target="_blank" rel="noopener">
+            <span class="way__icon"><app-icon name="pin" /></span>
+            <span class="way__label">Address</span>
+            <span class="way__value">9th Phase Road, near Forum Srujana Mall, KPHB Phase 6, Kukatpally</span>
+          </a>
+        </li>
+        <li appReveal style="--delay: 0.45s">
+          <div class="way way--static">
+            <span class="way__icon"><app-icon name="clock" /></span>
+            <span class="way__label">Clinic hours</span>
+            <span class="way__value">Mon – Sat, 10 am – 5 pm · Sunday closed</span>
+          </div>
         </li>
       </ul>
     </div>
   </section>
 
   <!-- write a message; it opens in WhatsApp or email, ready to send -->
-  <section class="section section--paper" aria-labelledby="write-title">
+  <section class="section" aria-labelledby="write-title">
     <div class="wrap compose">
-      <form class="form" (submit)="sendWhatsApp($event)" novalidate>
+      <form class="form" (submit)="sendWhatsApp($event)" novalidate appReveal>
         <h2 id="write-title" class="section__title">Send us a message</h2>
         <p class="form__lede">Fill this in and it opens in WhatsApp or your email, ready to send. Nothing is saved on this website.</p>
 
@@ -149,7 +164,7 @@
       </form>
 
       <!-- what the clinic will receive, as you type -->
-      <div class="preview" aria-hidden="true">
+      <div class="preview" aria-hidden="true" appReveal style="--delay: 0.15s">
         <div class="phone">
           <div class="phone__bar">
             <img src="images/logo.png" alt="" width="1459" height="334" />
@@ -164,17 +179,21 @@
   </section>
 
   <!-- where, and when -->
-  <section class="section" aria-labelledby="find-title">
+  <section class="section section--mint" aria-labelledby="find-title">
+    <app-rings class="find-rings" [appParallax]="-0.12" />
     <div class="wrap find">
       <div class="find__text" appReveal>
         <h2 id="find-title" class="section__title">Finding the clinic</h2>
         <address class="find__address">
-          <strong>{{ clinic.name }}</strong>
-          @for (line of clinic.address; track line) {
-            <span>{{ line }}</span>
-          }
+          <span class="find__pin"><app-icon name="pin" /></span>
+          <span class="find__lines">
+            <strong>{{ clinic.name }}</strong>
+            @for (line of clinic.address; track line) {
+              <span>{{ line }}</span>
+            }
+          </span>
         </address>
-        <a class="btn-ghost" [href]="clinic.mapsHref" target="_blank" rel="noopener"><app-icon name="route" /> Get directions</a>
+        <a class="btn-line" [href]="clinic.mapsHref" target="_blank" rel="noopener"><app-icon name="route" /> Get directions</a>
 
         <h3 class="find__sub">Clinic hours</h3>
         <table class="hours">
@@ -190,7 +209,7 @@
         </table>
         <p class="find__note">By appointment only.</p>
       </div>
-      <div class="map" appReveal>
+      <div class="map" appReveal style="--delay: 0.12s">
         <iframe [src]="mapSrc" title="Map: Dr. Aloka's Eye Care, KPHB Phase 6, Kukatpally" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
@@ -198,7 +217,16 @@
 
   <section class="section">
     <div class="wrap">
-      <p class="also">Have a question first? Read the <a routerLink="/faq/">answers to questions parents often ask</a>.</p>
+      <div class="cta-band" appReveal>
+        <div>
+          <h2>Have a question first?</h2>
+          <p>Read the answers to questions parents often ask.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn-book" routerLink="/faq/">Read the answers <app-icon name="arrow" /></a>
+          <a class="link-call" [href]="clinic.phoneHref"><app-icon name="phone" /><span>{{ clinic.phoneDisplay }}</span></a>
+        </div>
+      </div>
     </div>
   </section>
 </main>

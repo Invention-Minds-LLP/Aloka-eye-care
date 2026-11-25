@@ -1,18 +1,20 @@
 <app-page-bar />
 <main id="main">
   <section class="page-hero" aria-labelledby="faq-title">
+    <app-rings [appParallax]="-0.12" style="width: 520px; height: 520px; left: -220px; top: -160px; opacity: 0.5" />
     <div class="wrap page-hero__grid">
       <div>
         <ol class="crumbs" aria-label="Breadcrumb">
           <li><a routerLink="/">Home</a></li>
           <li aria-current="page">FAQ</li>
         </ol>
-        <h1 id="faq-title">Questions parents ask about squint and children's eyes</h1>
-        <p class="page-hero__lede">
+        <p class="eyebrow" appReveal>Frequently asked questions</p>
+        <h1 id="faq-title" appReveal style="--delay: 0.05s">Questions parents ask about squint and children's eyes</h1>
+        <p class="page-hero__lede" appReveal style="--delay: 0.14s">
           Straight answers from Dr. Aloka Hedau, paediatric ophthalmologist and squint surgeon in Kukatpally, Hyderabad, to the worries families
           bring to the clinic most often.
         </p>
-        <div class="search">
+        <div class="search" appReveal style="--delay: 0.23s">
           <label for="faq-search" class="visually-hidden">Search the questions</label>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
           <input id="faq-search" type="search" placeholder="Search, e.g. scar, age, cataract" [value]="query()" (input)="setQuery($event)" />
@@ -22,6 +24,10 @@
             {{ found() }} of {{ total }} answers match
           }
         </p>
+        <div class="page-hero__actions" appReveal style="--delay: 0.3s">
+          <a class="btn-book" [href]="clinic.bookingHref" target="_blank" rel="noopener">Book an appointment <app-icon name="arrow" /></a>
+          <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> Ask on WhatsApp</a>
+        </div>
       </div>
 
       <!-- an eye that looks around, with parents' questions drifting past it -->
@@ -48,54 +54,62 @@
     </div>
   </section>
 
-  <div class="wrap layout">
-    <nav class="index" aria-label="Topics">
-      <p class="index__label">Topics</p>
-      <ol>
-        @for (g of groups(); track g.id) {
-          <li>
-            <a [href]="'faq/#' + g.id">{{ g.title }} <span>{{ g.items.length }}</span></a>
-          </li>
-        }
-      </ol>
-    </nav>
-
-    <div class="groups">
-      @for (g of groups(); track g.id) {
-        <section class="group" [id]="g.id" [attr.aria-labelledby]="g.id + '-title'" appReveal>
-          <h2 class="group__title" [id]="g.id + '-title'">{{ g.title }}</h2>
-          @for (item of g.items; track item.id) {
-            <details class="qa" [id]="item.id" [open]="opened() === item.id">
-              <summary>
-                <span class="qa__q">{{ item.q }}</span>
-                <span class="qa__toggle" aria-hidden="true"></span>
-              </summary>
-              <div class="qa__a">
-                <p>{{ item.a }}</p>
-                @if (item.more; as m) {
-                  @if (m.fragment) {
-                    <a class="qa__more" [routerLink]="m.path" [fragment]="m.fragment">{{ m.label }} →</a>
-                  } @else {
-                    <a class="qa__more" [routerLink]="m.path">{{ m.label }} →</a>
-                  }
-                }
-              </div>
-            </details>
+  <section class="section section--paper answers" aria-label="Answers">
+    <app-rings [appParallax]="0.12" style="width: 440px; height: 440px; right: -190px; top: 4%; opacity: 0.5" />
+    <app-rings [appParallax]="-0.1" style="width: 320px; height: 320px; left: -150px; bottom: -90px; opacity: 0.4" />
+    <div class="wrap layout">
+      <nav class="index" aria-label="Topics">
+        <p class="index__label">Topics</p>
+        <ol>
+          @for (g of groups(); track g.id) {
+            <li>
+              <a [href]="'faq/#' + g.id">{{ g.title }} <span>{{ g.items.length }}</span></a>
+            </li>
           }
-        </section>
-      } @empty {
-        <div class="none">
-          <p>No answer matches “{{ query() }}” yet.</p>
-          <p>Ask the clinic directly, and Dr. Aloka's team will help.</p>
-          <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> Ask on WhatsApp</a>
-        </div>
-      }
-    </div>
-  </div>
+        </ol>
+      </nav>
 
-  <section class="section">
+      <div class="groups">
+        @for (g of groups(); track g.id) {
+          <section class="group" [id]="g.id" [attr.aria-labelledby]="g.id + '-title'">
+            <h2 class="group__title" [id]="g.id + '-title'" appReveal>{{ g.title }}</h2>
+            <div class="qa-list">
+              @for (item of g.items; track item.id; let j = $index) {
+                <details class="qa" [id]="item.id" [open]="opened() === item.id" appReveal [style.--delay]="(j % 4) * 0.08 + 's'">
+                  <summary>
+                    <span class="qa__q">{{ item.q }}</span>
+                    <span class="qa__toggle" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg
+                    ></span>
+                  </summary>
+                  <div class="qa__a">
+                    <p>{{ item.a }}</p>
+                    @if (item.more; as m) {
+                      @if (m.fragment) {
+                        <a class="qa__more" [routerLink]="m.path" [fragment]="m.fragment">{{ m.label }} →</a>
+                      } @else {
+                        <a class="qa__more" [routerLink]="m.path">{{ m.label }} →</a>
+                      }
+                    }
+                  </div>
+                </details>
+              }
+            </div>
+          </section>
+        } @empty {
+          <div class="none">
+            <p>No answer matches “{{ query() }}” yet.</p>
+            <p>Ask the clinic directly, and Dr. Aloka's team will help.</p>
+            <a class="btn-wa" [href]="clinic.whatsappHref" target="_blank" rel="noopener"><app-icon name="whatsapp" /> Ask on WhatsApp</a>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mint">
     <div class="wrap">
-      <div class="cta-band">
+      <div class="cta-band" appReveal>
         <div>
           <h2>Didn't find your question?</h2>
           <p>Call or WhatsApp the clinic, or book a visit and ask Dr. Aloka in person. Monday to Saturday, 10 am to 5 pm.</p>
