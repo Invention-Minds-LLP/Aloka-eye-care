@@ -38,7 +38,7 @@ export default class Surgeries {
     inject(SeoService).set({
       title: 'Squint Surgery & Paediatric Cataract Surgery in Hyderabad | Dr. Aloka’s Eye Care',
       description:
-        'Squint surgery for children and adults, paediatric cataract, nystagmus, ptosis and tear duct surgery by Dr. Aloka Hedau in KPHB, Kukatpally, Hyderabad. Pain-free, no visible scar.',
+        'Paediatric cataract and probing, exotropia and esotropia surgery, complex squint, nystagmus, adult squint correction and oculoplasty by Dr. Aloka Hedau in KPHB, Kukatpally, Hyderabad.',
       path: '/surgeries/',
       image: 'images/surgeries/squint-child.webp',
       jsonLd: [

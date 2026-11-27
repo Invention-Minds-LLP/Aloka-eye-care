@@ -26,9 +26,9 @@ export default class Services {
 
   constructor() {
     inject(SeoService).set({
-      title: "Children's Eye Care, Squint & Myopia Treatment in Kukatpally, Hyderabad | Services",
+      title: 'Myopia Clinic, Vision Therapy & Amblyopia Care in Kukatpally, Hyderabad | Services',
       description:
-        'Paediatric eye check-ups, squint treatment, myopia control, vision therapy, ROP screening and low vision aids at Dr. Aloka’s Eye Care, KPHB, Kukatpally, Hyderabad.',
+        'Myopia clinic, low vision aids, vision therapy, online vision therapy programmes and amblyopia (lazy eye) care at Dr. Aloka’s Eye Care, KPHB, Kukatpally, Hyderabad.',
       path: '/services/',
       image: 'images/services/paediatric-evaluation.webp',
       jsonLd: [

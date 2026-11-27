@@ -307,9 +307,16 @@
     align-self: start;
   }
 }
-@media (min-width: 1180px) {
+/* five services: three, then two, centred */
+@media (min-width: 1000px) {
   .cards {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .cards > li {
+    grid-column: span 2;
+  }
+  .cards > li:nth-child(4) {
+    grid-column: 2 / span 2;
   }
 }
 @media (max-width: 640px) {
